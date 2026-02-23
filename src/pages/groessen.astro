@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const title = 'Fußballtor Größen & Maße – Alle Torgrößen im Überblick';
+const description = 'Alle Fußballtor-Größen und Maße: Von Großfeld (7,32 x 2,44 m) über Jugendtore (5 x 2 m) bis Kleinfeld (3 x 2 m). Offizielle Abmessungen nach DFB und FIFA.';
+
+const faqs = [
+  {
+    question: 'Wie groß ist ein Fußballtor?',
+    answer: 'Ein Fußballtor im Profifußball (Herren und Frauen, Großfeld) misst 7,32 m in der Breite und 2,44 m in der Höhe. Diese Maße sind weltweit durch die FIFA-Spielregeln festgelegt und gelten für alle offiziellen Wettbewerbe.',
+  },
+  {
+    question: 'Welche Fußballtor-Größe brauchen Jugendmannschaften?',
+    answer: 'Die D-Jugend (U12/U13) spielt im 9-gegen-9-Format auf Jugendtore mit 5,00 x 2,00 m. Ab der C-Jugend (U14/U15) wird auf Großfeldtore mit 7,32 x 2,44 m gespielt. Die jüngeren Altersklassen nutzen Kleinfeldtore (3,00 x 2,00 m bei der F-Jugend) oder Minitore (Bambini/Funino). Die E-Jugend spielt auf 5,00 x 2,00 m Tore. Die genauen Vorgaben legt der DFB in seinen Jugendspielordnungen fest.',
+  },
+  {
+    question: 'Was ist die offizielle Tortiefe bei Fußballtoren?',
+    answer: 'Die Tortiefe hängt von der Torgröße ab: Bei Großfeldtoren beträgt sie 1,50 bis 2,00 m, bei Jugendtoren 1,00 bis 1,50 m und bei Kleinfeldtoren rund 1,00 m. Die Tortiefe ist wichtig für die Netzspannung und die Standsicherheit des Tors.',
+  },
+  {
+    question: 'Gibt es einheitliche Maße für Minitore und Funino-Tore?',
+    answer: 'Nein, für Minitore und Funino-Tore gibt es keine einheitlich vorgeschriebenen Maße. Gängige Größen liegen zwischen 1,20 x 0,80 m und 1,80 x 1,20 m. Im Funino-Spielbetrieb werden oft Tore mit ca. 1,20 x 0,80 m verwendet.',
+  },
+  {
+    question: 'Ab welchem Alter spielen Kinder auf große Tore?',
+    answer: 'Ab der D-Jugend (ca. 11–12 Jahre) wird auf Jugendtore mit 5 x 2 m gespielt. Ab der C-Jugend (ca. 13–14 Jahre) kommt das Großfeldtor mit 7,32 x 2,44 m zum Einsatz. Davor spielen Kinder auf Kleinfeldtore (3 x 2 m bei der F-Jugend), auf 5 x 2 m Tore (E-Jugend) oder Minitore (Bambini/Funino).',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/groessen',
+    },
+    datePublished: '2025-06-01',
+    dateModified: '2026-02-23',
+    inLanguage: 'de-DE',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Start',
+        item: 'https://fussballtore.de/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Größen & Maße',
+        item: 'https://fussballtore.de/groessen',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <HeroSection
+    title="Fußballtor Größen & Maße"
+    subtitle="Alle Torgrößen im Überblick – von Mini bis Großfeld"
+    compact
+  />
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Größen & Maße' }]} />
+
+  <article class="py-12 md:py-16">
+    <div class="container mx-auto max-w-3xl">
+
+      <!-- Einleitung -->
+      <p class="text-neutral-600 leading-relaxed mb-4 text-lg">
+        <strong>Fußballtor Größen</strong> unterscheiden sich je nach Spielklasse, Altersgruppe und Einsatzzweck erheblich. Ob du für deinen Verein ein normgerechtes Wettkampftor suchst, die Jugendabteilung mit passenden Toren ausstatten willst oder ein Tor für den Garten brauchst – die richtige Größe zu kennen, ist der erste Schritt zur richtigen Entscheidung.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        In diesem Ratgeber findest du alle offiziellen <strong>Fußballtor Maße</strong> nach DFB- und FIFA-Vorgaben, eine klare Zuordnung von Altersklassen zu Torgrößen und konkrete Produktempfehlungen für jede Kategorie. So sparst du dir langes Recherchieren und weißt sofort, welches Tor du brauchst.
+      </p>
+
+      <!-- Übersichtstabelle -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Alle Fußballtor-Größen auf einen Blick
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-6">
+        Die folgende Tabelle zeigt dir sämtliche gängigen Torgrößen mit den offiziellen Abmessungen. Diese Maße sind durch die FIFA-Spielregeln bzw. die DFB-Jugendspielordnung festgelegt und gelten für den gesamten organisierten Spielbetrieb in Deutschland.
+      </p>
+
+      <div class="overflow-x-auto my-8">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Spielklasse</th>
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Breite</th>
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Höhe</th>
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Tortiefe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">Herren / Frauen (Großfeld)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7,32 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,44 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,50–2,00 m</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">C- bis A-Jugend (Großfeld)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7,32 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,44 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,50–2,00 m</td>
+            </tr>
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">D-Jugend / E-Jugend (Jugendtor)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,00–1,50 m</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">F-Jugend (Kleinfeld)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">3,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,00 m</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">Mini / Funino</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">variabel</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">variabel</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">variabel</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
+        <p class="text-neutral-600 leading-relaxed text-sm">
+          <strong>Gut zu wissen:</strong> Die Maße 7,32 x 2,44 m wirken auf den ersten Blick ungewöhnlich krumm. Das liegt daran, dass sie ursprünglich aus dem englischen Maßsystem stammen: 8 Yards Breite und 8 Fuß Höhe. Umgerechnet ins metrische System ergibt das die bekannten 7,32 x 2,44 m.
+        </p>
+      </div>
+
+      <!-- Großfeldtor -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Großfeldtor – 7,32 x 2,44 m
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Das Großfeldtor ist das Standardtor im Profifußball und wird weltweit einheitlich mit <strong>7,32 m Breite und 2,44 m Höhe</strong> gespielt. Diese Abmessungen gelten für alle FIFA- und DFB-Wettbewerbe im Herren- und Frauenfußball – von der Kreisliga bis zur Bundesliga.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Großfeldtore bestehen in der Regel aus Aluminium-Profilen und wiegen je nach Ausführung zwischen 40 und 100 kg pro Tor. Für den Vereinsbetrieb müssen sie der <strong>DIN EN 748</strong> entsprechen und TÜV-geprüft sein. Besonders wichtig: die Kippsicherung. Jedes Großfeldtor muss so gesichert sein, dass es nicht umfallen kann – sei es durch Bodenverankerung, Gegengewichte oder Transportrollen mit Bremse.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Die Tortiefe liegt bei Großfeldtoren üblicherweise zwischen <strong>1,50 und 2,00 m</strong>. Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor sofort wieder herausrollt. Für einen detaillierten Materialvergleich zwischen Alu und Stahl schau dir unseren <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a> an.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+        <ProductCard
+          name="Bundesliga-Tor 7,32 x 2,44 m – freie Netzaufhängung"
+          url="https://www.anstoss24.de/fussballtor-bundesliga_107_144161/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/107/secondPreview/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107.jpg"
+          features={["Bundesliga-Modell", "Freie Netzaufhängung", "Alu-Ovalprofil 120/100 mm", "TÜV-geprüft"]}
+          category="Großfeldtore"
+        />
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Das Bundesliga-Modell von anstoss24.de ist ein Profi-Großfeldtor mit <strong>freier Netzaufhängung</strong> und stabilem Alu-Ovalprofil – TÜV-geprüft und individuell konfigurierbar. Ideal für Vereine, die auf Bundesliga-Qualität setzen. Mehr zu Vereinstoren findest du auf unserer Seite <a href="/verein" class="text-accent hover:text-accent-dark underline underline-offset-2">Vereins- und Wettkampftore</a>.
+      </p>
+
+      <!-- Jugendtor -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Jugendtor – 5,00 x 2,00 m
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Jugendtore mit <strong>5,00 m Breite und 2,00 m Höhe</strong> sind die Standardgröße für den Jugendfußball der D-Jugend (9 gegen 9) und der E-Jugend (5 gegen 5 / 7 gegen 7). Diese Torgröße bildet den Übergang zwischen den kleineren Kindertoren und dem Großfeldtor und ist für Spieler im Alter von ca. 9 bis 13 Jahren vorgesehen.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Im Jugendbereich wird besonderer Wert auf Sicherheit gelegt. Die Tore müssen standfest sein und dürfen keine scharfen Kanten haben. Viele Vereine setzen auf <strong>mobile Jugendtore</strong>, die sich bei Bedarf vom Platz fahren lassen – etwa wenn derselbe Platz von verschiedenen Altersklassen genutzt wird. Vollverschweißte Konstruktionen sind dabei besonders stabil und wartungsarm.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+        <ProductCard
+          name="Jugendtor 5 x 2 m – vollverschweißt, Transportrollen + Tragegriffe, inkl. Netz"
+          url="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
+          features={["Vollverschweißt", "Transportrollen + Tragegriffe", "Inkl. Tornetz", "Ovalprofil 120/100 mm"]}
+          category="Jugendtore"
+        />
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Dieses vollverschweißte Jugendtor von anstoss24.de wird mit Transportrollen und angeschweißten Tragegriffen geliefert – inklusive Tornetz. Perfekt für Vereine, die ein robustes und leicht transportierbares 5 x 2 m Tor für die Jugendabteilung suchen. Auch als <a href="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Variante ohne Tragegriffe</a> erhältlich.
+      </p>
+
+      <!-- Kleinfeldtor / Bolzplatztor -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Kleinfeldtor / Bolzplatztor – 3,00 x 2,00 m
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Kleinfeldtore messen <strong>3,00 m in der Breite und 2,00 m in der Höhe</strong> und kommen im Spielbetrieb der F-Jugend (5 gegen 5) zum Einsatz. Dieselbe Größe wird auch für Bolzplatztore verwendet – also für öffentliche Spielflächen in Parks, Schulen und Kommunen.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        An Bolzplatztore werden besondere Anforderungen gestellt: Sie müssen <strong>vandalismusresistent</strong>, wetterfest und extrem langlebig sein. Hochwertige Modelle bestehen aus massivem Alu-Ovalprofil, sind vollverschweißt und DIN-konform. Die Investition ist zwar höher als bei einfachen Toren, dafür halten Bolzplatztore problemlos 20 Jahre und mehr – ohne nennenswerten Wartungsaufwand.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+        <ProductCard
+          name="Mobiles Kleinfeldtor 3 x 2 m – vollverschweißt, inkl. Netz"
+          url="https://www.anstoss24.de/fussballtore/fussballtor-mobiles-kleinfeldtor-3-00-x-2-00-m-vollverschweisst_4248_70883/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/4248/full/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst-4248.jpg"
+          features={["Vollverschweißt", "Ovalprofil 120/100 mm", "Inkl. Tornetz", "Ca. 40 kg"]}
+          category="Kleinfeldtore"
+        />
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Dieses mobile Kleinfeldtor von anstoss24.de ist vollverschweißt, wiegt nur rund 40 kg und wird inklusive Tornetz geliefert. Eine vielseitige Lösung für den Kleinfeldspielbetrieb der F-Jugend, für Schulen und für Sportanlagen, die flexible Tore benötigen.
+      </p>
+
+      <!-- Minitore -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Minitore und Funino-Tore
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Minitore und Funino-Tore haben <strong>keine einheitlich vorgeschriebene Größe</strong>. Im Trainingsalltag und im Funino-Spielbetrieb haben sich Maße zwischen 1,20 x 0,80 m und 1,80 x 1,20 m etabliert. Diese Tore eignen sich hervorragend für das Techniktraining, Kleinfeld-Turniere und den Spaß im eigenen Garten.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Funino – das 3-gegen-3-Spielformat ohne Torwart – gewinnt im deutschen Kinderfußball immer mehr an Bedeutung. Der DFB empfiehlt Funino ausdrücklich als Einstiegsformat für die jüngsten Altersklassen. Die verwendeten Minitore sind dabei bewusst klein gehalten, damit Tore nur durch präzises Spiel fallen.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Für den Garten sind Minitore ebenfalls die erste Wahl. Leichte Pop-up-Tore und Stecktore lassen sich in Sekunden aufbauen und platzsparend verstauen. Mehr dazu findest du in unserem Ratgeber <a href="/garten" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für den Garten</a> und <a href="/kinder" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für Kinder</a>.
+      </p>
+
+      <!-- Welche Größe für welches Alter -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Welche Torgröße für welches Alter?
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-6">
+        Die richtige Zuordnung von Altersklasse und Torgröße sorgt dafür, dass Kinder und Jugendliche auf altersgerechten Toren spielen. Die folgende Tabelle orientiert sich an den DFB-Empfehlungen für den Jugendspielbetrieb.
+      </p>
+
+      <div class="overflow-x-auto my-8">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Altersklasse</th>
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Alter (ca.)</th>
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Torgröße</th>
+              <th class="border border-primary px-4 py-3 text-sm text-left font-heading">Spielformat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">Bambini (G-Jugend)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5–6 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">Minitore (ca. 1,20 x 0,80 m / Funino)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2 gegen 2 / 3 gegen 3</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">F-Jugend</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7–8 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">Minitore oder 3,00 x 2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">3 gegen 3 / 5 gegen 5</td>
+            </tr>
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">E-Jugend</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">9–10 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 x 2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5 gegen 5 / 7 gegen 7</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">D-Jugend</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">11–12 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 x 2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">9 gegen 9</td>
+            </tr>
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">C-Jugend</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">13–14 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7,32 x 2,44 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">11 gegen 11</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">B-Jugend</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">15–16 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7,32 x 2,44 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">11 gegen 11</td>
+            </tr>
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">A-Jugend</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">17–18 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7,32 x 2,44 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">11 gegen 11</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">Herren / Frauen</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">ab 19 Jahre</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7,32 x 2,44 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">11 gegen 11</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
+        <p class="text-neutral-600 leading-relaxed text-sm">
+          <strong>Hinweis:</strong> Die exakten Zuordnungen können je nach Landesverband leicht variieren. Im Zuge der DFB-Jugendreform werden die Spielformate in den jüngsten Altersklassen zunehmend flexibler gestaltet. Funino und andere Kleinfeld-Formate gewinnen an Bedeutung. Am besten informierst du dich bei deinem Landesverband über die aktuellen Regelungen.
+        </p>
+      </div>
+
+      <!-- Tipps zur Auswahl -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Tipps zur Auswahl der richtigen Torgröße
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Die Torgröße allein ist nicht alles. Beim Kauf solltest du noch ein paar weitere Punkte beachten:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-neutral-600 leading-relaxed mb-4 ml-2">
+        <li><strong>Platzverhältnisse:</strong> Miss den verfügbaren Platz vor dem Kauf. Ein Großfeldtor braucht mit Torraum und Sicherheitszone deutlich mehr Fläche als nur 7,32 x 2,44 m.</li>
+        <li><strong>Mehrfachnutzung:</strong> Wenn verschiedene Altersklassen dasselbe Feld nutzen, sind mobile Tore mit Rollen die beste Lösung. So kannst du schnell zwischen Jugendtoren und Großfeldtoren wechseln.</li>
+        <li><strong>Material:</strong> Für dauerhafte Installation empfiehlt sich Aluminium. Für den Garten genügen oft leichtere Materialien wie Kunststoff oder Stahl. Alle Details dazu findest du im <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a>.</li>
+        <li><strong>Normen:</strong> Für den offiziellen Spielbetrieb muss das Tor der DIN EN 748 entsprechen und TÜV-geprüft sein. Im privaten Bereich ist das keine Pflicht, aber ein Qualitätsmerkmal.</li>
+        <li><strong>Budget:</strong> Die Preisspanne ist groß – von günstigen Pop-up-Toren für den Garten bis hin zu robusten Bolzplatztoren in Profi-Qualität. Eine ausführliche Hilfe zur Entscheidung findest du in unserer <a href="/kaufberatung" class="text-accent hover:text-accent-dark underline underline-offset-2">Kaufberatung</a>.</li>
+      </ul>
+
+      <!-- Fazit -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+        Fazit: Die richtige Fußballtor-Größe finden
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Die Wahl der richtigen Fußballtor-Größe hängt von drei Faktoren ab: <strong>Altersklasse</strong>, <strong>Einsatzzweck</strong> und <strong>Platzverhältnisse</strong>. Für den organisierten Spielbetrieb sind die Maße klar vorgegeben – vom Minitor im Funino-Format für die Jüngsten über 5 x 2 m-Jugendtore bis zum 7,32 x 2,44 m-Großfeldtor ab der C-Jugend.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Für den Garten und das freie Spiel hast du mehr Flexibilität. Hier zählt vor allem, wie viel Platz du hast und wie alt die Spieler sind. Minitore und Pop-up-Tore sind für Kinder unter 10 Jahren meist völlig ausreichend und kosten nur einen Bruchteil eines Vereinstors.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Egal für welche Größe du dich entscheidest – achte auf Qualität und Sicherheit. TÜV-geprüfte Tore von Fachanbietern wie <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">anstoss24.de</a> bieten dir die Gewissheit, dass du ein normgerechtes und sicheres Tor bekommst.
+      </p>
+
+    </div>
+  </article>
+
+  <!-- FAQ Section -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-3xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zu Fußballtor-Größen" />
+    </div>
+  </div>
+</BaseLayout>

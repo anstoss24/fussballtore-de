@@ -1,0 +1,120 @@
+{
+  "products": [
+    {
+      "id": "bundesliga-premium",
+      "name": "Bundesliga-Tor 7,32 x 2,44 m – freie Netzaufhängung",
+      "url": "https://www.anstoss24.de/fussballtor-bundesliga_107_144161/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/107/secondPreview/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107.jpg",
+      "features": ["Bundesliga-Modell", "Freie Netzaufhängung", "Alu-Ovalprofil 120/100 mm", "TÜV-geprüft", "Made in Germany"],
+      "idealFor": ["Vereine", "Wettkampf", "Spielbetrieb"]
+    },
+    {
+      "id": "grossfeld-transportabel",
+      "name": "Großfeldtor 7,32 x 2,44 m – transportabel, vollverschweißt, inkl. Netz",
+      "url": "https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst_1523_237176/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/1523/secondPreview/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-un.jpg",
+      "features": ["Vollverschweißt", "Transportabel", "Inkl. Tornetz", "Alu-Ovalprofil 120/100 mm", "TÜV-geprüft"],
+      "idealFor": ["Training", "Vereine", "Flexibler Einsatz"]
+    },
+    {
+      "id": "jugendtor-ohne-griffe",
+      "name": "Jugendtor 5 x 2 m – vollverschweißt, Transportrollen, inkl. Netz",
+      "url": "https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png",
+      "features": ["Vollverschweißt", "Transportrollen", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"],
+      "idealFor": ["Jugendmannschaften", "D- bis B-Jugend", "Vereine"]
+    },
+    {
+      "id": "jugendtor-mit-griffen",
+      "name": "Jugendtor 5 x 2 m – vollverschweißt, Transportrollen + Tragegriffe, inkl. Netz",
+      "url": "https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png",
+      "features": ["Vollverschweißt", "Transportrollen + Tragegriffe", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"],
+      "idealFor": ["Jugendmannschaften", "Regelmäßiger Transport", "Vereine"]
+    },
+    {
+      "id": "minitor-lightweight",
+      "name": "Alu Minitor Lightweight 1,20 x 0,80 m – unter 10 kg",
+      "url": "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-lightweight-1-20-x-0-80-m-vollverschweisst_18602_672042/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Bildschirmfoto-2026-01-15-um-10-19-48.png",
+      "features": ["Unter 10 kg", "Vollverschweißt", "Inkl. Netz", "Komplett Aluminium", "Rostfrei"],
+      "idealFor": ["Kinder", "Funino", "Garten", "Training"]
+    },
+    {
+      "id": "minitor-hinterbau",
+      "name": "Alu Minitor 1,20 x 0,80 m – geschlossener Hinterbau, \u201Eunzerstörbar\u201C",
+      "url": "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar_18838_688608/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838_2.png",
+      "features": ["Geschlossener Hinterbau", "TÜV-geprüft", "Vollverschweißt", "80x80 mm Rechteckprofil", "Made in Germany"],
+      "idealFor": ["Vereine", "Kommunen", "Schulen", "Dauereinsatz"]
+    },
+    {
+      "id": "kleinfeldtor-mobil",
+      "name": "Mobiles Kleinfeldtor 3 x 2 m – vollverschweißt, inkl. Netz",
+      "url": "https://www.anstoss24.de/fussballtore/fussballtor-mobiles-kleinfeldtor-3-00-x-2-00-m-vollverschweisst_4248_70883/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/4248/full/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst-4248.jpg",
+      "features": ["Vollverschweißt", "Ovalprofil 120/100 mm", "Inkl. Tornetz", "Ca. 40 kg", "5 Jahre Garantie"],
+      "idealFor": ["Kleinfeldtraining", "Schulen", "F-Jugend", "Vereine"]
+    },
+    {
+      "id": "bolzplatz-unkaputtbar",
+      "name": "Bolzplatztor UNKAPUTTBAR 3 x 2 m",
+      "url": "https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/255/secondPreview/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255.jpg",
+      "features": ["Vollverschweißt", "Vandalismusresistent", "Geschlossener Hinterbau", "TÜV-geprüft", "5 Jahre Garantie"],
+      "idealFor": ["Kommunen", "Schulen", "Öffentliche Bolzplätze"]
+    },
+    {
+      "id": "quickplay-150",
+      "name": "QuickPlay Kickster Elite 1,50 x 1,00 m",
+      "url": "https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg",
+      "features": ["90-Sek-Aufbau", "Windstabil", "Inkl. Tasche", "4 Erdanker", "Ideal für Funino"],
+      "idealFor": ["Kinder", "Garten", "Funino", "Training"]
+    },
+    {
+      "id": "quickplay-180",
+      "name": "QuickPlay Kickster Elite 1,80 x 1,20 m",
+      "url": "https://www.anstoss24.de/tore/quick-play-kickster-1-82m-x-1-21m-fussballtor_47_1030/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/47/secondPreview/QuickPlay-Kickster-Elite-Junior-Minitor-1-80-x-1-20m-47_5.jpg",
+      "features": ["90-Sek-Aufbau", "Windstabil", "Inkl. Tasche", "4 Erdanker", "Wetterfest"],
+      "idealFor": ["Garten", "Jugendliche", "Funino", "Training"]
+    },
+    {
+      "id": "popup-set",
+      "name": "ELF Sports Pop-up Goal – 2er Set inkl. Transporttasche",
+      "url": "https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/19/secondPreview/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg",
+      "features": ["2er Set", "Pop-up in Sekunden", "Diverse Größen", "Inkl. Tasche", "3 Erdanker"],
+      "idealFor": ["Garten", "Kinder", "Schnellaufbau"]
+    },
+    {
+      "id": "tornetz-grossfeld",
+      "name": "Tornetz für Großfeldtore – Stärke 4 mm",
+      "url": "https://www.anstoss24.de/tornetze/tornetze-grossfeld_25_5104/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/25/secondPreview/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25_1.jpg",
+      "features": ["Polypropylen", "4 mm Stärke", "Farbwahl", "Bundesliga-Qualität"],
+      "idealFor": ["Großfeldtore", "Vereine", "Wettkampf"]
+    },
+    {
+      "id": "gummigewichte",
+      "name": "Gummigewichte für Kippsicherung",
+      "url": "https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/gummigewichte-fuer-sportplatzzubehoer_14247_386946/",
+      "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14247/secondPreview/Beschwerungsteller-fuer-Sportplatzzubehoer-14247.JPG",
+      "features": ["Kippsicherung", "Universell einsetzbar"],
+      "idealFor": ["Alle Torgrößen", "Kippsicherung"]
+    }
+  ],
+  "shopInfo": {
+    "name": "anstoss24.de",
+    "url": "https://www.anstoss24.de",
+    "fussballtoreUrl": "https://www.anstoss24.de/fussballtore/",
+    "phone": "08435 - 485 9568",
+    "phoneHours": "Mo-Fr 7:30-17:30 Uhr",
+    "email": "info@anstoss24.de",
+    "freeShipping": "Ab 75€ Einkauf kostenloser Versand (DE)",
+    "returnPolicy": "30 Tage Rückgaberecht",
+    "madeInGermany": true,
+    "tuvCertified": true
+  }
+}

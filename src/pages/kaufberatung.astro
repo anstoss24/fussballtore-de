@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const title = 'Fußballtor kaufen – Die komplette Kaufberatung 2026';
+const description = 'Fußballtor kaufen: Worauf du bei Größe, Material, Sicherheit und Preis achten musst. Unser Ratgeber hilft dir, das richtige Tor zu finden.';
+
+const products = {
+  grossfeld: {
+    name: 'Großfeldtor 7,32 x 2,44 m – transportabel, vollverschweißt, inkl. Netz',
+    url: 'https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst_1523_237176/',
+    imageUrl: 'https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/1523/secondPreview/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-un.jpg',
+    features: ['Vollverschweißt', 'Transportabel', 'Inkl. Tornetz', 'Alu-Ovalprofil 120/100 mm', 'TÜV-geprüft'],
+    category: 'Großfeldtore',
+  },
+  jugendtor: {
+    name: 'Jugendtor 5 x 2 m – vollverschweißt, Transportrollen, inkl. Netz',
+    url: 'https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/',
+    imageUrl: 'https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png',
+    features: ['Vollverschweißt', 'Transportrollen', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'DIN EN 748'],
+    category: 'Jugendtore',
+  },
+};
+
+const faqs = [
+  {
+    question: 'Welches Fußballtor ist für meinen Garten geeignet?',
+    answer: 'Für den Garten eignen sich Minitore (1,20 x 0,80 m bis 1,80 x 1,20 m) oder kleinere Jugendtore (3,00 x 2,00 m). Achte auf ein geringes Gewicht, einfachen Auf- und Abbau und eine Kippsicherung. Pop-up-Tore sind besonders praktisch, da sie in Sekunden stehen.',
+  },
+  {
+    question: 'Brauche ich ein TÜV-geprüftes Fußballtor?',
+    answer: 'Für den Vereinssport und öffentliche Plätze ist ein TÜV-geprüftes Tor nach DIN EN 748 Pflicht. Auch für den privaten Gebrauch empfehlen wir geprüfte Modelle, da sie garantiert sicher konstruiert sind. Besonders wenn Kinder mit dem Tor spielen, solltest du keine Kompromisse bei der Sicherheit eingehen.',
+  },
+  {
+    question: 'Was kostet ein gutes Fußballtor?',
+    answer: 'Die Preisspanne ist groß: Pop-up-Tore für den Garten bekommst du schon für kleines Geld, solide Minitore liegen im günstigen Bereich. Jugendtore (5 x 2 m) und Großfeldtore (7,32 x 2,44 m) sind eine größere Investition und liegen im mittleren bis gehobenen Preissegment. Für den Vereinseinsatz solltest du ein entsprechendes Budget einplanen. Die aktuellen Preise findest du direkt beim Anbieter.',
+  },
+  {
+    question: 'Alu oder Stahl – welches Material ist besser?',
+    answer: 'Aluminium ist heute der Standard im Fußballtorbau. Es rostet nicht, ist deutlich leichter als Stahl und gleichzeitig sehr stabil. Stahltore sind günstiger, müssen aber regelmäßig gegen Rost behandelt werden. Für den Vereinseinsatz empfehlen wir Alu, für den Garten kann auch Kunststoff oder Stahl ausreichen.',
+  },
+  {
+    question: 'Kann ich ein Fußballtor selbst aufbauen?',
+    answer: 'Pop-up-Tore und Minitore baust du in wenigen Minuten allein auf. Bei vollverschweißten Jugend- und Großfeldtoren wird das Tor fertig montiert geliefert – du musst es nur aufstellen und sichern. Stecksystem-Tore erfordern etwas mehr Aufwand, sind dafür aber flexibel konfigurierbar. Grundsätzlich ist bei schweren Toren eine zweite Person hilfreich.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: description,
+    author: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    datePublished: '2025-06-01',
+    dateModified: '2026-02-23',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/kaufberatung',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Start',
+        item: 'https://fussballtore.de/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Kaufberatung',
+        item: 'https://fussballtore.de/kaufberatung',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <HeroSection
+    title="Fußballtor kaufen – Die komplette Kaufberatung"
+    subtitle="Größe, Material, Sicherheit, Preis: Alles, was du vor dem Kauf wissen musst."
+    compact
+  />
+
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Kaufberatung' }]} />
+
+  <article class="container mx-auto max-w-3xl py-8 md:py-12">
+
+    <!-- Einleitung -->
+    <p class="text-neutral-600 leading-relaxed mb-4 text-lg">
+      Du willst ein <strong>Fußballtor kaufen</strong> und fragst dich, worauf es wirklich ankommt? Verständlich – die Auswahl ist riesig, die Preisunterschiede enorm und die technischen Details verwirrend. Ob für den Garten, den Verein oder den Bolzplatz: Mit der falschen Entscheidung ärgerst du dich jahrelang.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      In dieser Kaufberatung erklären wir dir Schritt für Schritt, welches Tor zu deinem Einsatzzweck passt. Wir gehen auf Größen, Materialien, Sicherheitsnormen und Preise ein – damit du eine fundierte Entscheidung triffst, die du nicht bereust.
+    </p>
+
+    <!-- Abschnitt 1: Torgröße -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Die richtige Torgröße wählen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Größe ist die wichtigste Entscheidung beim Torkauf. Sie hängt davon ab, wer das Tor nutzt und wo es stehen soll. Im Vereinssport sind die Maße durch den DFB klar vorgegeben – im privaten Bereich hast du freie Wahl.
+    </p>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Kategorie</th>
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Maße (B x H)</th>
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Altersgruppe</th>
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Einsatzbereich</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="bg-white">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Minitor</td>
+            <td class="border border-neutral-200 px-4 py-2">1,20 x 0,80 m</td>
+            <td class="border border-neutral-200 px-4 py-2">Bambini / G-Jugend</td>
+            <td class="border border-neutral-200 px-4 py-2">Funino, Garten</td>
+          </tr>
+          <tr class="bg-neutral-50">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Minitor (groß)</td>
+            <td class="border border-neutral-200 px-4 py-2">1,80 x 1,20 m</td>
+            <td class="border border-neutral-200 px-4 py-2">F- / E-Jugend</td>
+            <td class="border border-neutral-200 px-4 py-2">Training, Garten</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Kleinfeld / Bolzplatz</td>
+            <td class="border border-neutral-200 px-4 py-2">3,00 x 2,00 m</td>
+            <td class="border border-neutral-200 px-4 py-2">F-Jugend (5v5)</td>
+            <td class="border border-neutral-200 px-4 py-2">Bolzplatz, Schule</td>
+          </tr>
+          <tr class="bg-neutral-50">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Jugendtor</td>
+            <td class="border border-neutral-200 px-4 py-2">5,00 x 2,00 m</td>
+            <td class="border border-neutral-200 px-4 py-2">D- / E-Jugend</td>
+            <td class="border border-neutral-200 px-4 py-2">Jugendspielbetrieb</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Großfeldtor</td>
+            <td class="border border-neutral-200 px-4 py-2">7,32 x 2,44 m</td>
+            <td class="border border-neutral-200 px-4 py-2">ab C-Jugend / Herren / Frauen</td>
+            <td class="border border-neutral-200 px-4 py-2">Wettkampf, Verein</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Eine ausführliche Aufschlüsselung aller Maße nach Altersklasse findest du in unserer <a href="/groessen" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>. Dort erklären wir auch, warum die DFB-Empfehlungen für Jugendtore seit 2024 angepasst wurden.
+    </p>
+
+    <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
+      <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">
+        Kurz-Empfehlung: Welche Größe für welchen Zweck?
+      </h3>
+      <ul class="text-neutral-600 leading-relaxed space-y-2">
+        <li><strong>Garten / Kinder:</strong> 1,20 x 0,80 m oder 1,80 x 1,20 m – kompakt, leicht, schnell aufgebaut. Mehr dazu unter <a href="/kinder" class="text-accent hover:text-accent-dark underline">Kindertore</a>.</li>
+        <li><strong>Jugendmannschaft (D- und E-Jugend):</strong> 5,00 x 2,00 m – das offizielle Jugendmaß.</li>
+        <li><strong>Ab C-Jugend / Herren / Verein:</strong> 7,32 x 2,44 m – das Standardmaß für den Wettkampfbetrieb (11v11). Alle Details auf unserer <a href="/verein" class="text-accent hover:text-accent-dark underline">Seite zu Vereinstoren</a>.</li>
+        <li><strong>Bolzplatz / Schule:</strong> 3,00 x 2,00 m – robust und vandalismussicher.</li>
+      </ul>
+    </div>
+
+    <!-- Abschnitt 2: Material -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Material: Alu, Stahl oder Kunststoff?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Das Material beeinflusst Gewicht, Haltbarkeit, Preis und Pflegeaufwand deines Tors. Im professionellen Bereich hat sich Aluminium als Standard durchgesetzt – aber für den Garten kann ein anderes Material die bessere Wahl sein.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Aluminium – der Allrounder</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Aluminium ist leicht, rostfrei und extrem stabil. Professionelle Tore bestehen fast ausschließlich aus Alu-Profilen (oval oder rund). Ein Alu-Großfeldtor wiegt je nach Ausführung zwischen 40 und 100 kg – das klingt viel, ist aber nur ein Bruchteil dessen, was ein Stahltor wiegt. Aluminium benötigt keine Oberflächenbehandlung und hält problemlos 15 bis 25 Jahre.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Stahl – günstig, aber schwer</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Stahltore sind in der Anschaffung günstiger als Alu-Modelle. Der Nachteil: Sie sind deutlich schwerer, rosten bei Beschädigung der Beschichtung und eignen sich kaum als mobile Tore. Für fest installierte Bolzplatztore oder den Garten kann Stahl eine Option sein – dann aber verzinkt oder pulverbeschichtet.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kunststoff / Fiberglas – nur für Minitore</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Pop-up-Tore und faltbare Minitore setzen auf Fiberglasrahmen oder Kunststoffverbindungen. Das macht sie ultraleicht und flexibel – perfekt für den <a href="/garten" class="text-accent hover:text-accent-dark underline">Einsatz im Garten</a> oder auf Reisen. Für größere Tore ist Kunststoff allerdings nicht stabil genug.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Einen detaillierten Vergleich der Materialien mit Vor- und Nachteilen findest du in unserem <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.
+    </p>
+
+    <!-- Produktkarte 1: Großfeldtor -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+      <ProductCard
+        name={products.grossfeld.name}
+        url={products.grossfeld.url}
+        imageUrl={products.grossfeld.imageUrl}
+        features={products.grossfeld.features}
+        category={products.grossfeld.category}
+      />
+      <div class="flex items-center">
+        <div class="bg-neutral-50 rounded-xl p-6">
+          <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">Die Allround-Lösung für Vereine</h3>
+          <p class="text-neutral-600 leading-relaxed mb-3">
+            Dieses transportable Großfeldtor wird komplett verschweißt geliefert – inklusive Tornetz. Dank Alu-Ovalprofil und TÜV-Prüfung erfüllt es alle Anforderungen für den Vereinsbetrieb. Transportrollen sind optional erhältlich.
+          </p>
+          <p class="text-neutral-600 leading-relaxed text-sm">
+            Ideal für Vereine, die ein flexibles Tor für Training und Wettkampf suchen.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abschnitt 3: Sicherheit und Normen -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Sicherheit und Normen: DIN EN 748 und TÜV
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Sicherheit ist beim Fußballtor kein optionales Feature – es geht um den Schutz der Spieler. In Deutschland regelt die Norm <strong>DIN EN 748</strong> die Anforderungen an Fußballtore. Sie definiert unter anderem:
+    </p>
+    <ul class="text-neutral-600 leading-relaxed space-y-2 mb-6 list-disc list-inside">
+      <li>Standfestigkeit und Kippsicherheit des Tors</li>
+      <li>Belastbarkeit von Querlatten und Pfosten</li>
+      <li>Schutz vor Einklemmen und Fingerquetschungen</li>
+      <li>Anforderungen an die Verankerung im Boden</li>
+      <li>Regelmäßige Prüfintervalle für bestehende Tore</li>
+    </ul>
+
+    <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
+      <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">
+        Warum die TÜV-Prüfung so wichtig ist
+      </h3>
+      <p class="text-neutral-600 leading-relaxed mb-3">
+        Ein TÜV-Zertifikat bestätigt, dass das Tor von einem unabhängigen Prüfinstitut getestet wurde und alle Sicherheitsanforderungen der DIN EN 748 erfüllt. Für den <strong>Vereinseinsatz</strong> und <strong>öffentliche Plätze</strong> ist ein TÜV-geprüftes Tor faktisch Pflicht – im Schadensfall haftet der Betreiber, wenn ein ungeprüftes Tor eingesetzt wurde.
+      </p>
+      <p class="text-neutral-600 leading-relaxed">
+        Auch für den privaten Garten empfehlen wir geprüfte Tore. Die Prüfung kostet im Einkauf nur wenig mehr, gibt aber enorme Sicherheit – besonders wenn Kinder am Tor spielen, klettern oder sich dranhängen.
+      </p>
+    </div>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kippsicherung nicht vergessen</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Jedes freistehende Tor muss gegen Umkippen gesichert sein. Dafür gibt es verschiedene Lösungen: Erdanker für feste Installation, Gegengewichte (Gummigewichte oder Wassertanks) für mobile Tore und Bodenrahmen für hartere Untergründe. Die <a href="https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Kippsicherungen bei anstoss24.de</a> passen zu allen gängigen Torgrößen.
+    </p>
+
+    <!-- Abschnitt 4: Fest oder mobil -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Fest installiert oder mobil? Die Bauarten im Vergleich
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Neben Größe und Material musst du entscheiden, ob dein Tor dauerhaft an einem Ort stehen soll oder regelmäßig bewegt wird. Beide Ansätze haben ihre Berechtigung.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Fest installierte Tore (Bodenhülsen)</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Fest installierte Tore werden mit Bodenhülsen im Rasen verankert. Sie bieten maximale Standfestigkeit und sind die erste Wahl für Wettkampfplätze. Der Nachteil: Du kannst sie nicht einfach zur Seite schieben, wenn der Platz für andere Zwecke gebraucht wird. Für die Installation brauchst du Fundamentarbeiten.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Mobile / transportable Tore</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Mobile Tore stehen frei auf dem Platz und werden mit Gegengewichten oder Erdankern gesichert. Sie lassen sich mit Transportrollen oder per Hand verschieben – ideal für Trainingsplätze, die mehrfach genutzt werden. Vollverschweißte mobile Tore sind dabei stabiler als Stecksysteme, da sie keine lösbaren Verbindungen haben.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Faltbare / Pop-up-Tore</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Faltbare Tore und Pop-up-Modelle sind die flexibelste Variante. Sie lassen sich in Sekunden aufbauen und in einer Tragetasche verstauen. Perfekt für den Garten, Urlaub oder spontane Spiele im Park. Natürlich erreichen sie nicht die Stabilität eines verschweißten Alu-Tors – aber das ist auch nicht ihr Anspruch.
+    </p>
+
+    <!-- Produktkarte 2: Jugendtor -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+      <ProductCard
+        name={products.jugendtor.name}
+        url={products.jugendtor.url}
+        imageUrl={products.jugendtor.imageUrl}
+        features={products.jugendtor.features}
+        category={products.jugendtor.category}
+      />
+      <div class="flex items-center">
+        <div class="bg-neutral-50 rounded-xl p-6">
+          <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">Der Standard für Jugendabteilungen</h3>
+          <p class="text-neutral-600 leading-relaxed mb-3">
+            Dieses Jugendtor (5 x 2 m) wird als vollverschweißter Einteiler geliefert – inklusive Tornetz und Transportrollen. Die robuste Ovalprofil-Konstruktion ist auf jahrelangen Einsatz im Jugendspielbetrieb ausgelegt.
+          </p>
+          <p class="text-neutral-600 leading-relaxed text-sm">
+            Auch als Variante mit angeschweißten Tragegriffen erhältlich – praktisch, wenn das Tor häufig bewegt wird.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abschnitt 5: Kosten -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Was kostet ein Fußballtor?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Preisspanne bei Fußballtoren ist enorm – von günstigen Pop-up-Sets für den Garten bis hin zu Premium-Bolzplatztoren für den Dauereinsatz. Hier eine Übersicht der Preisklassen, mit der du dein Budget einordnen kannst:
+    </p>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Kategorie</th>
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Preisklasse</th>
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Typisches Produkt</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="bg-white">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Pop-up-Tore (2er Set)</td>
+            <td class="border border-neutral-200 px-4 py-2">Günstig</td>
+            <td class="border border-neutral-200 px-4 py-2">ELF Sports Pop-up Goal</td>
+          </tr>
+          <tr class="bg-neutral-50">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Minitore (1,20 – 1,80 m)</td>
+            <td class="border border-neutral-200 px-4 py-2">Günstig bis Mittel</td>
+            <td class="border border-neutral-200 px-4 py-2">QuickPlay Kickster Elite</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Großfeldtore (7,32 x 2,44 m)</td>
+            <td class="border border-neutral-200 px-4 py-2">Gehoben</td>
+            <td class="border border-neutral-200 px-4 py-2">Bundesliga-Tor, Alu-Profil</td>
+          </tr>
+          <tr class="bg-neutral-50">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Jugendtore (5 x 2 m)</td>
+            <td class="border border-neutral-200 px-4 py-2">Gehoben</td>
+            <td class="border border-neutral-200 px-4 py-2">Mobiles Jugendtor, vollverschweißt</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Bolzplatztore (3 x 2 m)</td>
+            <td class="border border-neutral-200 px-4 py-2">Premium</td>
+            <td class="border border-neutral-200 px-4 py-2">Bolzplatztor UNKAPUTTBAR</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Bedenke: Zum Torpreis kommen eventuell noch Kosten für <strong>Tornetze</strong>, <strong>Bodenhülsen</strong> und <strong>Kippsicherungen</strong> hinzu. Manche Anbieter liefern Tore inklusive Netz – das spart Geld und Aufwand. Bei <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">anstoss24.de findest du eine große Auswahl an Fußballtoren</a> mit transparenten Preisen und attraktiven Versandkonditionen.
+    </p>
+
+    <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
+      <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">
+        Spar-Tipp: Auf Bundles achten
+      </h3>
+      <p class="text-neutral-600 leading-relaxed">
+        Viele Hersteller bieten Tore inklusive Tornetz und Zubehör als Komplettpaket an. Das ist fast immer günstiger als Einzelkauf. Achte außerdem auf Mengenrabatte, wenn du für den Verein gleich mehrere Tore benötigst. Bei Fragen berät dich das Team von <a href="https://www.anstoss24.de" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">anstoss24.de</a> auch telefonisch (Mo-Fr 7:30-17:30 Uhr).
+      </p>
+    </div>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Fazit: So findest du das richtige Fußballtor
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Wahl des richtigen Fußballtors hängt von drei Faktoren ab: <strong>Einsatzzweck</strong>, <strong>Größe</strong> und <strong>Budget</strong>. Beantworte dir diese drei Fragen, und die Auswahl schrumpft schnell auf eine Handvoll Modelle zusammen.
+    </p>
+
+    <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
+      <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">
+        Zusammenfassung in 5 Punkten
+      </h3>
+      <ol class="text-neutral-600 leading-relaxed space-y-2 list-decimal list-inside">
+        <li><strong>Größe bestimmen:</strong> Altersklasse und Einsatzort definieren das Maß. Im Zweifel hilft unsere <a href="/groessen" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>.</li>
+        <li><strong>Material wählen:</strong> Alu für den Verein, Kunststoff/Fiberglas für den Garten. Details im <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.</li>
+        <li><strong>Sicherheit prüfen:</strong> TÜV-Zertifikat und DIN EN 748 sind Pflicht im Vereinssport – und auch privat sinnvoll.</li>
+        <li><strong>Bauart festlegen:</strong> Fest (Bodenhülsen) für Wettkampfplätze, mobil für Trainingsplätze, faltbar für den Garten.</li>
+        <li><strong>Budget planen:</strong> Tornetz und Kippsicherung einkalkulieren. Komplettangebote nutzen.</li>
+      </ol>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Welches Tor am Ende auf deinem Platz steht, hängt von deinen individuellen Anforderungen ab. Für spezifische Empfehlungen schau dir unsere Unterseiten an: <a href="/garten" class="text-accent hover:text-accent-dark underline">Gartentore</a>, <a href="/kinder" class="text-accent hover:text-accent-dark underline">Kindertore</a> oder <a href="/verein" class="text-accent hover:text-accent-dark underline">Vereinstore</a>. Dort gehen wir gezielt auf die jeweilige Zielgruppe ein.
+    </p>
+
+  </article>
+
+  <!-- FAQ Section -->
+  <div class="container mx-auto max-w-3xl">
+    <FAQSection faqs={faqs} title="Häufige Fragen zum Fußballtor-Kauf" />
+  </div>
+
+</BaseLayout>

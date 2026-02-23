@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import ProductCard from '../components/ProductCard.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import FAQSection from '../components/FAQSection.astro';
+import productsData from '../data/products.json';
+
+const title = 'Fußballtore – Der unabhängige Ratgeber';
+const description =
+  'Fußballtore für Verein, Garten und Schule: Unabhängige Kaufberatung, Größen-Übersicht und Produktempfehlungen. Finde das passende Fußballtor.';
+
+const categories = [
+  { name: 'Großfeldtore', subtitle: '7,32 x 2,44 m – Wettkampfstandard', href: '/verein' },
+  { name: 'Jugendtore', subtitle: '5,00 x 2,00 m – Nachwuchsförderung', href: '/verein' },
+  { name: 'Bolzplatztore', subtitle: '3,00 x 2,00 m – Unkaputtbar', href: '/verein' },
+  { name: 'Minitore', subtitle: 'Für Training, Funino & Garten', href: '/garten' },
+  { name: 'Gartentore', subtitle: 'Pop-up, Steck- und Minitore', href: '/garten' },
+  { name: 'Kindertore', subtitle: 'Sicher & altersgerecht', href: '/kinder' },
+];
+
+// Pick 3 highlight products from different categories
+const findProduct = (id) => productsData.products.find(p => p.id === id);
+
+const highlightProducts = [
+  { ...findProduct('bundesliga-premium'), category: 'Großfeldtore' },
+  { ...findProduct('minitor-lightweight'), category: 'Minitore' },
+  { ...findProduct('bolzplatz-unkaputtbar'), category: 'Bolzplatztore' },
+];
+
+const faqs = [
+  {
+    question: 'Welche Fußballtor-Größe brauche ich?',
+    answer:
+      'Die Größe hängt vom Einsatzzweck ab: Wettkampf-Großfeldtore sind 7,32 x 2,44 m, Jugendtore 5,00 x 2,00 m. Für den Garten reichen Minitore ab 1,20 x 0,80 m. In unserer Größen-Übersicht findest du alle Maße im Detail.',
+  },
+  {
+    question: 'Was kostet ein gutes Fußballtor?',
+    answer:
+      'Die Preisspanne ist groß: Einfache Pop-up-Tore für den Garten sind schon für kleines Geld zu haben, stabile Stecktore liegen im unteren dreistelligen Bereich. Vereinstore aus Aluminium erfordern ein deutlich höheres Budget, und robuste Bolzplatztore sind die teuerste Kategorie – halten dafür aber 20+ Jahre. Aktuelle Preise findest du direkt bei anstoss24.de.',
+  },
+  {
+    question: 'Alu oder Stahl – welches Material ist besser?',
+    answer:
+      'Aluminium ist leichter, rostfrei und langlebiger – ideal für Vereine und dauerhafte Installation. Stahltore sind günstiger, aber schwerer und brauchen Rostschutz. Für den Garten reicht oft auch Kunststoff oder Fiberglas.',
+  },
+  {
+    question: 'Müssen Fußballtore TÜV-geprüft sein?',
+    answer:
+      'Für den Vereins- und Schulbetrieb ja: Die DIN EN 748 schreibt Prüfungen für Standsicherheit vor. Im privaten Garten gibt es keine Pflicht, aber TÜV-geprüfte Tore bieten mehr Sicherheit – gerade wenn Kinder damit spielen.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'fussballtore.de',
+    url: 'https://fussballtore.de',
+    description,
+    inLanguage: 'de-DE',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'fussballtore.de',
+    url: 'https://fussballtore.de',
+    description: 'Unabhängiger Ratgeber für Fußballtore',
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <!-- Hero -->
+  <HeroSection
+    title="Fußballtore – Der unabhängige Ratgeber"
+    subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Unabhängig, ehrlich, fundiert."
+    ctaText="Zur Kaufberatung"
+    ctaHref="/kaufberatung"
+  />
+
+  <!-- Category Grid -->
+  <section class="py-16 md:py-20">
+    <div class="container mx-auto">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+        Fußballtore nach Kategorie
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {categories.map((cat) => (
+          <CategoryCard name={cat.name} subtitle={cat.subtitle} href={cat.href} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Highlights -->
+  <section class="py-16 md:py-20 bg-neutral-50">
+    <div class="container mx-auto">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-3">
+        Beliebte Fußballtore
+      </h2>
+      <p class="text-neutral-500 mb-8 max-w-2xl">
+        Ausgewählte Tore von anstoss24.de – dem Fachhandel für Vereinsbedarf. TÜV-geprüft, Made in Germany.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {highlightProducts.map((product) => (
+          <ProductCard
+            name={product.name}
+            url={product.url}
+            imageUrl={product.imageUrl}
+            features={product.features}
+            category={product.category}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a
+          href="https://www.anstoss24.de/fussballtore/"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-accent font-medium hover:text-accent-dark transition-colors"
+        >
+          Alle Fußballtore bei anstoss24.de
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <TrustBadges />
+
+  <!-- Intro Text (SEO) -->
+  <section class="py-16 md:py-20">
+    <div class="container mx-auto max-w-3xl">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Dein Ratgeber für Fußballtore
+      </h2>
+      <div class="prose text-neutral-500">
+        <p>
+          Ob für den Vereinssport, das Training mit der Jugendmannschaft oder den Spaß im eigenen Garten –
+          das richtige Fußballtor zu finden, ist nicht immer einfach. Unterschiedliche Größen, Materialien
+          und Preisklassen machen die Auswahl komplex. Genau hier hilft fussballtore.de.
+        </p>
+        <p>
+          Als unabhängiger Ratgeber vergleichen wir Fußballtore aller Kategorien: Von professionellen
+          Großfeldtoren (7,32 x 2,44 m) über robuste Bolzplatztore bis hin zu praktischen Pop-up-Toren
+          für den Garten. Wir erklären, welche Größe für welchen Zweck passt, vergleichen Aluminium mit Stahl
+          und geben konkrete Kaufempfehlungen.
+        </p>
+        <p>
+          Unsere Produktempfehlungen stammen von
+          <a href="https://www.anstoss24.de" target="_blank" rel="noopener">anstoss24.de</a>
+          – einem Fachhandel für Vereinsbedarf mit TÜV-geprüften Toren, die in Deutschland hergestellt werden.
+          So bekommst du Qualität, auf die du dich verlassen kannst.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto">
+      <FAQSection faqs={faqs} />
+    </div>
+  </div>
+</BaseLayout>

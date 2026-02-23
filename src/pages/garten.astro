@@ -1,0 +1,505 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+
+const title = 'Fußballtor für den Garten – Ratgeber & Empfehlungen';
+const description = 'Das beste Fußballtor für den Garten: Pop-up-Tore, Stecktore und Minitore im Vergleich. Für Kinder und Erwachsene – wetterfest, sicher und schnell aufgebaut.';
+
+const faqs = [
+  {
+    question: 'Welches Fußballtor ist das beste für den Garten?',
+    answer: 'Das hängt von deinem Platz und dem Alter der Spieler ab. Für kleine Gärten und Kinder unter 8 sind Pop-up-Tore (1,20 x 0,80 m) ideal. Für größere Gärten eignen sich Steck- oder Minitore ab 1,80 x 1,20 m. Wichtig: Das Tor sollte wetterfest sein und eine Kippsicherung haben.',
+  },
+  {
+    question: 'Kann ein Fußballtor das ganze Jahr im Garten stehen?',
+    answer: 'Pop-up-Tore und Fiberglas-Stecktore solltest du bei Sturm und im Winter besser einräumen. Robuste Minitore mit Stahlrahmen und Pulverbeschichtung vertragen auch dauerhaften Außeneinsatz – achte aber auf regelmäßige Pflege und prüfe Schraubverbindungen nach dem Winter.',
+  },
+  {
+    question: 'Wie groß sollte ein Gartentor sein?',
+    answer: 'Für Kinder von 3 bis 6 Jahren reichen 1,20 x 0,80 m. Ab 6 Jahren empfehlen sich Tore ab 1,80 x 1,20 m. Wenn auch Erwachsene mitspielen, sind 2,40 x 1,60 m eine gute Wahl. Messe vorher deinen Garten aus und plane mindestens 2 Meter Auslauf hinter dem Tor ein.',
+  },
+  {
+    question: 'Wie sichere ich ein Fußballtor im Garten gegen Umkippen?',
+    answer: 'Die meisten Gartentore werden mit Erdspießen oder Heringen geliefert, die du im Rasen verankern kannst. Auf Pflastersteinen oder Terrasse helfen Gewichtssäcke oder Sandsäcke. Grundregel: Kinder sollten nie am Tor hängen oder klettern – auch nicht bei gesicherten Modellen.',
+  },
+  {
+    question: 'Lohnt sich ein teures Gartentor?',
+    answer: 'Nicht unbedingt. Für gelegentliches Spielen im Garten reicht ein günstiges Pop-up-Tor völlig aus. Wenn das Tor täglich beansprucht wird und dauerhaft draußen stehen soll, lohnt sich die Investition in ein stabiles Minitor mit Metallrahmen. Die Haltbarkeit ist dann deutlich besser.',
+  },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: '2025-01-15',
+  dateModified: '2026-02-23',
+  author: {
+    '@type': 'Organization',
+    name: 'fussballtore.de',
+    url: 'https://fussballtore.de',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'fussballtore.de',
+    url: 'https://fussballtore.de',
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://fussballtore.de/garten',
+  },
+};
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+  <HeroSection
+    title="Fußballtore für den Garten"
+    subtitle="Pop-up, Steck- und Minitore für zu Hause – wetterfest, sicher und in Sekunden aufgebaut"
+    compact
+  />
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Gartentore' }]} />
+
+  <article class="container mx-auto py-12 md:py-16 max-w-3xl">
+    <!-- Einleitung -->
+    <div class="prose prose-lg max-w-none">
+      <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-6">
+        Ein <strong>Fußballtor im Garten</strong> verwandelt jede Rasenfläche in einen kleinen Bolzplatz. Ob deine
+        Kinder nach der Schule kicken wollen, du selbst ein paar Schüsse aufs Tor üben möchtest oder die
+        Nachbarskinder zum Spielen vorbeikommen – mit dem richtigen Gartentor macht Fußball direkt vor
+        der Haustür richtig Spaß. Doch welches Tor passt zu deinem Garten? Pop-up, Steckverbindung oder
+        stabiles Minitor? Wir zeigen dir, worauf es ankommt.
+      </p>
+    </div>
+
+    <!-- Welches Fußballtor für den Garten? -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Welches Fußballtor für den Garten?
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Fußballtore für den Garten lassen sich grob in vier Kategorien einteilen. Jede hat ihre Stärken – welche
+        zu dir passt, hängt von deinem Platzangebot, dem Alter der Spieler und deinem Budget ab.
+      </p>
+
+      <div class="overflow-x-auto mb-8">
+        <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+          <thead class="bg-neutral-50">
+            <tr>
+              <th class="px-4 py-3 font-heading font-bold text-primary">Typ</th>
+              <th class="px-4 py-3 font-heading font-bold text-primary">Größe</th>
+              <th class="px-4 py-3 font-heading font-bold text-primary">Preislage</th>
+              <th class="px-4 py-3 font-heading font-bold text-primary">Ideal für</th>
+            </tr>
+          </thead>
+          <tbody class="text-neutral-600">
+            <tr class="border-t border-neutral-200">
+              <td class="px-4 py-3 font-medium">Pop-up-Tore</td>
+              <td class="px-4 py-3">0,80–1,80 m</td>
+              <td class="px-4 py-3">günstig</td>
+              <td class="px-4 py-3">Kleine Kinder, Park, Strand</td>
+            </tr>
+            <tr class="border-t border-neutral-200 bg-neutral-50/50">
+              <td class="px-4 py-3 font-medium">Stecktore</td>
+              <td class="px-4 py-3">1,20–2,40 m</td>
+              <td class="px-4 py-3">mittel</td>
+              <td class="px-4 py-3">Kinder ab 6, regelmäßiges Spiel</td>
+            </tr>
+            <tr class="border-t border-neutral-200">
+              <td class="px-4 py-3 font-medium">Minitore</td>
+              <td class="px-4 py-3">1,20–1,80 m</td>
+              <td class="px-4 py-3">gehoben</td>
+              <td class="px-4 py-3">Ambitionierte Kinder, Training</td>
+            </tr>
+            <tr class="border-t border-neutral-200 bg-neutral-50/50">
+              <td class="px-4 py-3 font-medium">Fest montiert</td>
+              <td class="px-4 py-3">2,00–3,00 m</td>
+              <td class="px-4 py-3">höher</td>
+              <td class="px-4 py-3">Dauerinstallation, Erwachsene</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed">
+        Für die meisten Familien mit Garten ist ein Pop-up-Tor oder ein Minitor die beste Wahl. Beide lassen sich
+        schnell auf- und abbauen und passen auch in kleinere Gärten. Wenn du eine detaillierte Entscheidungshilfe
+        suchst, schau dir unsere <a href="/kaufberatung" class="text-accent hover:text-accent-dark font-medium transition-colors">Kaufberatung</a> an.
+      </p>
+    </section>
+
+    <!-- Pop-up-Tore -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Pop-up-Tore – Aufbauen in Sekunden
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Pop-up-Tore sind die unkomplizierteste Art, ein Fußballtor für den Garten zu bekommen. Du nimmst sie
+        aus der Tragetasche, lässt sie aufspringen – fertig. In unter 30 Sekunden steht dein Tor, und genauso
+        schnell ist es wieder verstaut. Das macht sie perfekt für spontane Kickrunden, den Urlaub oder den
+        Ausflug in den Park.
+      </p>
+
+      <div class="bg-neutral-50 rounded-xl p-6 mb-6">
+        <h3 class="font-heading text-lg font-bold text-primary mb-3">Vorteile</h3>
+        <ul class="space-y-2 text-neutral-600">
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span>Aufbau in Sekunden – kein Werkzeug nötig</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span>Extrem leicht und transportabel</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span>Günstig im praktischen 2er-Set</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <span>Ideal für <a href="/kinder" class="text-accent hover:text-accent-dark font-medium transition-colors">kleinere Kinder</a> ab 3 Jahren</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-neutral-200 rounded-xl p-6 mb-8">
+        <h3 class="font-heading text-lg font-bold text-primary mb-3">Einschränkungen</h3>
+        <ul class="space-y-2 text-neutral-600">
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            <span>Weniger stabil – bei hartem Schuss geben sie nach</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            <span>Netz kann bei Dauernutzung schneller verschleißen</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            <span>Nicht für Erwachsene mit vollem Schuss geeignet</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed mb-6">
+        Pop-up-Tore gibt es in verschiedenen Größen – von kompakten 0,80 m bis hin zu größeren
+        Varianten mit 1,80 m Breite. Für den Garten empfehlen wir mindestens 1,20 m Breite, damit
+        es sich auch wirklich wie ein richtiges Tor anfühlt. Viele Modelle werden gleich im praktischen
+        2er-Set geliefert, sodass du sofort mit zwei Toren spielen kannst.
+      </p>
+
+      <!-- Produkt: Pop-up -->
+      <div class="max-w-sm mx-auto mb-4">
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Unsere Empfehlung</p>
+        <ProductCard
+          name="ELF Sports Pop up Goal – 2er Set inkl. Transporttasche"
+          url="https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/19/secondPreview/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg"
+          features={['2er Set', 'Pop-up', 'Diverse Größen', 'Inkl. Tasche']}
+          category="Pop-up Tore"
+        />
+      </div>
+    </section>
+
+    <!-- Steck- und Minitore -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Steck- und Minitore – Stabil und trotzdem mobil
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Wenn du ein Fußballtor für den Garten suchst, das mehr aushält als ein Pop-up-Tor, sind Steck- und
+        Minitore die nächste Stufe. Sie bestehen aus einem Metall- oder Fiberglasrahmen, der über
+        Steckverbindungen zusammengesetzt wird. Der Aufbau dauert zwar ein paar Minuten länger, dafür stehen
+        diese Tore deutlich stabiler und halten auch härtere Schüsse aus.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Für die meisten Gärten sind Tore um die 1,50 x 1,00 m eine ideale Wahl – kompakt genug für begrenzte Rasenflächen, aber groß genug für echten Spielspaß. Wer mehr Platz hat, greift zu einem 1,80 x 1,20 m Modell. Für eine langlebige Alternative sorgen vollverschweißte Alu-Minitore: Sie wiegen unter 10 kg, rosten nie und halten deutlich länger als Kunststoff-Modelle.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-6">
+        Ein großer Vorteil gegenüber Pop-up-Toren: Die Netze sind oft straffer gespannt, was beim Torschuss ein
+        deutlich besseres Spielgefühl ergibt. Außerdem eignen sich Minitore auch hervorragend für
+        Trainingsübungen wie Funino oder Passübungen – nicht nur im Garten, sondern auch auf dem
+        Vereinsgelände. Mehr zu den
+        <a href="/groessen" class="text-accent hover:text-accent-dark font-medium transition-colors">verschiedenen Torgrößen</a>
+        findest du in unserer Größenübersicht.
+      </p>
+
+      <!-- Produkte: QuickPlay 1,50 m + Alu Minitor Lightweight -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+        <div>
+          <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Preis-Leistung</p>
+          <ProductCard
+            name="QuickPlay Kickster Elite 1,50 x 1,00 m"
+            url="https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/"
+            imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
+            features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', '4 Erdanker']}
+            category="Stecktore"
+          />
+        </div>
+        <div>
+          <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Premium-Alternative</p>
+          <ProductCard
+            name="Alu Minitor Lightweight 1,20 x 0,80 m – unter 10 kg"
+            url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-lightweight-1-20-x-0-80-m-vollverschweisst_18602_672042/"
+            imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Bildschirmfoto-2026-01-15-um-10-19-48.png"
+            features={['Unter 10 kg', 'Vollverschweißt', 'Komplett Alu', 'Inkl. Netz']}
+            category="Alu Minitore"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Die richtige Größe für deinen Garten -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Die richtige Größe für deinen Garten
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Bevor du ein Fußballtor für den Garten kaufst, solltest du kurz den Zollstock rausholen. Denn neben der
+        Torgröße selbst brauchst du auch genügend Auslauf drumherum. Nichts ist ärgerlicher als ein Tor, das zwar
+        technisch in den Garten passt, aber keinen Platz zum Spielen lässt.
+      </p>
+
+      <div class="bg-neutral-50 rounded-xl p-6 mb-6">
+        <h3 class="font-heading text-lg font-bold text-primary mb-4">Empfehlung nach Alter und Gartengröße</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex-shrink-0">3+</span>
+            <div>
+              <p class="font-medium text-primary">Kinder 3–6 Jahre / Kleiner Garten (unter 50 m²)</p>
+              <p class="text-neutral-500 text-sm">Torgröße: 1,20 x 0,80 m – Pop-up-Tor oder kleines Steckziel</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex-shrink-0">6+</span>
+            <div>
+              <p class="font-medium text-primary">Kinder 6–10 Jahre / Mittelgroßer Garten (50–100 m²)</p>
+              <p class="text-neutral-500 text-sm">Torgröße: 1,80 x 1,20 m – Minitor mit Steckverbindung</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex-shrink-0">10+</span>
+            <div>
+              <p class="font-medium text-primary">Kinder ab 10 / Großer Garten (über 100 m²)</p>
+              <p class="text-neutral-500 text-sm">Torgröße: 2,40 x 1,60 m – Jugendtor oder großes Minitor</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex-shrink-0">18+</span>
+            <div>
+              <p class="font-medium text-primary">Erwachsene / Sehr großer Garten</p>
+              <p class="text-neutral-500 text-sm">Torgröße: 3,00 x 2,00 m – Fest installiertes Kleinfeld-Tor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed">
+        <strong>Faustregel:</strong> Plane mindestens 2 Meter Auslauf hinter dem Tor und 3 Meter davor
+        ein. Seitlich sollte jeweils 1 Meter Abstand zu Zäunen, Beeten oder Gebäuden bleiben.
+        Speziell für Kinder findest du in unserem
+        <a href="/kinder" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>
+        noch mehr altersgerechte Tipps.
+      </p>
+    </section>
+
+    <!-- Material und Wetterfestigkeit -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Material und Wetterfestigkeit
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Ein Fußballtor im Garten ist Wind, Regen und UV-Strahlung ausgesetzt. Nicht jedes Material hält diesen
+        Bedingungen dauerhaft stand. Hier ist ein kurzer Überblick, worauf du achten solltest:
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="border border-neutral-200 rounded-xl p-5">
+          <h3 class="font-heading font-bold text-primary mb-2">Fiberglas / Glasfaser</h3>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Leicht und flexibel, wird in vielen Pop-up- und Stecktoren verbaut. Rostet nicht und ist
+            witterungsbeständig, allerdings nicht so stabil wie Metall. Für leichte Beanspruchung im
+            Garten völlig ausreichend.
+          </p>
+        </div>
+        <div class="border border-neutral-200 rounded-xl p-5">
+          <h3 class="font-heading font-bold text-primary mb-2">Stahl (pulverbeschichtet)</h3>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Robust und stabil, hält auch harte Schüsse aus. Die Pulverbeschichtung schützt vor Rost –
+            kontrolliere aber regelmäßig, ob die Beschichtung noch intakt ist. Schwerer als Fiberglas,
+            dafür deutlich langlebiger.
+          </p>
+        </div>
+        <div class="border border-neutral-200 rounded-xl p-5">
+          <h3 class="font-heading font-bold text-primary mb-2">Aluminium</h3>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Das Premiumaterial: Leicht, rostfrei und extrem haltbar. Kommt vor allem bei
+            Vereinstoren zum Einsatz, ist aber für den Garten meistens überdimensioniert – und
+            entsprechend teurer. Mehr dazu in unserem
+            <a href="/material-vergleich" class="text-accent hover:text-accent-dark font-medium transition-colors">Material-Vergleich</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-primary/5 border border-primary/10 rounded-xl p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Tipp: Das Netz nicht vergessen</h3>
+        <p class="text-neutral-600 text-sm leading-relaxed">
+          Auch das Netz muss wetterfest sein. Polyethylen-Netze (PE) sind UV-beständig und trocknen
+          schnell. Polypropylen-Netze sind günstiger, aber weniger haltbar. Prüfe nach dem Winter,
+          ob das Netz noch intakt ist, und tausche es bei Bedarf aus. Bei vielen Herstellern kannst
+          du Ersatznetze einzeln nachkaufen.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sicherheit im Garten -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Sicherheit im Garten
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Ein Fußballtor für den Garten soll Spaß machen – aber Sicherheit geht vor, besonders wenn Kinder
+        mitspielen. Jedes Jahr gibt es Unfälle mit umkippenden oder schlecht gesicherten Toren. Mit ein
+        paar einfachen Maßnahmen lässt sich das vermeiden.
+      </p>
+
+      <div class="grid gap-4 sm:grid-cols-2 mb-6">
+        <div class="bg-neutral-50 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            <h3 class="font-heading font-bold text-primary text-sm">Kippsicherung</h3>
+          </div>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Verwende immer die mitgelieferten Erdspieße oder Heringe. Auf hartem Boden
+            helfen Sandsäcke oder spezielle Gewichte an der Querlatte.
+          </p>
+        </div>
+        <div class="bg-neutral-50 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            <h3 class="font-heading font-bold text-primary text-sm">Keine scharfen Kanten</h3>
+          </div>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Achte beim Kauf auf abgerundete Ecken und verdeckte Schraubverbindungen.
+            Kinder fallen schnell mal gegen den Rahmen – da darf nichts spitz hervorstehen.
+          </p>
+        </div>
+        <div class="bg-neutral-50 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            <h3 class="font-heading font-bold text-primary text-sm">Untergrund</h3>
+          </div>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Rasen ist der ideale Untergrund – weich bei Stürzen und gut für die Verankerung.
+            Auf Pflaster oder Beton brauchst du zusätzliche Beschwerung und eine
+            rutschfeste Unterlage.
+          </p>
+        </div>
+        <div class="bg-neutral-50 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+            <h3 class="font-heading font-bold text-primary text-sm">Kletterverbot</h3>
+          </div>
+          <p class="text-neutral-600 text-sm leading-relaxed">
+            Kinder sollten nie am Tor hängen, klettern oder sich an die Querlatte hängen.
+            Selbst bei verankerten Toren kann das zu gefährlichen Situationen führen.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-neutral-600 leading-relaxed">
+        Bei Fußballtoren für Kinder im Garten gilt zusätzlich: Lieber eine Nummer kleiner wählen,
+        als ein zu großes Tor aufzubauen, das bei Wind umkippen kann. Mehr dazu findest du in
+        unserem <a href="/kinder" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>.
+      </p>
+    </section>
+
+    <!-- Fazit -->
+    <section class="mt-12 md:mt-16">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Fazit: Das richtige Fußballtor für deinen Garten
+      </h2>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Ein Fußballtor für den Garten zu kaufen, muss nicht kompliziert sein. Für den schnellen Spaß
+        zwischendurch reicht ein günstiges Pop-up-Tor im 2er-Set. Wenn das Tor regelmäßig beansprucht
+        wird und auch mal draußen stehen bleiben soll, lohnt sich ein stabiles Minitor mit Metallrahmen
+        und Transporttasche.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-6">
+        Egal für welches Modell du dich entscheidest: Achte auf die passende Größe für deinen Garten
+        und das Alter der Spieler, sichere das Tor gegen Umkippen und kontrolliere regelmäßig Rahmen
+        und Netz. Dann steht dem Fußballspaß im eigenen Garten nichts mehr im Weg.
+      </p>
+
+      <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Zusammenfassung</h3>
+        <ul class="space-y-2 text-neutral-600 text-sm">
+          <li class="flex items-start gap-2">
+            <span class="text-accent font-bold">1.</span>
+            <span><strong>Pop-up-Tore</strong> – günstig, ideal für kleine Kinder und spontane Kickrunden</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-accent font-bold">2.</span>
+            <span><strong>Steck- und Minitore</strong> – stabiler, langlebiger, auch für härtere Schüsse</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-accent font-bold">3.</span>
+            <span><strong>Größe nach Garten und Alter wählen</strong> – mindestens 2 m Auslauf hinter dem Tor einplanen</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-accent font-bold">4.</span>
+            <span><strong>Wetterfestes Material</strong> wählen – Pulverbeschichtung oder Fiberglas für den Außeneinsatz</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-accent font-bold">5.</span>
+            <span><strong>Sicherheit beachten</strong> – Kippsicherung nutzen, keine scharfen Kanten, Rasen als Untergrund</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Weiterführende Links -->
+    <nav class="mt-12 md:mt-16 border-t border-neutral-200 pt-8">
+      <h2 class="font-heading text-lg font-bold text-primary mb-4">Weiterführende Ratgeber</h2>
+      <div class="grid gap-3 sm:grid-cols-2">
+        <a href="/kaufberatung" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
+          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <div>
+            <span class="font-heading font-bold text-primary text-sm">Kaufberatung</span>
+            <p class="text-neutral-500 text-xs">Worauf du beim Kauf achten musst</p>
+          </div>
+        </a>
+        <a href="/kinder" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
+          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <div>
+            <span class="font-heading font-bold text-primary text-sm">Kindertore</span>
+            <p class="text-neutral-500 text-xs">Sichere Tore für jedes Alter</p>
+          </div>
+        </a>
+        <a href="/groessen" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
+          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <div>
+            <span class="font-heading font-bold text-primary text-sm">Größen & Maße</span>
+            <p class="text-neutral-500 text-xs">Alle Torgrößen im Überblick</p>
+          </div>
+        </a>
+        <a href="/material-vergleich" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
+          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          <div>
+            <span class="font-heading font-bold text-primary text-sm">Material-Vergleich</span>
+            <p class="text-neutral-500 text-xs">Alu vs. Stahl vs. Fiberglas</p>
+          </div>
+        </a>
+      </div>
+    </nav>
+  </article>
+
+  <!-- FAQ Section -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-3xl">
+      <FAQSection faqs={faqs} />
+    </div>
+  </div>
+</BaseLayout>
