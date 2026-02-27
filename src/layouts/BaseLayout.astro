@@ -68,33 +68,6 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogIm
     )}
   </head>
   <body class="min-h-screen flex flex-col bg-white">
-    <!-- TEMPORARY: Client-side password protection – remove when no longer needed -->
-    <div id="pw-gate" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#fff">
-      <form id="pw-form" style="text-align:center;font-family:system-ui,sans-serif">
-        <p style="font-size:1.25rem;margin-bottom:1rem;color:#1a1a1a">Passwortgeschützter Bereich</p>
-        <input id="pw-input" type="password" placeholder="Passwort eingeben" autocomplete="off"
-          style="padding:0.5rem 1rem;border:2px solid #d1d5db;border-radius:0.5rem;font-size:1rem;outline:none" />
-        <button type="submit"
-          style="margin-left:0.5rem;padding:0.5rem 1.25rem;background:#16a34a;color:#fff;border:none;border-radius:0.5rem;font-size:1rem;cursor:pointer">OK</button>
-        <p id="pw-error" style="color:#dc2626;margin-top:0.75rem;display:none">Falsches Passwort</p>
-      </form>
-    </div>
-    <script is:inline>
-      (function(){
-        var PW='fussball2026';
-        if(sessionStorage.getItem('pw-ok')===PW){document.getElementById('pw-gate').remove();return}
-        document.getElementById('pw-form').addEventListener('submit',function(e){
-          e.preventDefault();
-          if(document.getElementById('pw-input').value===PW){
-            sessionStorage.setItem('pw-ok',PW);
-            document.getElementById('pw-gate').remove();
-          }else{
-            document.getElementById('pw-error').style.display='block';
-          }
-        });
-      })();
-    </script>
-
     <Header />
     <main class="flex-1">
       <slot />
