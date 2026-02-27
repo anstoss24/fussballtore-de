@@ -8,9 +8,24 @@ interface Props {
 }
 
 const { name, url, imageUrl, features, category } = Astro.props;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name,
+  image: imageUrl,
+  url,
+  brand: {
+    '@type': 'Brand',
+    name: 'anstoss24',
+  },
+};
 ---
 
 <article class="group bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+  <!-- Product Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
   <!-- Image -->
   <div class="relative aspect-[4/3] overflow-hidden bg-neutral-50">
     <img

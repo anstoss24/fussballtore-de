@@ -9,6 +9,7 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   schema?: object | object[];
+  noindex?: boolean;
 }
 
 const {
@@ -17,10 +18,13 @@ const {
   canonicalUrl = Astro.url.href,
   ogImage = '/og-default.jpg',
   schema,
+  noindex = false,
 } = Astro.props;
 
 const siteName = 'fussballtore.de';
+const siteUrl = 'https://fussballtore.de';
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>
@@ -32,7 +36,11 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="evXzaTTXF-aXoB3g1srMntHxTYjpPOYYyZ9kGxMHskc" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -40,7 +48,7 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={absoluteOgImage} />
     <meta property="og:locale" content="de_DE" />
 
     <!-- Font Preloads -->
