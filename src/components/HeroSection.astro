@@ -13,7 +13,7 @@ const { title, subtitle, compact = false, ctaText, ctaHref } = Astro.props;
 <section
   class:list={[
     'relative flex items-center justify-center text-white',
-    compact ? 'py-16 md:py-24' : 'py-24 md:py-36',
+    compact ? 'py-12 md:py-20' : 'py-20 md:py-32',
   ]}
 >
   <!-- Background with gradient -->
@@ -22,7 +22,7 @@ const { title, subtitle, compact = false, ctaText, ctaHref } = Astro.props;
     <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 25% 50%, rgba(22, 163, 74, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 50%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);" />
   </div>
 
-  <div class="relative container mx-auto text-center max-w-3xl">
+  <div class="relative container mx-auto text-center max-w-4xl">
     <h1 class="font-heading font-extrabold text-white mb-4 md:mb-6">
       {title}
     </h1>
