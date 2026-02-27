@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtor kaufen – Die komplette Kaufberatung 2026';
 const description = 'Fußballtor kaufen: Worauf du bei Größe, Material, Sicherheit und Preis achten musst. Unser Ratgeber hilft dir, das richtige Tor zu finden.';
@@ -214,6 +215,7 @@ const schema = [
         imageUrl={products.grossfeld.imageUrl}
         features={products.grossfeld.features}
         category={products.grossfeld.category}
+        campaign="kaufberatung"
       />
       <div class="flex items-center">
         <div class="bg-neutral-50 rounded-xl p-6">
@@ -257,7 +259,7 @@ const schema = [
 
     <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kippsicherung nicht vergessen</h3>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Jedes freistehende Tor muss gegen Umkippen gesichert sein. Dafür gibt es verschiedene Lösungen: Erdanker für feste Installation, Gegengewichte (Gummigewichte oder Wassertanks) für mobile Tore und Bodenrahmen für hartere Untergründe. Die <a href="https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Kippsicherungen bei anstoss24.de</a> passen zu allen gängigen Torgrößen.
+      Jedes freistehende Tor muss gegen Umkippen gesichert sein. Dafür gibt es verschiedene Lösungen: Erdanker für feste Installation, Gegengewichte (Gummigewichte oder Wassertanks) für mobile Tore und Bodenrahmen für hartere Untergründe. Die <a href={addUtm('https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/', 'kaufberatung')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">passenden Kippsicherungen</a> gibt es für alle gängigen Torgrößen.
     </p>
 
     <!-- Abschnitt 4: Fest oder mobil -->
@@ -291,6 +293,7 @@ const schema = [
         imageUrl={products.jugendtor.imageUrl}
         features={products.jugendtor.features}
         category={products.jugendtor.category}
+        campaign="kaufberatung"
       />
       <div class="flex items-center">
         <div class="bg-neutral-50 rounded-xl p-6">
@@ -353,7 +356,7 @@ const schema = [
     </div>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Bedenke: Zum Torpreis kommen eventuell noch Kosten für <strong>Tornetze</strong>, <strong>Bodenhülsen</strong> und <strong>Kippsicherungen</strong> hinzu. Manche Anbieter liefern Tore inklusive Netz – das spart Geld und Aufwand. Bei <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">anstoss24.de findest du eine große Auswahl an Fußballtoren</a> mit transparenten Preisen und attraktiven Versandkonditionen.
+      Bedenke: Zum Torpreis kommen eventuell noch Kosten für <strong>Tornetze</strong>, <strong>Bodenhülsen</strong> und <strong>Kippsicherungen</strong> hinzu. Manche Anbieter liefern Tore inklusive Netz – das spart Geld und Aufwand. Im <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'kaufberatung')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Fachhandel findest du eine große Auswahl an Fußballtoren</a> mit transparenten Preisen und attraktiven Versandkonditionen.
     </p>
 
     <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
@@ -361,7 +364,7 @@ const schema = [
         Spar-Tipp: Auf Bundles achten
       </h3>
       <p class="text-neutral-600 leading-relaxed">
-        Viele Hersteller bieten Tore inklusive Tornetz und Zubehör als Komplettpaket an. Das ist fast immer günstiger als Einzelkauf. Achte außerdem auf Mengenrabatte, wenn du für den Verein gleich mehrere Tore benötigst. Bei Fragen berät dich das Team von <a href="https://www.anstoss24.de" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">anstoss24.de</a> auch telefonisch (Mo-Fr 7:30-17:30 Uhr).
+        Viele Hersteller bieten Tore inklusive Tornetz und Zubehör als Komplettpaket an. Das ist fast immer günstiger als Einzelkauf. Achte außerdem auf Mengenrabatte, wenn du für den Verein gleich mehrere Tore benötigst. Bei Fragen berät dich <a href={addUtm('https://www.anstoss24.de', 'kaufberatung')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">der Fachhandel</a> auch telefonisch (Mo-Fr 7:30-17:30 Uhr).
       </p>
     </div>
 

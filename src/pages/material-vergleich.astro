@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtor Material-Vergleich: Alu vs. Stahl vs. Kunststoff';
 const description = 'Aluminium oder Stahl? Der große Material-Vergleich für Fußballtore: Gewicht, Haltbarkeit, Preis und Pflege im direkten Vergleich. Mit konkreten Empfehlungen.';
@@ -287,7 +288,7 @@ const schema = {
       Unsere Empfehlungen: Alu-Tore in zwei Größen
     </h2>
     <p class="text-neutral-500 leading-relaxed mb-8">
-      Die folgenden Aluminium-Tore von <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24.de</a> zeigen die Bandbreite des Materials: vom transportablen Großfeldtor für den Vereinsbetrieb bis zum kompakten Minitor mit geschlossenem Hinterbau für Dauereinsatz auf Schulhöfen und Bolzplätzen.
+      Die folgenden <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'material-vergleich')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">Aluminium-Tore aus dem Fachhandel</a> zeigen die Bandbreite des Materials: vom transportablen Großfeldtor für den Vereinsbetrieb bis zum kompakten Minitor mit geschlossenem Hinterbau für Dauereinsatz auf Schulhöfen und Bolzplätzen.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -297,6 +298,7 @@ const schema = {
         imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/1523/secondPreview/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-un.jpg"
         features={["Vollverschweißt", "Transportabel", "Inkl. Tornetz", "TÜV-geprüft"]}
         category="Großfeldtore"
+        campaign="material-vergleich"
       />
       <ProductCard
         name={"Alu Minitor 1,20 x 0,80 m – geschlossener Hinterbau, \u201Eunzerstörbar\u201C"}
@@ -304,6 +306,7 @@ const schema = {
         imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838_2.png"
         features={["Geschlossener Hinterbau", "TÜV-geprüft", "Vollverschweißt", "80x80 mm Profil", "Made in Germany"]}
         category="Minitore"
+        campaign="material-vergleich"
       />
     </div>
 

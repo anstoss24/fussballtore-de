@@ -1,13 +1,16 @@
 ---
+import { addUtm } from '../utils/utm';
+
 interface Props {
   name: string;
   url: string;
   imageUrl: string;
   features: string[];
   category?: string;
+  campaign: string;
 }
 
-const { name, url, imageUrl, features, category } = Astro.props;
+const { name, url, imageUrl, features, category, campaign } = Astro.props;
 
 const productSchema = {
   '@context': 'https://schema.org',
@@ -60,7 +63,7 @@ const productSchema = {
 
     <!-- CTA -->
     <a
-      href={url}
+      href={addUtm(url, campaign, 'product-card')}
       target="_blank"
       rel="noopener"
       class="block w-full text-center bg-accent hover:bg-accent-dark text-white font-medium text-sm py-2.5 px-4 rounded-lg transition-colors no-underline"

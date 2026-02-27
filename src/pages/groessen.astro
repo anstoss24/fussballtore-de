@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtor Größen & Maße – Alle Torgrößen im Überblick';
 const description = 'Alle Fußballtor-Größen und Maße: Von Großfeld (7,32 x 2,44 m) über Jugendtore (5 x 2 m) bis Kleinfeld (3 x 2 m). Offizielle Abmessungen nach DFB und FIFA.';
@@ -175,11 +176,12 @@ const schema = [
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/107/secondPreview/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107.jpg"
           features={["Bundesliga-Modell", "Freie Netzaufhängung", "Alu-Ovalprofil 120/100 mm", "TÜV-geprüft"]}
           category="Großfeldtore"
+          campaign="groessen"
         />
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Das Bundesliga-Modell von anstoss24.de ist ein Profi-Großfeldtor mit <strong>freier Netzaufhängung</strong> und stabilem Alu-Ovalprofil – TÜV-geprüft und individuell konfigurierbar. Ideal für Vereine, die auf Bundesliga-Qualität setzen. Mehr zu Vereinstoren findest du auf unserer Seite <a href="/verein" class="text-accent hover:text-accent-dark underline underline-offset-2">Vereins- und Wettkampftore</a>.
+        Dieses Bundesliga-Modell ist ein Profi-Großfeldtor mit <strong>freier Netzaufhängung</strong> und stabilem Alu-Ovalprofil – TÜV-geprüft und individuell konfigurierbar. Ideal für Vereine, die auf Bundesliga-Qualität setzen. Mehr zu Vereinstoren findest du auf unserer Seite <a href="/verein" class="text-accent hover:text-accent-dark underline underline-offset-2">Vereins- und Wettkampftore</a>.
       </p>
 
       <!-- Jugendtor -->
@@ -200,11 +202,12 @@ const schema = [
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
           features={["Vollverschweißt", "Transportrollen + Tragegriffe", "Inkl. Tornetz", "Ovalprofil 120/100 mm"]}
           category="Jugendtore"
+          campaign="groessen"
         />
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Dieses vollverschweißte Jugendtor von anstoss24.de wird mit Transportrollen und angeschweißten Tragegriffen geliefert – inklusive Tornetz. Perfekt für Vereine, die ein robustes und leicht transportierbares 5 x 2 m Tor für die Jugendabteilung suchen. Auch als <a href="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Variante ohne Tragegriffe</a> erhältlich.
+        Dieses vollverschweißte Jugendtor wird mit Transportrollen und angeschweißten Tragegriffen geliefert – inklusive Tornetz. Perfekt für Vereine, die ein robustes und leicht transportierbares 5 x 2 m Tor für die Jugendabteilung suchen. Auch als <a href={addUtm('https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/', 'groessen')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Variante ohne Tragegriffe</a> erhältlich.
       </p>
 
       <!-- Kleinfeldtor / Bolzplatztor -->
@@ -225,11 +228,12 @@ const schema = [
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/4248/full/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst-4248.jpg"
           features={["Vollverschweißt", "Ovalprofil 120/100 mm", "Inkl. Tornetz", "Ca. 40 kg"]}
           category="Kleinfeldtore"
+          campaign="groessen"
         />
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Dieses mobile Kleinfeldtor von anstoss24.de ist vollverschweißt, wiegt nur rund 40 kg und wird inklusive Tornetz geliefert. Eine vielseitige Lösung für den Kleinfeldspielbetrieb der F-Jugend, für Schulen und für Sportanlagen, die flexible Tore benötigen.
+        Dieses mobile Kleinfeldtor ist vollverschweißt, wiegt nur rund 40 kg und wird inklusive Tornetz geliefert. Eine vielseitige Lösung für den Kleinfeldspielbetrieb der F-Jugend, für Schulen und für Sportanlagen, die flexible Tore benötigen.
       </p>
 
       <!-- Minitore -->
@@ -349,7 +353,7 @@ const schema = [
         Für den Garten und das freie Spiel hast du mehr Flexibilität. Hier zählt vor allem, wie viel Platz du hast und wie alt die Spieler sind. Minitore und Pop-up-Tore sind für Kinder unter 10 Jahren meist völlig ausreichend und kosten nur einen Bruchteil eines Vereinstors.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Egal für welche Größe du dich entscheidest – achte auf Qualität und Sicherheit. TÜV-geprüfte Tore von Fachanbietern wie <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">anstoss24.de</a> bieten dir die Gewissheit, dass du ein normgerechtes und sicheres Tor bekommst.
+        Egal für welche Größe du dich entscheidest – achte auf Qualität und Sicherheit. TÜV-geprüfte Tore von <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'groessen')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">spezialisierten Fachhändlern</a> bieten dir die Gewissheit, dass du ein normgerechtes und sicheres Tor bekommst.
       </p>
 
     </div>

@@ -5,6 +5,7 @@ import CategoryCard from '../components/CategoryCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 
 const title = 'Fußballtore – Der unabhängige Ratgeber';
@@ -38,7 +39,7 @@ const faqs = [
   {
     question: 'Was kostet ein gutes Fußballtor?',
     answer:
-      'Die Preisspanne ist groß: Einfache Pop-up-Tore für den Garten sind schon für kleines Geld zu haben, stabile Stecktore liegen im unteren dreistelligen Bereich. Vereinstore aus Aluminium erfordern ein deutlich höheres Budget, und robuste Bolzplatztore sind die teuerste Kategorie – halten dafür aber 20+ Jahre. Aktuelle Preise findest du direkt bei anstoss24.de.',
+      'Die Preisspanne ist groß: Einfache Pop-up-Tore für den Garten sind schon für kleines Geld zu haben, stabile Stecktore liegen im unteren dreistelligen Bereich. Vereinstore aus Aluminium erfordern ein deutlich höheres Budget, und robuste Bolzplatztore sind die teuerste Kategorie – halten dafür aber 20+ Jahre. Aktuelle Preise findest du in unserem Shop-Bereich.',
   },
   {
     question: 'Alu oder Stahl – welches Material ist besser?',
@@ -101,7 +102,7 @@ const schema = [
         Beliebte Fußballtore
       </h2>
       <p class="text-neutral-500 mb-8 max-w-2xl">
-        Ausgewählte Tore von anstoss24.de – dem Fachhandel für Vereinsbedarf. TÜV-geprüft, Made in Germany.
+        Ausgewählte Tore von Fachhändlern für Vereinsbedarf. TÜV-geprüft, Made in Germany.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {highlightProducts.map((product) => (
@@ -111,17 +112,18 @@ const schema = [
             imageUrl={product.imageUrl}
             features={product.features}
             category={product.category}
+            campaign="startseite"
           />
         ))}
       </div>
       <div class="text-center mt-10">
         <a
-          href="https://www.anstoss24.de/fussballtore/"
+          href={addUtm('https://www.anstoss24.de/fussballtore/', 'startseite')}
           target="_blank"
           rel="noopener"
           class="inline-flex items-center gap-2 text-accent font-medium hover:text-accent-dark transition-colors"
         >
-          Alle Fußballtore bei anstoss24.de
+          Alle Fußballtore im Shop
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
           </svg>
@@ -152,9 +154,8 @@ const schema = [
           und geben konkrete Kaufempfehlungen.
         </p>
         <p>
-          Unsere Produktempfehlungen stammen von
-          <a href="https://www.anstoss24.de" target="_blank" rel="noopener">anstoss24.de</a>
-          – einem Fachhandel für Vereinsbedarf mit TÜV-geprüften Toren, die in Deutschland hergestellt werden.
+          Unsere Produktempfehlungen stammen von Fachhändlern für Vereinsbedarf – TÜV-geprüfte Tore,
+          die in Deutschland hergestellt werden.
           So bekommst du Qualität, auf die du dich verlassen kannst.
         </p>
       </div>

@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtor für den Garten – Ratgeber & Empfehlungen';
 const description = 'Das beste Fußballtor für den Garten: Pop-up-Tore, Stecktore und Minitore im Vergleich. Für Kinder und Erwachsene – wetterfest, sicher und schnell aufgebaut.';
@@ -199,6 +200,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/19/secondPreview/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg"
           features={['2er Set', 'Pop-up', 'Diverse Größen', 'Inkl. Tasche']}
           category="Pop-up Tore"
+          campaign="garten"
         />
       </div>
     </section>
@@ -236,6 +238,7 @@ const schema = {
             imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
             features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', '4 Erdanker']}
             category="Stecktore"
+            campaign="garten"
           />
         </div>
         <div>
@@ -246,6 +249,7 @@ const schema = {
             imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Bildschirmfoto-2026-01-15-um-10-19-48.png"
             features={['Unter 10 kg', 'Vollverschweißt', 'Komplett Alu', 'Inkl. Netz']}
             category="Alu Minitore"
+            campaign="garten"
           />
         </div>
       </div>

@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtore für Vereine & Wettkampf – TÜV-geprüft & DIN-konform';
 const description = 'Professionelle Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m – DIN EN 748, TÜV-geprüft. Jetzt informieren und das passende Wettkampf-Fußballtor finden.';
@@ -19,7 +20,7 @@ const faqs = [
   },
   {
     question: 'Wie viel kostet die Tor-Ausstattung für einen Fußballverein?',
-    answer: 'Die genauen Preise findest du direkt bei anstoss24.de – sie variieren je nach Modell und Ausstattung. Für eine Grundausstattung (zwei Großfeld- und zwei Jugendtore mit Netzen und Bodenhülsen) solltest du ein mittleres vierstelliges Budget einplanen. Frag beim Händler nach Mengenrabatten – gerade bei der Erstausstattung lohnt sich das.',
+    answer: 'Die genauen Preise findest du direkt beim Fachhändler – sie variieren je nach Modell und Ausstattung. Für eine Grundausstattung (zwei Großfeld- und zwei Jugendtore mit Netzen und Bodenhülsen) solltest du ein mittleres vierstelliges Budget einplanen. Frag beim Händler nach Mengenrabatten – gerade bei der Erstausstattung lohnt sich das.',
   },
   {
     question: 'Fest montierte Tore oder transportable Tore – was ist besser für Vereine?',
@@ -71,7 +72,7 @@ const schema = {
         Ein <strong>Fußballtor für den Verein</strong> muss mehr leisten als ein Gartentor: Es braucht die exakten Regelmaße, muss nach DIN EN 748 geprüft sein und jahrelang Wind, Wetter und harte Schüsse aushalten. Ob Großfeldtor für die Herrenmannschaft oder Jugendtor für den Nachwuchs – hier erfährst du, worauf es bei der Anschaffung ankommt.
       </p>
       <p>
-        Wir haben die wichtigsten Informationen zusammengetragen, die du als Vereinsverantwortlicher, Platzwart oder Trainer für die Beschaffung brauchst: von Regelmaßen und Normen über Materialwahl bis hin zu konkreten Kostenbeispielen. Alle vorgestellten Tore stammen von <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">anstoss24.de</a> – einem Fachhandel für Vereinsbedarf mit TÜV-geprüften Produkten aus deutscher Fertigung.
+        Wir haben die wichtigsten Informationen zusammengetragen, die du als Vereinsverantwortlicher, Platzwart oder Trainer für die Beschaffung brauchst: von Regelmaßen und Normen über Materialwahl bis hin zu konkreten Kostenbeispielen. Alle vorgestellten Tore stammen von <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Fachhändlern für Vereinsbedarf</a> – TÜV-geprüft und aus deutscher Fertigung.
       </p>
     </div>
 
@@ -105,6 +106,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/107/secondPreview/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107.jpg"
           features={["Bundesliga-Modell", "Freie Netzaufhängung", "Alu-Ovalprofil 120/100 mm", "TÜV-geprüft"]}
           category="Großfeldtore"
+          campaign="verein"
         />
       </div>
     </section>
@@ -122,7 +124,7 @@ const schema = {
           Bei Jugendtoren hast du die Wahl zwischen fest installierten und mobilen Varianten. Gerade wenn mehrere Mannschaften denselben Platz nutzen, sind <strong>mobile Jugendtore</strong> praktisch: Sie lassen sich mit Transportrollen einfach verschieben und bei Nichtgebrauch am Spielfeldrand lagern.
         </p>
         <p>
-          Das folgende vollverschweißte Jugendtor wird inklusive Tornetz und Transportrollen geliefert – eine robuste All-in-one-Lösung für den Jugend-Spielbetrieb. Auch als <a href="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Variante mit angeschweißten Tragegriffen</a> erhältlich.
+          Das folgende vollverschweißte Jugendtor wird inklusive Tornetz und Transportrollen geliefert – eine robuste All-in-one-Lösung für den Jugend-Spielbetrieb. Auch als <a href={addUtm('https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Variante mit angeschweißten Tragegriffen</a> erhältlich.
         </p>
       </div>
 
@@ -133,6 +135,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
           features={["Vollverschweißt", "Transportrollen", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"]}
           category="Jugendtore"
+          campaign="verein"
         />
       </div>
     </section>
@@ -158,6 +161,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/4248/full/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst-4248.jpg"
           features={["Vollverschweißt", "Ovalprofil 120/100 mm", "Inkl. Tornetz", "Ca. 40 kg", "5 Jahre Garantie"]}
           category="Kleinfeldtore"
+          campaign="verein"
         />
       </div>
     </section>
@@ -268,6 +272,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/25/secondPreview/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25_1.jpg"
           features={["Polypropylen", "4 mm Stärke", "Farbwahl", "Bundesliga-Qualität"]}
           category="Tornetze"
+          campaign="verein"
         />
       </div>
     </section>
@@ -290,7 +295,7 @@ const schema = {
         </ul>
 
         <p>
-          Insgesamt solltest du für eine solide Grundausstattung (zwei Großfeld- und zwei Jugendtore inklusive Netzen und Verankerung) ein <strong>mittleres vierstelliges Budget</strong> einplanen. Die aktuellen Preise findest du direkt bei <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">anstoss24.de</a>.
+          Insgesamt solltest du für eine solide Grundausstattung (zwei Großfeld- und zwei Jugendtore inklusive Netzen und Verankerung) ein <strong>mittleres vierstelliges Budget</strong> einplanen. Die aktuellen Preise findest du direkt <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">im Fachhandel</a>.
         </p>
         <p>
           <strong>Spar-Tipp:</strong> Viele Hersteller gewähren bei der Abnahme mehrerer Tore Mengenrabatte. Frag direkt beim Händler nach – gerade bei der Erstausstattung lohnt sich das. Außerdem fördern Landessportverbände und Kommunen die Anschaffung von Sportgeräten häufig mit Zuschüssen. Erkundige dich bei deinem Kreis- oder Landessportbund. Mehr Tipps zur Kaufentscheidung findest du in unserer <a href="/kaufberatung" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung</a>.

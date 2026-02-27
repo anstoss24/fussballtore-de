@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtor für Kinder – Sicher & altersgerecht';
 const description =
@@ -211,6 +212,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/19/secondPreview/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg"
           features={['2er Set', 'Pop-up', 'Diverse Größen', 'Inkl. Tasche']}
           category="Pop-up Tore"
+          campaign="kinder"
         />
       </div>
     </section>
@@ -238,7 +240,7 @@ const schema = {
             <p class="text-neutral-600 leading-relaxed">
               Jedes frei stehende Tor muss gegen Umkippen gesichert sein. Bei leichten Toren reichen
               Erdanker oder Heringe. Bei schwereren Modellen sorgen Bodenrahmen oder
-              <a href="https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Beschwerungsgewichte</a>
+              <a href={addUtm('https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/', 'kinder')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Beschwerungsgewichte</a>
               für Stabilität. Regel Nummer eins: Ein Tor darf niemals ungesichert stehen.
             </p>
           </div>
@@ -391,6 +393,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
           features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', 'Ideal für Funino']}
           category="Stecktore"
+          campaign="kinder"
         />
       </div>
 
@@ -403,6 +406,7 @@ const schema = {
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/47/secondPreview/QuickPlay-Kickster-Elite-Junior-Minitor-1-80-x-1-20m-47_5.jpg"
           features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', 'Wetterfest']}
           category="Minitore"
+          campaign="kinder"
         />
       </div>
     </section>
@@ -493,8 +497,8 @@ const schema = {
         </p>
         <p class="text-neutral-600 leading-relaxed">
           Noch unsicher? Unsere <a href="/kaufberatung" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a>
-          führt dich Schritt für Schritt zum passenden Tor. Und bei
-          <a href="https://www.anstoss24.de/fussballtore/" target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24.de</a>
+          führt dich Schritt für Schritt zum passenden Tor. Und
+          <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'kinder')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">im Fachhandel</a>
           findest du eine große Auswahl an geprüften Fußballtoren für jedes Alter – vom Pop-up-Tor
           bis zum Vereinstor.
         </p>
