@@ -1,5 +1,6 @@
 ---
 import { addUtm } from '../utils/utm';
+import pricesData from '../data/prices.json';
 
 interface Props {
   name: string;
@@ -12,7 +13,17 @@ interface Props {
 
 const { name, url, imageUrl, features, category, campaign } = Astro.props;
 
-const productSchema = {
+const priceInfo = (pricesData as Record<string, any>)[url];
+const price = priceInfo?.price;
+const uvp = priceInfo?.uvp;
+const currency = priceInfo?.currency || 'EUR';
+const priceValidUntil = priceInfo?.priceValidUntil;
+const discount = uvp && price ? Math.round((1 - price / uvp) * 100) : null;
+
+const formatPrice = (p: number) =>
+  new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
+
+const productSchema: Record<string, any> = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name,
@@ -22,16 +33,31 @@ const productSchema = {
     '@type': 'Brand',
     name: 'anstoss24',
   },
-  offers: {
+};
+
+if (price) {
+  productSchema.offers = {
     '@type': 'Offer',
     url,
+    price,
+    priceCurrency: currency,
+    priceValidUntil,
     availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
     seller: {
       '@type': 'Organization',
       name: 'anstoss24.de',
     },
-  },
-};
+    ...(uvp && {
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        priceType: 'https://schema.org/StrikethroughPrice',
+        price: uvp,
+        priceCurrency: currency,
+      },
+    }),
+  };
+}
 ---
 
 <article class="group bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
@@ -62,13 +88,28 @@ const productSchema = {
     </h3>
 
     <!-- Feature Pills -->
-    <div class="flex flex-wrap gap-1.5 mb-4">
+    <div class="flex flex-wrap gap-1.5 mb-3">
       {features.slice(0, 4).map((feature) => (
         <span class="inline-block text-xs bg-neutral-50 text-neutral-500 border border-neutral-200 px-2 py-0.5 rounded-md">
           {feature}
         </span>
       ))}
     </div>
+
+    <!-- Price -->
+    {price && (
+      <div class="mb-3">
+        <span class="text-lg font-bold text-primary">{formatPrice(price)} €</span>
+        {uvp && (
+          <span class="ml-2 text-sm text-neutral-400 line-through">{formatPrice(uvp)} €</span>
+        )}
+        {discount && discount >= 5 && (
+          <span class="ml-1.5 text-xs font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded">
+            -{discount}%
+          </span>
+        )}
+      </div>
+    )}
 
     <!-- CTA -->
     <a
