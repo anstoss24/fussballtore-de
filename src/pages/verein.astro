@@ -6,13 +6,13 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtore für Vereine & Wettkampf – TÜV-geprüft & DIN-konform';
+const title = 'Fußballtore für Spiel- & Trainingsbetrieb | DIN-konform';
 const description = 'Professionelle Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m – DIN EN 748, TÜV-geprüft. Jetzt informieren und das passende Wettkampf-Fußballtor finden.';
 
 const faqs = [
   {
     question: 'Welche Größe hat ein Fußballtor im Vereinssport?',
-    answer: 'Im Erwachsenen-Bereich sowie ab der C-Jugend (U14) gilt das Regelmaß 7,32 x 2,44 m (Großfeldtor). Für D- und E-Jugend empfiehlt der DFB Jugendtore mit 5,00 x 2,00 m. Eine vollständige Übersicht aller Torgrößen findest du in unserer Größen-Übersicht.',
+    answer: 'Im Erwachsenen-Bereich sowie ab der C-Jugend (U14) gilt das Regelmaß 7,32 x 2,44 m (Großfeldtor). Die D-Jugend spielt auf Jugendtoren mit 5,00 x 2,00 m, die E-Jugend auf Kleinfeldtoren oder Minitoren. Eine vollständige Übersicht aller Torgrößen findest du in unserer Größen-Übersicht.',
   },
   {
     question: 'Müssen Vereinstore TÜV-geprüft sein?',
@@ -35,7 +35,7 @@ const faqs = [
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Fußballtore für Vereine & Wettkampf',
+  headline: 'Fußballtore für Spiel- & Trainingsbetrieb',
   description,
   datePublished: '2025-01-15',
   dateModified: '2026-02-23',
@@ -58,8 +58,8 @@ const schema = {
 
 <BaseLayout title={title} description={description} schema={schema}>
   <HeroSection
-    title="Fußballtore für Vereine & Wettkampf"
-    subtitle="Professionelle Tore für den Spielbetrieb – TÜV-geprüft und DIN-konform"
+    title="Fußballtore für Spiel- & Trainingsbetrieb"
+    subtitle="Professionelle Tore für Wettkampf und Training – TÜV-geprüft und DIN-konform"
     compact
   />
   <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Vereinstore' }]} />
@@ -90,7 +90,7 @@ const schema = {
         </p>
         <ul class="space-y-2 my-4">
           <li><strong>Profil und Material:</strong> Hochwertige Großfeldtore bestehen aus <a href="/material-vergleich" class="text-accent hover:text-accent-dark transition-colors">Aluminium-Profilen</a> – leicht, rostfrei und formstabil. Ein Ovalprofil mit 120 x 100 mm Querschnitt ist der gängige Standard.</li>
-          <li><strong>Netzaufhängung:</strong> Tore mit freier Netzaufhängung bieten den Vorteil, dass das Netz nicht am Pfosten anliegt. Der Ball landet sichtbar im Netz – so wie du es aus dem Profifußball kennst.</li>
+          <li><strong>Netzaufhängung:</strong> Tore mit freier Netzaufhängung haben eine schönere Optik, entsprechen den Bundesligastandards und werden überwiegend im Wettkampfbetrieb eingesetzt.</li>
           <li><strong>Bodenverankerung:</strong> Für den festen Einsatz auf dem Vereinsplatz empfehlen sich Bodenhülsen. Sie sorgen für maximale Standsicherheit und lassen sich bei Bedarf bündig in den Boden einsetzen.</li>
           <li><strong>TÜV-Prüfung:</strong> Ein Muss für den Vereinsbetrieb. Achte auf das Prüfzeichen nach DIN EN 748.</li>
         </ul>
@@ -109,6 +109,23 @@ const schema = {
           campaign="verein"
         />
       </div>
+
+      <div class="prose text-neutral-600 leading-relaxed mt-8">
+        <p>
+          Für den <strong>Trainingsbetrieb</strong> empfiehlt sich ein transportables Großfeldtor mit Transportrollen. Im Gegensatz zum fest installierten Wettkampftor lässt es sich flexibel auf dem Platz positionieren und bei Bedarf schnell zur Seite fahren – ideal für Trainingsplätze, die von mehreren Mannschaften genutzt werden.
+        </p>
+      </div>
+
+      <div class="my-8 max-w-md">
+        <ProductCard
+          name="Großfeldtor 7,32 x 2,44 m – transportabel, vollverschweißt, inkl. Netz"
+          url="https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst_1523_237176/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/1523/secondPreview/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-un.jpg"
+          features={["Vollverschweißt", "Transportrollen", "Inkl. Tornetz", "TÜV-geprüft"]}
+          category="Trainingstor"
+          campaign="verein"
+        />
+      </div>
     </section>
 
     <!-- Jugendtore -->
@@ -118,7 +135,7 @@ const schema = {
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
         <p>
-          Für den Jugendspielbetrieb der D-Jugend (U12/U13) und E-Jugend (U10/U11) empfiehlt der DFB <strong>Jugendtore mit den Maßen 5,00 x 2,00 m</strong>. Ab der C-Jugend (U14) wird bereits auf Großfeldtoren (7,32 x 2,44 m) gespielt. Eine detaillierte Aufstellung aller Torgrößen nach Altersklasse findest du in unserer <a href="/groessen" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>.
+          Die D-Jugend (U12/U13) spielt im 7-gegen-7 oder 9-gegen-9 auf <strong>Jugendtoren mit den Maßen 5,00 x 2,00 m</strong>. Die E-Jugend (U10/U11) spielt auf Kleinfeldtoren oder Minitoren. Ab der C-Jugend (U14) wird bereits auf Großfeldtoren (7,32 x 2,44 m) gespielt. Eine detaillierte Aufstellung aller Torgrößen nach Altersklasse findest du in unserer <a href="/groessen" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>.
         </p>
         <p>
           Bei Jugendtoren hast du die Wahl zwischen fest installierten und mobilen Varianten. Gerade wenn mehrere Mannschaften denselben Platz nutzen, sind <strong>mobile Jugendtore</strong> praktisch: Sie lassen sich mit Transportrollen einfach verschieben und bei Nichtgebrauch am Spielfeldrand lagern.
@@ -156,11 +173,11 @@ const schema = {
 
       <div class="my-8 max-w-md">
         <ProductCard
-          name="Mobiles Kleinfeldtor 3 x 2 m – vollverschweißt, inkl. Netz"
-          url="https://www.anstoss24.de/fussballtore/fussballtor-mobiles-kleinfeldtor-3-00-x-2-00-m-vollverschweisst_4248_70883/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/4248/full/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst-4248.jpg"
-          features={["Vollverschweißt", "Ovalprofil 120/100 mm", "Inkl. Tornetz", "Ca. 40 kg", "5 Jahre Garantie"]}
-          category="Kleinfeldtore"
+          name="Bolzplatztor UNKAPUTTBAR 3 x 2 m – vandalismussicher"
+          url="https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/255/secondPreview/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255.jpg"
+          features={["Vollverschweißt", "Vandalismusresistent", "Geschlossener Hinterbau", "TÜV-geprüft", "5 Jahre Garantie"]}
+          category="Bolzplatztore"
           campaign="verein"
         />
       </div>

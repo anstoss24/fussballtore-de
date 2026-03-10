@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: 'Welche Fußballtor-Größe brauchen Jugendmannschaften?',
-    answer: 'Die D-Jugend (U12/U13) spielt im 9-gegen-9-Format auf Jugendtore mit 5,00 x 2,00 m. Ab der C-Jugend (U14/U15) wird auf Großfeldtore mit 7,32 x 2,44 m gespielt. Die jüngeren Altersklassen nutzen Kleinfeldtore (3,00 x 2,00 m bei der F-Jugend) oder Minitore (Bambini/Funino). Die E-Jugend spielt auf 5,00 x 2,00 m Tore. Die genauen Vorgaben legt der DFB in seinen Jugendspielordnungen fest.',
+    answer: 'Die D-Jugend (U12/U13) spielt im 9-gegen-9-Format auf Jugendtore mit 5,00 x 2,00 m. Ab der C-Jugend (U14/U15) wird auf Großfeldtore mit 7,32 x 2,44 m gespielt. Die jüngeren Altersklassen nutzen Kleinfeldtore (3,00 x 2,00 m bei der F-Jugend) oder Minitore (Bambini/Funino). Die E-Jugend spielt mit Kleinfeldtoren oder Minitoren. Die genauen Vorgaben legt der DFB in seinen Jugendspielordnungen fest.',
   },
   {
     question: 'Was ist die offizielle Tortiefe bei Fußballtoren?',
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: 'Ab welchem Alter spielen Kinder auf große Tore?',
-    answer: 'Ab der D-Jugend (ca. 11–12 Jahre) wird auf Jugendtore mit 5 x 2 m gespielt. Ab der C-Jugend (ca. 13–14 Jahre) kommt das Großfeldtor mit 7,32 x 2,44 m zum Einsatz. Davor spielen Kinder auf Kleinfeldtore (3 x 2 m bei der F-Jugend), auf 5 x 2 m Tore (E-Jugend) oder Minitore (Bambini/Funino).',
+    answer: 'Ab der D-Jugend (ca. 11–12 Jahre) wird auf Jugendtore mit 5 x 2 m gespielt. Ab der C-Jugend (ca. 13–14 Jahre) kommt das Großfeldtor mit 7,32 x 2,44 m zum Einsatz. Davor spielen Kinder auf Kleinfeldtore (3 x 2 m bei der F-Jugend), auf Kleinfeldtore (E-Jugend) oder Minitore (Bambini/Funino).',
   },
 ];
 
@@ -128,12 +128,18 @@ const schema = [
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,50–2,00 m</td>
             </tr>
             <tr class="bg-white hover:bg-neutral-50 transition-colors">
-              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">D-Jugend / E-Jugend (Jugendtor)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">E-Jugend (Kleinfeldtor)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">3,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,00 m</td>
+            </tr>
+            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">D-Jugend (Jugendtor)</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 m</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,00 m</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,00–1,50 m</td>
             </tr>
-            <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
+            <tr class="bg-white hover:bg-neutral-50 transition-colors">
               <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">F-Jugend (Kleinfeld)</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">3,00 m</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,00 m</td>
@@ -163,10 +169,10 @@ const schema = [
         Das Großfeldtor ist das Standardtor im Profifußball und wird weltweit einheitlich mit <strong>7,32 m Breite und 2,44 m Höhe</strong> gespielt. Diese Abmessungen gelten für alle FIFA- und DFB-Wettbewerbe im Herren- und Frauenfußball – von der Kreisliga bis zur Bundesliga.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Großfeldtore bestehen in der Regel aus Aluminium-Profilen und wiegen je nach Ausführung zwischen 40 und 100 kg pro Tor. Für den Vereinsbetrieb müssen sie der <strong>DIN EN 748</strong> entsprechen und TÜV-geprüft sein. Besonders wichtig: die Kippsicherung. Jedes Großfeldtor muss so gesichert sein, dass es nicht umfallen kann – sei es durch Bodenverankerung, Gegengewichte oder Transportrollen mit Bremse.
+        Großfeldtore bestehen in der Regel aus Aluminium-Profilen und wiegen je nach Ausführung zwischen 40 und 100 kg pro Tor. Für den Vereinsbetrieb müssen sie der <strong>DIN EN 748</strong> entsprechen und TÜV-geprüft sein. Besonders wichtig: die Kippsicherung. Jedes Großfeldtor muss so gesichert sein, dass es nicht umfallen kann – sei es durch Bodenverankerung oder Gegengewichte.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Die Tortiefe liegt bei Großfeldtoren üblicherweise zwischen <strong>1,50 und 2,00 m</strong>. Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor sofort wieder herausrollt. Für einen detaillierten Materialvergleich zwischen Alu und Stahl schau dir unseren <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a> an.
+        Die Tortiefe liegt bei Großfeldtoren üblicherweise zwischen <strong>1,50 und 2,00 m</strong>. Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor sofort wieder herausrollt. Für einen detaillierten Materialvergleich schau dir unseren <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a> an.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
@@ -189,7 +195,7 @@ const schema = [
         Jugendtor – 5,00 x 2,00 m
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Jugendtore mit <strong>5,00 m Breite und 2,00 m Höhe</strong> sind die Standardgröße für den Jugendfußball der D-Jugend (9 gegen 9) und der E-Jugend (5 gegen 5 / 7 gegen 7). Diese Torgröße bildet den Übergang zwischen den kleineren Kindertoren und dem Großfeldtor und ist für Spieler im Alter von ca. 9 bis 13 Jahren vorgesehen.
+        Jugendtore mit <strong>5,00 m Breite und 2,00 m Höhe</strong> sind die Standardgröße für den Jugendfußball der D-Jugend (7 gegen 7 / 9 gegen 9). Die E-Jugend spielt mit Kleinfeldtoren (3 x 2 m) oder Minitoren. Diese Torgröße bildet den Übergang zwischen den kleineren Kindertoren und dem Großfeldtor und ist für Spieler im Alter von ca. 9 bis 13 Jahren vorgesehen.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
         Im Jugendbereich wird besonderer Wert auf Sicherheit gelegt. Die Tore müssen standfest sein und dürfen keine scharfen Kanten haben. Viele Vereine setzen auf <strong>mobile Jugendtore</strong>, die sich bei Bedarf vom Platz fahren lassen – etwa wenn derselbe Platz von verschiedenen Altersklassen genutzt wird. Vollverschweißte Konstruktionen sind dabei besonders stabil und wartungsarm.
@@ -223,17 +229,17 @@ const schema = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
         <ProductCard
-          name="Mobiles Kleinfeldtor 3 x 2 m – vollverschweißt, inkl. Netz"
-          url="https://www.anstoss24.de/fussballtore/fussballtor-mobiles-kleinfeldtor-3-00-x-2-00-m-vollverschweisst_4248_70883/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/4248/full/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst-4248.jpg"
-          features={["Vollverschweißt", "Ovalprofil 120/100 mm", "Inkl. Tornetz", "Ca. 40 kg"]}
-          category="Kleinfeldtore"
+          name="Bolzplatztor UNKAPUTTBAR 3 x 2 m – vandalismussicher"
+          url="https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/255/secondPreview/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255.jpg"
+          features={["Vollverschweißt", "Vandalismusresistent", "Geschlossener Hinterbau", "TÜV-geprüft"]}
+          category="Bolzplatztore"
           campaign="groessen"
         />
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Dieses mobile Kleinfeldtor ist vollverschweißt, wiegt nur rund 40 kg und wird inklusive Tornetz geliefert. Eine vielseitige Lösung für den Kleinfeldspielbetrieb der F-Jugend, für Schulen und für Sportanlagen, die flexible Tore benötigen.
+        Dieses vandalismussichere Bolzplatztor mit geschlossenem Hinterbau ist nahezu unzerstörbar. Die vollverschweißte Konstruktion mit TÜV-Prüfung ist ideal für öffentliche Bolzplätze, Schulhöfe und Kommunen – überall dort, wo maximale Robustheit gefragt ist.
       </p>
 
       <!-- Minitore -->
@@ -284,14 +290,14 @@ const schema = [
             <tr class="bg-white hover:bg-neutral-50 transition-colors">
               <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">E-Jugend</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">9–10 Jahre</td>
-              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 x 2,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">Kleinfeldtore oder Minitore</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5 gegen 5 / 7 gegen 7</td>
             </tr>
             <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
               <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">D-Jugend</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">11–12 Jahre</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 x 2,00 m</td>
-              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">9 gegen 9</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">7 gegen 7 / 9 gegen 9</td>
             </tr>
             <tr class="bg-white hover:bg-neutral-50 transition-colors">
               <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">C-Jugend</td>

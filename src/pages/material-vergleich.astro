@@ -6,21 +6,13 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtor Material-Vergleich: Alu vs. Stahl vs. Kunststoff';
-const description = 'Aluminium oder Stahl? Der große Material-Vergleich für Fußballtore: Gewicht, Haltbarkeit, Preis und Pflege im direkten Vergleich. Mit konkreten Empfehlungen.';
+const title = 'Fußballtor Material-Vergleich: Aluminium vs. Kunststoff';
+const description = 'Aluminium oder Kunststoff? Der Material-Vergleich für Fußballtore: Gewicht, Haltbarkeit, Preis und Pflege im direkten Vergleich. Mit konkreten Empfehlungen.';
 
 const faqs = [
   {
-    question: 'Ist Aluminium oder Stahl besser für ein Fußballtor?',
-    answer: 'Für die meisten Einsatzzwecke ist Aluminium die bessere Wahl: Es rostet nicht, ist deutlich leichter und hält 15–25 Jahre und mehr ohne besondere Pflege. Stahl-Großfeldtore sind heute praktisch nicht mehr am Markt – Stahl spielt seine Stärken vor allem bei Bolzplatztoren und Freizeittoren aus, wo hohe Vandalismusresistenz gefragt ist.',
-  },
-  {
-    question: 'Warum sind Alu-Fußballtore teurer als Stahltore?',
-    answer: 'Aluminium ist als Rohstoff teurer und die Verarbeitung – insbesondere das Verschweißen von Ovalprofilen – aufwendiger. Dafür sparst du langfristig: Kein Rostschutz nötig, keine Nachbehandlung, längere Lebensdauer. Über die gesamte Nutzungsdauer von 15–25+ Jahren gerechnet ist Alu oft günstiger als Stahl.',
-  },
-  {
-    question: 'Rosten Stahl-Fußballtore?',
-    answer: 'Ja, unbehandelter Stahl rostet. Hochwertige Stahltore sind deshalb pulverbeschichtet oder feuerverzinkt. Diese Beschichtung schützt mehrere Jahre, muss aber regelmäßig kontrolliert und bei Beschädigungen nachgebessert werden – sonst setzt Rost ein.',
+    question: 'Ist Aluminium oder Kunststoff besser für ein Fußballtor?',
+    answer: 'Aluminium ist die bessere Wahl für den Vereins- und Trainingsbetrieb: Es rostet nicht, ist leicht und hält 15–25 Jahre ohne Pflege. Kunststoff und Fiberglas eignen sich hervorragend für den Garten und den Freizeitbereich – leicht, günstig und schnell aufgebaut, aber nicht wettkampftauglich.',
   },
   {
     question: 'Sind Kunststoff-Fußballtore stabil genug?',
@@ -31,8 +23,8 @@ const faqs = [
     answer: 'Der DFB und die DIN EN 748 schreiben kein bestimmtes Material vor, aber in der Praxis werden fast ausschließlich Aluminium-Tore im Profibetrieb eingesetzt. Alu erfüllt alle Anforderungen an Gewicht, Stabilität und Langlebigkeit am besten.',
   },
   {
-    question: 'Wie schwer ist ein Alu-Fußballtor im Vergleich zu Stahl?',
-    answer: 'Ein Alu-Großfeldtor (7,32 x 2,44 m) wiegt je nach Bauweise ca. 40–100 kg – von leichten Stecktoren bis hin zu vollverschweißten Ausführungen mit Bodenrahmen. Dieser Gewichtsvorteil gegenüber Stahl ist beim Transport und Aufbau deutlich spürbar – besonders wenn das Tor regelmäßig bewegt werden muss.',
+    question: 'Wie schwer ist ein Alu-Fußballtor?',
+    answer: 'Ein Alu-Großfeldtor (7,32 x 2,44 m) wiegt je nach Bauweise ca. 40–100 kg – von leichten Stecktoren bis hin zu vollverschweißten Ausführungen mit Bodenrahmen. Dieses geringe Gewicht ist beim Transport und Aufbau ein echter Vorteil – besonders wenn das Tor regelmäßig bewegt werden muss.',
   },
 ];
 
@@ -61,7 +53,7 @@ const schema = {
 
 <BaseLayout title={title} description={description} schema={schema}>
   <HeroSection
-    title="Material-Vergleich: Alu vs. Stahl"
+    title="Material-Vergleich: Alu vs. Kunststoff"
     subtitle="Welches Material ist das richtige für dein Fußballtor? Alle Fakten im direkten Vergleich."
     compact
   />
@@ -71,27 +63,23 @@ const schema = {
 
     <!-- Einleitung -->
     <p class="text-neutral-500 text-lg leading-relaxed mb-6">
-      Die Materialfrage ist eine der wichtigsten Entscheidungen beim Kauf eines Fußballtors. Aluminium, Stahl oder doch Kunststoff? Jedes Material hat seine Stärken – und seine klaren Grenzen. In diesem Vergleich erfährst du, welches Material für deinen Einsatzzweck am besten geeignet ist, worauf du bei der Auswahl achten musst und warum sich die Investition in das richtige Material langfristig auszahlt.
+      Die Materialfrage ist eine der wichtigsten Entscheidungen beim Kauf eines Fußballtors. Aluminium oder Kunststoff? Jedes Material hat seine Stärken – und seine klaren Grenzen. In diesem Vergleich erfährst du, welches Material für deinen Einsatzzweck am besten geeignet ist, worauf du bei der Auswahl achten musst und warum sich die Investition in das richtige Material langfristig auszahlt.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-6">
       Ob du ein Tor für den <a href="/verein" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereinssport</a> suchst, eines für den <a href="/garten" class="text-accent hover:text-accent-dark transition-colors font-medium">Garten</a> oder ein vandalismusresistentes Bolzplatztor für eine Kommune – das Material bestimmt Haltbarkeit, Gewicht, Pflegeaufwand und letztlich auch den Preis.
     </p>
 
-    <!-- Die drei Materialien im Überblick -->
+    <!-- Die zwei gängigen Materialien im Überblick -->
     <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
-      Die drei Materialien im Überblick
+      Die zwei gängigen Materialien im Überblick
     </h2>
     <p class="text-neutral-500 leading-relaxed mb-6">
-      Im Fußballtor-Markt haben sich drei Materialgruppen etabliert. Jede hat ihren festen Platz – von der Bundesliga bis zum Kindergarten:
+      Im Fußballtor-Markt haben sich zwei Materialgruppen als Standard etabliert – von der Bundesliga bis zum Kindergarten:
     </p>
     <ul class="space-y-3 mb-8 text-neutral-500 leading-relaxed">
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
         <span><strong class="text-primary">Aluminium</strong> – Der Standard im Profisport. Leicht, rostfrei, langlebig. Von der Kreisliga bis zur Bundesliga das am häufigsten eingesetzte Material.</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
-        <span><strong class="text-primary">Stahl</strong> – Die robuste Wahl für Bolzplätze und den Freizeitbereich. Schwerer und günstiger als Alu, braucht aber Rostschutz. Stahl-Großfeldtore sind am Markt praktisch nicht mehr erhältlich – Stahl spielt heute vor allem bei kleineren, fest installierten Toren eine Rolle.</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
@@ -119,7 +107,7 @@ const schema = {
         </li>
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          <span><strong>Leicht</strong> – Ca. 40 % leichter als Stahl bei vergleichbarer Stabilität</span>
+          <span><strong>Leicht</strong> – Deutlich leichter als andere Materialien bei vergleichbarer Stabilität</span>
         </li>
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -139,11 +127,11 @@ const schema = {
       <ul class="space-y-2 text-neutral-500">
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          <span><strong>Höherer Preis</strong> – In der Anschaffung spürbar teurer als Stahl</span>
+          <span><strong>Höherer Preis</strong> – In der Anschaffung spürbar teurer als Kunststoff</span>
         </li>
         <li class="flex items-start gap-2">
           <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          <span><strong>Weicher als Stahl</strong> – Bei extremem Vandalismus anfälliger für Verformungen</span>
+          <span><strong>Weicher</strong> – Bei extremem Vandalismus anfälliger für Verformungen</span>
         </li>
       </ul>
     </div>
@@ -152,140 +140,9 @@ const schema = {
       <strong class="text-primary">Ideal geeignet für:</strong> Vereine, Schulen, Trainingsbetrieb, mobile Tore – überall dort, wo das Tor regelmäßig bewegt wird oder dauerhaft der Witterung ausgesetzt ist.
     </p>
 
-    <!-- Stahl -->
-    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
-      Stahl – Der robuste Klassiker
-    </h2>
-    <p class="text-neutral-500 leading-relaxed mb-4">
-      Stahltore haben eine lange Tradition im Fußball. Das Material ist extrem belastbar, widersteht auch starken mechanischen Einwirkungen und ist in der Anschaffung günstiger als Aluminium. <strong class="text-primary">Wichtig zu wissen:</strong> Stahl-Großfeldtore (7,32 x 2,44 m) sind am Markt heute praktisch nicht mehr erhältlich – Aluminium hat sich in dieser Größe als Standard durchgesetzt. Stahl spielt seine Stärken vor allem bei Bolzplatztoren, Mini- und Streetsoccer-Toren sowie im Freizeitbereich aus. Allerdings bringt Stahl einen entscheidenden Nachteil mit: Er rostet, wenn die Beschichtung beschädigt wird.
-    </p>
-    <p class="text-neutral-500 leading-relaxed mb-6">
-      Moderne Stahltore werden deshalb entweder pulverbeschichtet oder feuerverzinkt. Pulverbeschichtung bietet eine glatte, farbige Oberfläche – ist aber empfindlicher gegenüber Kratzern. Feuerverzinkung bietet den besseren Langzeit-Schutz, sieht aber weniger hochwertig aus. In beiden Fällen musst du die Beschichtung regelmäßig kontrollieren und beschädigte Stellen nachbessern.
-    </p>
-
-    <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-6 mb-8">
-      <h3 class="font-heading font-bold text-primary mb-3">Vorteile von Stahl</h3>
-      <ul class="space-y-2 text-neutral-500 mb-6">
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          <span><strong>Günstiger</strong> – In der Anschaffung deutlich preiswerter als Alu</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          <span><strong>Extrem robust</strong> – Höhere Widerstandsfähigkeit gegen Vandalismus und Stöße</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          <span><strong>Hohes Eigengewicht</strong> – Standfest und kippsicher, ideal für feste Installation</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          <span><strong>Bewährt</strong> – Langjährig erprobtes Material im Sportbereich</span>
-        </li>
-      </ul>
-
-      <h3 class="font-heading font-bold text-primary mb-3">Nachteile von Stahl</h3>
-      <ul class="space-y-2 text-neutral-500">
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          <span><strong>Rostanfällig</strong> – Ohne intakte Beschichtung setzt schnell Korrosion ein</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          <span><strong>Schwer</strong> – Transport und Aufbau deutlich aufwendiger</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          <span><strong>Pflegeaufwand</strong> – Beschichtung muss regelmäßig kontrolliert und nachgebessert werden</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <svg class="w-5 h-5 text-warm flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          <span><strong>Kürzere Lebensdauer</strong> – Bei mangelnder Pflege deutlich kürzer haltbar als Alu</span>
-        </li>
-      </ul>
-    </div>
-
-    <p class="text-neutral-500 leading-relaxed mb-6">
-      <strong class="text-primary">Ideal geeignet für:</strong> Bolzplatztore, Streetsoccer-Tore, fest installierte Kleinfeld- und Freizeittore – überall dort, wo hohe Vandalismusresistenz wichtiger ist als geringes Gewicht.
-    </p>
-
-    <!-- Vergleichstabelle -->
-    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
-      Der direkte Vergleich: Alu vs. Stahl
-    </h2>
-    <p class="text-neutral-500 leading-relaxed mb-6">
-      Die folgende Tabelle zeigt die wichtigsten Unterschiede zwischen Aluminium und Stahl auf einen Blick. So kannst du schnell entscheiden, welches Material für deinen Einsatzzweck besser geeignet ist.
-    </p>
-
-    <div class="overflow-x-auto mb-8 -mx-4 px-4 md:mx-0 md:px-0">
-      <table class="w-full border-collapse text-left text-sm md:text-base">
-        <thead>
-          <tr class="border-b-2 border-primary">
-            <th class="py-3 pr-4 font-heading font-bold text-primary">Kriterium</th>
-            <th class="py-3 px-4 font-heading font-bold text-primary">Aluminium</th>
-            <th class="py-3 pl-4 font-heading font-bold text-primary">Stahl</th>
-          </tr>
-        </thead>
-        <tbody class="text-neutral-500">
-          <tr class="border-b border-neutral-200">
-            <td class="py-3 pr-4 font-medium text-primary">Gewicht</td>
-            <td class="py-3 px-4">Leicht (40–100 kg*)</td>
-            <td class="py-3 pl-4">Schwer (100–140 kg*)</td>
-          </tr>
-          <tr class="border-b border-neutral-200 bg-neutral-50">
-            <td class="py-3 pr-4 font-medium text-primary">Preis</td>
-            <td class="py-3 px-4">Höhere Anschaffungskosten</td>
-            <td class="py-3 pl-4">Günstigere Anschaffung</td>
-          </tr>
-          <tr class="border-b border-neutral-200">
-            <td class="py-3 pr-4 font-medium text-primary">Haltbarkeit</td>
-            <td class="py-3 px-4">15–25+ Jahre</td>
-            <td class="py-3 pl-4">10–15 Jahre (bei guter Pflege)</td>
-          </tr>
-          <tr class="border-b border-neutral-200 bg-neutral-50">
-            <td class="py-3 pr-4 font-medium text-primary">Rostschutz</td>
-            <td class="py-3 px-4">Nicht nötig (rostfrei)</td>
-            <td class="py-3 pl-4">Pflicht (Verzinkung / Pulverbeschichtung)</td>
-          </tr>
-          <tr class="border-b border-neutral-200">
-            <td class="py-3 pr-4 font-medium text-primary">Pflegeaufwand</td>
-            <td class="py-3 px-4">Minimal</td>
-            <td class="py-3 pl-4">Regelmäßig (Beschichtung prüfen)</td>
-          </tr>
-          <tr class="border-b border-neutral-200 bg-neutral-50">
-            <td class="py-3 pr-4 font-medium text-primary">Transportfähigkeit</td>
-            <td class="py-3 px-4">Sehr gut</td>
-            <td class="py-3 pl-4">Eingeschränkt</td>
-          </tr>
-          <tr class="border-b border-neutral-200">
-            <td class="py-3 pr-4 font-medium text-primary">Vandalismus-Resistenz</td>
-            <td class="py-3 px-4">Gut</td>
-            <td class="py-3 pl-4">Sehr gut</td>
-          </tr>
-          <tr class="border-b border-neutral-200 bg-neutral-50">
-            <td class="py-3 pr-4 font-medium text-primary">Profisport-Eignung</td>
-            <td class="py-3 px-4">Standard</td>
-            <td class="py-3 pl-4">Nicht üblich (Großfeldtore aus Stahl nicht mehr am Markt)</td>
-          </tr>
-          <tr>
-            <td class="py-3 pr-4 font-medium text-primary">Recyclingfähigkeit</td>
-            <td class="py-3 px-4">Sehr gut</td>
-            <td class="py-3 pl-4">Gut</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="text-neutral-400 text-sm mt-2">* Alu-Gewichte: Großfeldtor 7,32 x 2,44 m, je nach Bauweise (steckbar bis vollverschweißt)</p>
-    </div>
-
-    <div class="bg-accent/5 border border-accent/20 rounded-xl p-6 mb-8">
-      <p class="text-neutral-500 leading-relaxed">
-        <strong class="text-primary">Unser Fazit aus der Tabelle:</strong> Wenn du ein Tor suchst, das du regelmäßig bewegen willst und das jahrelang ohne Pflege auskommt, führt an Aluminium kein Weg vorbei. Stahl ist die richtige Wahl für fest installierte Bolzplatz- und Freizeittore, wo maximale Robustheit gegen Vandalismus gefragt ist.
-      </p>
-    </div>
-
     <!-- Produktempfehlungen -->
     <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
-      Unsere Empfehlungen: Alu-Tore in zwei Größen
+      Unsere Empfehlungen: Aluminium-Tore
     </h2>
     <p class="text-neutral-500 leading-relaxed mb-8">
       Die folgenden <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'material-vergleich')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">Aluminium-Tore aus dem Fachhandel</a> zeigen die Bandbreite des Materials: vom transportablen Großfeldtor für den Vereinsbetrieb bis zum kompakten Minitor mit geschlossenem Hinterbau für Dauereinsatz auf Schulhöfen und Bolzplätzen.
@@ -321,7 +178,7 @@ const schema = {
       Pop-up-Tore aus Fiberglas und Polyester lassen sich in Sekunden aufbauen, wiegen nur wenige Kilogramm und sind schon für kleines Geld zu haben. Für den <a href="/garten" class="text-accent hover:text-accent-dark transition-colors font-medium">Garten</a>, den Park oder das spontane Spiel mit <a href="/kinder" class="text-accent hover:text-accent-dark transition-colors font-medium">Kindern</a> sind sie perfekt. Für den Vereinssport oder öffentliche Sportanlagen sind sie aber nicht geeignet: Sie erfüllen keine DIN-Normen, sind nicht kippsicher geprüft und halten intensiver Nutzung nicht stand.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-8">
-      <strong class="text-primary">Kurz gesagt:</strong> Kunststoff- und Fiberglas-Tore sind eine gute Wahl, wenn Leichtigkeit, niedriger Preis und schneller Auf-/Abbau im Vordergrund stehen. Für alles andere greifst du besser zu Alu oder Stahl.
+      <strong class="text-primary">Kurz gesagt:</strong> Kunststoff- und Fiberglas-Tore sind eine gute Wahl, wenn Leichtigkeit, niedriger Preis und schneller Auf-/Abbau im Vordergrund stehen. Für alles andere greifst du besser zu Aluminium.
     </p>
 
     <!-- Entscheidungsmatrix -->
@@ -380,13 +237,13 @@ const schema = {
 
     <!-- Fazit -->
     <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
-      Fazit: Aluminium gewinnt in den meisten Fällen
+      Fazit: Aluminium ist der Standard
     </h2>
     <p class="text-neutral-500 leading-relaxed mb-4">
-      Der Material-Vergleich zeigt ein klares Bild: Für die allermeisten Einsatzzwecke ist Aluminium die beste Wahl. Die Kombination aus geringem Gewicht, Korrosionsbeständigkeit und langer Lebensdauer macht Alu zum überlegenen Material – trotz des höheren Anschaffungspreises. Über die gesamte Nutzungsdauer gerechnet, ist ein Alu-Tor oft sogar günstiger als ein Stahltor, weil die Folgekosten für Pflege und Ersatz wegfallen.
+      Der Material-Vergleich zeigt ein klares Bild: Für die allermeisten Einsatzzwecke ist Aluminium die beste Wahl. Die Kombination aus geringem Gewicht, Korrosionsbeständigkeit und langer Lebensdauer macht Alu zum überlegenen Material – trotz des höheren Anschaffungspreises. Über die gesamte Nutzungsdauer gerechnet, amortisiert sich das Investment schnell durch die wegfallenden Folgekosten für Pflege und Ersatz.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-4">
-      Stahl hat seine Berechtigung als robustes Material für Bolzplatztore und den Freizeitbereich – dort, wo Vandalismusresistenz im Vordergrund steht. Und für den Garten sind Kunststoff- und Fiberglas-Tore die unkomplizierteste Lösung.
+      Für den Garten und den Freizeitspaß sind Kunststoff- und Fiberglas-Tore die unkomplizierteste Lösung – leicht, günstig und in Sekunden aufgebaut.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-8">
       Noch unsicher? In unserer <a href="/kaufberatung" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a> findest du eine Schritt-für-Schritt-Anleitung, die dir bei der Entscheidung hilft – inklusive Tipps zu Sicherheit, Normen und dem richtigen Zubehör.
