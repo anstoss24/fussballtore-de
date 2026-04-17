@@ -9,6 +9,12 @@ export default defineConfig({
     tailwind(),
     sitemap({
       i18n: { defaultLocale: 'de', locales: { de: 'de-DE' } },
+      filter: (page) =>
+        ![
+          'https://fussballtore.de/datenschutz/',
+          'https://fussballtore.de/impressum/',
+          'https://fussballtore.de/404/',
+        ].includes(page),
     }),
   ],
 });
