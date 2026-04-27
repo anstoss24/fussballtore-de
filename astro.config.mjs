@@ -15,6 +15,8 @@ export default defineConfig({
           'https://fussballtore.de/impressum/',
           'https://fussballtore.de/404/',
         ].includes(page),
+      changefreq: 'monthly',
+      lastmod: new Date(),
     }),
   ],
 });
