@@ -32,28 +32,60 @@ const faqs = [
   },
 ];
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Fußballtore für Spiel- & Trainingsbetrieb',
-  description,
-  datePublished: '2025-01-15',
-  dateModified: '2026-02-23',
-  author: {
-    '@type': 'Organization',
-    name: 'fussballtore.de',
-    url: 'https://fussballtore.de',
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Fußballtore für Spiel- & Trainingsbetrieb',
+    description,
+    datePublished: '2025-01-15',
+    dateModified: '2026-02-23',
+    author: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/verein',
+    },
   },
-  publisher: {
-    '@type': 'Organization',
-    name: 'fussballtore.de',
-    url: 'https://fussballtore.de',
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Start',
+        item: 'https://fussballtore.de/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Vereinstore',
+        item: 'https://fussballtore.de/verein',
+      },
+    ],
   },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://fussballtore.de/verein',
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   },
-};
+];
 ---
 
 <BaseLayout title={title} description={description} schema={schema}>
