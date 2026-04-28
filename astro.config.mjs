@@ -3,8 +3,11 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: 'https://fussballtore.de',
+
   integrations: [
     tailwind(),
     sitemap({
@@ -19,4 +22,6 @@ export default defineConfig({
       lastmod: new Date(),
     }),
   ],
+
+  adapter: cloudflare()
 });
