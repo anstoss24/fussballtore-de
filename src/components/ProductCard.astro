@@ -61,8 +61,10 @@ if (price) {
 ---
 
 <article class="group bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-  <!-- Product Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <!-- Product Schema (only with offers to satisfy Google rich result requirements) -->
+  {price && (
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  )}
 
   <!-- Image -->
   <div class="relative aspect-[4/3] overflow-hidden bg-neutral-50">
