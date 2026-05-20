@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import { addUtm } from '../utils/utm';
+
+const title = 'Fußballtor aufbauen — Anleitung für 3 Tor-Typen';
+const description =
+  'Fußballtor aufbauen: Schritt-für-Schritt-Anleitungen für Pop-up-Tore, Stecktore und vollverschweißte Modelle. Mit Sicherungs-Hinweisen nach DIN EN 748.';
+
+const faqs = [
+  {
+    question: 'Wie lange dauert der Aufbau eines Fußballtors?',
+    answer:
+      'Pop-up-Tore stehen in wenigen Sekunden. Stecktore mit Fiberglas- oder Aluminiumrahmen brauchen wenige Minuten. Vollverschweißte Tore werden bereits montiert geliefert — du musst sie nur aufstellen und sichern.',
+  },
+  {
+    question: 'Brauche ich Werkzeug für den Aufbau?',
+    answer:
+      'Pop-up-Tore: kein Werkzeug nötig. Stecktore: meist nur ein Hammer für die Erdanker. Vollverschweißte Tore: Wasserwaage und ggf. Beton, falls Bodenhülsen gesetzt werden müssen. Schraubendreher oder Akkuschrauber sind selten nötig.',
+  },
+  {
+    question: 'Brauche ich eine zweite Person für den Aufbau?',
+    answer:
+      'Bei Pop-up-Toren und kleinen Stecktoren reicht eine Person. Bei größeren Stecktoren ab 1,80 × 1,20 m und allen vollverschweißten Toren wird eine zweite Person empfohlen — wegen Gewicht und Standsicherheit beim Aufstellen.',
+  },
+  {
+    question: 'Muss ich das Tor gegen Umkippen sichern?',
+    answer:
+      'Ja — immer. Im Vereinsbetrieb ist Kippsicherung Pflicht nach DIN EN 748. Auch im Garten muss das Tor stehen, ohne dass Kinder es umkippen können. Erdanker auf Rasen, Sandsäcke oder Gegengewichte auf Pflaster oder Bodenhülsen für feste Installation.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-aufbau.jpg',
+    datePublished: '2026-05-20',
+    dateModified: '2026-05-20',
+    inLanguage: 'de-DE',
+    author: {
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/aufbau-anleitung/',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://fussballtore.de/' },
+      { '@type': 'ListItem', position: 2, name: 'Aufbau-Anleitung', item: 'https://fussballtore.de/aufbau-anleitung/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Pop-up-Fußballtor aufbauen',
+    description:
+      'Pop-up-Tore in wenigen Sekunden aufbauen und im Rasen sichern.',
+    supply: [
+      { '@type': 'HowToSupply', name: 'Pop-up-Tor mit Tragetasche' },
+      { '@type': 'HowToSupply', name: 'Mitgelieferte Heringe' },
+    ],
+    step: [
+      { '@type': 'HowToStep', name: 'Aus Tasche nehmen', text: 'Pop-up-Tor aus der Tragetasche holen und auf den Rasen legen.' },
+      { '@type': 'HowToStep', name: 'Aufspringen lassen', text: 'Halteband lösen — das Tor entfaltet sich von selbst in seine endgültige Form.' },
+      { '@type': 'HowToStep', name: 'Position wählen', text: 'Mindestens 2 m Auslauf hinter dem Tor einplanen. Auf Rasen aufstellen.' },
+      { '@type': 'HowToStep', name: 'Heringe eindrücken', text: 'Mitgelieferte Heringe durch die Bodenösen in den Rasen drücken — schon hält das Tor.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Stecktor aufbauen',
+    description:
+      'Stecktore aus Aluminium oder Fiberglas in wenigen Minuten aufbauen.',
+    supply: [
+      { '@type': 'HowToSupply', name: 'Stecktor-Set mit allen Einzelteilen' },
+      { '@type': 'HowToSupply', name: 'Hammer für Erdanker' },
+    ],
+    step: [
+      { '@type': 'HowToStep', name: 'Teile auslegen', text: 'Alle Pfosten, die Querlatte und das Netz auf den Rasen legen. Anleitung kurz durchsehen.' },
+      { '@type': 'HowToStep', name: 'Pfosten zusammenstecken', text: 'Pfosten ineinanderstecken bis sie einrasten. Bei zweiteiligen Pfosten Steckverbindungen prüfen.' },
+      { '@type': 'HowToStep', name: 'Querlatte einsetzen', text: 'Querlatte zwischen die beiden Pfosten stecken — meist mit Klick-Verbindung.' },
+      { '@type': 'HowToStep', name: 'Tor aufrichten', text: 'Mit einer zweiten Person das Tor aufrichten und positionieren.' },
+      { '@type': 'HowToStep', name: 'Netz anbringen', text: 'Netz über die Pfosten und die Querlatte spannen. Unten mit Heringen am Boden befestigen.' },
+      { '@type': 'HowToStep', name: 'Erdanker eindrücken', text: 'Mehrere Erdanker durch die Bodenrahmen-Ösen einhämmern. Standfestigkeit prüfen.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Vollverschweißtes Fußballtor aufbauen',
+    description:
+      'Vollverschweißte Tore werden montiert geliefert. Aufstellen und Sichern nach DIN EN 748.',
+    tool: [
+      { '@type': 'HowToTool', name: 'Wasserwaage' },
+      { '@type': 'HowToTool', name: 'Hammer' },
+    ],
+    step: [
+      { '@type': 'HowToStep', name: 'Standort vorbereiten', text: 'Ebenen Untergrund wählen. Mindestens 2 m Auslauf hinter dem Tor.' },
+      { '@type': 'HowToStep', name: 'Tor aufstellen', text: 'Mit zwei Personen das Tor an die gewünschte Position bringen. Mit Wasserwaage Lotrechtigkeit prüfen.' },
+      { '@type': 'HowToStep', name: 'Tornetz aufziehen', text: 'Netz an Pfosten und Querlatte einhängen. Untere Netzkante mit Heringen am Boden fixieren.' },
+      { '@type': 'HowToStep', name: 'Kippsicherung anbringen', text: 'Erdanker eindrücken oder Gegengewichte hinten am Rahmen anhängen.' },
+      { '@type': 'HowToStep', name: 'Standfestigkeit prüfen', text: 'An der Querlatte ziehen — das Tor darf nicht kippen oder sich heben lassen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung vor.' },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-aufbau.jpg">
+  <HeroSection
+    title="Fußballtor aufbauen"
+    subtitle="Anleitungen für Pop-up-Tore, Stecktore und vollverschweißte Modelle"
+    compact
+  />
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Aufbau-Anleitung' }]} />
+
+  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+
+    <TldrBlock
+      title="Aufbau auf einen Blick"
+      items={[
+        { label: 'Pop-up-Tor', text: 'In wenigen Sekunden, kein Werkzeug, eine Person. Heringe nicht vergessen.' },
+        { label: 'Stecktor', text: 'In wenigen Minuten, Hammer für Erdanker, idealerweise zu zweit ab 1,80 m Breite.' },
+        { label: 'Vollverschweißtes Tor', text: 'Aufstellen + Sichern meist innerhalb einer halben Stunde. Zwei Personen Pflicht. Wasserwaage hilft.' },
+        { label: 'Kippsicherung', text: 'Immer! Im Verein Pflicht nach DIN EN 748. Erdanker oder Gegengewichte.' },
+        { label: 'Bodenhülsen', text: 'Fest installierte Wettkampftore: einbetonieren und aushärten lassen.' },
+      ]}
+      speakableId="tldr-aufbau"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Ein <strong>Fußballtor aufbauen</strong> ist je nach Tor-Typ in wenigen Minuten erledigt oder dauert etwas länger — und ist immer auch eine Frage der Sicherheit. Wir zeigen dir die drei häufigsten Aufbau-Szenarien: Pop-up-Tor (Garten), Stecktor (Training, mobile Nutzung) und vollverschweißtes Tor (Vereinsbetrieb).
+    </p>
+
+    <!-- Pop-up -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Pop-up-Tor aufbauen — in wenigen Sekunden
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Pop-up-Tore sind die einfachste Variante. Sie kommen in einer Tragetasche, sind <strong>vorgespannt</strong> und entfalten sich von selbst. Perfekt für Garten, Park oder spontane Trainingsspiele.
+    </p>
+
+    <div class="bg-neutral-50 rounded-xl p-6 my-6">
+      <h3 class="font-heading text-lg font-bold text-primary mb-4">Schritt-für-Schritt</h3>
+      <ol class="space-y-3 text-neutral-700 list-decimal list-inside">
+        <li><strong>Aus Tasche nehmen.</strong> Pop-up-Tor aus der Tragetasche holen und auf den Rasen legen.</li>
+        <li><strong>Aufspringen lassen.</strong> Halteband lösen — das Tor entfaltet sich von selbst.</li>
+        <li><strong>Position wählen.</strong> Mindestens 2 m Auslauf hinter dem Tor, 1 m Abstand zu Zaun oder Möbeln.</li>
+        <li><strong>Heringe eindrücken.</strong> 3–4 Heringe durch die Bodenösen in den Rasen drücken.</li>
+      </ol>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      <strong>Wichtig:</strong> Pop-up-Tore sind leicht und können bei Sturm wegfliegen. Bei starkem Wind besser einräumen. Mehr Tipps für den Garten findest du im <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Garten-Ratgeber</a>.
+    </p>
+
+    <div class="my-10">
+      <ProductCard
+        name="ELF Sports Pop-up Goal – 2er Set inkl. Transporttasche"
+        url="https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/"
+        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/19/secondPreview/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg"
+        features={['2er Set', 'Pop-up in Sekunden', 'Inkl. Tasche', '3 Erdanker']}
+        category="Pop-up-Tor"
+        campaign="aufbau-anleitung"
+      />
+    </div>
+
+    <!-- Stecktor -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Stecktor aufbauen — in wenigen Minuten
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Stecktore haben einzelne Bauteile, die per Steck- oder Klickverbindung zusammengefügt werden. Häufige Modelle wie das QuickPlay Kickster sind in wenigen Minuten aufgebaut, größere Tore brauchen entsprechend länger. Wir empfehlen ab 1,80 m Breite eine zweite Person.
+    </p>
+
+    <div class="bg-neutral-50 rounded-xl p-6 my-6">
+      <h3 class="font-heading text-lg font-bold text-primary mb-4">Schritt-für-Schritt</h3>
+      <ol class="space-y-3 text-neutral-700 list-decimal list-inside">
+        <li><strong>Teile auslegen.</strong> Alle Pfosten, die Querlatte und das Netz auf den Rasen legen. Anleitung kurz durchsehen.</li>
+        <li><strong>Pfosten zusammenstecken.</strong> Pfosten ineinanderstecken bis sie einrasten.</li>
+        <li><strong>Querlatte einsetzen.</strong> Querlatte zwischen die beiden Pfosten stecken (Klick-Verbindung).</li>
+        <li><strong>Tor aufrichten.</strong> Mit einer zweiten Person aufrichten und positionieren.</li>
+        <li><strong>Netz anbringen.</strong> Netz über Pfosten und Querlatte spannen. Unten am Boden befestigen.</li>
+        <li><strong>Erdanker eindrücken.</strong> Mehrere Erdanker durch die Bodenrahmen-Ösen einhämmern.</li>
+      </ol>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      <strong>Praxis-Tipp:</strong> Sortiere alle Teile vor dem Aufbau. Verbindungsstellen reinigen, sonst gehen sie schwer zusammen.
+    </p>
+
+    <div class="my-10">
+      <ProductCard
+        name="QuickPlay Kickster Elite 1,50 x 1,00 m"
+        url="https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/"
+        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
+        features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', '4 Erdanker']}
+        category="Stecktor"
+        campaign="aufbau-anleitung"
+      />
+    </div>
+
+    <!-- Vollverschweißt -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Vollverschweißtes Vereinstor aufbauen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Vollverschweißte Tore (Großfeld, Jugend, Kleinfeld) kommen <strong>fertig montiert</strong>. Du musst sie nur an die richtige Stelle bringen, das Netz anbringen und die Kippsicherung herstellen. Das geht meist innerhalb einer halben Stunde — mit <strong>zwei Personen ist Pflicht</strong>, weil die Tore deutlich schwerer als Stecktore sind.
+    </p>
+
+    <div class="bg-neutral-50 rounded-xl p-6 my-6">
+      <h3 class="font-heading text-lg font-bold text-primary mb-4">Schritt-für-Schritt</h3>
+      <ol class="space-y-3 text-neutral-700 list-decimal list-inside">
+        <li><strong>Standort vorbereiten.</strong> Ebenen Untergrund wählen, mindestens 2 m Auslauf hinter dem Tor.</li>
+        <li><strong>Tor aufstellen.</strong> Mit zwei Personen positionieren. Mit Wasserwaage Lotrechtigkeit prüfen.</li>
+        <li><strong>Netz aufziehen.</strong> Netz an Pfosten und Querlatte einhängen. Untere Netzkante mit Heringen am Boden fixieren.</li>
+        <li><strong>Kippsicherung anbringen.</strong> Erdanker eindrücken oder Gegengewichte hinten am Rahmen anhängen.</li>
+        <li><strong>Standfestigkeit prüfen.</strong> An der Querlatte ziehen — das Tor darf nicht kippen oder sich heben lassen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung vor.</li>
+      </ol>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für den Wettkampfbetrieb werden Großfeldtore meist in <strong>Bodenhülsen</strong> einbetoniert. Das ist aufwendiger, dafür maximal stabil und diebstahlsicher. Die Schritt-für-Schritt-Anleitung zum Setzen von Bodenhülsen findest du im <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereins-Ratgeber</a>.
+    </p>
+
+    <!-- Kippsicherung Universal -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Kippsicherung: Pflicht bei jedem Tor
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im organisierten Spielbetrieb ist das gesetzlich vorgeschrieben (DIN EN 748), im Garten eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Untergrund</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Sicherung</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Hinweis</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Rasen</td>
+            <td class="px-4 py-3">Erdanker / Heringe</td>
+            <td class="px-4 py-3">Einfachste Variante, schnell montiert</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Pflaster / Beton</td>
+            <td class="px-4 py-3">Gegengewichte / Sandsäcke</td>
+            <td class="px-4 py-3">Pro Tor mindestens 30–50 kg Gewicht</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Wettkampfplatz</td>
+            <td class="px-4 py-3">Bodenhülsen (einbetoniert)</td>
+            <td class="px-4 py-3">Maximale Stabilität, diebstahlsicher</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      <strong>Test:</strong> An der Querlatte ziehen. Wenn das Tor wackelt oder sich heben lässt, muss die Sicherung verstärkt werden. Im Vereinsbetrieb zusätzlich jährliche Sicherheitsprüfung durch eine sachkundige Person empfohlen.
+    </p>
+
+    <!-- Häufige Fehler -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Die häufigsten Aufbau-Fehler
+    </h2>
+    <ul class="space-y-3 text-neutral-600 leading-relaxed mb-6">
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-warm mt-2.5 flex-shrink-0"></span>
+        <span><strong>Kippsicherung vergessen.</strong> Der häufigste Fehler im Garten. Auch leichte Pop-up-Tore können bei Wind oder beim Klettern kippen.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-warm mt-2.5 flex-shrink-0"></span>
+        <span><strong>Zu wenig Auslauf.</strong> Hinter dem Tor brauchst du mindestens 2 m freie Fläche. Sonst landet der Ball regelmäßig im Beet oder im Zaun.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-warm mt-2.5 flex-shrink-0"></span>
+        <span><strong>Tor schief aufgestellt.</strong> Ohne Wasserwaage stehen die Pfosten oft schräg. Bei vollverschweißten Toren kann sich der Rahmen dauerhaft verziehen.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-warm mt-2.5 flex-shrink-0"></span>
+        <span><strong>Allein gearbeitet.</strong> Bei Toren ab 1,80 m Breite ist eine zweite Person nötig — alleiniges Aufrichten ist gefährlich.</span>
+      </li>
+    </ul>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Fußballtore aufzubauen ist je nach Modell in Minuten erledigt. Die wirklich wichtige Phase ist nicht der Aufbau, sondern die <strong>Kippsicherung</strong>. Hier wird im Verein, in Schulen und im Garten oft geschludert — und das ist die häufigste Unfallursache.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Wenn dir das Tor zu schwer ist oder du unsicher bist: zieh eine zweite Person hinzu. Wenn die Sicherung wackelt: nachjustieren, bevor das Tor benutzt wird. Mehr Details zur Kippsicherung findest du in der <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a> und im <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereins-Ratgeber</a>.
+    </p>
+
+    <RelatedContent
+      items={[
+        { href: '/kaufberatung/', title: 'Kaufberatung', subtitle: 'Vor dem Aufbau richtig wählen' },
+        { href: '/verein/', title: 'Vereinstore', subtitle: 'Bodenhülsen setzen' },
+        { href: '/garten/', title: 'Gartentore', subtitle: 'Pop-up und Stecktor' },
+        { href: '/tornetz/', title: 'Tornetz', subtitle: 'Richtig spannen und pflegen' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Aufbau" />
+    </div>
+  </div>
+</BaseLayout>

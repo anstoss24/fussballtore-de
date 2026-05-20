@@ -1,0 +1,71 @@
+---
+interface TldrItem {
+  label?: string;
+  text: string;
+}
+
+interface Props {
+  title?: string;
+  items: TldrItem[];
+  /** Falls true, wird Speakable-Schema für Voice/AI ausgegeben. */
+  speakable?: boolean;
+  speakableId?: string;
+}
+
+const {
+  title = 'Auf einen Blick',
+  items,
+  speakable = true,
+  speakableId = 'tldr',
+} = Astro.props;
+
+const speakableSchema = speakable
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: [`#${speakableId}`],
+      },
+    }
+  : null;
+---
+
+<aside
+  id={speakableId}
+  class="my-8 rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-accent/10 p-6 md:p-7"
+  aria-label={title}
+>
+  <div class="flex items-center gap-2 mb-4">
+    <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-accent text-white text-xs font-bold">
+      i
+    </span>
+    <h2 class="font-heading text-base md:text-lg font-bold text-primary m-0">
+      {title}
+    </h2>
+  </div>
+  <ul class="space-y-2.5 m-0 list-none p-0">
+    {items.map((item) => (
+      <li class="flex items-start gap-3 text-neutral-700 leading-relaxed">
+        <svg
+          class="w-4 h-4 mt-1.5 text-accent flex-shrink-0"
+          fill="currentColor"
+          viewBox="0 0 8 8"
+          aria-hidden="true"
+        >
+          <circle cx="4" cy="4" r="3" />
+        </svg>
+        <span>
+          {item.label && (
+            <strong class="text-primary font-semibold">{item.label}:</strong>
+          )}
+          {item.label ? ' ' : ''}{item.text}
+        </span>
+      </li>
+    ))}
+  </ul>
+</aside>
+
+{speakableSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(speakableSchema)} />
+)}

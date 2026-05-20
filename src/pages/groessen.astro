@@ -4,9 +4,12 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import TorgroessenDiagramm from '../components/TorgroessenDiagramm.astro';
+import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtor Größen & Maße – Alle Torgrößen im Überblick';
+const title = 'Fußballtor Größen & Maße – Alle Tor-Maße';
 const description = 'Alle Fußballtor-Größen und Maße: Von Großfeld (7,32 x 2,44 m) über Jugendtore (5 x 2 m) bis Kleinfeld (3 x 2 m). Offizielle Abmessungen nach DFB und FIFA.';
 
 const faqs = [
@@ -38,10 +41,12 @@ const schema = [
     '@type': 'Article',
     headline: title,
     description,
+    image: 'https://fussballtore.de/og-groessen.jpg',
     author: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
     },
     publisher: {
       '@type': 'Organization',
@@ -50,10 +55,10 @@ const schema = [
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://fussballtore.de/groessen',
+      '@id': 'https://fussballtore.de/groessen/',
     },
     datePublished: '2025-06-01',
-    dateModified: '2026-02-23',
+    dateModified: '2026-05-20',
     inLanguage: 'de-DE',
   },
   {
@@ -70,14 +75,14 @@ const schema = [
         '@type': 'ListItem',
         position: 2,
         name: 'Größen & Maße',
-        item: 'https://fussballtore.de/groessen',
+        item: 'https://fussballtore.de/groessen/',
       },
     ],
   },
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-groessen.jpg">
   <HeroSection
     title="Fußballtor Größen & Maße"
     subtitle="Alle Torgrößen im Überblick – von Mini bis Großfeld"
@@ -88,6 +93,18 @@ const schema = [
   <article class="py-12 md:py-16">
     <div class="container mx-auto max-w-4xl">
 
+      <TldrBlock
+        title="Alle Fußballtor-Maße auf einen Blick"
+        items={[
+          { label: 'Großfeldtor', text: '7,32 × 2,44 m (Tortiefe 1,50–2,00 m) — Herren, Frauen und C- bis A-Jugend.' },
+          { label: 'Jugendtor', text: '5,00 × 2,00 m — D-Jugend (U12/U13), 9-gegen-9.' },
+          { label: 'Kleinfeldtor', text: '3,00 × 2,00 m — F-Jugend und Bolzplatz. E-Jugend spielt mit Kleinfeldtoren oder Minitoren.' },
+          { label: 'Minitor', text: '1,20 × 0,80 m bis 1,80 × 1,20 m — Bambini, Funino, Garten.' },
+          { label: 'Herkunft der Maße', text: 'Die 7,32 × 2,44 m stammen aus dem englischen Maßsystem: 8 Yards Breite × 8 Fuß Höhe.' },
+        ]}
+        speakableId="tldr-groessen"
+      />
+
       <!-- Einleitung -->
       <p class="text-neutral-600 leading-relaxed mb-4 text-lg">
         <strong>Fußballtor Größen</strong> unterscheiden sich je nach Spielklasse, Altersgruppe und Einsatzzweck erheblich. Ob du für deinen Verein ein normgerechtes Wettkampftor suchst, die Jugendabteilung mit passenden Toren ausstatten willst oder ein Tor für den Garten brauchst – die richtige Größe zu kennen, ist der erste Schritt zur richtigen Entscheidung.
@@ -95,6 +112,9 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-4">
         In diesem Ratgeber findest du alle offiziellen <strong>Fußballtor Maße</strong> nach DFB- und FIFA-Vorgaben, eine klare Zuordnung von Altersklassen zu Torgrößen und konkrete Produktempfehlungen für jede Kategorie. So sparst du dir langes Recherchieren und weißt sofort, welches Tor du brauchst.
       </p>
+
+      <!-- Maßstabsgetreues Diagramm -->
+      <TorgroessenDiagramm />
 
       <!-- Übersichtstabelle -->
       <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
@@ -172,7 +192,7 @@ const schema = [
         Großfeldtore bestehen in der Regel aus Aluminium-Profilen und wiegen je nach Ausführung zwischen 40 und 100 kg pro Tor. Für den Vereinsbetrieb müssen sie der <strong>DIN EN 748</strong> entsprechen und TÜV-geprüft sein. Besonders wichtig: die Kippsicherung. Jedes Großfeldtor muss so gesichert sein, dass es nicht umfallen kann – sei es durch Bodenverankerung oder Gegengewichte.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Die Tortiefe liegt bei Großfeldtoren üblicherweise zwischen <strong>1,50 und 2,00 m</strong>. Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor sofort wieder herausrollt. Für einen detaillierten Materialvergleich schau dir unseren <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a> an.
+        Die Tortiefe liegt bei Großfeldtoren üblicherweise zwischen <strong>1,50 und 2,00 m</strong>. Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor sofort wieder herausrollt. Für einen detaillierten Materialvergleich schau dir unseren <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a> an.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
@@ -187,7 +207,7 @@ const schema = [
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Dieses Bundesliga-Modell ist ein Profi-Großfeldtor mit <strong>freier Netzaufhängung</strong> und stabilem Alu-Ovalprofil – TÜV-geprüft und individuell konfigurierbar. Ideal für Vereine, die auf Bundesliga-Qualität setzen. Mehr zu Vereinstoren findest du auf unserer Seite <a href="/verein" class="text-accent hover:text-accent-dark underline underline-offset-2">Spiel- & Trainingsbetrieb</a>.
+        Dieses Bundesliga-Modell ist ein Profi-Großfeldtor mit <strong>freier Netzaufhängung</strong> und stabilem Alu-Ovalprofil – TÜV-geprüft und individuell konfigurierbar. Ideal für Vereine, die auf Bundesliga-Qualität setzen. Mehr zu Vereinstoren findest du auf unserer Seite <a href="/verein/" class="text-accent hover:text-accent-dark underline underline-offset-2">Spiel- & Trainingsbetrieb</a>.
       </p>
 
       <!-- Jugendtor -->
@@ -250,10 +270,10 @@ const schema = [
         Minitore und Funino-Tore haben <strong>keine einheitlich vorgeschriebene Größe</strong>. Im Trainingsalltag und im Funino-Spielbetrieb haben sich Maße zwischen 1,20 x 0,80 m und 1,80 x 1,20 m etabliert. Diese Tore eignen sich hervorragend für das Techniktraining, Kleinfeld-Turniere und den Spaß im eigenen Garten.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Funino – das 3-gegen-3-Spielformat ohne Torwart – gewinnt im deutschen Kinderfußball immer mehr an Bedeutung. Der DFB empfiehlt Funino ausdrücklich als Einstiegsformat für die jüngsten Altersklassen. Die verwendeten Minitore sind dabei bewusst klein gehalten, damit Tore nur durch präzises Spiel fallen.
+        Funino – das 3-gegen-3-Spielformat ohne Torwart – gewinnt im deutschen Kinderfußball immer mehr an Bedeutung. Der DFB empfiehlt Funino ausdrücklich als Einstiegsformat für die jüngsten Altersklassen. Die verwendeten Minitore sind dabei bewusst klein gehalten, damit Tore nur durch präzises Spiel fallen. Alle Details inklusive Modell-Empfehlungen findest du in unserem <a href="/funino/" class="text-accent hover:text-accent-dark underline underline-offset-2">Funino-Ratgeber</a>.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Für den Garten sind Minitore ebenfalls die erste Wahl. Leichte Pop-up-Tore und Stecktore lassen sich in Sekunden aufbauen und platzsparend verstauen. Mehr dazu findest du in unserem Ratgeber <a href="/garten" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für den Garten</a> und <a href="/kinder" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für Kinder</a>.
+        Für den Garten sind Minitore ebenfalls die erste Wahl. Leichte Pop-up-Tore und Stecktore lassen sich in Sekunden aufbauen und platzsparend verstauen. Mehr dazu findest du in unserem Ratgeber <a href="/garten/" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für den Garten</a> und <a href="/kinder/" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für Kinder</a>.
       </p>
 
       <!-- Welche Größe für welches Alter -->
@@ -343,9 +363,9 @@ const schema = [
       <ul class="list-disc list-inside space-y-2 text-neutral-600 leading-relaxed mb-4 ml-2">
         <li><strong>Platzverhältnisse:</strong> Miss den verfügbaren Platz vor dem Kauf. Ein Großfeldtor braucht mit Torraum und Sicherheitszone deutlich mehr Fläche als nur 7,32 x 2,44 m.</li>
         <li><strong>Mehrfachnutzung:</strong> Wenn verschiedene Altersklassen dasselbe Feld nutzen, sind mobile Tore mit Rollen die beste Lösung. So kannst du schnell zwischen Jugendtoren und Großfeldtoren wechseln.</li>
-        <li><strong>Material:</strong> Für dauerhafte Installation empfiehlt sich Aluminium. Für den Garten genügen oft leichtere Materialien wie Kunststoff oder Fiberglas. Alle Details dazu findest du im <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a>.</li>
+        <li><strong>Material:</strong> Für dauerhafte Installation empfiehlt sich Aluminium. Für den Garten genügen oft leichtere Materialien wie Kunststoff oder Fiberglas. Alle Details dazu findest du im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a>.</li>
         <li><strong>Normen:</strong> Für den offiziellen Spielbetrieb muss das Tor der DIN EN 748 entsprechen und TÜV-geprüft sein. Im privaten Bereich ist das keine Pflicht, aber ein Qualitätsmerkmal.</li>
-        <li><strong>Budget:</strong> Die Preisspanne ist groß – von günstigen Pop-up-Toren für den Garten bis hin zu robusten Bolzplatztoren in Profi-Qualität. Eine ausführliche Hilfe zur Entscheidung findest du in unserer <a href="/kaufberatung" class="text-accent hover:text-accent-dark underline underline-offset-2">Kaufberatung</a>.</li>
+        <li><strong>Budget:</strong> Die Preisspanne ist groß – von günstigen Pop-up-Toren für den Garten bis hin zu robusten Bolzplatztoren in Profi-Qualität. Eine ausführliche Hilfe zur Entscheidung findest du in unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark underline underline-offset-2">Kaufberatung</a>.</li>
       </ul>
 
       <!-- Fazit -->
@@ -361,6 +381,15 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-4">
         Egal für welche Größe du dich entscheidest – achte auf Qualität und Sicherheit. TÜV-geprüfte Tore von <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'groessen')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">spezialisierten Fachhändlern</a> bieten dir die Gewissheit, dass du ein normgerechtes und sicheres Tor bekommst.
       </p>
+
+      <RelatedContent
+        items={[
+          { href: '/kaufberatung/', title: 'Kaufberatung', subtitle: 'Schritt für Schritt zum richtigen Tor' },
+          { href: '/funino/', title: 'Funino-Tore', subtitle: 'Maße für das 3-gegen-3-Format' },
+          { href: '/verein/', title: 'Vereinstore', subtitle: 'Wettkampftore nach DIN EN 748' },
+          { href: '/material-vergleich/', title: 'Material', subtitle: 'Alu vs. Kunststoff' },
+        ]}
+      />
 
     </div>
   </article>

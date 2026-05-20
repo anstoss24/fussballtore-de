@@ -51,6 +51,10 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogIm
     <meta property="og:image" content={absoluteOgImage} />
     <meta property="og:locale" content="de_DE" />
 
+    <!-- Preconnect to Plenty-CDN (für Produktbilder) -->
+    <link rel="preconnect" href="https://cdn02.plentymarkets.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn02.plentymarkets.com" />
+
     <!-- Font Preloads -->
     <link rel="preload" href="/fonts/PlusJakartaSans-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/DMSans-Variable.woff2" as="font" type="font/woff2" crossorigin />

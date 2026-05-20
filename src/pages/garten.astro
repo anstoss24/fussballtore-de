@@ -4,9 +4,11 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtor für den Garten – Ratgeber & Empfehlungen';
+const title = 'Fußballtor für den Garten – Ratgeber';
 const description = 'Das beste Fußballtor für den Garten: Pop-up-Tore, Stecktore und Minitore im Vergleich. Für Kinder und Erwachsene – wetterfest, sicher und schnell aufgebaut.';
 
 const faqs = [
@@ -38,13 +40,15 @@ const schema = [
     '@type': 'Article',
     headline: title,
     description,
+    image: 'https://fussballtore.de/og-garten.jpg',
     datePublished: '2025-01-15',
-    dateModified: '2026-02-23',
+    dateModified: '2026-05-20',
     inLanguage: 'de-DE',
     author: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
     },
     publisher: {
       '@type': 'Organization',
@@ -53,7 +57,7 @@ const schema = [
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://fussballtore.de/garten',
+      '@id': 'https://fussballtore.de/garten/',
     },
   },
   {
@@ -70,14 +74,52 @@ const schema = [
         '@type': 'ListItem',
         position: 2,
         name: 'Gartentore',
-        item: 'https://fussballtore.de/garten',
+        item: 'https://fussballtore.de/garten/',
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Pop-up-Fußballtor im Garten aufbauen',
+    description:
+      'Pop-up-Tore lassen sich in wenigen Sekunden aufbauen und im Rasen sichern. So geht es Schritt für Schritt.',
+    supply: [
+      { '@type': 'HowToSupply', name: 'Pop-up-Tor mit Tragetasche' },
+      { '@type': 'HowToSupply', name: 'Mitgelieferte Heringe oder Erdanker' },
+    ],
+    step: [
+      {
+        '@type': 'HowToStep',
+        name: 'Tor aus der Tasche nehmen',
+        text: 'Pop-up-Tor aus der Tragetasche holen und an einer freien Stelle im Garten ablegen.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Aufspringen lassen',
+        text: 'Halteband lösen — das Tor springt selbstständig in seine endgültige Form. Bei zweiteiligen Modellen vorher leicht auseinanderziehen.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Standort wählen',
+        text: 'Tor auf den Rasen stellen. Mindestens 2 m Auslauf hinter dem Tor und 1 m Abstand zu Zäunen oder Möbeln einplanen.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Heringe eindrücken',
+        text: 'Mitgelieferte Heringe durch die Ösen am Bodenrahmen in den Rasen drücken — meist genügen 3 bis 4 Stück.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Bei Wind oder Sturm abbauen',
+        text: 'Pop-up-Tore sind leicht und können bei starkem Wind wegfliegen. Bei Sturm wieder zusammenfalten und einräumen.',
       },
     ],
   },
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-garten.jpg">
   <HeroSection
     title="Fußballtore für den Garten"
     subtitle="Pop-up, Steck- und Minitore für zu Hause – wetterfest, sicher und in Sekunden aufgebaut"
@@ -86,6 +128,19 @@ const schema = [
   <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Gartentore' }]} />
 
   <article class="container mx-auto py-12 md:py-16 max-w-4xl">
+
+    <TldrBlock
+      title="Das richtige Gartentor — schnell entschieden"
+      items={[
+        { label: 'Kinder 3–6 Jahre', text: '1,20 × 0,80 m — Pop-up-Tor oder kleines Steckziel. Weich, leicht, sicher.' },
+        { label: 'Kinder 6–10 Jahre', text: '1,80 × 1,20 m — Stecktor mit Fiberglas- oder Metallrahmen.' },
+        { label: 'Jugendliche / Erwachsene', text: '2,40 × 1,60 m oder größer — bis hin zu 3 × 2 m als Dauerinstallation.' },
+        { label: 'Auslauf einplanen', text: 'Mindestens 2 m hinter dem Tor, 3 m davor, 1 m seitlich zu Zaun oder Beet.' },
+        { label: 'Sicherheit', text: 'Erdanker im Rasen, Sandsäcke auf Pflaster. Kinder dürfen nicht am Tor hängen oder klettern.' },
+      ]}
+      speakableId="tldr-garten"
+    />
+
     <!-- Einleitung -->
     <div class="prose prose-lg max-w-none">
       <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-6">
@@ -149,7 +204,7 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed">
         Für die meisten Familien mit Garten ist ein Pop-up-Tor oder ein Minitor die beste Wahl. Beide lassen sich
         schnell auf- und abbauen und passen auch in kleinere Gärten. Wenn du eine detaillierte Entscheidungshilfe
-        suchst, schau dir unsere <a href="/kaufberatung" class="text-accent hover:text-accent-dark font-medium transition-colors">Kaufberatung</a> an.
+        suchst, schau dir unsere <a href="/kaufberatung/" class="text-accent hover:text-accent-dark font-medium transition-colors">Kaufberatung</a> an.
       </p>
     </section>
 
@@ -182,7 +237,7 @@ const schema = [
           </li>
           <li class="flex items-start gap-2">
             <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-            <span>Ideal für <a href="/kinder" class="text-accent hover:text-accent-dark font-medium transition-colors">kleinere Kinder</a> ab 3 Jahren</span>
+            <span>Ideal für <a href="/kinder/" class="text-accent hover:text-accent-dark font-medium transition-colors">kleinere Kinder</a> ab 3 Jahren</span>
           </li>
         </ul>
       </div>
@@ -231,10 +286,10 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-6">
         Ein großer Vorteil gegenüber Pop-up-Toren: Die Netze sind oft straffer gespannt, was beim Torschuss ein
         deutlich besseres Spielgefühl ergibt. Außerdem eignen sich Minitore auch hervorragend für
-        Trainingsübungen wie Funino oder Passübungen – nicht nur im Garten, sondern auch auf dem
+        Trainingsübungen wie <a href="/funino/" class="text-accent hover:text-accent-dark font-medium transition-colors">Funino</a> oder Passübungen – nicht nur im Garten, sondern auch auf dem
         Vereinsgelände. Mehr zu den
-        <a href="/groessen" class="text-accent hover:text-accent-dark font-medium transition-colors">verschiedenen Torgrößen</a>
-        findest du in unserer Größenübersicht.
+        <a href="/groessen/" class="text-accent hover:text-accent-dark font-medium transition-colors">verschiedenen Torgrößen</a>
+        findest du in unserer Größenübersicht. Eine Schritt-für-Schritt-Aufbau-Anleitung gibts in unserer <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark font-medium transition-colors">Aufbau-Anleitung</a>.
       </p>
 
       <!-- Produkte: QuickPlay 1,50 m + Alu Minitor Lightweight -->
@@ -313,7 +368,7 @@ const schema = [
         <strong>Faustregel:</strong> Plane mindestens 2 Meter Auslauf hinter dem Tor und 3 Meter davor
         ein. Seitlich sollte jeweils 1 Meter Abstand zu Zäunen, Beeten oder Gebäuden bleiben.
         Speziell für Kinder findest du in unserem
-        <a href="/kinder" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>
+        <a href="/kinder/" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>
         noch mehr altersgerechte Tipps.
       </p>
     </section>
@@ -343,7 +398,7 @@ const schema = [
             Das Premiumaterial: Leicht, rostfrei und extrem haltbar. Kommt vor allem bei
             Vereinstoren zum Einsatz, ist aber für den Garten meistens überdimensioniert – und
             entsprechend teurer. Mehr dazu in unserem
-            <a href="/material-vergleich" class="text-accent hover:text-accent-dark font-medium transition-colors">Material-Vergleich</a>.
+            <a href="/material-vergleich/" class="text-accent hover:text-accent-dark font-medium transition-colors">Material-Vergleich</a>.
           </p>
         </div>
       </div>
@@ -408,7 +463,7 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed">
         Bei Fußballtoren für Kinder im Garten gilt zusätzlich: Lieber eine Nummer kleiner wählen,
         als ein zu großes Tor aufzubauen, das bei Wind umkippen kann. Mehr dazu findest du in
-        unserem <a href="/kinder" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>.
+        unserem <a href="/kinder/" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>.
       </p>
     </section>
 
@@ -454,40 +509,14 @@ const schema = [
       </div>
     </section>
 
-    <!-- Weiterführende Links -->
-    <nav class="mt-12 md:mt-16 border-t border-neutral-200 pt-8">
-      <h2 class="font-heading text-lg font-bold text-primary mb-4">Weiterführende Ratgeber</h2>
-      <div class="grid gap-3 sm:grid-cols-2">
-        <a href="/kaufberatung" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
-          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          <div>
-            <span class="font-heading font-bold text-primary text-sm">Kaufberatung</span>
-            <p class="text-neutral-500 text-xs">Worauf du beim Kauf achten musst</p>
-          </div>
-        </a>
-        <a href="/kinder" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
-          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          <div>
-            <span class="font-heading font-bold text-primary text-sm">Kindertore</span>
-            <p class="text-neutral-500 text-xs">Sichere Tore für jedes Alter</p>
-          </div>
-        </a>
-        <a href="/groessen" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
-          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          <div>
-            <span class="font-heading font-bold text-primary text-sm">Größen & Maße</span>
-            <p class="text-neutral-500 text-xs">Alle Torgrößen im Überblick</p>
-          </div>
-        </a>
-        <a href="/material-vergleich" class="flex items-center gap-3 p-4 rounded-lg border border-neutral-200 hover:border-accent/30 hover:bg-accent/5 transition-all no-underline group">
-          <svg class="w-5 h-5 text-neutral-400 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-          <div>
-            <span class="font-heading font-bold text-primary text-sm">Material-Vergleich</span>
-            <p class="text-neutral-500 text-xs">Aluminium vs. Kunststoff</p>
-          </div>
-        </a>
-      </div>
-    </nav>
+    <RelatedContent
+      items={[
+        { href: '/kaufberatung/', title: 'Kaufberatung', subtitle: 'Worauf du beim Kauf achten musst' },
+        { href: '/kinder/', title: 'Kindertore', subtitle: 'Sichere Tore für jedes Alter' },
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Torgrößen im Überblick' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Pop-up, Steck, vollverschweißt' },
+      ]}
+    />
   </article>
 
   <!-- FAQ Section -->

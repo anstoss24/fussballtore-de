@@ -4,9 +4,11 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtor kaufen – Die komplette Kaufberatung 2026';
+const title = 'Fußballtor kaufen – Die Kaufberatung 2026';
 const description = 'Fußballtor kaufen: Worauf du bei Größe, Material, Sicherheit und Preis achten musst. Unser Ratgeber hilft dir, das richtige Tor zu finden.';
 
 const products = {
@@ -55,10 +57,12 @@ const schema = [
     '@type': 'Article',
     headline: title,
     description: description,
+    image: 'https://fussballtore.de/og-kaufberatung.jpg',
     author: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
     },
     publisher: {
       '@type': 'Organization',
@@ -66,11 +70,11 @@ const schema = [
       url: 'https://fussballtore.de',
     },
     datePublished: '2025-06-01',
-    dateModified: '2026-02-23',
+    dateModified: '2026-05-20',
     inLanguage: 'de-DE',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://fussballtore.de/kaufberatung',
+      '@id': 'https://fussballtore.de/kaufberatung/',
     },
   },
   {
@@ -87,14 +91,57 @@ const schema = [
         '@type': 'ListItem',
         position: 2,
         name: 'Kaufberatung',
-        item: 'https://fussballtore.de/kaufberatung',
+        item: 'https://fussballtore.de/kaufberatung/',
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Fußballtor gegen Umkippen sichern',
+    description:
+      'Schritt-für-Schritt-Anleitung, wie du ein freistehendes Fußballtor normgerecht gegen Umkippen sicherst – nach DIN EN 748.',
+    supply: [
+      { '@type': 'HowToSupply', name: 'Erdanker oder Heringe' },
+      { '@type': 'HowToSupply', name: 'Alternativ: Gegengewichte oder Sandsäcke' },
+      { '@type': 'HowToSupply', name: 'Alternativ: Bodenhülsen für feste Installation' },
+    ],
+    tool: [
+      { '@type': 'HowToTool', name: 'Hammer (für Erdanker)' },
+      { '@type': 'HowToTool', name: 'Wasserwaage' },
+    ],
+    step: [
+      {
+        '@type': 'HowToStep',
+        name: 'Untergrund prüfen',
+        text: 'Rasen ist ideal: weich bei Stürzen, gute Verankerung. Auf Pflaster oder Beton brauchst du Gegengewichte oder Bodenhülsen.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Tor mittig aufstellen',
+        text: 'Stelle das Tor an die gewünschte Position. Achte auf mindestens 2 m Auslauf hinter dem Tor und einen ebenen Untergrund.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Erdanker eindrehen oder Gewichte platzieren',
+        text: 'Erdanker im 45-Grad-Winkel durch die Bodenrahmen-Ösen in den Rasen drücken oder einhämmern. Bei mobilen Toren: Gegengewichte hinten an den Rahmen hängen.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Standfestigkeit prüfen',
+        text: 'An der Querlatte ziehen — das Tor darf sich nicht heben lassen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung vor.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Regelmäßig kontrollieren',
+        text: 'Vor jeder Nutzung Sichtprüfung. Im Vereinsbetrieb zusätzlich jährliche Prüfung durch eine sachkundige Person.',
       },
     ],
   },
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-kaufberatung.jpg">
   <HeroSection
     title="Fußballtor kaufen – Die komplette Kaufberatung"
     subtitle="Größe, Material, Sicherheit, Preis: Alles, was du vor dem Kauf wissen musst."
@@ -104,6 +151,18 @@ const schema = [
   <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Kaufberatung' }]} />
 
   <article class="container mx-auto max-w-4xl py-8 md:py-12">
+
+    <TldrBlock
+      title="Fußballtor kaufen — die wichtigsten Punkte"
+      items={[
+        { label: 'Größe', text: 'Großfeld 7,32 × 2,44 m (Herren, ab C-Jugend), Jugendtor 5 × 2 m (D-Jugend), Kleinfeld 3 × 2 m (F-Jugend, Bolzplatz), Minitor ab 1,20 × 0,80 m (Garten, Funino).' },
+        { label: 'Material', text: 'Aluminium ist Standard im Verein (rostfrei, 15–25 Jahre). Kunststoff/Fiberglas nur für Garten-Minitore.' },
+        { label: 'Sicherheit', text: 'Im Verein Pflicht: DIN EN 748 + TÜV. Jedes freistehende Tor muss gegen Umkippen gesichert sein (Erdanker, Gegengewicht oder Bodenhülse).' },
+        { label: 'Preis', text: 'Pop-up-Tor günstig, Jugend- und Großfeldtor mehrere hundert bis vierstellig. Tornetz und Kippsicherung extra einplanen.' },
+        { label: 'Bauart', text: 'Fest installiert (Bodenhülsen) für Wettkampf, mobil mit Rollen für Training, faltbar für Garten/Urlaub.' },
+      ]}
+      speakableId="tldr-kaufberatung"
+    />
 
     <!-- Einleitung -->
     <p class="text-neutral-600 leading-relaxed mb-4 text-lg">
@@ -167,7 +226,7 @@ const schema = [
     </div>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Eine ausführliche Aufschlüsselung aller Maße nach Altersklasse findest du in unserer <a href="/groessen" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>. Dort erklären wir auch, warum die DFB-Empfehlungen für Jugendtore seit 2024 angepasst wurden.
+      Eine ausführliche Aufschlüsselung aller Maße nach Altersklasse findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>. Dort erklären wir auch, warum die DFB-Empfehlungen für Jugendtore seit 2024 angepasst wurden.
     </p>
 
     <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
@@ -176,9 +235,9 @@ const schema = [
       </h3>
       <ul class="text-neutral-600 leading-relaxed space-y-2">
         <li><strong>Funino / Bambini (G-Jugend):</strong> 1,20 x 0,80 m oder 1,80 x 1,20 m – die offiziellen Mini-Tormaße für den Kinderfußball. Vier Mini-Tore auf dem Feld, ideal für 2gg2 und 3gg3.</li>
-        <li><strong>Garten / Wiese / Park:</strong> 1,20 x 0,80 m oder 1,80 x 1,20 m – kompakt, leicht, schnell aufgebaut. Perfekt für spontane Spiele auf der Wiese oder im Park. Mehr dazu unter <a href="/kinder" class="text-accent hover:text-accent-dark underline">Kindertore</a>.</li>
+        <li><strong>Garten / Wiese / Park:</strong> 1,20 x 0,80 m oder 1,80 x 1,20 m – kompakt, leicht, schnell aufgebaut. Perfekt für spontane Spiele auf der Wiese oder im Park. Mehr dazu unter <a href="/kinder/" class="text-accent hover:text-accent-dark underline">Kindertore</a>.</li>
         <li><strong>D-Jugend (U12/U13):</strong> 5,00 x 2,00 m – das offizielle Jugendmaß für den Spielbetrieb ab D-Jugend.</li>
-        <li><strong>Ab C-Jugend / Herren / Verein:</strong> 7,32 x 2,44 m – das Standardmaß für den Wettkampfbetrieb (11v11). Alle Details auf unserer <a href="/verein" class="text-accent hover:text-accent-dark underline">Seite zu Vereinstoren</a>.</li>
+        <li><strong>Ab C-Jugend / Herren / Verein:</strong> 7,32 x 2,44 m – das Standardmaß für den Wettkampfbetrieb (11v11). Alle Details auf unserer <a href="/verein/" class="text-accent hover:text-accent-dark underline">Seite zu Vereinstoren</a>.</li>
         <li><strong>Bolzplatz / Schule:</strong> 3,00 x 2,00 m – robust und vandalismussicher.</li>
       </ul>
     </div>
@@ -198,10 +257,10 @@ const schema = [
 
     <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kunststoff / Fiberglas – nur für Minitore</h3>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Pop-up-Tore und faltbare Minitore setzen auf Fiberglasrahmen oder Kunststoffverbindungen. Das macht sie ultraleicht und flexibel – perfekt für den <a href="/garten" class="text-accent hover:text-accent-dark underline">Einsatz im Garten</a> oder auf Reisen. Für größere Tore ist Kunststoff allerdings nicht stabil genug.
+      Pop-up-Tore und faltbare Minitore setzen auf Fiberglasrahmen oder Kunststoffverbindungen. Das macht sie ultraleicht und flexibel – perfekt für den <a href="/garten/" class="text-accent hover:text-accent-dark underline">Einsatz im Garten</a> oder auf Reisen. Für größere Tore ist Kunststoff allerdings nicht stabil genug.
     </p>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Einen detaillierten Vergleich der Materialien mit Vor- und Nachteilen findest du in unserem <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.
+      Einen detaillierten Vergleich der Materialien mit Vor- und Nachteilen findest du in unserem <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.
     </p>
 
     <!-- Produktkarte 1: Großfeldtor -->
@@ -378,8 +437,8 @@ const schema = [
         Zusammenfassung in 5 Punkten
       </h3>
       <ol class="text-neutral-600 leading-relaxed space-y-2 list-decimal list-inside">
-        <li><strong>Größe bestimmen:</strong> Altersklasse und Einsatzort definieren das Maß. Im Zweifel hilft unsere <a href="/groessen" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>.</li>
-        <li><strong>Material wählen:</strong> Alu für den Verein, Kunststoff/Fiberglas für den Garten. Details im <a href="/material-vergleich" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.</li>
+        <li><strong>Größe bestimmen:</strong> Altersklasse und Einsatzort definieren das Maß. Im Zweifel hilft unsere <a href="/groessen/" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>.</li>
+        <li><strong>Material wählen:</strong> Alu für den Verein, Kunststoff/Fiberglas für den Garten. Details im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.</li>
         <li><strong>Sicherheit prüfen:</strong> TÜV-Zertifikat und DIN EN 748 sind Pflicht im Vereinssport – und auch privat sinnvoll.</li>
         <li><strong>Bauart festlegen:</strong> Fest (Bodenhülsen) für Wettkampfplätze, mobil für Trainingsplätze, faltbar für den Garten.</li>
         <li><strong>Budget planen:</strong> Tornetz und Kippsicherung einkalkulieren. Komplettangebote nutzen.</li>
@@ -387,8 +446,17 @@ const schema = [
     </div>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Welches Tor am Ende auf deinem Platz steht, hängt von deinen individuellen Anforderungen ab. Für spezifische Empfehlungen schau dir unsere Unterseiten an: <a href="/garten" class="text-accent hover:text-accent-dark underline">Gartentore</a>, <a href="/kinder" class="text-accent hover:text-accent-dark underline">Kindertore</a> oder <a href="/verein" class="text-accent hover:text-accent-dark underline">Vereinstore</a>. Dort gehen wir gezielt auf die jeweilige Zielgruppe ein.
+      Welches Tor am Ende auf deinem Platz steht, hängt von deinen individuellen Anforderungen ab. Für spezifische Empfehlungen schau dir unsere Unterseiten an: <a href="/garten/" class="text-accent hover:text-accent-dark underline">Gartentore</a>, <a href="/kinder/" class="text-accent hover:text-accent-dark underline">Kindertore</a>, <a href="/verein/" class="text-accent hover:text-accent-dark underline">Vereinstore</a>, <a href="/funino/" class="text-accent hover:text-accent-dark underline">Funino-Tore</a> oder <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark underline">Bolzplatztore</a>. Eine Schritt-für-Schritt-Anleitung zum Aufstellen findest du im <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark underline">Aufbau-Ratgeber</a>.
     </p>
+
+    <RelatedContent
+      items={[
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Tor-Maße im Überblick' },
+        { href: '/material-vergleich/', title: 'Material-Vergleich', subtitle: 'Alu vs. Kunststoff' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Schritt für Schritt' },
+        { href: '/verein/', title: 'Vereinstore', subtitle: 'DIN-konform für den Spielbetrieb' },
+      ]}
+    />
 
   </article>
 

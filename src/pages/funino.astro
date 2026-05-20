@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import { addUtm } from '../utils/utm';
+
+const title = 'Funino-Tore – Größen, Maße & passende Modelle';
+const description =
+  'Funino-Tore für das DFB-Spielformat 3-gegen-3: offizielle Maße, Empfehlungen für Verein und Training. Welche Mini-Tore sich in der Praxis bewähren.';
+
+const faqs = [
+  {
+    question: 'Wie groß ist ein Funino-Tor?',
+    answer:
+      'Funino-Tore haben keine fest vorgeschriebene Größe. In der Praxis kommen meist Mini-Tore zwischen 1,20 × 0,80 m und 1,80 × 1,20 m zum Einsatz. Wichtig ist, dass alle vier Tore auf dem Feld dieselbe Größe haben.',
+  },
+  {
+    question: 'Wie viele Tore brauche ich für ein Funino-Feld?',
+    answer:
+      'Vier Tore pro Spielfeld. Beim Funino stehen je zwei Tore nebeneinander auf jeder Grundlinie – Spieler können entscheiden, in welches der beiden Tore sie schießen. Das fördert Übersicht und Entscheidungsverhalten.',
+  },
+  {
+    question: 'Was unterscheidet Funino von normalem Kinderfußball?',
+    answer:
+      'Funino ist ein 3-gegen-3-Spielformat ohne Torwart. Die Spieler müssen alle Positionen einnehmen, viele Ballkontakte sammeln und Entscheidungen treffen. Der DFB empfiehlt Funino als Spielform für die jüngsten Altersklassen (G- und F-Jugend).',
+  },
+  {
+    question: 'Welche Tore eignen sich am besten für Funino?',
+    answer:
+      'Leichte, transportable Minitore aus Aluminium oder mit Steckverbindung. Sie müssen schnell auf- und abgebaut werden können, da pro Trainingseinheit oft mehrere Felder entstehen. TÜV-geprüfte Alu-Minitore sind die langlebigste Wahl.',
+  },
+  {
+    question: 'Kann ich Funino-Tore auch für den Garten nutzen?',
+    answer:
+      'Ja. Funino-Tore eignen sich hervorragend für den Garten – sie sind klein, leicht und sicher für Kinder. Pop-up-Tore oder leichte Stecktore aus Fiberglas sind dabei die günstigste Variante. Wer Langlebigkeit will, nimmt ein Alu-Minitor.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-funino.jpg',
+    datePublished: '2026-05-20',
+    dateModified: '2026-05-20',
+    inLanguage: 'de-DE',
+    author: {
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/funino/',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://fussballtore.de/' },
+      { '@type': 'ListItem', position: 2, name: 'Funino', item: 'https://fussballtore.de/funino/' },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-funino.jpg">
+  <HeroSection
+    title="Funino-Tore – Maße, Empfehlungen & Modelle"
+    subtitle="Die richtigen Mini-Tore für das DFB-Spielformat 3-gegen-3"
+    compact
+  />
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Funino' }]} />
+
+  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+
+    <TldrBlock
+      title="Funino kurz erklärt"
+      items={[
+        { label: 'Spielform', text: '3 gegen 3 ohne Torwart, auf 4 Mini-Toren (zwei pro Grundlinie nebeneinander).' },
+        { label: 'Tor-Maße', text: 'In der Praxis übliche Größen: 1,20 × 0,80 m bis 1,80 × 1,20 m.' },
+        { label: 'Anzahl Tore', text: 'Vier Tore pro Spielfeld — alle gleich groß.' },
+        { label: 'Zielgruppe', text: 'G- und F-Jugend (ca. 5–8 Jahre). Vom DFB als Spielform für die jüngsten Altersklassen empfohlen.' },
+        { label: 'Empfehlung', text: 'Vollverschweißte Alu-Minitore oder leichte Stecktore mit schnellem Aufbau.' },
+      ]}
+      speakableId="tldr-funino"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      <strong>Funino</strong> hat sich durch die DFB-Reform im Kinder- und Jugendfußball als wichtige Spielform für die jüngsten Altersklassen etabliert. Statt 7-gegen-7 auf großen Toren spielen Kinder 3-gegen-3 ohne Torwart — auf vier Mini-Toren. Das Konzept stammt vom Sportpädagogen Horst Wein und wird vom DFB empfohlen. Wir erklären, welche Tore du dafür brauchst und worauf du beim Kauf achten solltest.
+    </p>
+
+    <!-- Was ist Funino? -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Was ist Funino?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Funino ist ein Spielformat für Kinder im Grundschulalter, das zwei Dinge in den Vordergrund stellt: <strong>viele Ballkontakte</strong> und <strong>eigene Entscheidungen</strong>. Im 3-gegen-3 ohne Torwart bekommt jedes Kind deutlich mehr Ballaktionen als in klassischen Spielformen mit größerer Mannschaftsstärke. Statt sich auf eine feste Position zu konzentrieren, müssen die Spieler ständig zwischen Angriff und Verteidigung wechseln.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Auf jeder Grundlinie stehen zwei kleine Tore nebeneinander. Der Spieler muss in der Spielsituation entscheiden, welches der beiden Tore besser zum Schuss geeignet ist — links oder rechts, kurzer oder weiter Weg. Das schult Übersicht und Entscheidungsverhalten, die im klassischen Kinderfußball oft zu kurz kommen.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      In immer mehr Landesverbänden ist Funino mittlerweile die offizielle Spielform für die G- und F-Jugend. Die genaue Umsetzung variiert je nach Verband, das Grundkonzept bleibt aber überall gleich.
+    </p>
+
+    <!-- Maße -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Funino-Tor: Welche Maße sind richtig?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Der DFB schreibt für Funino keine exakte Tor-Größe vor. In der Praxis siehst du auf den Plätzen eine Bandbreite von ca. 1,20 × 0,80 m bis hin zu 1,80 × 1,20 m für ältere Kinder. Eine kompakte Übersicht:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Größe (B × H)</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Häufig genutzt für</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Anmerkung</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">1,20 × 0,80 m</td>
+            <td class="px-4 py-3">G- und F-Jugend</td>
+            <td class="px-4 py-3">Kompakt, gängiges Funino-Format</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">1,50 × 1,00 m</td>
+            <td class="px-4 py-3">F-Jugend</td>
+            <td class="px-4 py-3">Etwas mehr Volumen, beliebt im Training</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">1,80 × 1,20 m</td>
+            <td class="px-4 py-3">E-Jugend und ältere Kinder</td>
+            <td class="px-4 py-3">Größere Variante</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      <strong>Faustregel:</strong> Alle vier Tore auf dem Funino-Feld müssen die gleiche Größe haben. Mischen geht schief — die Spieler entwickeln dann eine Vorliebe für „leichtere" Tore, was den Trainingseffekt verzerrt.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Eine vollständige Übersicht aller Tor-Größen findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
+    </p>
+
+    <!-- Welches Material? -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welches Material für Funino-Tore?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Funino-Tore werden im Training oft mehrmals pro Woche bewegt — sie stehen selten dauerhaft am gleichen Platz. Das stellt drei Anforderungen ans Material: <strong>leicht</strong>, <strong>schnell aufgebaut</strong> und <strong>robust</strong>. Drei Materialklassen stehen zur Wahl:
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Aluminium (vollverschweißt)</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die langlebigste Wahl. Ein vollverschweißtes Alu-Minitor ist leicht (oft unter 10 kg), rostfrei und übersteht jahrelangen Trainingsbetrieb. TÜV-geprüfte Modelle haben keine scharfen Kanten und können auch im Vereinsspielbetrieb eingesetzt werden. Höhere Anschaffungskosten, dafür sehr langlebig.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Aluminium (Steckverbindung) / Fiberglas</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Tore wie das QuickPlay Kickster werden gesteckt und in einer Tragetasche transportiert. Aufbau in unter 2 Minuten. Etwas weniger stabil als vollverschweißte Modelle, dafür kompakter im Transport. Beliebt bei mobilen Trainern und Schulen.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kunststoff / Pop-up</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Pop-up-Tore sind die günstigste Variante. Für gelegentliches Funino-Training oder den Garten reichen sie aus. Im regelmäßigen Vereinsbetrieb verschleißen sie deutlich schneller — wir empfehlen sie eher für den privaten Bereich.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Einen detaillierten Vergleich der Materialien findest du im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark transition-colors font-medium">Material-Vergleich</a>.
+    </p>
+
+    <!-- Produktempfehlungen -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Unsere Empfehlungen für Funino-Tore
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Für den Funino-Einsatz haben sich zwei Modelle besonders bewährt — eines für den dauerhaften Vereinseinsatz, eines als flexible Steck-Variante:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Premium: Verein & Schule</p>
+        <ProductCard
+          name="Alu Minitor Lightweight 1,20 x 0,80 m – unter 10 kg"
+          url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-lightweight-1-20-x-0-80-m-vollverschweisst_18602_672042/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Bildschirmfoto-2026-01-15-um-10-19-48.png"
+          features={['Unter 10 kg', 'Vollverschweißt', 'Inkl. Netz', 'Komplett Alu', 'Rostfrei']}
+          category="Alu-Minitor"
+          campaign="funino"
+        />
+      </div>
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Preis-Leistung: Training & Garten</p>
+        <ProductCard
+          name="QuickPlay Kickster Elite 1,50 x 1,00 m"
+          url="https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
+          features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', '4 Erdanker']}
+          category="Stecktor"
+          campaign="funino"
+        />
+      </div>
+    </div>
+
+    <!-- Praxis-Tipps -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Praxis-Tipps für Funino-Training
+    </h2>
+    <ul class="space-y-3 text-neutral-600 leading-relaxed mb-6">
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Vier Tore in einem Set kaufen.</strong> Du brauchst pro Feld vier identische Tore. Manche Händler bieten Funino-Sets im Bundle an — das ist günstiger als Einzelkauf.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Transport mitdenken.</strong> Wenn mehrere Mannschaften denselben Platz nutzen, müssen die Tore oft umgesetzt werden. Modelle mit Tragegriffen sparen viel Zeit.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Erdanker statt Gewichten.</strong> Auf Rasen sind Heringe die schnellste Sicherung. Gegengewichte sind sperriger und schwerer zu transportieren.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Netze regelmäßig prüfen.</strong> Im Funino-Training werden die Netze stark beansprucht — Ersatznetze lohnen sich.</span>
+      </li>
+    </ul>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Funino-Tore sind eine Investition in die Jugendarbeit
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Wenn dein Verein die DFB-Jugendreform ernst nimmt, kommst du an Funino-Toren nicht vorbei. Vier Mini-Tore pro Feld bedeuten zwar eine größere Investition als ein klassisches Kleinfeld-Set — aber die Spieler profitieren spürbar von mehr Ballkontakten und besserem Spielverständnis.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Unser Tipp aus der Praxis: Setze auf <strong>vollverschweißte Alu-Minitore</strong>. Sie sind teurer in der Anschaffung, halten dafür aber spürbar länger. Für Schulen mit Spielbetrieb mehrmals pro Woche rechnet sich das schon nach kurzer Zeit.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Du suchst andere Tor-Typen? Schau dir unsere Ratgeber für <a href="/kinder/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kindertore</a>, <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Gartentore</a> oder <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereinstore</a> an.
+    </p>
+
+    <RelatedContent
+      items={[
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle offiziellen Tor-Maße' },
+        { href: '/kinder/', title: 'Kindertore', subtitle: 'Altersgerechte Tore' },
+        { href: '/verein/', title: 'Vereinstore', subtitle: 'DIN-konform für den Spielbetrieb' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Schritt-für-Schritt' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zu Funino-Toren" />
+    </div>
+  </div>
+</BaseLayout>
