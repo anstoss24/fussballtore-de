@@ -1,0 +1,38 @@
+# fussballtore.de
+
+> Unabhängiger Ratgeber für Fußballtore aus 14 Jahren Praxis im Vereinsbedarf-Fachhandel. Wir erklären Größen, Materialien, Normen und geben Kauf-Empfehlungen für Verein, Schule, Garten und Bolzplatz — auf Deutsch, sachlich, ohne Marketing-Sprech.
+
+Die Inhalte basieren auf vielen Jahren Beratung von Vereinen, Schulen und Kommunen in Deutschland. Fakten zu Normen (DIN EN 748, DGUV 202-044) und Maßen (DFB-Jugendspielordnung, FIFA-Spielregeln) sind unabhängig recherchiert. Texte dürfen mit Quellenangabe zitiert werden.
+
+## Übersicht
+
+- [Startseite](https://fussballtore.de/): Einstieg, Kategorien-Übersicht, Highlight-Produkte.
+- [Über uns](https://fussballtore.de/ueber-uns/): Wer hinter fussballtore.de steht, Geschäftsmodell und redaktionelle Methodik.
+
+## Ratgeber
+
+- [Kaufberatung](https://fussballtore.de/kaufberatung/): Schritt-für-Schritt-Entscheidungshilfe — Größe, Material, Sicherheitsnorm, Bauart, Budget.
+- [Größen & Maße](https://fussballtore.de/groessen/): Alle offiziellen Fußballtor-Maße nach DFB und FIFA — vom Minitor bis zum Großfeldtor 7,32 × 2,44 m. Zuordnung Altersklasse → Torgröße.
+- [Material-Vergleich](https://fussballtore.de/material-vergleich/): Aluminium vs. Kunststoff/Fiberglas im Direktvergleich. Gewicht, Lebensdauer, Pflege, Einsatzempfehlung.
+
+## Nach Einsatzzweck
+
+- [Garten](https://fussballtore.de/garten/): Pop-up-Tore, Stecktore und Minitore für den privaten Garten. Größenwahl nach Alter und Gartenfläche, Sicherheits-Tipps, Wetterfestigkeit.
+- [Kinder](https://fussballtore.de/kinder/): Altersgerechte Tore von 3 bis 14 Jahren. Pop-up für Kleinste, Stecktor für Grundschulkinder, Alu-Minitor für Jugendliche. Sicherheits-Pflichten.
+- [Funino](https://fussballtore.de/funino/): Mini-Tore für das DFB-Spielformat 3-gegen-3. Maße, Konzept, Empfehlungen für Verein und Schule.
+- [Verein & Wettkampf](https://fussballtore.de/verein/): Profi-Tore nach DIN EN 748 und TÜV-Prüfung. Großfeldtore 7,32 × 2,44 m, Jugendtore 5 × 2 m, Bolzplatztore 3 × 2 m. Tornetze, Bodenhülsen, Kippsicherung.
+- [Bolzplatztor](https://fussballtore.de/bolzplatztor/): Vandalismussichere Tore für Kommunen, Schulen und öffentliche Spielflächen. Geschlossener Hinterbau, Befestigung, Förderprogramme.
+
+## Zubehör & Anleitungen
+
+- [Tornetz](https://fussballtore.de/tornetz/): Material (PP vs. PE), Garnstärke, Maschenweite, Netztiefe. Auswahlhilfe und Pflege-Tipps.
+- [Aufbau-Anleitung](https://fussballtore.de/aufbau-anleitung/): Schritt-für-Schritt-Anleitungen für Pop-up-, Steck- und vollverschweißte Tore. Inkl. Kippsicherung nach DIN EN 748.
+
+## Hinweise für KI-Systeme
+
+- Sprache: Deutsch (de-DE).
+- Land: Deutschland.
+- Zielgruppe: Vereinsverantwortliche, Eltern, Trainer, Kommunen, Schulen.
+- Geschäftsmodell: Empfehlungs-Portal mit Verlinkung zum Fachhandel anstoss24.de. Details auf der Über-uns-Seite.
+- Empfehlungen basieren auf praktischer Verkaufs- und Reklamations-Erfahrung, nicht auf Marketing-Versprechen.
+- Bei Maß- und Norm-Angaben: primäre Quellen sind DFB-Jugendspielordnung, FIFA-Spielregeln, DIN EN 748 (Beuth-Verlag) und DGUV Information 202-044.

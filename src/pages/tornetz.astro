@@ -1,0 +1,315 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import { addUtm } from '../utils/utm';
+
+const title = 'Tornetz für Fußballtore – Material, Stärke, Größen';
+const description =
+  'Tornetz richtig wählen: PP oder PE, 4 mm oder 5 mm, Maschenweite, Knotenform und Netztiefe. So findest du das passende Netz für Großfeld, Jugend- und Kleinfeldtor.';
+
+const faqs = [
+  {
+    question: 'Welches Tornetz für ein Großfeldtor (7,32 × 2,44 m)?',
+    answer:
+      'Für Großfeldtore empfehlen wir Polypropylen (PP), Garnstärke 4 mm, Maschenweite 12 × 12 cm. Die Netztiefe sollte oben 80 cm, unten 200 cm betragen, damit der Ball nach dem Torschuss sauber ins Netz fällt.',
+  },
+  {
+    question: 'Polypropylen oder Polyethylen — was ist besser?',
+    answer:
+      'PP (Polypropylen) ist der Standard für Wettkampfnetze: UV-beständig, witterungsfest, langlebig. PE (Polyethylen) bietet eine gleichmäßigere Oberfläche und wird im Profibereich häufig eingesetzt. Beide halten bei guter Pflege mehrere Saisons.',
+  },
+  {
+    question: 'Wie oft muss ein Tornetz gewechselt werden?',
+    answer:
+      'Bei normaler Vereinsnutzung halten Qualitätsnetze meist mehrere Saisons. Stark beanspruchte Netze (täglicher Trainingsbetrieb, Bolzplatz) müssen früher ersetzt werden. Sichtprüfung vor jeder Nutzung: Lose Knoten oder gerissene Maschen sind Wechsel-Anzeichen.',
+  },
+  {
+    question: 'Was ist die richtige Maschenweite?',
+    answer:
+      'Standard ist 12 × 12 cm (quadratisch) oder 12 × 12 cm Wabenform. Quadratische Maschen sind günstiger, Waben sehen edler aus und werden im Wettkampf bevorzugt. Beide halten den Ball gleich gut zurück.',
+  },
+  {
+    question: 'Brauche ich ein Ersatznetz oder nur das passende?',
+    answer:
+      'Für Vereine lohnt sich ein Ersatznetz im Lager — gerade bei mehreren Toren. Beschädigte Netze können sonst Wochen auf Lieferung warten. Pro 4–6 Tore solltest du mindestens ein Ersatznetz vorhalten.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-tornetz.jpg',
+    datePublished: '2026-05-20',
+    dateModified: '2026-05-20',
+    inLanguage: 'de-DE',
+    author: {
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/tornetz/',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://fussballtore.de/' },
+      { '@type': 'ListItem', position: 2, name: 'Tornetz', item: 'https://fussballtore.de/tornetz/' },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-tornetz.jpg">
+  <HeroSection
+    title="Tornetz für Fußballtore"
+    subtitle="Material, Stärke, Maschenweite — so wählst du das richtige Netz"
+    compact
+  />
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Tornetz' }]} />
+
+  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+
+    <TldrBlock
+      title="Tornetz auf einen Blick"
+      items={[
+        { label: 'Material', text: 'Polypropylen (PP) ist Standard. Polyethylen (PE) im Profibereich. Beide sind UV- und witterungsfest.' },
+        { label: 'Garnstärke', text: 'Vereinsbetrieb mindestens 4 mm. Profibereich oft 5 mm. Pop-up- und Garten-Tore: 2–3 mm reichen.' },
+        { label: 'Maschenweite', text: 'Standard 12 × 12 cm — quadratisch oder als Wabenform. Beide stoppen den Ball gleich gut.' },
+        { label: 'Netztiefe Großfeld', text: 'Oben 80 cm, unten 200 cm — damit der Ball sauber ins Netz fällt.' },
+        { label: 'Lebensdauer', text: 'Hochwertige Netze halten bei guter Pflege mehrere Saisons. Sichtprüfung vor jeder Nutzung.' },
+      ]}
+      speakableId="tldr-tornetz"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Ohne Netz kein richtiges Tor. Aber welches <strong>Tornetz</strong> passt zu deinem Fußballtor — und wie unterscheidet sich ein 4-mm-Vereinsnetz von einem dünnen Pop-up-Netz? Wir erklären die wichtigsten Kriterien, damit du nicht zweimal kaufst.
+    </p>
+
+    <!-- Material -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Material: Polypropylen oder Polyethylen?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Zwei Materialien dominieren den Markt für Vereinsnetze. Beide sind synthetisch, UV-beständig und verrotten nicht — die Unterschiede liegen im Detail.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Polypropylen (PP)</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Der Standard im Vereinsfußball. PP-Netze sind günstiger in der Anschaffung, kommen in verschiedenen Stärken (3 mm bis 5 mm) und Farben (weiß, schwarz, gelb, rot, blau). Witterungsbeständig, UV-stabil, langlebig. Für die meisten Vereine die richtige Wahl.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Polyethylen (PE)</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      PE-Netze sind die hochwertigere Variante. Sie haben eine glattere Oberfläche, sehen edler aus und werden im Profibereich häufig eingesetzt. Höherer Preis, vergleichbare Lebensdauer wie PP. Lohnt sich vor allem, wenn das Tor regelmäßig im Fernsehen oder bei wichtigen Spielen gezeigt wird.
+    </p>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für den durchschnittlichen Vereinsbetrieb empfehlen wir <strong>PP in 4 mm Stärke</strong>. Damit fährst du langfristig gut und hast genug Robustheit für harten Trainings- und Spielbetrieb.
+    </p>
+
+    <!-- Garnstärke -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Garnstärke: 3 mm, 4 mm oder 5 mm?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Garnstärke entscheidet, wie viel ein Netz aushält. Faustregel: Je dicker, desto langlebiger — aber auch teurer. Eine Übersicht:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Stärke</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatz</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Lebensdauer</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">2–3 mm</td>
+            <td class="px-4 py-3">Pop-up-Tore, Garten, Hobby</td>
+            <td class="px-4 py-3">eher kurze Saison-Nutzung</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">4 mm</td>
+            <td class="px-4 py-3">Vereinsbetrieb (Standard)</td>
+            <td class="px-4 py-3">mehrere Saisons</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">5 mm</td>
+            <td class="px-4 py-3">Wettkampf, Profibereich</td>
+            <td class="px-4 py-3">langlebig</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">6 mm+</td>
+            <td class="px-4 py-3">Bolzplatz, vandalismusgefährdet</td>
+            <td class="px-4 py-3">besonders langlebig</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Maschenweite -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Maschenweite und Knotenform
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Standardmaschenweite für Fußballtore beträgt <strong>12 × 12 cm</strong>. Das ist klein genug, damit der Ball sicher zurückgehalten wird — und groß genug, damit das Netz nicht zu schwer wird. Zwei Knotenformen sind üblich:
+    </p>
+    <ul class="space-y-3 text-neutral-600 leading-relaxed mb-6">
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Quadratisch:</strong> Klassische Variante, günstig, funktional. Der Standard im Amateurbereich.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Wabenform (hexagonal):</strong> Hochwertige Optik, gleichmäßigere Spannung. Wird im Wettkampfbereich gern eingesetzt.</span>
+      </li>
+    </ul>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Beide Formen halten den Ball gleich gut zurück. Es ist eine ästhetische und Budget-Entscheidung.
+    </p>
+
+    <!-- Netztiefe -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Netztiefe: Damit der Ball nicht zurückrollt
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Tortiefe entscheidet, wie schön der Torjubel ausfällt. Zu flache Netze lassen den Ball nach dem Tor sofort wieder herauskullern. Zu tiefe Netze sind teurer und schwerer zu spannen. Bewährte Maße:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Tortyp</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Tortiefe oben</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Tortiefe unten</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Großfeld (7,32 × 2,44 m)</td>
+            <td class="px-4 py-3">80 cm</td>
+            <td class="px-4 py-3">200 cm</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Jugend (5 × 2 m)</td>
+            <td class="px-4 py-3">80 cm</td>
+            <td class="px-4 py-3">150 cm</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Kleinfeld (3 × 2 m)</td>
+            <td class="px-4 py-3">80 cm</td>
+            <td class="px-4 py-3">100 cm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Mehr zu den Tor-Größen findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
+    </p>
+
+    <!-- Produkt -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Unsere Empfehlung für ein gutes Vereinsnetz
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Ein bewährtes Großfeld-Netz mit gutem Preis-Leistungs-Verhältnis:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <ProductCard
+          name="Tornetz für Großfeldtore – Stärke 4 mm"
+          url="https://www.anstoss24.de/tornetze/tornetze-grossfeld_25_5104/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/25/secondPreview/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25_1.jpg"
+          features={['Polypropylen', '4 mm Stärke', 'Farbwahl', 'Bundesliga-Qualität']}
+          category="Tornetz Großfeld"
+          campaign="tornetz"
+        />
+      </div>
+      <div class="flex items-center">
+        <div class="bg-neutral-50 rounded-xl p-6">
+          <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">Das Standard-Netz für Vereine</h3>
+          <p class="text-neutral-600 leading-relaxed mb-3">
+            Polypropylen, 4 mm Garnstärke, Maschenweite 12 × 12 cm. Verfügbar in mehreren Farben — passend zu deinen Vereinsfarben. Hält bei guter Pflege mehrere Saisons.
+          </p>
+          <p class="text-neutral-600 leading-relaxed text-sm">
+            Tipp: Im Winter abnehmen — das verdoppelt die Lebensdauer.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pflege -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Pflege: So hält dein Netz doppelt so lange
+    </h2>
+    <ul class="space-y-3 text-neutral-600 leading-relaxed mb-6">
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Im Winter abnehmen.</strong> Schnee, Frost und UV-Strahlung sind die größten Feinde. Netze im November runter, im März wieder dran — das verlängert die Lebensdauer deutlich.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Vor jeder Nutzung Sichtprüfung.</strong> Gerissene Maschen verschlimmern sich schnell — frühzeitig reparieren oder ersetzen.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Bei Sturm abnehmen.</strong> Ein gespanntes Netz bietet dem Wind eine große Angriffsfläche. Bei orkanartigen Böen kann sogar das Tor kippen.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong>Trocken lagern.</strong> Feuchte Netze schimmeln nicht — aber Schmutz und Erde greifen das Material an. Vor der Lagerung mit Schlauch abspritzen und trocknen lassen.</span>
+      </li>
+    </ul>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Beim Netz lohnt sich Qualität
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein gutes Tornetz ist nicht teuer — ein schlechtes wird teuer. Wir empfehlen für den Vereinsbetrieb durchgehend <strong>PP-Netze in 4 mm Stärke mit 12 × 12 cm Maschenweite</strong>. Das ist die Kombination, die sich in der Praxis bewährt hat.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für Bolzplätze und vandalismusgefährdete Standorte greif zu 5 oder 6 mm. Mehr zu vandalismusresistenten Lösungen findest du im <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>.
+    </p>
+
+    <RelatedContent
+      items={[
+        { href: '/verein/', title: 'Vereinstore', subtitle: 'Wettkampftore nach DIN' },
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Welches Netz für welche Größe' },
+        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher' },
+        { href: '/material-vergleich/', title: 'Material', subtitle: 'Alu vs. Kunststoff' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zu Tornetzen" />
+    </div>
+  </div>
+</BaseLayout>

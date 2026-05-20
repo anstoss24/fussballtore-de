@@ -4,9 +4,11 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtor für Kinder – Sicher & altersgerecht';
+const title = 'Fußballtor für Kinder – altersgerecht';
 const description =
   'Das richtige Fußballtor für Kinder finden: Altersgerechte Größen, kippsichere Modelle und die besten Tore für Garten und Spielfeld. Ab 3 Jahren.';
 
@@ -44,10 +46,12 @@ const schema = [
     '@type': 'Article',
     headline: title,
     description,
+    image: 'https://fussballtore.de/og-kinder.jpg',
     author: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
     },
     publisher: {
       '@type': 'Organization',
@@ -55,11 +59,11 @@ const schema = [
       url: 'https://fussballtore.de',
     },
     datePublished: '2025-01-15',
-    dateModified: '2026-02-23',
+    dateModified: '2026-05-20',
     inLanguage: 'de-DE',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://fussballtore.de/kinder',
+      '@id': 'https://fussballtore.de/kinder/',
     },
   },
   {
@@ -76,14 +80,14 @@ const schema = [
         '@type': 'ListItem',
         position: 2,
         name: 'Kindertore',
-        item: 'https://fussballtore.de/kinder',
+        item: 'https://fussballtore.de/kinder/',
       },
     ],
   },
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-kinder.jpg">
   <HeroSection
     title="Fußballtore für Kinder"
     subtitle="Sicher, altersgerecht und mit Spaßfaktor – so findest du das perfekte Tor für dein Kind"
@@ -92,6 +96,19 @@ const schema = [
   <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Kindertore' }]} />
 
   <article class="container mx-auto py-12 md:py-16 max-w-4xl">
+
+    <TldrBlock
+      title="Welches Kindertor für welches Alter?"
+      items={[
+        { label: '3–5 Jahre', text: '80 × 60 cm bis 120 × 80 cm — Pop-up-Tor aus weichem Stoff. Auch indoor.' },
+        { label: '6–8 Jahre', text: '1,20 × 0,80 m bis 1,80 × 1,20 m — Stecktor, Pop-up oder Alu-Minitor.' },
+        { label: '9–10 Jahre (E-Jugend)', text: 'Garten ab 1,80 × 1,20 m. Im Verein: Kleinfeld 3 × 2 m oder Minitore.' },
+        { label: '11–12 Jahre (D-Jugend)', text: 'Garten 3 × 2 m. Im Verein: 5,00 × 2,00 m Jugendtor.' },
+        { label: 'Ab 14 Jahre (C-Jugend)', text: 'Verein: 7,32 × 2,44 m Großfeldtor.' },
+        { label: 'Wichtigste Regel', text: 'Tore immer gegen Umkippen sichern. Kein Klettern oder Hängen am Netz.' },
+      ]}
+      speakableId="tldr-kinder"
+    />
 
     <!-- Einleitung -->
     <div class="prose prose-lg max-w-none">
@@ -127,8 +144,8 @@ const schema = [
             In diesem Alter steht der Spaß an erster Stelle. Dein Kind lernt gerade erst, gezielt zu schießen.
             <strong>Pop-up-Tore</strong> aus leichtem Stoff sind ideal: Sie sind weich, haben keine harten Kanten
             und lassen sich in Sekunden aufbauen. Empfohlene Größe: <strong>80 x 60 cm bis 120 x 80 cm</strong>.
-            Ein <a href="/garten" class="text-accent hover:text-accent-dark transition-colors">kleines Fußballtor im Garten</a>
-            reicht völlig – es muss nicht groß sein.
+            Ein <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors">kleines Fußballtor im Garten</a>
+            reicht völlig – es muss nicht groß sein. Wenn dein Kind im Verein spielt, ist mit hoher Wahrscheinlichkeit <a href="/funino/" class="text-accent hover:text-accent-dark transition-colors">Funino</a> die offizielle Spielform.
           </p>
         </div>
 
@@ -150,7 +167,7 @@ const schema = [
             Stabile Stecktore oder sogar kleinere Alu-Tore sind jetzt sinnvoll. Für den Garten empfehlen wir
             <strong>1,80 x 1,20 m bis 3,00 x 2,00 m</strong>. Im Vereinsbetrieb spielt die E-Jugend (U10/U11)
             auf Kleinfeldtoren oder Minitoren, die D-Jugend (U12/U13) bereits auf <strong>5,00 x 2,00 m</strong> Jugendtoren. Schau dir dazu auch unsere
-            <a href="/groessen" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>
+            <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>
             an, um die optimalen Maße für dein Kind zu finden.
           </p>
         </div>
@@ -162,7 +179,7 @@ const schema = [
             wird bereits auf <strong>Großfeldtoren (7,32 x 2,44 m)</strong> gespielt – das sind die gleichen
             Maße wie bei den Erwachsenen. Für den Garten sind Tore um <strong>3,00 x 2,00 m</strong> ein guter
             Kompromiss zwischen Wettkampfgefühl und Platz. Informiere dich in unserer
-            <a href="/verein" class="text-accent hover:text-accent-dark transition-colors">Übersicht für Spiel- & Trainingsbetrieb</a>
+            <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors">Übersicht für Spiel- & Trainingsbetrieb</a>
             über die offiziellen Maße für Jugendspielbetrieb.
           </p>
         </div>
@@ -222,7 +239,7 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-8">
         Mehr Details zu sämtlichen Torgrößen – vom Mini-Fußballtor bis zum Großfeldtor –
         findest du in unserer ausführlichen
-        <a href="/groessen" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>.
+        <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>.
       </p>
 
     </section>
@@ -300,7 +317,7 @@ const schema = [
               Rasen ist ideal – er ist weich bei Stürzen und bietet guten Halt für Erdanker. Auf Pflaster
               oder Beton brauchst du Beschwerungsgewichte statt Heringe. Vermeide es, Tore auf abschüssigem
               Gelände aufzustellen. Mehr Tipps zur Gartenaufstellung findest du in unserem
-              <a href="/garten" class="text-accent hover:text-accent-dark transition-colors">Gartentore-Ratgeber</a>.
+              <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors">Gartentore-Ratgeber</a>.
             </p>
           </div>
         </div>
@@ -319,7 +336,7 @@ const schema = [
               dass das Tor auf Standsicherheit, Materialqualität und Verletzungsgefahr geprüft wurde.
               Gerade bei Kindertoren ist das eine sinnvolle Investition. Mehr zum Thema Material und
               Qualität findest du in unserem
-              <a href="/kaufberatung" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung-Ratgeber</a>.
+              <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung-Ratgeber</a>.
             </p>
           </div>
         </div>
@@ -388,7 +405,7 @@ const schema = [
           <p class="text-neutral-600 leading-relaxed">
             <strong>Nachteil:</strong> Höherer Preis, mehr Platzbedarf und keine Mobilität. Dafür bekommst du
             ein Tor, das viele Jahre hält. Unser
-            <a href="/material-vergleich" class="text-accent hover:text-accent-dark transition-colors">Material-Vergleich Alu vs. Kunststoff</a>
+            <a href="/material-vergleich/" class="text-accent hover:text-accent-dark transition-colors">Material-Vergleich Alu vs. Kunststoff</a>
             hilft dir bei der Entscheidung.
           </p>
         </div>
@@ -483,10 +500,19 @@ const schema = [
 
       <p class="text-neutral-600 leading-relaxed">
         Du suchst speziell nach einem Gartentor? Dann wirf einen Blick auf unseren
-        <a href="/garten" class="text-accent hover:text-accent-dark transition-colors">Ratgeber für Garten-Fußballtore</a>
+        <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors">Ratgeber für Garten-Fußballtore</a>
         – dort gehen wir ausführlich auf Aufbau, Platzbedarf und die besten Modelle für den Garten ein.
       </p>
     </section>
+
+    <RelatedContent
+      items={[
+        { href: '/garten/', title: 'Gartentore', subtitle: 'Für das Spiel zu Hause' },
+        { href: '/funino/', title: 'Funino-Tore', subtitle: 'DFB-Format für die Jüngsten' },
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Welche Größe für welches Alter' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'So baust du sicher auf' },
+      ]}
+    />
 
     <!-- Fazit -->
     <section class="mt-12 md:mt-16 mb-4">
@@ -506,7 +532,7 @@ const schema = [
           Tor ist die größte Gefahr – und mit einfachen Erdankern oder Gewichten leicht vermeidbar.
         </p>
         <p class="text-neutral-600 leading-relaxed">
-          Noch unsicher? Unsere <a href="/kaufberatung" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a>
+          Noch unsicher? Unsere <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a>
           führt dich Schritt für Schritt zum passenden Tor. Und
           <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'kinder')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">im Fachhandel</a>
           findest du eine große Auswahl an geprüften Fußballtoren für jedes Alter – vom Pop-up-Tor

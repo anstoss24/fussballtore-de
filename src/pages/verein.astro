@@ -4,9 +4,11 @@ import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtore für Spiel- & Trainingsbetrieb | DIN-konform';
+const title = 'Fußballtor für Vereine – DIN-konform';
 const description = 'Professionelle Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m – DIN EN 748, TÜV-geprüft. Jetzt informieren und das passende Wettkampf-Fußballtor finden.';
 
 const faqs = [
@@ -38,13 +40,15 @@ const schema = [
     '@type': 'Article',
     headline: 'Fußballtore für Spiel- & Trainingsbetrieb',
     description,
+    image: 'https://fussballtore.de/og-verein.jpg',
     datePublished: '2025-01-15',
-    dateModified: '2026-02-23',
+    dateModified: '2026-05-20',
     inLanguage: 'de-DE',
     author: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
     },
     publisher: {
       '@type': 'Organization',
@@ -53,7 +57,7 @@ const schema = [
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://fussballtore.de/verein',
+      '@id': 'https://fussballtore.de/verein/',
     },
   },
   {
@@ -70,14 +74,63 @@ const schema = [
         '@type': 'ListItem',
         position: 2,
         name: 'Vereinstore',
-        item: 'https://fussballtore.de/verein',
+        item: 'https://fussballtore.de/verein/',
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Bodenhülsen für Großfeldtor setzen',
+    description:
+      'Bodenhülsen sind die stabilste Befestigung für fest installierte Wettkampftore. So setzt du sie normgerecht im Spielfeld.',
+    supply: [
+      { '@type': 'HowToSupply', name: '2 Bodenhülsen (je nach Torprofil)' },
+      { '@type': 'HowToSupply', name: 'Schnellbeton (Trockenmischung)' },
+      { '@type': 'HowToSupply', name: 'Bodenhülsendeckel (Stopfen für nichtgenutzte Phasen)' },
+    ],
+    tool: [
+      { '@type': 'HowToTool', name: 'Spaten oder Lochbohrer' },
+      { '@type': 'HowToTool', name: 'Wasserwaage' },
+      { '@type': 'HowToTool', name: 'Maßband oder Zollstock' },
+    ],
+    step: [
+      {
+        '@type': 'HowToStep',
+        name: 'Position genau ausmessen',
+        text: 'Pfostenabstand exakt nach Torbreite ausmessen (Großfeld: 7,32 m). Die Bodenhülsen müssen genau parallel und im richtigen Abstand stehen.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Löcher ausheben',
+        text: 'An den markierten Positionen großzügig dimensionierte Löcher ausheben. Die Hülse muss vollständig im Boden verschwinden.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Bodenhülsen einsetzen',
+        text: 'Hülsen in die Löcher stellen. Mit Wasserwaage senkrecht ausrichten. Oberkante bündig mit der Rasenoberfläche.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Mit Beton fixieren',
+        text: 'Hohlraum um die Hülsen mit Schnellbeton füllen. Während des Aushärtens immer wieder die Lotrechtigkeit kontrollieren.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Aushärten lassen',
+        text: 'Vor dem Einsetzen des Tors den Beton vollständig aushärten lassen. Bei Frost länger warten.',
+      },
+      {
+        '@type': 'HowToStep',
+        name: 'Tor einsetzen und Standfestigkeit prüfen',
+        text: 'Pfosten des Tors in die Hülsen einführen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung an der Querlatte vor.',
       },
     ],
   },
 ];
 ---
 
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-verein.jpg">
   <HeroSection
     title="Fußballtore für Spiel- & Trainingsbetrieb"
     subtitle="Professionelle Tore für Wettkampf und Training – TÜV-geprüft und DIN-konform"
@@ -86,6 +139,19 @@ const schema = [
   <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Vereinstore' }]} />
 
   <article class="container mx-auto py-12 md:py-16 max-w-4xl">
+
+    <TldrBlock
+      title="Vereinstor — die Pflicht-Kriterien"
+      items={[
+        { label: 'Regelmaße', text: 'Großfeld 7,32 × 2,44 m (ab C-Jugend, Herren, Frauen), Jugendtor 5 × 2 m (D-Jugend), Kleinfeld 3 × 2 m (F-Jugend).' },
+        { label: 'Norm', text: 'DIN EN 748 ist Pflicht im organisierten Spielbetrieb. TÜV-Prüfzeichen zwingend für Haftungssicherheit.' },
+        { label: 'Material', text: 'Aluminium-Ovalprofil 120/100 mm ist der Standard. Vollverschweißt für maximale Stabilität.' },
+        { label: 'Bauart', text: 'Bodenhülsen am Wettkampfplatz, transportable Tore mit Gegengewichten fürs Training.' },
+        { label: 'Kippsicherung', text: 'Definierte Standsicherheits-Prüfung nach DIN EN 748. Jährliche Sichtprüfung durch sachkundige Person empfohlen.' },
+        { label: 'Tornetz', text: 'Polypropylen, 4 mm Stärke, Maschenweite 12 × 12 cm. Hält bei guter Pflege 3–5 Saisons.' },
+      ]}
+      speakableId="tldr-verein"
+    />
 
     <!-- Einleitung -->
     <div class="prose text-neutral-600 leading-relaxed">
@@ -110,7 +176,7 @@ const schema = [
           Beim Kauf eines Großfeldtors solltest du auf folgende Punkte achten:
         </p>
         <ul class="space-y-2 my-4">
-          <li><strong>Profil und Material:</strong> Hochwertige Großfeldtore bestehen aus <a href="/material-vergleich" class="text-accent hover:text-accent-dark transition-colors">Aluminium-Profilen</a> – leicht, rostfrei und formstabil. Ein Ovalprofil mit 120 x 100 mm Querschnitt ist der gängige Standard.</li>
+          <li><strong>Profil und Material:</strong> Hochwertige Großfeldtore bestehen aus <a href="/material-vergleich/" class="text-accent hover:text-accent-dark transition-colors">Aluminium-Profilen</a> – leicht, rostfrei und formstabil. Ein Ovalprofil mit 120 x 100 mm Querschnitt ist der gängige Standard.</li>
           <li><strong>Netzaufhängung:</strong> Tore mit freier Netzaufhängung haben eine schönere Optik, entsprechen den Bundesligastandards und werden überwiegend im Wettkampfbetrieb eingesetzt.</li>
           <li><strong>Bodenverankerung:</strong> Für den festen Einsatz auf dem Vereinsplatz empfehlen sich Bodenhülsen. Sie sorgen für maximale Standsicherheit und lassen sich bei Bedarf bündig in den Boden einsetzen.</li>
           <li><strong>TÜV-Prüfung:</strong> Ein Muss für den Vereinsbetrieb. Achte auf das Prüfzeichen nach DIN EN 748.</li>
@@ -156,7 +222,7 @@ const schema = [
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
         <p>
-          Die D-Jugend (U12/U13) spielt im 7-gegen-7 oder 9-gegen-9 auf <strong>Jugendtoren mit den Maßen 5,00 x 2,00 m</strong>. Die E-Jugend (U10/U11) spielt auf Kleinfeldtoren oder Minitoren. Ab der C-Jugend (U14) wird bereits auf Großfeldtoren (7,32 x 2,44 m) gespielt. Eine detaillierte Aufstellung aller Torgrößen nach Altersklasse findest du in unserer <a href="/groessen" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>.
+          Die D-Jugend (U12/U13) spielt im 7-gegen-7 oder 9-gegen-9 auf <strong>Jugendtoren mit den Maßen 5,00 x 2,00 m</strong>. Die E-Jugend (U10/U11) spielt auf Kleinfeldtoren oder Minitoren. Ab der C-Jugend (U14) wird bereits auf Großfeldtoren (7,32 x 2,44 m) gespielt. Eine detaillierte Aufstellung aller Torgrößen nach Altersklasse findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>.
         </p>
         <p>
           Bei Jugendtoren hast du die Wahl zwischen fest installierten und mobilen Varianten. Gerade wenn mehrere Mannschaften denselben Platz nutzen, sind <strong>mobile Jugendtore</strong> praktisch: Sie lassen sich mit Transportrollen einfach verschieben und bei Nichtgebrauch am Spielfeldrand lagern.
@@ -188,7 +254,7 @@ const schema = [
           Kleinfeldtore mit <strong>3,00 x 2,00 m</strong> kommen im Spielbetrieb der F-Jugend (5 gegen 5) zum Einsatz und sind auch als vielseitiges Trainingstor für alle Altersklassen beliebt. Viele Vereine nutzen mobile Kleinfeldtore, um auf Nebenplätzen schnell ein Spielfeld aufzubauen – ohne aufwendige Bodenarbeiten.
         </p>
         <p>
-          Das folgende Kleinfeldtor ist vollverschweißt, wiegt nur rund 40 kg und wird inklusive Tornetz geliefert. Das bewährte Ovalprofil (120/100 mm) sorgt für hohe Stabilität bei geringem Gewicht. Eine passende <a href="/groessen" class="text-accent hover:text-accent-dark transition-colors">Übersicht aller Torgrößen</a> findest du in unserem Größen-Ratgeber.
+          Das folgende Kleinfeldtor ist vollverschweißt, wiegt nur rund 40 kg und wird inklusive Tornetz geliefert. Das bewährte Ovalprofil (120/100 mm) sorgt für hohe Stabilität bei geringem Gewicht. Eine passende <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors">Übersicht aller Torgrößen</a> findest du in unserem Größen-Ratgeber.
         </p>
       </div>
 
@@ -202,6 +268,10 @@ const schema = [
           campaign="verein"
         />
       </div>
+
+      <p class="text-neutral-600 leading-relaxed mt-6">
+        Für Bolzplätze, Schulhöfe und kommunale Spielflächen haben wir eigene Empfehlungen — siehe unser <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>.
+      </p>
     </section>
 
     <!-- Normen und Sicherheit -->
@@ -217,10 +287,10 @@ const schema = [
           Die wichtigsten Anforderungen der Norm im Überblick:
         </p>
         <ul class="space-y-2 my-4">
-          <li><strong>Kippsicherheit:</strong> Tore müssen einer Prüfkraft von 1.100 N (ca. 110 kg) an der Latte standhalten, ohne zu kippen – gesichert durch Bodenhülsen, Erdanker oder Gegengewichte. Dieses Thema ist sicherheitskritisch: Jedes Jahr gibt es in Deutschland Unfälle durch umkippende Tore.</li>
+          <li><strong>Kippsicherheit:</strong> Tore müssen einer definierten Prüfkraft an der Querlatte standhalten, ohne zu kippen – gesichert durch Bodenhülsen, Erdanker oder Gegengewichte. Dieses Thema ist sicherheitskritisch: Jedes Jahr gibt es in Deutschland Unfälle durch umkippende Tore.</li>
           <li><strong>Festigkeitsanforderungen:</strong> Pfosten und Querlatte müssen definierte Belastungen aushalten, ohne sich dauerhaft zu verformen. Die Norm schreibt dabei kein bestimmtes Material vor – in der Praxis hat sich Aluminium als Standard durchgesetzt.</li>
           <li><strong>Keine Einklemmgefahr:</strong> Verbindungsstellen, Haken und Netzaufhängungen dürfen keine Verletzungsgefahr bergen.</li>
-          <li><strong>Regelmäßige Prüfung:</strong> Gemäß DGUV Information 202-044 wird eine jährliche Sicherheitsüberprüfung durch eine sachkundige Person empfohlen. Zusätzlich sollte vor jeder Nutzung eine Sichtprüfung erfolgen.</li>
+          <li><strong>Regelmäßige Prüfung:</strong> Eine jährliche Sicherheitsüberprüfung durch eine sachkundige Person wird empfohlen. Zusätzlich sollte vor jeder Nutzung eine Sichtprüfung erfolgen.</li>
         </ul>
         <p>
           <strong>Praxis-Tipp:</strong> Kaufe ausschließlich Tore mit TÜV-Prüfzeichen. Im Schadensfall haftet der Verein, wenn die eingesetzten Tore nicht normkonform sind. Die Mehrkosten für geprüfte Qualität sind im Vergleich zum Haftungsrisiko vernachlässigbar.
@@ -313,6 +383,10 @@ const schema = [
           campaign="verein"
         />
       </div>
+
+      <p class="text-neutral-600 leading-relaxed mt-6">
+        Alle Details zu Tornetzen (Material, Stärke, Maschenweite, Pflege) findest du im <a href="/tornetz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Tornetz-Ratgeber</a>.
+      </p>
     </section>
 
     <!-- Kostenrechnung -->
@@ -336,7 +410,7 @@ const schema = [
           Insgesamt solltest du für eine solide Grundausstattung (zwei Großfeld- und zwei Jugendtore inklusive Netzen und Verankerung) ein <strong>mittleres vierstelliges Budget</strong> einplanen. Die aktuellen Preise findest du direkt <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">im Fachhandel</a>.
         </p>
         <p>
-          <strong>Spar-Tipp:</strong> Viele Hersteller gewähren bei der Abnahme mehrerer Tore Mengenrabatte. Frag direkt beim Händler nach – gerade bei der Erstausstattung lohnt sich das. Außerdem fördern Landessportverbände und Kommunen die Anschaffung von Sportgeräten häufig mit Zuschüssen. Erkundige dich bei deinem Kreis- oder Landessportbund. Mehr Tipps zur Kaufentscheidung findest du in unserer <a href="/kaufberatung" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung</a>.
+          <strong>Spar-Tipp:</strong> Viele Hersteller gewähren bei der Abnahme mehrerer Tore Mengenrabatte. Frag direkt beim Händler nach – gerade bei der Erstausstattung lohnt sich das. Außerdem fördern Landessportverbände und Kommunen die Anschaffung von Sportgeräten häufig mit Zuschüssen. Erkundige dich bei deinem Kreis- oder Landessportbund. Mehr Tipps zur Kaufentscheidung findest du in unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung</a>.
         </p>
       </div>
     </section>
@@ -351,13 +425,22 @@ const schema = [
           Bei der Anschaffung von Fußballtoren für den Verein geht es um drei Kernfragen: die richtige Größe, die passende Norm und ein vernünftiges Budget. Großfeldtore mit 7,32 x 2,44 m und Jugendtore mit 5 x 2 m decken den Bedarf der meisten Vereine ab. Achte konsequent auf die DIN EN 748 und ein TÜV-Prüfzeichen – das schützt Spieler und Verein gleichermaßen.
         </p>
         <p>
-          <a href="/material-vergleich" class="text-accent hover:text-accent-dark transition-colors">Aluminium</a> hat sich als Material im Vereinssport durchgesetzt: Es ist leicht, langlebig und wartungsarm. In Kombination mit hochwertigen Tornetzen und einer sicheren Verankerung bekommst du eine Ausstattung, die viele Jahre hält.
+          <a href="/material-vergleich/" class="text-accent hover:text-accent-dark transition-colors">Aluminium</a> hat sich als Material im Vereinssport durchgesetzt: Es ist leicht, langlebig und wartungsarm. In Kombination mit hochwertigen Tornetzen und einer sicheren Verankerung bekommst du eine Ausstattung, die viele Jahre hält.
         </p>
         <p>
-          Du suchst ein Tor für den <a href="/garten" class="text-accent hover:text-accent-dark transition-colors">Garten</a>? Dann schau auf unserer Gartentore-Seite vorbei – dort findest du leichtere und günstigere Modelle, die für den Privatgebrauch besser geeignet sind.
+          Du suchst ein Tor für den <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors">Garten</a>? Dann schau auf unserer Gartentore-Seite vorbei – dort findest du leichtere und günstigere Modelle, die für den Privatgebrauch besser geeignet sind.
         </p>
       </div>
     </section>
+
+    <RelatedContent
+      items={[
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Wettkampf-Maße' },
+        { href: '/material-vergleich/', title: 'Material', subtitle: 'Alu vs. Kunststoff' },
+        { href: '/tornetz/', title: 'Tornetz', subtitle: 'Material und Stärke richtig wählen' },
+        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher für Kommunen' },
+      ]}
+    />
 
   </article>
 

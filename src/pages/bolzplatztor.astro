@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import { addUtm } from '../utils/utm';
+
+const title = 'Bolzplatztor – Vandalismussicher & langlebig';
+const description =
+  'Bolzplatztore für Kommunen, Schulen und öffentliche Spielflächen: vandalismussicher, vollverschweißt, TÜV-geprüft. Was eine Investition rechtfertigt und welche Modelle sich bewähren.';
+
+const faqs = [
+  {
+    question: 'Was unterscheidet ein Bolzplatztor von einem normalen Fußballtor?',
+    answer:
+      'Bolzplatztore sind speziell für den Dauereinsatz auf öffentlichen Spielflächen konstruiert. Sie sind vollverschweißt, vandalismusresistent und haben einen geschlossenen Hinterbau, damit das Netz nicht abgerissen werden kann. Standard-Vereinstore halten dem nicht stand.',
+  },
+  {
+    question: 'Welche Größe hat ein Bolzplatztor?',
+    answer:
+      'Die gängige Größe ist 3,00 × 2,00 m — das gleiche Maß wie ein Kleinfeldtor (F-Jugend). Manche Kommunen verwenden auch kleinere Varianten (2,40 × 1,60 m) oder Minitore (1,20 × 0,80 m). Für Schulen sind oft 5 × 2 m Jugendtore eine Alternative.',
+  },
+  {
+    question: 'Brauchen Bolzplatztore eine TÜV-Prüfung?',
+    answer:
+      'Ja. Auf öffentlichen Spielflächen ist die DIN EN 748 verpflichtend, weil die Betreiber (meist Kommunen) haftbar sind. TÜV-geprüfte Tore minimieren das Haftungsrisiko und müssen regelmäßig kontrolliert werden (DGUV Information 202-044).',
+  },
+  {
+    question: 'Wie lange hält ein gutes Bolzplatztor?',
+    answer:
+      'Bei guter Qualität (vollverschweißt, Alu-Ovalprofil, geschlossener Hinterbau) sind solche Tore besonders langlebig — auch bei intensiver Nutzung. Die Investition rechnet sich gegenüber günstigen Toren, die deutlich häufiger ersetzt werden müssen.',
+  },
+  {
+    question: 'Was kostet ein Bolzplatztor?',
+    answer:
+      'Hochwertige Bolzplatztore liegen im oberen vierstelligen Bereich (pro Paar). Das klingt viel — pro Nutzungsjahr gerechnet sind sie aber günstiger als billige Modelle, die regelmäßig ersetzt werden müssen. Frag bei Kommune oder Sportverband nach Förderprogrammen.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-bolzplatztor.jpg',
+    datePublished: '2026-05-20',
+    dateModified: '2026-05-20',
+    inLanguage: 'de-DE',
+    author: {
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'fussballtore.de',
+      url: 'https://fussballtore.de',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/bolzplatztor/',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://fussballtore.de/' },
+      { '@type': 'ListItem', position: 2, name: 'Bolzplatztor', item: 'https://fussballtore.de/bolzplatztor/' },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-bolzplatztor.jpg">
+  <HeroSection
+    title="Bolzplatztore — Vandalismussicher & langlebig"
+    subtitle="Was Kommunen, Schulen und Vereine bei öffentlichen Spielflächen beachten müssen"
+    compact
+  />
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Bolzplatztor' }]} />
+
+  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+
+    <TldrBlock
+      title="Bolzplatztor — die wichtigsten Kriterien"
+      items={[
+        { label: 'Standard-Größe', text: '3,00 × 2,00 m (wie Kleinfeldtor). Auch kleinere Minitore möglich.' },
+        { label: 'Konstruktion', text: 'Vollverschweißt, Alu-Ovalprofil oder Stahl-Rechteckprofil, geschlossener Hinterbau.' },
+        { label: 'Norm', text: 'DIN EN 748 ist auf öffentlichen Spielflächen Pflicht. TÜV-Prüfzeichen zwingend.' },
+        { label: 'Lebensdauer', text: 'Bei guter Qualität besonders langlebig — auch unter intensiver Nutzung.' },
+        { label: 'Befestigung', text: 'Meist fest einbetoniert über Bodenhülsen. Wegen Diebstahl- und Kippschutz.' },
+      ]}
+      speakableId="tldr-bolzplatztor"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Ein <strong>Bolzplatztor</strong> muss mehr aushalten als ein Vereinstor: Tag und Nacht im Einsatz, oft ohne Aufsicht, manchmal mit Vandalismus konfrontiert. Die typischen Standorte sind öffentliche Bolzplätze, Schulhöfe und Pausenbereiche von Kindergärten. Wer hier ein normales Vereinstor aufstellt, hat nach drei Saisons das nächste Problem. Wir erklären, was ein gutes Bolzplatztor ausmacht — und warum die Investition sich rechnet.
+    </p>
+
+    <!-- Anforderungen -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Was ein Bolzplatztor leisten muss
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Bolzplatztore stehen in einem anderen Belastungsprofil als Vereinstore. Vereinstore werden trainiert, gepflegt und im Winter abgebaut. Bolzplatztore stehen ganzjährig draußen, werden von wechselnden Nutzern bespielt und sind seltener unter Aufsicht. Drei Anforderungen ergeben sich daraus:
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">1. Vandalismusresistenz</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Das Tor muss aushalten, dass Kinder daran klettern, am Netz hängen oder Gegenstände dagegen werfen. Die typische Schwachstelle ist die Verbindung Pfosten-Latte: Bei Stecktoren oder geschraubten Modellen löst sich nach wenigen Jahren die Verbindung. Lösung: <strong>vollverschweißt</strong>, keine schraubbaren Teile.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">2. Geschlossener Hinterbau</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Standard-Vereinstore haben ein loses Netz, das über Haken oder Schnüre am Tor hängt. Auf dem Bolzplatz wird es regelmäßig abgerissen. Lösung: <strong>geschlossener Hinterbau</strong> — ein Metallrahmen, der das Netz fest umschließt. Das Netz kann nur mit Werkzeug entfernt werden.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">3. Wetterbeständigkeit</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein Bolzplatztor steht 365 Tage im Jahr draußen. Aluminium ist hier klar im Vorteil: rostet nicht, braucht keine Beschichtung und ist pflegearm. Stahltore sind zwar günstiger, müssen aber regelmäßig nachbeschichtet werden — sonst frisst sich der Rost durch.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Details zum Material findest du im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark transition-colors font-medium">Material-Vergleich</a>.
+    </p>
+
+    <!-- Größen -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welche Größe für welchen Bolzplatz?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Größe richtet sich nach der Spielfläche und der Altersgruppe der Nutzer. Drei gängige Maße haben sich auf öffentlichen Bolzplätzen etabliert:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Größe</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatzort</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Spielform</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">1,20 × 0,80 m</td>
+            <td class="px-4 py-3">Schulhöfe, Kindergärten</td>
+            <td class="px-4 py-3">Mini-Bolzplatz, jüngere Kinder</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">2,40 × 1,60 m</td>
+            <td class="px-4 py-3">Kleine öffentliche Plätze</td>
+            <td class="px-4 py-3">Mittlere Bolzfläche</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">3,00 × 2,00 m</td>
+            <td class="px-4 py-3">Standard-Bolzplatz</td>
+            <td class="px-4 py-3">Klassisches Bolzformat (Kleinfeld)</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">5,00 × 2,00 m</td>
+            <td class="px-4 py-3">Schulsport, größere Plätze</td>
+            <td class="px-4 py-3">Jugendtor-Maß</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Eine vollständige Liste aller Tor-Maße inklusive offizieller DFB- und FIFA-Vorgaben findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
+    </p>
+
+    <!-- Befestigung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Befestigung: Einbetonieren ist Standard
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Bolzplatztore werden fast immer <strong>fest einbetoniert</strong> — über Bodenhülsen oder mit verschweißten Bodenrahmen direkt im Fundament. Drei Gründe sprechen dafür:
+    </p>
+    <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
+      <li><strong>Diebstahlschutz:</strong> Mobile Tore werden auf öffentlichen Plätzen regelmäßig gestohlen.</li>
+      <li><strong>Kippsicherheit:</strong> Die Norm DIN EN 748 fordert eine definierte Standsicherheit. Einbetoniert kein Problem.</li>
+      <li><strong>Haftung:</strong> Im Schadensfall haftet die Kommune. Lose Tore sind ein Haftungsrisiko.</li>
+    </ul>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Eine Schritt-für-Schritt-Anleitung zum Setzen von Bodenhülsen findest du im <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Aufbau-Ratgeber</a> oder im Detail bei den <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereinstoren</a>.
+    </p>
+
+    <!-- Produkte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Unsere Empfehlungen für Bolzplatztore
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Aus unserer täglichen Arbeit haben sich zwei Tore besonders bewährt — eines in Standard-Größe, eines als Mini-Variante:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Standard-Größe 3 × 2 m</p>
+        <ProductCard
+          name="Bolzplatztor UNKAPUTTBAR 3 x 2 m"
+          url="https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/255/secondPreview/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255.jpg"
+          features={['Vollverschweißt', 'Vandalismusresistent', 'Geschlossener Hinterbau', 'TÜV-geprüft', '5 Jahre Garantie']}
+          category="Bolzplatztor"
+          campaign="bolzplatztor"
+        />
+      </div>
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Mini-Variante für Schulhöfe</p>
+        <ProductCard
+          name={'Alu Minitor 1,20 x 0,80 m – geschlossener Hinterbau, „unzerstörbar"'}
+          url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar_18838_688608/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838_2.png"
+          features={['Geschlossener Hinterbau', 'TÜV-geprüft', 'Vollverschweißt', '80×80 mm Rechteckprofil', 'Made in Germany']}
+          category="Mini-Bolzplatztor"
+          campaign="bolzplatztor"
+        />
+      </div>
+    </div>
+
+    <!-- Fördermöglichkeiten -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fördermöglichkeiten für Kommunen und Schulen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Bolzplatztore sind eine größere Investition — viele Kommunen und Schulträger können dafür Förderprogramme nutzen. Erkundige dich beim Sportamt deiner Kommune oder beim Kreis- bzw. Landessportbund nach aktuellen Programmen. Die Bearbeitungszeit solltest du großzügig einplanen.
+    </p>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Qualität rechnet sich
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Bei Bolzplatztoren am falschen Ende zu sparen, ist teurer als ein gutes Tor zu kaufen. In der Praxis zeigt sich: Billige Stecktore halten oft nur wenige Jahre, dann sind sie reif für die Tonne. Ein vollverschweißtes Bolzplatztor mit geschlossenem Hinterbau kostet mehr in der Anschaffung, hält dafür aber spürbar länger. Pro Nutzungsjahr ist das oft die günstigere Lösung.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für Vereine, die auch Wettkampftore brauchen, schau dir unseren <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Ratgeber für Vereinstore</a> an. Für den privaten Bereich passen die Hinweise zu <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Gartentoren</a> und <a href="/kinder/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kindertoren</a> besser.
+    </p>
+
+    <RelatedContent
+      items={[
+        { href: '/verein/', title: 'Vereinstore', subtitle: 'Wettkampftore mit DIN-Prüfung' },
+        { href: '/material-vergleich/', title: 'Material', subtitle: 'Alu für Vandalismus-Schutz' },
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Tor-Maße im Überblick' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Bodenhülsen setzen' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zu Bolzplatztoren" />
+    </div>
+  </div>
+</BaseLayout>
