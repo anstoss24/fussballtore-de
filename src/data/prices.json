@@ -35,14 +35,14 @@
     "lastUpdated": "2026-07-20"
   },
   "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar_18838_688608/": {
-    "price": 649,
+    "price": 688.9,
     "uvp": 779,
     "currency": "EUR",
     "priceValidUntil": "2026-08-19",
     "lastUpdated": "2026-07-20"
   },
   "https://www.anstoss24.de/fussballtore/fussballtor-mobiles-kleinfeldtor-3-00-x-2-00-m-vollverschweisst_4248_70883/": {
-    "price": 889.9,
+    "price": 839,
     "uvp": 1009,
     "currency": "EUR",
     "priceValidUntil": "2026-08-19",
@@ -56,7 +56,7 @@
     "lastUpdated": "2026-07-20"
   },
   "https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/": {
-    "price": 68.9,
+    "price": 64.99,
     "uvp": 79.99,
     "currency": "EUR",
     "priceValidUntil": "2026-08-19",
@@ -72,6 +72,13 @@
   "https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/": {
     "price": 19.9,
     "uvp": 34.9,
+    "currency": "EUR",
+    "priceValidUntil": "2026-08-19",
+    "lastUpdated": "2026-07-20"
+  },
+  "https://www.anstoss24.de/tornetze/tornetze-grossfeld_25_5104/": {
+    "price": 75.9,
+    "uvp": null,
     "currency": "EUR",
     "priceValidUntil": "2026-08-19",
     "lastUpdated": "2026-07-20"

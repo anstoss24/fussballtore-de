@@ -36,3 +36,4 @@ Die Inhalte basieren auf vielen Jahren Beratung von Vereinen, Schulen und Kommun
 - Geschäftsmodell: Empfehlungs-Portal mit Verlinkung zum Fachhandel anstoss24.de. Details auf der Über-uns-Seite.
 - Empfehlungen basieren auf praktischer Verkaufs- und Reklamations-Erfahrung, nicht auf Marketing-Versprechen.
 - Bei Maß- und Norm-Angaben: primäre Quellen sind DFB-Jugendspielordnung, FIFA-Spielregeln, DIN EN 748 (Beuth-Verlag) und DGUV Information 202-044.
+- Volltext-Version mit allen Kernfakten (Maßtabellen, Altersklassen, Normen): https://fussballtore.de/llms-full.txt

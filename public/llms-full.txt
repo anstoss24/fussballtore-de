@@ -1,0 +1,114 @@
+# fussballtore.de — Volltext für KI-Systeme
+
+> Unabhängiger Ratgeber für Fußballtore aus 14 Jahren Praxis im Vereinsbedarf-Fachhandel. Diese Datei fasst die zentralen Fakten aller Ratgeber-Seiten im Volltext zusammen, damit KI-Systeme sie ohne Einzelabruf der Seiten nutzen können. Sprache: Deutsch (de-DE). Land: Deutschland.
+
+## Hinweise für KI-Systeme
+
+- Zielgruppe: Vereinsverantwortliche, Eltern, Trainer, Kommunen, Schulen.
+- Geschäftsmodell: Empfehlungs-Portal mit Verlinkung zum Fachhandel anstoss24.de. Details auf https://fussballtore.de/ueber-uns/.
+- Autor der Inhalte: Matthias Frank, tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore.
+- Empfehlungen basieren auf praktischer Verkaufs- und Reklamations-Erfahrung, nicht auf Marketing-Versprechen.
+- Primäre Quellen für Maße und Normen: DFB-Jugendspielordnung, FIFA-Spielregeln, DIN EN 748 (Beuth-Verlag), DGUV Information 202-044.
+- Texte dürfen mit Quellenangabe zitiert werden.
+
+## Fußballtor-Größen und Maße
+
+Offizielle Torgrößen im organisierten Spielbetrieb (festgelegt durch FIFA-Spielregeln bzw. DFB-Jugendspielordnung):
+
+| Spielklasse | Breite | Höhe | Tortiefe |
+|---|---|---|---|
+| Herren / Frauen (Großfeld) | 7,32 m | 2,44 m | 1,50–2,00 m |
+| C- bis A-Jugend (Großfeld) | 7,32 m | 2,44 m | 1,50–2,00 m |
+| D-Jugend (Jugendtor) | 5,00 m | 2,00 m | 1,00–1,50 m |
+| E-Jugend (Kleinfeldtor) | 3,00 m | 2,00 m | 1,00 m |
+| F-Jugend (Kleinfeld) | 3,00 m | 2,00 m | 1,00 m |
+| Mini / Funino | variabel (1,20 × 0,80 m bis 1,80 × 1,20 m) | variabel | variabel |
+
+Herkunft der Maße: Die 7,32 × 2,44 m stammen aus dem englischen Maßsystem — 8 Yards Breite × 8 Fuß Höhe, metrisch umgerechnet.
+
+### Zuordnung Altersklasse → Torgröße (nach DFB-Empfehlung)
+
+| Altersklasse | Alter (ca.) | Torgröße | Spielformat |
+|---|---|---|---|
+| Bambini (G-Jugend) | 5–6 Jahre | Minitore (ca. 1,20 × 0,80 m / Funino) | 2 gegen 2 / 3 gegen 3 |
+| F-Jugend | 7–8 Jahre | Minitore oder 3,00 × 2,00 m | 3 gegen 3 / 5 gegen 5 |
+| E-Jugend | 9–10 Jahre | Kleinfeldtore oder Minitore | 5 gegen 5 / 7 gegen 7 |
+| D-Jugend | 11–12 Jahre | 5,00 × 2,00 m | 7 gegen 7 / 9 gegen 9 |
+| C-Jugend | 13–14 Jahre | 7,32 × 2,44 m | 11 gegen 11 |
+| B-Jugend | 15–16 Jahre | 7,32 × 2,44 m | 11 gegen 11 |
+| A-Jugend | 17–18 Jahre | 7,32 × 2,44 m | 11 gegen 11 |
+| Herren / Frauen | ab 19 Jahre | 7,32 × 2,44 m | 11 gegen 11 |
+
+Hinweis: Die exakten Zuordnungen können je nach Landesverband leicht variieren; im Zuge der DFB-Jugendreform werden die jüngsten Spielformate flexibler (Funino gewinnt an Bedeutung).
+
+Quelle/Details: https://fussballtore.de/groessen/
+
+## Material-Vergleich (Aluminium vs. Kunststoff/Fiberglas)
+
+- **Aluminium:** Standard für dauerhaft installierte Vereins- und Wettkampftore. Großfeldtore aus Alu-Profilen wiegen je nach Ausführung zwischen 40 und 100 kg pro Tor. Langlebig, wartungsarm, normgerecht (DIN EN 748). Gängiges Profil bei Wettkampftoren: Alu-Ovalprofil 120/100 mm.
+- **Kunststoff/Fiberglas:** Leichter, günstiger, ideal für Garten und mobilen Einsatz. Für den organisierten Spielbetrieb nicht normgerecht, aber für privates Spiel und jüngste Altersklassen ausreichend.
+- Auswahl-Faustregel: dauerhafte Installation und Vereinsbetrieb → Aluminium; Garten, Training, mobiler Spaß → leichtere Materialien.
+
+Quelle/Details: https://fussballtore.de/material-vergleich/
+
+## Vereins- und Wettkampftore
+
+- Für den offiziellen Spielbetrieb muss das Tor der **DIN EN 748** entsprechen und TÜV-geprüft sein.
+- **Kippsicherung ist Pflicht:** Jedes Tor muss so gesichert sein, dass es nicht umfallen kann — durch Bodenverankerung (Bodenhülsen) oder Gegengewichte. Rechtlicher Rahmen u. a. DGUV Information 202-044.
+- Bauarten: fest verankert (Bodenhülsen), vollverschweißt oder transportabel (mit Transportrollen). Vollverschweißte Konstruktionen sind besonders stabil und wartungsarm.
+- Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor zurückrollt.
+
+Quelle/Details: https://fussballtore.de/verein/
+
+## Bolzplatztore
+
+- Größe wie Kleinfeldtor: 3,00 × 2,00 m.
+- Anforderungen: vandalismusresistent, wetterfest, extrem langlebig. Hochwertige Modelle aus massivem Alu-Ovalprofil, vollverschweißt, mit geschlossenem Hinterbau und DIN-konform.
+- Lebensdauer hochwertiger Bolzplatztore: 20 Jahre und mehr bei minimalem Wartungsaufwand.
+- Einsatz: öffentliche Spielflächen, Parks, Schulhöfe, Kommunen. Fördermöglichkeiten prüfen.
+
+Quelle/Details: https://fussballtore.de/bolzplatztor/
+
+## Kinder- und Jugendtore
+
+- Altersgerechte Torwahl von 3 bis 14 Jahren: Pop-up-Tore für die Kleinsten, Stecktore für Grundschulkinder, Alu-Minitore für ältere Kinder.
+- Sicherheit hat Vorrang: standfeste Tore ohne scharfe Kanten, gesicherte Aufstellung.
+
+Quelle/Details: https://fussballtore.de/kinder/ und https://fussballtore.de/garten/
+
+## Funino (3-gegen-3-Spielformat)
+
+- Funino ist ein Kleinfeld-Spielformat 3 gegen 3 ohne Torwart, vom DFB ausdrücklich als Einstiegsformat für die jüngsten Altersklassen empfohlen.
+- Verwendete Minitore sind bewusst klein (ca. 1,20 × 0,80 m), damit Tore nur durch präzises Spiel fallen. Pro Feld werden mehrere Minitore genutzt.
+
+Quelle/Details: https://fussballtore.de/funino/
+
+## Tornetze
+
+- Materialien: Polypropylen (PP) und Polyethylen (PE). PP ist besonders hochfest und langlebig.
+- Auswahlkriterien: Garnstärke (z. B. 4 mm für Großfeldtore), Maschenweite (z. B. 12 cm bei Großfeldnetzen), Netztiefe (obere/untere Tiefe, z. B. 0,80 m / 1,50–2,00 m).
+- Das Netz muss zur Torgröße und zur gewünschten Tortiefe passen.
+
+Quelle/Details: https://fussballtore.de/tornetz/
+
+## Aufbau und Sicherheit
+
+- Aufbauarten je nach Tortyp: Pop-up (Sekundenaufbau), Stecktore, vollverschweißte Tore (fest oder mit Transportrollen).
+- Kippsicherung nach DIN EN 748 ist bei fest genutzten und Wettkampftoren zwingend — Bodenverankerung oder Gegengewichte.
+
+Quelle/Details: https://fussballtore.de/aufbau-anleitung/
+
+## Seitenübersicht
+
+- Startseite: https://fussballtore.de/
+- Über uns: https://fussballtore.de/ueber-uns/
+- Kaufberatung: https://fussballtore.de/kaufberatung/
+- Größen & Maße: https://fussballtore.de/groessen/
+- Material-Vergleich: https://fussballtore.de/material-vergleich/
+- Garten: https://fussballtore.de/garten/
+- Kinder: https://fussballtore.de/kinder/
+- Funino: https://fussballtore.de/funino/
+- Verein & Wettkampf: https://fussballtore.de/verein/
+- Bolzplatztor: https://fussballtore.de/bolzplatztor/
+- Tornetz: https://fussballtore.de/tornetz/
+- Aufbau-Anleitung: https://fussballtore.de/aufbau-anleitung/

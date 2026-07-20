@@ -33,14 +33,35 @@ async function fetchProductPrice(url) {
 
   const jsonLdRegex = /<script[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
   for (const match of html.matchAll(jsonLdRegex)) {
+    const raw = match[1];
+
+    // 1a. Strict parse (works for the meisten Produkte)
     try {
-      const data = JSON.parse(match[1]);
-      if (data['@type'] === 'Product' && data.offers) {
-        price = parseFloat(data.offers.price);
-        currency = data.offers.priceCurrency || 'EUR';
+      const data = JSON.parse(raw);
+      const node = Array.isArray(data)
+        ? data.find((d) => d['@type'] === 'Product' && d.offers)
+        : data;
+      if (node && node['@type'] === 'Product' && node.offers) {
+        const offer = Array.isArray(node.offers) ? node.offers[0] : node.offers;
+        price = parseFloat(offer.price);
+        currency = offer.priceCurrency || 'EUR';
         break;
       }
     } catch {}
+
+    // 1b. Fallback: Product-JSON-LD mit kaputtem JSON (z. B. unescapte Zeichen in
+    // der Description bei Varianten-Produkten wie Tornetzen). Preis direkt aus dem
+    // offers-Block ziehen – auf Product+offers beschränkt, damit keine Versand-/
+    // Warenkorb-Summe erwischt wird.
+    if (!price && /"@type"\s*:\s*"Product"/.test(raw) && /"offers"/.test(raw)) {
+      const priceMatch = raw.match(/"price"\s*:\s*"?([\d.]+)"?/);
+      const currencyMatch = raw.match(/"priceCurrency"\s*:\s*"([A-Z]{3})"/);
+      if (priceMatch) {
+        price = parseFloat(priceMatch[1]);
+        if (currencyMatch) currency = currencyMatch[1];
+        break;
+      }
+    }
   }
 
   if (!price) throw new Error('No price found in JSON-LD');

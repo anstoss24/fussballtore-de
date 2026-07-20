@@ -8,6 +8,7 @@ interface Props {
   description: string;
   canonicalUrl?: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
   schema?: object | object[];
   noindex?: boolean;
 }
@@ -17,6 +18,7 @@ const {
   description,
   canonicalUrl = Astro.url.href,
   ogImage = '/og-default.jpg',
+  ogType = 'website',
   schema,
   noindex = false,
 } = Astro.props;
@@ -43,7 +45,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogIm
     <meta name="google-site-verification" content="evXzaTTXF-aXoB3g1srMntHxTYjpPOYYyZ9kGxMHskc" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
