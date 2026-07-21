@@ -20,6 +20,10 @@ const priceOf = (id: string): number | null => {
 };
 const fmtEur = (p: number) =>
   new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
+const linkOf = (id: string): string | null => {
+  const product = productsData.products.find((p) => p.id === id);
+  return product ? addUtm(product.url, 'kaufberatung', 'preis-tabelle') : null;
+};
 const range = (ids: string[]): string => {
   const ps = ids.map(priceOf).filter((p): p is number => p != null);
   if (!ps.length) return 'Preis beim Anbieter';
@@ -418,27 +422,27 @@ const schema = [
           <tr class="bg-white">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Pop-up-Tore (2er Set)</td>
             <td class="border border-neutral-200 px-4 py-2">{range(['popup-set'])}</td>
-            <td class="border border-neutral-200 px-4 py-2">ELF Sports Pop-up Goal</td>
+            <td class="border border-neutral-200 px-4 py-2"><a href={linkOf('popup-set')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">ELF Sports Pop-up Goal</a></td>
           </tr>
           <tr class="bg-neutral-50">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Minitore (1,20 – 1,80 m)</td>
             <td class="border border-neutral-200 px-4 py-2">{range(['quickplay-150', 'quickplay-180', 'minitor-lightweight', 'minitor-hinterbau'])}</td>
-            <td class="border border-neutral-200 px-4 py-2">QuickPlay Kickster Elite</td>
+            <td class="border border-neutral-200 px-4 py-2"><a href={linkOf('quickplay-150')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">QuickPlay Kickster Elite</a></td>
           </tr>
           <tr class="bg-white">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Kleinfeld- / Bolzplatztore (3 x 2 m)</td>
             <td class="border border-neutral-200 px-4 py-2">{range(['kleinfeldtor-mobil', 'bolzplatz-unkaputtbar'])}</td>
-            <td class="border border-neutral-200 px-4 py-2">Bolzplatztor UNKAPUTTBAR</td>
+            <td class="border border-neutral-200 px-4 py-2"><a href={linkOf('bolzplatz-unkaputtbar')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Bolzplatztor UNKAPUTTBAR</a></td>
           </tr>
           <tr class="bg-neutral-50">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Jugendtore (5 x 2 m)</td>
             <td class="border border-neutral-200 px-4 py-2">{range(['jugendtor-ohne-griffe', 'jugendtor-mit-griffen'])}</td>
-            <td class="border border-neutral-200 px-4 py-2">Mobiles Jugendtor, vollverschweißt</td>
+            <td class="border border-neutral-200 px-4 py-2"><a href={linkOf('jugendtor-ohne-griffe')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Mobiles Jugendtor, vollverschweißt</a></td>
           </tr>
           <tr class="bg-white">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Großfeldtore (7,32 x 2,44 m)</td>
             <td class="border border-neutral-200 px-4 py-2">{range(['grossfeld-transportabel', 'bundesliga-premium'])}</td>
-            <td class="border border-neutral-200 px-4 py-2">Bundesliga-Tor, Alu-Profil</td>
+            <td class="border border-neutral-200 px-4 py-2"><a href={linkOf('bundesliga-premium')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Bundesliga-Tor, Alu-Profil</a></td>
           </tr>
         </tbody>
       </table>
