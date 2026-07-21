@@ -191,6 +191,12 @@ const pages = [
     subtitle: '14 Jahre Praxis im Vereinsbedarf-Fachhandel',
     accentLabel: 'Über uns',
   },
+  {
+    file: 'og-minitore.jpg',
+    title: 'Minitore',
+    subtitle: 'Größen, Bauarten, Empfehlungen — klappbar bis Alu',
+    accentLabel: 'Minitore',
+  },
 ];
 
 for (const page of pages) {

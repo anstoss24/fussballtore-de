@@ -66,7 +66,10 @@ des redaktionellen Inhalts – nicht als Werbung.
 - Zwischenüberschrift alle 200-300 Wörter
 - Fachbegriffe erklären (Tortiefe, Ovalprofil, Netzbügel)
 - Konkrete Maße nach DFB/FIFA (7,32 x 2,44m, 5 x 2m, 3 x 2m)
-- Keine konkreten Preise auf der Seite – CTA ist "Preis jetzt prüfen" (Link zu anstoss24.de)
+- Konkrete Preise NUR aus dem Live-Preis-Feed (`src/data/prices.json`, täglich
+  automatisch aktualisiert) — beim Build berechnen (siehe `priceOf`/`range`-Helper
+  in kaufberatung.astro/minitore.astro), NIEMALS hart codieren. CTA bleibt
+  "Preis jetzt prüfen" (Link zu anstoss24.de)
 - KEIN Keyword-Stuffing, Lesbarkeit geht vor
 
 ## Fakten-Referenz (für alle Seiten nutzbar)
