@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     question: 'Welche Fußballtor-Größe brauchen Jugendmannschaften?',
-    answer: 'Die D-Jugend (U12/U13) spielt im 9-gegen-9-Format auf Jugendtore mit 5,00 x 2,00 m. Ab der C-Jugend (U14/U15) wird auf Großfeldtore mit 7,32 x 2,44 m gespielt. Die jüngeren Altersklassen nutzen Kleinfeldtore (3,00 x 2,00 m bei der F-Jugend) oder Minitore (Bambini/Funino). Die E-Jugend spielt mit Kleinfeldtoren oder Minitoren. Die genauen Vorgaben legt der DFB in seinen Jugendspielordnungen fest.',
+    answer: 'Die E-Jugend (U10/U11) und die D-Jugend (U12/U13) spielen auf Tore mit 5,00 x 2,00 m — die E-Jugend im 7-gegen-7, die D-Jugend im 9-gegen-9. Ab der C-Jugend (U14/U15) wird auf Großfeldtore mit 7,32 x 2,44 m gespielt. Die jüngeren Altersklassen nutzen Minitore (Bambini/Funino) oder 3,00 x 2,00 m-Tore (F-Jugend). Die genauen Vorgaben stehen in den Jugendordnungen der Landesverbände.',
   },
   {
     question: 'Was ist die offizielle Tortiefe bei Fußballtoren?',
@@ -29,8 +29,12 @@ const faqs = [
     answer: 'Nein, für Minitore und Funino-Tore gibt es keine einheitlich vorgeschriebenen Maße. Gängige Größen liegen zwischen 1,20 x 0,80 m und 1,80 x 1,20 m. Im Funino-Spielbetrieb werden oft Tore mit ca. 1,20 x 0,80 m verwendet.',
   },
   {
+    question: 'Wie groß ist ein E-Jugend-Tor?',
+    answer: 'Die E-Jugend (U10/U11) spielt beim 7-gegen-7 auf Tore mit 5,00 x 2,00 m — in der Verbandssprache „Kleinfeld-Fußballtore" genannt, im Handel als Jugendtore bekannt. Beim 5-gegen-5 erlauben viele Landesverbände auch kleinere Tore (3 x 2 m oder Minitore). Maßgeblich ist die Jugendordnung des jeweiligen Landesverbands.',
+  },
+  {
     question: 'Ab welchem Alter spielen Kinder auf große Tore?',
-    answer: 'Ab der D-Jugend (ca. 11–12 Jahre) wird auf Jugendtore mit 5 x 2 m gespielt. Ab der C-Jugend (ca. 13–14 Jahre) kommt das Großfeldtor mit 7,32 x 2,44 m zum Einsatz. Davor spielen Kinder auf Kleinfeldtore (3 x 2 m bei der F-Jugend), auf Kleinfeldtore (E-Jugend) oder Minitore (Bambini/Funino).',
+    answer: 'Ab der E-Jugend (ca. 9–10 Jahre) wird auf Jugendtore mit 5 x 2 m gespielt — zunächst im 7-gegen-7, ab der D-Jugend im 9-gegen-9. Ab der C-Jugend (ca. 13–14 Jahre) kommt das Großfeldtor mit 7,32 x 2,44 m zum Einsatz. Davor spielen Kinder auf Minitore (Bambini/Funino) oder 3 x 2 m-Tore (F-Jugend).',
   },
 ];
 
@@ -96,8 +100,8 @@ const schema = [
         title="Alle Fußballtor-Maße auf einen Blick"
         items={[
           { label: 'Großfeldtor', text: '7,32 × 2,44 m (Tortiefe 1,50–2,00 m) — Herren, Frauen und C- bis A-Jugend.' },
-          { label: 'Jugendtor', text: '5,00 × 2,00 m — D-Jugend (U12/U13), 9-gegen-9.' },
-          { label: 'Kleinfeldtor', text: '3,00 × 2,00 m — F-Jugend und Bolzplatz. E-Jugend spielt mit Kleinfeldtoren oder Minitoren.' },
+          { label: 'Jugendtor', text: '5,00 × 2,00 m — E-Jugend (7-gegen-7) und D-Jugend (9-gegen-9).' },
+          { label: 'Kleinfeldtor', text: '3,00 × 2,00 m — F-Jugend (5-gegen-5) und Bolzplatz.' },
           { label: 'Minitor', text: '1,20 × 0,80 m bis 1,80 × 1,20 m — Bambini, Funino, Garten.' },
           { label: 'Herkunft der Maße', text: 'Die 7,32 × 2,44 m stammen aus dem englischen Maßsystem: 8 Yards Breite × 8 Fuß Höhe.' },
         ]}
@@ -168,10 +172,10 @@ const schema = [
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,50–2,00 m</td>
             </tr>
             <tr class="bg-white hover:bg-neutral-50 transition-colors">
-              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">E-Jugend (Kleinfeldtor)</td>
-              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">3,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">E-Jugend (Jugendtor, 7-gegen-7)</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 m</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">2,00 m</td>
-              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,00 m</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">1,00–1,50 m</td>
             </tr>
             <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">
               <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">D-Jugend (Jugendtor)</td>
@@ -235,7 +239,7 @@ const schema = [
         Jugendtor – 5,00 x 2,00 m
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Jugendtore mit <strong>5,00 m Breite und 2,00 m Höhe</strong> sind die Standardgröße für den Jugendfußball der D-Jugend (7 gegen 7 / 9 gegen 9). Die E-Jugend spielt mit Kleinfeldtoren (3 x 2 m) oder Minitoren. Diese Torgröße bildet den Übergang zwischen den kleineren Kindertoren und dem Großfeldtor und ist für Spieler im Alter von ca. 9 bis 13 Jahren vorgesehen.
+        Jugendtore mit <strong>5,00 m Breite und 2,00 m Höhe</strong> sind die Standardgröße für die E- und D-Jugend: Die E-Jugend (U10/U11) spielt darauf im 7-gegen-7, die D-Jugend (U12/U13) im 9-gegen-9. In den Jugendordnungen der Landesverbände heißen diese Tore „Kleinfeld-Fußballtore", weil sie auf dem Kleinfeld (quergeteiltes Großfeld) stehen — im Handel sind sie als Jugendtore bekannt. Diese Torgröße bildet den Übergang zwischen den kleineren Kindertoren und dem Großfeldtor und ist für Spieler im Alter von ca. 9 bis 13 Jahren vorgesehen.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
         Im Jugendbereich wird besonderer Wert auf Sicherheit gelegt. Die Tore müssen standfest sein und dürfen keine scharfen Kanten haben. Viele Vereine setzen auf <strong>mobile Jugendtore</strong>, die sich bei Bedarf vom Platz fahren lassen – etwa wenn derselbe Platz von verschiedenen Altersklassen genutzt wird. Vollverschweißte Konstruktionen sind dabei besonders stabil und wartungsarm.
@@ -263,6 +267,11 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-4">
         Kleinfeldtore messen <strong>3,00 m in der Breite und 2,00 m in der Höhe</strong> und kommen im Spielbetrieb der F-Jugend (5 gegen 5) zum Einsatz. Dieselbe Größe wird auch für Bolzplatztore verwendet – also für öffentliche Spielflächen in Parks, Schulen und Kommunen.
       </p>
+      <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-6">
+        <p class="text-neutral-600 leading-relaxed text-sm">
+          <strong>Achtung, Begriffsverwirrung:</strong> In den Jugendordnungen der Landesverbände bezeichnet „Kleinfeld-Fußballtor" das <strong>5 × 2 m-Tor</strong> (es steht auf dem Kleinfeld, also dem quergeteilten Großfeld). Im Handel ist mit „Kleinfeldtor" dagegen meist das <strong>3 × 2 m-Tor</strong> gemeint. Wer für den Verein bestellt, sollte sich deshalb immer an den Meterangaben orientieren, nicht am Namen.
+        </p>
+      </div>
       <p class="text-neutral-600 leading-relaxed mb-4">
         An Bolzplatztore werden besondere Anforderungen gestellt: Sie müssen <strong>vandalismusresistent</strong>, wetterfest und extrem langlebig sein. Hochwertige Modelle bestehen aus massivem Alu-Ovalprofil, sind vollverschweißt und DIN-konform. Die Investition ist zwar höher als bei einfachen Toren, dafür halten Bolzplatztore problemlos 20 Jahre und mehr – ohne nennenswerten Wartungsaufwand.
       </p>
@@ -330,7 +339,7 @@ const schema = [
             <tr class="bg-white hover:bg-neutral-50 transition-colors">
               <td class="border border-neutral-200 px-4 py-2 text-sm font-medium text-primary">E-Jugend</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">9–10 Jahre</td>
-              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">Kleinfeldtore oder Minitore</td>
+              <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5,00 x 2,00 m (beim 5 gegen 5 auch kleinere Tore)</td>
               <td class="border border-neutral-200 px-4 py-2 text-sm text-neutral-600">5 gegen 5 / 7 gegen 7</td>
             </tr>
             <tr class="bg-neutral-50 hover:bg-neutral-100 transition-colors">

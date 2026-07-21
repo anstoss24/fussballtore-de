@@ -19,12 +19,14 @@ Offizielle Torgrößen im organisierten Spielbetrieb (festgelegt durch FIFA-Spie
 |---|---|---|---|
 | Herren / Frauen (Großfeld) | 7,32 m | 2,44 m | 1,50–2,00 m |
 | C- bis A-Jugend (Großfeld) | 7,32 m | 2,44 m | 1,50–2,00 m |
-| D-Jugend (Jugendtor) | 5,00 m | 2,00 m | 1,00–1,50 m |
-| E-Jugend (Kleinfeldtor) | 3,00 m | 2,00 m | 1,00 m |
+| E-Jugend (Jugendtor, 7-gegen-7) | 5,00 m | 2,00 m | 1,00–1,50 m |
+| D-Jugend (Jugendtor, 9-gegen-9) | 5,00 m | 2,00 m | 1,00–1,50 m |
 | F-Jugend (Kleinfeld) | 3,00 m | 2,00 m | 1,00 m |
 | Mini / Funino | variabel (1,20 × 0,80 m bis 1,80 × 1,20 m) | variabel | variabel |
 
 Herkunft der Maße: Die 7,32 × 2,44 m stammen aus dem englischen Maßsystem — 8 Yards Breite × 8 Fuß Höhe, metrisch umgerechnet.
+
+Begriffshinweis „Kleinfeldtor": In den Jugendordnungen der Landesverbände bezeichnet „Kleinfeld-Fußballtor" das 5 × 2 m-Tor (Quelle: z. B. Jugendordnung Badischer Fußballverband). Im Handel ist mit „Kleinfeldtor" meist das 3 × 2 m-Tor gemeint. Maßgeblich sind immer die Meterangaben.
 
 ### Zuordnung Altersklasse → Torgröße (nach DFB-Empfehlung)
 
@@ -32,7 +34,7 @@ Herkunft der Maße: Die 7,32 × 2,44 m stammen aus dem englischen Maßsystem —
 |---|---|---|---|
 | Bambini (G-Jugend) | 5–6 Jahre | Minitore (ca. 1,20 × 0,80 m / Funino) | 2 gegen 2 / 3 gegen 3 |
 | F-Jugend | 7–8 Jahre | Minitore oder 3,00 × 2,00 m | 3 gegen 3 / 5 gegen 5 |
-| E-Jugend | 9–10 Jahre | Kleinfeldtore oder Minitore | 5 gegen 5 / 7 gegen 7 |
+| E-Jugend | 9–10 Jahre | 5,00 × 2,00 m (beim 5 gegen 5 auch kleinere Tore) | 5 gegen 5 / 7 gegen 7 |
 | D-Jugend | 11–12 Jahre | 5,00 × 2,00 m | 7 gegen 7 / 9 gegen 9 |
 | C-Jugend | 13–14 Jahre | 7,32 × 2,44 m | 11 gegen 11 |
 | B-Jugend | 15–16 Jahre | 7,32 × 2,44 m | 11 gegen 11 |
@@ -85,7 +87,7 @@ Quelle/Details: https://fussballtore.de/funino/
 
 ## Minitore
 
-- Gängige Größen: 1,20 × 0,80 m (DFB-Funino-Standard für die G-Jugend), 1,50 × 1,00 m, 1,80 × 1,20 m, bis 2,40 × 1,60 m. Keine einheitliche Norm-Größe.
+- Gängige Größen: 1,20 × 0,80 m (übliches Funino-Maß), 1,50 × 1,00 m, 1,80 × 1,20 m, bis 2,40 × 1,60 m. Der DFB schreibt kein festes Maß vor; laut DFB-FAQ sind Minitore flexibel bis maximal 2,00 × 1,20 m wählbar.
 - Bauarten: Pop-up-Tore (Fiberglas, 1–3 kg, Lebensdauer 2–4 Saisons), klappbare Kunststoff-Minitore (z. B. QuickPlay Kickster, 6–8 kg, ~90-Sekunden-Aufbau, mit Erdankern windstabil), vollverschweißte Alu-Minitore (rostfrei, 15–25 Jahre Lebensdauer).
 - Verein/Schule/Kommune: TÜV-geprüfte Alu-Minitore mit geschlossenem Hinterbau nach DIN EN 16579 (Stababstand 86 mm, unterhalb der 88-mm-Sicherheitsgrenze).
 - Sicherheit: Minitore unter 10 kg benötigen keine Kippsicherung; leichte Tore mit Erdankern gegen Wind sichern.

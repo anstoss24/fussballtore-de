@@ -22,6 +22,13 @@
 - **C-Jugend spielt auf Großfeldtoren (7,32 x 2,44m)**, NICHT auf 5x2m Jugendtoren!
 - D-Jugend spielt 9v9 (nicht 11v11) auf 5x2m Toren
 - G-Jugend spielt auf Minitoren, NICHT auf regulären Toren
+- **E-Jugend spielt beim 7v7 auf 5x2m-Toren** (verifiziert 2026-07-21 gegen
+  Jugendordnung Badischer Fußballverband: „Bei den 7er-, 8er- und
+  9er-Mannschaften wird auf Kleinfeld-Fußballtore (5 x 2 m) gespielt");
+  beim 5v5 sind je nach Landesverband auch 3x2m-Tore/Minitore erlaubt.
+- **Begriffsfalle „Kleinfeldtor":** Verbandssprache = 5x2m (Tor fürs
+  Kleinfeld). Handelssprache (auch anstoss24-Kategorie) = 3x2m. Auf den
+  Seiten immer Meterangaben nennen, nie nur den Begriff.
 
 ## DFB Kinderfußball-Reform 2024/2025
 

@@ -7,9 +7,20 @@ import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import pricesData from '../data/prices.json';
 
-const title = 'Fußballtor für den Garten – Ratgeber';
-const description = 'Das beste Fußballtor für den Garten: Pop-up-Tore, Stecktore und Minitore im Vergleich. Für Kinder und Erwachsene – wetterfest, sicher und schnell aufgebaut.';
+// Live-Preise aus dem täglich aktualisierten Preis-Feed
+const priceOf = (id: string): number | null => {
+  const product = productsData.products.find((p) => p.id === id);
+  const info = product && (pricesData as Record<string, any>)[product.url];
+  return info?.price ?? null;
+};
+const fmtEur = (p: number) =>
+  new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
+
+const title = 'Fußballtor für den Garten: stabil, wetterfest, schnell aufgebaut';
+const description = 'Welches Fußballtor für den Garten? Pop-up, Stecktor und stabile Alu-Minitore im Vergleich — mit Größen-Empfehlung nach Alter, Sicherheits-Tipps und aktuellen Preisen.';
 
 const faqs = [
   {
@@ -42,7 +53,7 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-garten.jpg',
     datePublished: '2025-01-15',
-    dateModified: '2026-05-20',
+    dateModified: '2026-07-21',
     inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
@@ -158,8 +169,16 @@ const schema = [
         Welches Fußballtor für den Garten?
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Fußballtore für den Garten lassen sich grob in vier Kategorien einteilen. Jede hat ihre Stärken – welche
-        zu dir passt, hängt von deinem Platzangebot, dem Alter der Spieler und deinem Budget ab.
+        Die kurze Antwort: Für Kinder bis ca. 6 Jahre ein <strong>Pop-up-Tor</strong> ({priceOf('popup-set') ? `2er-Set ab ${fmtEur(priceOf('popup-set')!)} €` : 'günstig'}), für regelmäßiges Spielen ein <strong>klappbares Stecktor wie das QuickPlay</strong> ({priceOf('quickplay-150') ? `ab ${fmtEur(priceOf('quickplay-150')!)} €` : ''}) und wenn das Tor dauerhaft draußen stehen soll ein <strong>vollverschweißtes Alu-Minitor</strong> ({priceOf('minitor-lightweight') ? `ab ${fmtEur(priceOf('minitor-lightweight')!)} €` : ''}) — Preise live von anstoss24.de.
+      </p>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Im Detail lassen sich Fußballtore für den Garten grob in vier Kategorien einteilen. Jede hat ihre Stärken – welche
+        zu dir passt, hängt von deinem Platzangebot, dem Alter der Spieler und deinem Budget ab. Einen Überblick über alle kleinen Tore gibt auch unser <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitore-Ratgeber</a>.
+      </p>
+
+      <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Welches Gartentor ist wirklich stabil?</h3>
+      <p class="text-neutral-600 leading-relaxed mb-4">
+        Wirklich <strong>stabil für den Dauereinsatz im Garten</strong> sind vollverschweißte Aluminium-Minitore: keine Steckverbindungen, die ausleiern, rostfrei und 15–25 Jahre haltbar — das Lightweight-Modell wiegt dabei unter 10 kg. Klappbare Kunststoff-Tore wie das QuickPlay sind der stabile Mittelweg (windgetestet bis über 120 km/h, mit Erdankern gesichert). Pop-up-Tore sind bewusst leicht gebaut und halten bei regelmäßiger Nutzung erfahrungsgemäß 2–4 Saisons.
       </p>
 
       <div class="overflow-x-auto mb-8">

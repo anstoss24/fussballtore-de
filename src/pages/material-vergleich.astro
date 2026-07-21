@@ -7,6 +7,17 @@ import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import pricesData from '../data/prices.json';
+
+// Live-Preise aus dem täglich aktualisierten Preis-Feed
+const priceOf = (id: string): number | null => {
+  const product = productsData.products.find((p) => p.id === id);
+  const info = product && (pricesData as Record<string, any>)[product.url];
+  return info?.price ?? null;
+};
+const fmtEur = (p: number) =>
+  new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
 
 const title = 'Alu vs. Kunststoff: Fußballtor-Material';
 const description = 'Aluminium oder Kunststoff? Der Material-Vergleich für Fußballtore: Gewicht, Haltbarkeit, Preis und Pflege im direkten Vergleich. Mit konkreten Empfehlungen.';
@@ -38,7 +49,7 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-material.jpg',
     datePublished: '2025-01-15',
-    dateModified: '2026-05-20',
+    dateModified: '2026-07-21',
     inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
@@ -176,6 +187,39 @@ const schema = [
 
     <p class="text-neutral-500 leading-relaxed mb-6">
       <strong class="text-primary">Ideal geeignet für:</strong> Vereine, Schulen, Trainingsbetrieb, mobile Tore – überall dort, wo das Tor regelmäßig bewegt wird oder dauerhaft der Witterung ausgesetzt ist.
+    </p>
+
+    <!-- Kauf-Checkliste Aluminiumtore -->
+    <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">
+      Aluminiumtore für Fußball kaufen: Darauf kommt es an
+    </h2>
+    <p class="text-neutral-500 leading-relaxed mb-4">
+      Wer ein Aluminiumtor kauft, sollte auf fünf Punkte achten — sie entscheiden über Lebensdauer und Sicherheit mehr als der Preis:
+    </p>
+    <ul class="space-y-3 mb-6 text-neutral-500 leading-relaxed">
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong class="text-primary">Profil:</strong> Ovalprofil 120/100 mm ist der Standard bei Wettkampftoren — verwindungssteif und ballwurfsicher.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong class="text-primary">Konstruktion:</strong> Vollverschweißt hält länger als steckbar — keine Verbindungen, die ausleiern.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong class="text-primary">Norm:</strong> Für Verein und öffentliche Flächen DIN EN 748 mit TÜV-Prüfung — im Schadensfall haftet sonst der Betreiber.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong class="text-primary">Kippsicherung:</strong> Bodenhülsen, Erdanker oder Gegengewichte von Anfang an mitplanen.</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
+        <span><strong class="text-primary">Lieferumfang:</strong> Tornetz inklusive spart Geld und Aufwand — sonst Netz passend zur Tortiefe nachbestellen.</span>
+      </li>
+    </ul>
+    <p class="text-neutral-500 leading-relaxed mb-6">
+      Zur Preis-Orientierung (Live-Preise von anstoss24.de): Alu-Minitore ab {fmtEur(priceOf('minitor-lightweight') ?? 0)} €, mobile Kleinfeldtore (3 × 2 m) ab {fmtEur(priceOf('kleinfeldtor-mobil') ?? 0)} €, Jugendtore (5 × 2 m) ab {fmtEur(Math.min(...(['jugendtor-ohne-griffe', 'jugendtor-mit-griffen'].map(priceOf).filter((p): p is number => p != null)))) } € und Großfeldtore ab {fmtEur(priceOf('grossfeld-transportabel') ?? 0)} €. Eine ausführliche Entscheidungshilfe bietet die <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a>.
     </p>
 
     <!-- Produktempfehlungen -->

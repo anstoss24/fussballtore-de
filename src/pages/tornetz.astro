@@ -7,16 +7,36 @@ import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import pricesData from '../data/prices.json';
 
-const title = 'Tornetz für Fußballtore – Material, Stärke, Größen';
+// Live-Preis aus dem täglich aktualisierten Preis-Feed
+const priceOf = (id: string): number | null => {
+  const product = productsData.products.find((p) => p.id === id);
+  const info = product && (pricesData as Record<string, any>)[product.url];
+  return info?.price ?? null;
+};
+const fmtEur = (p: number) =>
+  new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
+const netzPreis = priceOf('tornetz-grossfeld');
+
+const title = 'Tornetz für Fußballtore: Welches Netz für welches Tor?';
 const description =
-  'Tornetz richtig wählen: PP oder PE, 4 mm oder 5 mm, Maschenweite, Knotenform und Netztiefe. So findest du das passende Netz für Großfeld, Jugend- und Kleinfeldtor.';
+  `Tornetz richtig wählen: Zuordnung für Großfeld-, Jugend- und Kleinfeldtore, PP oder PE, 4 oder 5 mm, Maschenweite und Netztiefe.${netzPreis ? ` Großfeld-Netz aktuell ab ${fmtEur(netzPreis)} €.` : ''}`;
 
 const faqs = [
   {
     question: 'Welches Tornetz für ein Großfeldtor (7,32 × 2,44 m)?',
     answer:
       'Für Großfeldtore empfehlen wir Polypropylen (PP), Garnstärke 4 mm, Maschenweite 12 × 12 cm. Die Netztiefe sollte oben 80 cm, unten 200 cm betragen, damit der Ball nach dem Torschuss sauber ins Netz fällt.',
+  },
+  {
+    question: 'Was kostet ein Tornetz?',
+    answer: `Ein Vereins-Tornetz für Großfeldtore (PP, 4 mm, 12er-Masche) kostet aktuell ${netzPreis ? fmtEur(netzPreis) + ' €' : 'unter 100 €'} pro Stück — der Preis stammt aus dem täglich aktualisierten Feed von anstoss24.de. Netze für Jugend- und Kleinfeldtore liegen darunter, dickere 5-mm-Wettkampfnetze darüber. Dünne Ersatznetze für Garten-Tore gibt es deutlich günstiger.`,
+  },
+  {
+    question: 'Welches Tornetz passt auf ein 3 x 2 m Tor?',
+    answer: 'Für Kleinfeld- und Bolzplatztore (3,00 x 2,00 m) brauchst du ein Netz mit passender Netztiefe von etwa 80 cm oben und 100 cm unten. Für Bolzplätze empfehlen sich dickere Garnstärken (5–6 mm), im Vereins- und Schulbetrieb reichen 4 mm. Wichtig: Das Netz muss zur Tortiefe deines Tors passen — miss vor der Bestellung nach.',
   },
   {
     question: 'Polypropylen oder Polyethylen — was ist besser?',
@@ -48,7 +68,7 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-tornetz.jpg',
     datePublished: '2026-05-20',
-    dateModified: '2026-05-20',
+    dateModified: '2026-07-21',
     inLanguage: 'de-DE',
     author: {
       '@type': 'Person',
@@ -102,6 +122,51 @@ const schema = [
     <!-- Einleitung -->
     <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
       Ohne Netz kein richtiges Tor. Aber welches <strong>Tornetz</strong> passt zu deinem Fußballtor — und wie unterscheidet sich ein 4-mm-Vereinsnetz von einem dünnen Pop-up-Netz? Wir erklären die wichtigsten Kriterien, damit du nicht zweimal kaufst.
+    </p>
+
+    <!-- Direkt-Antwort: Zuordnung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welches Tornetz für welches Tor?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Netz-Wahl richtet sich nach dem <strong>Tormaß</strong> und der <strong>Tortiefe</strong> deines Tors. Die Übersicht zeigt die bewährte Zuordnung für die drei Standard-Torgrößen:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Tor</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Netztiefe (oben/unten)</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Garnstärke</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Maschenweite</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Großfeldtor (7,32 × 2,44 m)</td>
+            <td class="px-4 py-3">80 / 150 cm (Verein) oder 80 / 200 cm (Profi)</td>
+            <td class="px-4 py-3">4–5 mm</td>
+            <td class="px-4 py-3">12 × 12 cm</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Jugendtor (5,00 × 2,00 m)</td>
+            <td class="px-4 py-3">80 / 150 cm</td>
+            <td class="px-4 py-3">4 mm</td>
+            <td class="px-4 py-3">12 × 12 cm</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Kleinfeld-/Bolzplatztor (3,00 × 2,00 m)</td>
+            <td class="px-4 py-3">80 / 100 cm</td>
+            <td class="px-4 py-3">4 mm (Bolzplatz: 5–6 mm)</td>
+            <td class="px-4 py-3">12 × 12 cm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Wichtig: Das Netz ist immer <strong>etwas größer als das Tormaß</strong> — ein Großfeldnetz misst z. B. rund 7,50 × 2,50 m, damit es sich über Pfosten und Latte spannen lässt. Miss vor der Bestellung außerdem die Tortiefe deines Tors (oben und unten), damit die Netzform passt. Alle Tormaße im Detail: <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
     </p>
 
     <!-- Material -->

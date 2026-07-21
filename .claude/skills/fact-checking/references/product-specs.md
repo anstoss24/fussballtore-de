@@ -81,7 +81,8 @@
 - Hersteller: GLA-WEL
 - Gewicht: unter 10 kg
 - Tiefe (Auslage): 0,70 m
-- Profil: Runde Spezial-System-Profile (verwindungssteif)
+- Profil: rechteckige 50 x 50 mm Profile (verifiziert 2026-07-21 gegen
+  Produktseite — die frühere Angabe „runde Spezial-System-Profile" war falsch)
 - Vollverschweißt (Einteiler)
 - Inkl. Tornetz und UV-beständige System-Netzhalter
 - Keine Kippsicherung nötig (unter 10 kg)
