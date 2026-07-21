@@ -7,9 +7,42 @@ import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import pricesData from '../data/prices.json';
 
-const title = 'Fußballtor kaufen – Die Kaufberatung 2026';
-const description = 'Fußballtor kaufen: Worauf du bei Größe, Material, Sicherheit und Preis achten musst. Unser Ratgeber hilft dir, das richtige Tor zu finden.';
+// Echte Marktpreise aus dem täglich aktualisierten Preis-Feed (prices.json).
+// Der Preis-Cron committet auf main und triggert den Rebuild — die Zahlen
+// hier sind also immer der letzte verifizierte Stand, nie erfunden.
+const priceOf = (id: string): number | null => {
+  const product = productsData.products.find((p) => p.id === id);
+  const info = product && (pricesData as Record<string, any>)[product.url];
+  return info?.price ?? null;
+};
+const fmtEur = (p: number) =>
+  new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
+const range = (ids: string[]): string => {
+  const ps = ids.map(priceOf).filter((p): p is number => p != null);
+  if (!ps.length) return 'Preis beim Anbieter';
+  const min = Math.min(...ps);
+  const max = Math.max(...ps);
+  return min === max ? `${fmtEur(min)} €` : `${fmtEur(min)} – ${fmtEur(max)} €`;
+};
+const GOAL_IDS = [
+  'popup-set', 'quickplay-150', 'quickplay-180', 'minitor-lightweight', 'minitor-hinterbau',
+  'kleinfeldtor-mobil', 'bolzplatz-unkaputtbar', 'jugendtor-ohne-griffe', 'jugendtor-mit-griffen',
+  'grossfeld-transportabel', 'bundesliga-premium',
+];
+const allGoalPrices = GOAL_IDS.map(priceOf).filter((p): p is number => p != null);
+const minGoal = Math.min(...allGoalPrices);
+const maxGoal = Math.max(...allGoalPrices);
+const pricesLastUpdated = Object.values(pricesData as Record<string, any>)
+  .map((p) => p.lastUpdated)
+  .filter(Boolean)
+  .sort()
+  .pop();
+
+const title = 'Fußballtor kaufen – Kaufberatung 2026 mit echten Preisen';
+const description = `Welches Fußballtor passt zu dir? Kaufberatung aus dem Fachhandel: Größen-Tabelle, echte Marktpreise (${fmtEur(minGoal)} € bis ${fmtEur(maxGoal)} €), DIN EN 748, Kippsicherung und 5-Punkte-Checkliste.`;
 
 const products = {
   grossfeld: {
@@ -39,7 +72,7 @@ const faqs = [
   },
   {
     question: 'Was kostet ein gutes Fußballtor?',
-    answer: 'Die Preisspanne ist groß: Pop-up-Tore für den Garten bekommst du schon für kleines Geld, solide Minitore liegen im günstigen Bereich. Jugendtore (5 x 2 m) und Großfeldtore (7,32 x 2,44 m) sind eine größere Investition und liegen im mittleren bis gehobenen Preissegment. Für den Vereinseinsatz solltest du ein entsprechendes Budget einplanen. Die aktuellen Preise findest du direkt beim Anbieter.',
+    answer: `Ein Fußballtor kostet je nach Größe zwischen rund ${fmtEur(minGoal)} € und ${fmtEur(maxGoal)} €. Pop-up-Tore für den Garten gibt es ab ${fmtEur(minGoal)} €, solide Minitore ab etwa ${fmtEur(Math.min(...['quickplay-150', 'quickplay-180'].map(priceOf).filter((p): p is number => p != null)))} €. Vereinstaugliche Jugendtore (5 x 2 m) und Großfeldtore (7,32 x 2,44 m) sind eine größere Investition im vierstelligen Bereich. Dazu kommen ggf. Tornetz und Kippsicherung.`,
   },
   {
     question: 'Alu oder Kunststoff – welches Material ist besser?',
@@ -70,7 +103,7 @@ const schema = [
       url: 'https://fussballtore.de',
     },
     datePublished: '2025-06-01',
-    dateModified: '2026-05-20',
+    dateModified: '2026-07-21',
     inLanguage: 'de-DE',
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -369,7 +402,7 @@ const schema = [
       Was kostet ein Fußballtor?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Preisspanne bei Fußballtoren ist enorm – von günstigen Pop-up-Sets für den Garten bis hin zu Premium-Bolzplatztoren für den Dauereinsatz. Hier eine Übersicht der Preisklassen, mit der du dein Budget einordnen kannst:
+      Ein Fußballtor kostet je nach Größe und Bauart zwischen <strong>{fmtEur(minGoal)} €</strong> (Pop-up-Set für den Garten) und <strong>{fmtEur(maxGoal)} €</strong> (vandalismussicheres Bolzplatztor). Garten-Minitore liegen bei {range(['quickplay-150', 'quickplay-180', 'minitor-lightweight'])}, vereinstaugliche Jugendtore (5 × 2 m) bei {range(['jugendtor-ohne-griffe', 'jugendtor-mit-griffen'])} und Großfeldtore (7,32 × 2,44 m) bei {range(['grossfeld-transportabel', 'bundesliga-premium'])}. Die folgende Tabelle zeigt die aktuellen Marktpreise im Detail:
     </p>
 
     <div class="overflow-x-auto my-6">
@@ -377,39 +410,42 @@ const schema = [
         <thead>
           <tr class="bg-primary text-white">
             <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Kategorie</th>
-            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Preisklasse</th>
+            <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Aktueller Preis</th>
             <th class="border border-neutral-200 px-4 py-2 text-left font-heading">Typisches Produkt</th>
           </tr>
         </thead>
         <tbody class="text-neutral-600">
           <tr class="bg-white">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Pop-up-Tore (2er Set)</td>
-            <td class="border border-neutral-200 px-4 py-2">Günstig</td>
+            <td class="border border-neutral-200 px-4 py-2">{range(['popup-set'])}</td>
             <td class="border border-neutral-200 px-4 py-2">ELF Sports Pop-up Goal</td>
           </tr>
           <tr class="bg-neutral-50">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Minitore (1,20 – 1,80 m)</td>
-            <td class="border border-neutral-200 px-4 py-2">Günstig bis Mittel</td>
+            <td class="border border-neutral-200 px-4 py-2">{range(['quickplay-150', 'quickplay-180', 'minitor-lightweight', 'minitor-hinterbau'])}</td>
             <td class="border border-neutral-200 px-4 py-2">QuickPlay Kickster Elite</td>
           </tr>
           <tr class="bg-white">
-            <td class="border border-neutral-200 px-4 py-2 font-medium">Bolzplatztore (3 x 2 m)</td>
-            <td class="border border-neutral-200 px-4 py-2">Premium</td>
+            <td class="border border-neutral-200 px-4 py-2 font-medium">Kleinfeld- / Bolzplatztore (3 x 2 m)</td>
+            <td class="border border-neutral-200 px-4 py-2">{range(['kleinfeldtor-mobil', 'bolzplatz-unkaputtbar'])}</td>
             <td class="border border-neutral-200 px-4 py-2">Bolzplatztor UNKAPUTTBAR</td>
           </tr>
           <tr class="bg-neutral-50">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Jugendtore (5 x 2 m)</td>
-            <td class="border border-neutral-200 px-4 py-2">Gehoben</td>
+            <td class="border border-neutral-200 px-4 py-2">{range(['jugendtor-ohne-griffe', 'jugendtor-mit-griffen'])}</td>
             <td class="border border-neutral-200 px-4 py-2">Mobiles Jugendtor, vollverschweißt</td>
           </tr>
           <tr class="bg-white">
             <td class="border border-neutral-200 px-4 py-2 font-medium">Großfeldtore (7,32 x 2,44 m)</td>
-            <td class="border border-neutral-200 px-4 py-2">Gehoben</td>
+            <td class="border border-neutral-200 px-4 py-2">{range(['grossfeld-transportabel', 'bundesliga-premium'])}</td>
             <td class="border border-neutral-200 px-4 py-2">Bundesliga-Tor, Alu-Profil</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <p class="text-neutral-500 text-sm mb-4">
+      Preise: anstoss24.de, automatisch aktualisiert (Stand: {pricesLastUpdated}). Je nach Ausstattung und Variante können Preise abweichen.
+    </p>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
       Bedenke: Zum Torpreis kommen eventuell noch Kosten für <strong>Tornetze</strong>, <strong>Bodenhülsen</strong> und <strong>Kippsicherungen</strong> hinzu. Manche Anbieter liefern Tore inklusive Netz – das spart Geld und Aufwand. Im <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'kaufberatung')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline">Fachhandel findest du eine große Auswahl an Fußballtoren</a> mit transparenten Preisen und attraktiven Versandkonditionen.
