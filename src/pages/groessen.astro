@@ -8,8 +8,8 @@ import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
-const title = 'Fußballtor Größen & Maße – Alle Tor-Maße';
-const description = 'Alle Fußballtor-Größen und Maße: Von Großfeld (7,32 x 2,44 m) über Jugendtore (5 x 2 m) bis Kleinfeld (3 x 2 m). Offizielle Abmessungen nach DFB und FIFA.';
+const title = 'Fußballtor-Größen: Tabelle aller Maße nach Altersklasse (DFB)';
+const description = 'Welches Tor für welche Jugend? Komplette Tabelle von Bambini bis Herren: alle Maße, Tortiefe und Spielformat. Inkl. Vorgaben nach DFB, FIFA und DIN EN 748.';
 
 const faqs = [
   {
@@ -57,7 +57,7 @@ const schema = [
       '@id': 'https://fussballtore.de/groessen/',
     },
     datePublished: '2025-06-01',
-    dateModified: '2026-05-20',
+    dateModified: '2026-07-21',
     inLanguage: 'de-DE',
   },
   {
@@ -103,6 +103,30 @@ const schema = [
         ]}
         speakableId="tldr-groessen"
       />
+
+      <!-- Direkt-Antworten auf die häufigsten Fragen -->
+      <section aria-label="Schnellantworten zu Fußballtor-Maßen" class="mb-4">
+        <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-10 mb-3">
+          Wie breit ist ein Fußballtor?
+        </h2>
+        <p class="text-neutral-600 leading-relaxed mb-4">
+          Ein Fußballtor ist <strong>7,32 m breit</strong> – gemessen als Innenmaß zwischen den beiden Pfosten. Diese Breite gilt für alle offiziellen Spiele auf dem Großfeld, von der Kreisliga bis zur Bundesliga, EM und WM. Jugendtore sind schmaler: Das D-Jugend-Tor misst 5,00 m, das Kleinfeldtor 3,00 m. Wer nach der „Länge“ eines Fußballtors sucht, meint in der Regel ebenfalls die Breite von 7,32 m.
+        </p>
+
+        <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-10 mb-3">
+          Wie hoch ist ein Fußballtor?
+        </h2>
+        <p class="text-neutral-600 leading-relaxed mb-4">
+          Ein Fußballtor ist <strong>2,44 m hoch</strong> – gemessen vom Boden bis zur Unterkante der Querlatte. Auch dieses Maß ist durch die FIFA-Spielregeln weltweit einheitlich festgelegt. Jugend- und Kleinfeldtore sind mit 2,00 m etwas niedriger.
+        </p>
+
+        <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-10 mb-3">
+          Wie tief ist ein Fußballtor?
+        </h2>
+        <p class="text-neutral-600 leading-relaxed mb-4">
+          Die Tortiefe ist – anders als Breite und Höhe – <strong>nicht fest vorgeschrieben</strong>. Üblich sind beim Großfeldtor <strong>1,50 bis 2,00 m</strong>, bei Jugendtoren 1,00 bis 1,50 m und bei Kleinfeldtoren rund 1,00 m. Die Tiefe beeinflusst Netzspannung und Standsicherheit.
+        </p>
+      </section>
 
       <!-- Einleitung -->
       <p class="text-neutral-600 leading-relaxed mb-4 text-lg">
