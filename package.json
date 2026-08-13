@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/check-internal-links.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch-prices": "node scripts/fetch-prices.mjs"
+    "fetch-prices": "node scripts/fetch-prices.mjs",
+    "check-links": "node scripts/check-internal-links.mjs"
   },
   "dependencies": {
     "astro": "^5.17.1",
