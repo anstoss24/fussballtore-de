@@ -1,4 +1,6 @@
 ---
+import { consentEnabled } from '../data/consent';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -36,6 +38,9 @@ const currentYear = new Date().getFullYear();
           <li><a href="/ueber-uns/" class="text-white/70 hover:text-white transition-colors no-underline text-base">Über uns</a></li>
           <li><a href="/impressum/" class="text-white/70 hover:text-white transition-colors no-underline text-base">Impressum</a></li>
           <li><a href="/datenschutz/" class="text-white/70 hover:text-white transition-colors no-underline text-base">Datenschutz</a></li>
+          {consentEnabled && (
+            <li><button type="button" data-consent-open class="text-white/70 hover:text-white transition-colors text-base">Cookie-Einstellungen</button></li>
+          )}
         </ul>
         <div class="text-sm text-white/50">
           <span>Tel: 08435 - 485 9568</span>

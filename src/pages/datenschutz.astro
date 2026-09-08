@@ -1,9 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { consentEnabled, isServiceEnabled, consentConfig } from '../data/consent';
 
 const title = 'Datenschutzerklärung';
 const description = 'Datenschutzerklärung von fussballtore.de – Informationen zum Umgang mit personenbezogenen Daten.';
+
+const openaiEnabled = isServiceEnabled('openai');
+const metaEnabled = isServiceEnabled('meta');
+const consentMonths = Math.round(consentConfig.maxAgeDays / 30);
+
+// Fortlaufende Nummerierung – bleibt korrekt, auch wenn Abschnitte
+// abhängig von src/data/consent.ts ein- oder ausgeblendet werden.
+let n = 0;
+const num = () => `${++n}.`;
 ---
 
 <BaseLayout title={title} description={description} noindex={true}>
@@ -12,15 +22,24 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
     <h1 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-8">Datenschutzerklärung</h1>
     <div class="prose text-neutral-500">
 
-      <h2>1. Datenschutz auf einen Blick</h2>
+      <h2>{num()} Datenschutz auf einen Blick</h2>
       <h3>Allgemeine Hinweise</h3>
       <p>
         Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit deinen
         personenbezogenen Daten passiert, wenn du diese Website besuchst. Personenbezogene
         Daten sind alle Daten, mit denen du persönlich identifiziert werden kannst.
       </p>
+      {consentEnabled && (
+        <p>
+          Kurz gesagt: Für den Betrieb dieser Website brauchen wir keine Cookies. Cookies
+          und eine Datenübermittlung an Werbepartner gibt es nur, wenn du im Cookie-Banner
+          ausdrücklich zustimmst. Damit messen wir, ob unsere Werbeanzeigen Besucher auf
+          diese Seite bringen. Deine Entscheidung kannst du jederzeit über den Link
+          „Cookie-Einstellungen“ im Footer ändern.
+        </p>
+      )}
 
-      <h2>2. Verantwortliche Stelle</h2>
+      <h2>{num()} Verantwortliche Stelle</h2>
       <p>
         Verantwortlich für die Datenverarbeitung auf dieser Website ist:
       </p>
@@ -33,7 +52,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         Telefon: 08435 4859568
       </p>
 
-      <h2>3. Hosting</h2>
+      <h2>{num()} Hosting</h2>
       <p>
         Diese Website wird bei einem externen Dienstleister gehostet. Personenbezogene
         Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters
@@ -48,7 +67,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
       </p>
 
-      <h2>4. Server-Log-Dateien</h2>
+      <h2>{num()} Server-Log-Dateien</h2>
       <p>
         Der Provider der Seiten erhebt und speichert automatisch Informationen in
         so genannten Server-Log-Dateien, die dein Browser automatisch übermittelt.
@@ -71,7 +90,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         spätestens 7 Tagen automatisch gelöscht.
       </p>
 
-      <h2>5. Externe Inhalte: Produktbilder</h2>
+      <h2>{num()} Externe Inhalte: Produktbilder</h2>
       <p>
         Auf dieser Website werden Produktbilder von einem externen Content-Delivery-Network
         (Plentymarkets, betrieben durch die plentysystems AG, Bürgermeister-Brunner-Str. 15,
@@ -83,7 +102,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         an einer technisch effizienten Bereitstellung der Produktbilder über ein CDN.
       </p>
 
-      <h2>6. Google Search Console</h2>
+      <h2>{num()} Google Search Console</h2>
       <p>
         Diese Website nutzt die Google Search Console von Google Ireland Limited
         (Gordon House, Barrow Street, Dublin 4, Irland). Die Search Console wird
@@ -97,7 +116,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         Sichtbarkeit unserer Website in Suchmaschinen).
       </p>
 
-      <h2>7. Externe Links</h2>
+      <h2>{num()} Externe Links</h2>
       <p>
         Diese Website enthält Links zu externen Online-Shops, insbesondere zu
         anstoss24.de. Wenn du auf diese Links klickst, verlässt du fussballtore.de.
@@ -107,7 +126,161 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         auf dieser Website.
       </p>
 
-      <h2>8. Deine Rechte als betroffene Person</h2>
+      {consentEnabled && (
+        <>
+          <h2>{num()} Cookies und Einwilligung (Cookie-Banner)</h2>
+          <p>
+            Für den Betrieb dieser Website sind keine Cookies erforderlich. Cookies werden
+            ausschließlich durch die unten beschriebenen Marketing-Dienste gesetzt, und
+            zwar erst, nachdem du im Cookie-Banner auf „Akzeptieren“ geklickt hast.
+            Solange du nicht zustimmst oder auf „Ablehnen“ klickst, wird kein Script dieser
+            Dienste geladen und kein Cookie gesetzt. Die Website funktioniert in beiden
+            Fällen uneingeschränkt.
+          </p>
+          <h3>Speicherung deiner Entscheidung</h3>
+          <p>
+            Damit der Banner nicht bei jedem Seitenaufruf erneut erscheint, speichern wir
+            deine Entscheidung („Akzeptieren“ oder „Ablehnen“) zusammen mit dem Zeitpunkt
+            im Local Storage deines Browsers unter dem Schlüssel „{consentConfig.storageKey}“.
+            Diese Information verlässt deinen Browser nicht und wird an niemanden übermittelt.
+            Sie verfällt nach {consentMonths} Monaten oder wenn wir die Liste der Dienste
+            ändern; danach fragen wir dich erneut. Die Speicherung ist technisch erforderlich,
+            um deine Auswahl zu respektieren (§ 25 Abs. 2 Nr. 2 TDDDG).
+          </p>
+          <h3>Widerruf</h3>
+          <p>
+            Du kannst deine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen:
+            Klicke im Footer auf „Cookie-Einstellungen“ und wähle „Ablehnen“. Dabei wird
+            die Datenübermittlung an die Dienste gestoppt und die von ihnen gesetzten Cookies
+            werden gelöscht. Alternativ kannst du Cookies und Website-Daten für fussballtore.de
+            in deinen Browser-Einstellungen löschen.
+          </p>
+        </>
+      )}
+
+      {openaiEnabled && (
+        <>
+          <h2>{num()} OpenAI Conversion Tracking (OpenAI Pixel)</h2>
+          <p>
+            Wir schalten Werbeanzeigen in ChatGPT. Um zu messen, ob diese Anzeigen Besucher
+            auf fussballtore.de bringen, nutzen wir mit deiner Einwilligung das Measurement
+            Pixel von OpenAI. Anbieter ist OpenAI OpCo, LLC, San Francisco, Kalifornien, USA
+            („OpenAI“).
+          </p>
+          <h3>Was passiert dabei?</h3>
+          <p>
+            Das Pixel-Script wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast.
+            Wenn du über eine Anzeige in ChatGPT auf unsere Website gelangst, enthält die
+            aufgerufene Adresse eine Klick-Kennung von OpenAI. Das Pixel speichert diese
+            Kennung im First-Party-Cookie „__oppref“ auf fussballtore.de, damit spätere
+            Seitenaufrufe derselben Anzeige zugeordnet werden können. Beim Laden des Scripts
+            und beim Melden von Ereignissen werden technische Verbindungsdaten wie deine
+            IP-Adresse und Browser-Informationen an Server von OpenAI übertragen.
+          </p>
+          <p>
+            Als Ereignisse („Conversions“) melden wir an OpenAI ausschließlich den Aufruf
+            unserer Seiten und den Klick auf einen Link zu unserem Shop anstoss24.de. Auf
+            fussballtore.de gibt es keine Formulare, keine Registrierung und keine
+            Bestellmöglichkeit. Wir erfassen oder übermitteln daher keine Namen,
+            E-Mail-Adressen, Telefonnummern oder Kaufdaten an OpenAI.
+          </p>
+          <h3>Zweck und Rechtsgrundlage</h3>
+          <p>
+            Zweck ist die Erfolgsmessung und statistische Auswertung unserer Werbekampagnen
+            bei OpenAI sowie die Optimierung künftiger Anzeigen. Die Verarbeitung erfolgt
+            ausschließlich auf Grundlage deiner ausdrücklichen Einwilligung nach
+            Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Du kannst die Einwilligung
+            jederzeit widerrufen, siehe Abschnitt „Cookies und Einwilligung“.
+          </p>
+          <h3>Datenübermittlung in die USA</h3>
+          <p>
+            Die durch das Pixel erhobenen Daten werden an Server von OpenAI in den USA
+            übertragen und dort verarbeitet. OpenAI ist nach dem EU-US Data Privacy Framework
+            (DPF) zertifiziert, einem Übereinkommen zwischen der Europäischen Union und den
+            USA, das die Einhaltung europäischer Datenschutzstandards bei der Verarbeitung in
+            den USA sicherstellen soll. Den Eintrag kannst du unter
+            <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener noreferrer">dataprivacyframework.gov</a>
+            prüfen. Die Verarbeitung durch OpenAI für uns ist im
+            <a href="https://openai.com/policies/conversion-dpa/" target="_blank" rel="noopener noreferrer">OpenAI Ad Tools Data Processing Addendum</a>
+            geregelt.
+          </p>
+          <p>
+            Weitere Informationen findest du in der
+            <a href="https://openai.com/policies/eu-privacy-policy/" target="_blank" rel="noopener noreferrer">Datenschutzrichtlinie von OpenAI für Europa</a>
+            und in den
+            <a href="https://openai.com/policies/conversion-terms/" target="_blank" rel="noopener noreferrer">OpenAI Conversion Terms</a>.
+          </p>
+        </>
+      )}
+
+      {metaEnabled && (
+        <>
+          <h2>{num()} Meta-Pixel (ehemals Facebook Pixel)</h2>
+          <p>
+            Diese Website nutzt mit deiner Einwilligung das Besucheraktions-Pixel von
+            Meta zur Erfolgsmessung unserer Werbeanzeigen auf Facebook und Instagram.
+            Anbieter ist die Meta Platforms Ireland Limited, Merrion Road, Dublin 4,
+            D04 X2K5, Irland („Meta“). Die erfassten Daten werden nach Angaben von Meta
+            auch in die USA und andere Drittländer übertragen.
+          </p>
+          <h3>Was passiert dabei?</h3>
+          <p>
+            Das Pixel-Script wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast.
+            Es setzt die Cookies „_fbp“ und „_fbc“ auf fussballtore.de. So kann Meta
+            nachverfolgen, ob du nach dem Klick auf eine unserer Anzeigen unsere Seiten
+            aufgerufen oder auf einen Link zu anstoss24.de geklickt hast. Wir erfassen
+            oder übermitteln keine Namen, E-Mail-Adressen oder Telefonnummern; die Funktion
+            „erweiterter Abgleich“ nutzen wir auf dieser Website nicht.
+          </p>
+          <p>
+            Die erhobenen Daten sind für uns anonym, wir können keine Rückschlüsse auf deine
+            Identität ziehen. Meta speichert und verarbeitet die Daten jedoch, sodass eine
+            Verbindung zu deinem Meta-Nutzerprofil möglich ist und Meta die Daten für eigene
+            Werbezwecke entsprechend der
+            <a href="https://de-de.facebook.com/about/privacy/" target="_blank" rel="noopener noreferrer">Meta-Datenrichtlinie</a>
+            verwenden kann. Diese Verwendung können wir nicht beeinflussen.
+          </p>
+          <h3>Zweck und Rechtsgrundlage</h3>
+          <p>
+            Zweck ist die Erfolgsmessung und statistische Auswertung unserer Werbeanzeigen
+            sowie die Optimierung künftiger Werbemaßnahmen. Die Verarbeitung erfolgt
+            ausschließlich auf Grundlage deiner Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO
+            und § 25 Abs. 1 TDDDG. Du kannst die Einwilligung jederzeit widerrufen, siehe
+            Abschnitt „Cookies und Einwilligung“.
+          </p>
+          <h3>Gemeinsame Verantwortlichkeit</h3>
+          <p>
+            Soweit mit dem Meta-Pixel personenbezogene Daten auf unserer Website erfasst und
+            an Meta weitergeleitet werden, sind wir und Meta gemeinsam für diese Verarbeitung
+            verantwortlich (Art. 26 DSGVO). Die gemeinsame Verantwortlichkeit beschränkt sich
+            auf die Erfassung der Daten und deren Weitergabe an Meta; die anschließende
+            Verarbeitung durch Meta ist nicht Teil der gemeinsamen Verantwortung. Die
+            Vereinbarung dazu findest du unter
+            <a href="https://www.facebook.com/legal/controller_addendum" target="_blank" rel="noopener noreferrer">facebook.com/legal/controller_addendum</a>.
+            Danach sind wir für die Datenschutzinformationen und die datenschutzkonforme
+            Einbindung des Pixels verantwortlich, Meta für die Datensicherheit seiner Produkte.
+            Betroffenenrechte zu den bei Meta verarbeiteten Daten kannst du direkt bei Meta
+            geltend machen; machst du sie bei uns geltend, leiten wir sie an Meta weiter.
+          </p>
+          <h3>Datenübermittlung in die USA</h3>
+          <p>
+            Die Übermittlung in die USA stützt sich auf die Standardvertragsklauseln der
+            EU-Kommission (<a href="https://www.facebook.com/legal/EU_data_transfer_addendum" target="_blank" rel="noopener noreferrer">Details</a>).
+            Meta ist zudem nach dem EU-US Data Privacy Framework (DPF) zertifiziert:
+            <a href="https://www.dataprivacyframework.gov/s/participant-search/participant-detail?contact=true&id=a2zt0000000GnywAAC&status=Active" target="_blank" rel="noopener noreferrer">Eintrag im DPF-Verzeichnis</a>.
+          </p>
+          <h3>Widerspruch bei Meta</h3>
+          <p>
+            Mit einem Meta-Konto kannst du die Remarketing-Funktion „Custom Audiences“ in den
+            <a href="https://www.facebook.com/ads/preferences/?entry_product=ad_settings_screen" target="_blank" rel="noopener noreferrer">Einstellungen für Werbeanzeigen</a>
+            deaktivieren. Ohne Meta-Konto kannst du nutzungsbasierte Werbung über die
+            <a href="https://www.youronlinechoices.com/de/praferenzmanagement/" target="_blank" rel="noopener noreferrer">European Interactive Digital Advertising Alliance</a>
+            deaktivieren.
+          </p>
+        </>
+      )}
+
+      <h2>{num()} Deine Rechte als betroffene Person</h2>
       <p>
         Du hast jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger
         und Zweck deiner gespeicherten personenbezogenen Daten zu erhalten. Du hast
@@ -126,7 +299,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         Für alle Anfragen wende dich bitte an die oben genannte verantwortliche Stelle.
       </p>
 
-      <h2>9. Beschwerderecht bei der Aufsichtsbehörde</h2>
+      <h2>{num()} Beschwerderecht bei der Aufsichtsbehörde</h2>
       <p>
         Im Falle von Verstößen gegen die DSGVO steht dir ein Beschwerderecht bei einer
         Aufsichtsbehörde, insbesondere in dem Mitgliedstaat deines gewöhnlichen Aufenthalts,
@@ -135,7 +308,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         Promenade 18, 91522 Ansbach.
       </p>
 
-      <h2>10. SSL-/TLS-Verschlüsselung</h2>
+      <h2>{num()} SSL-/TLS-Verschlüsselung</h2>
       <p>
         Diese Seite nutzt aus Gründen der Sicherheit und zum Schutz der Übertragung
         vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte
@@ -143,7 +316,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
         auf „https://" wechselt und am Schloss-Symbol in deiner Browserzeile.
       </p>
 
-      <h2>11. Änderungen dieser Datenschutzerklärung</h2>
+      <h2>{num()} Änderungen dieser Datenschutzerklärung</h2>
       <p>
         Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets
         den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer
@@ -152,7 +325,7 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
       </p>
 
       <p class="text-sm">
-        Stand: Mai 2026
+        Stand: September 2026
       </p>
     </div>
   </section>
