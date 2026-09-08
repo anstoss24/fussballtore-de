@@ -61,7 +61,7 @@ export const consentConfig = {
   conversionEvent: 'Redirect_anstoss24',
   /** Google Tag Manager – Container-ID eintragen, um in den GTM-Modus zu wechseln */
   gtm: {
-    containerId: '',
+    containerId: 'GTM-T9NC72Q',
   },
   services: [
     {
