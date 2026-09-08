@@ -1,23 +1,28 @@
 ---
 /**
- * Consent-Banner + Consent-gesteuerter Loader für Marketing-Pixel.
+ * Consent-Banner + Consent-gesteuerter Loader für Marketing-Tracking.
  *
  * Verhalten:
- * - Keine gespeicherte Entscheidung → Banner sichtbar, kein Pixel geladen.
- * - "Akzeptieren" → Entscheidung speichern, Pixel-SDKs laden, Consent = true.
+ * - Keine gespeicherte Entscheidung → Banner sichtbar, nichts geladen.
+ * - "Akzeptieren" → Entscheidung speichern, Tracking laden, Consent = true.
  * - "Ablehnen" → Entscheidung speichern, nichts laden. Bei vorheriger
  *   Zustimmung: Consent widerrufen und gesetzte Cookies löschen.
  * - Footer-Link [data-consent-open] öffnet den Banner erneut (Widerruf).
  * - Klicks auf Links zu anstoss24.de werden als Conversion gemeldet,
  *   aber nur bei erteilter Zustimmung.
  *
+ * Zwei Modi (siehe src/data/consent.ts):
+ * - GTM-Modus: nur Google Tag Manager laden, Conversion als dataLayer-Event.
+ * - Direkt-Modus: Pixel-SDKs der Dienste laden, Conversion als Custom Event.
+ *
  * Rendert nichts, wenn kein Dienst in src/data/consent.ts aktiv ist.
  */
-import { consentConfig, activeServices, consentEnabled } from '../data/consent';
+import { consentConfig, activeServices, consentEnabled, gtmEnabled } from '../data/consent';
 
 const services = activeServices.map(({ id, pixelId, cookies }) => ({ id, pixelId, cookies }));
 const serviceNames = activeServices.map((s) => s.name);
-const { storageKey, version, maxAgeDays } = consentConfig;
+const { storageKey, version, maxAgeDays, conversionEvent } = consentConfig;
+const gtmId = gtmEnabled ? consentConfig.gtm.containerId.trim() : '';
 ---
 
 {consentEnabled && (
@@ -39,7 +44,7 @@ const { storageKey, version, maxAgeDays } = consentConfig;
           Wir schalten Werbeanzeigen, unter anderem in ChatGPT. Um zu messen, ob diese Anzeigen
           Besucher auf fussballtore.de bringen, möchten wir mit deiner Zustimmung
           {serviceNames.length === 1 ? 'folgenden Dienst' : 'folgende Dienste'} einsetzen:
-          <strong class="text-primary">{serviceNames.join(', ')}</strong>.
+          <strong class="text-primary">{serviceNames.join(', ')}</strong>{gtmEnabled ? ' (eingebunden über den Google Tag Manager)' : ''}.
           Dabei werden Cookies gesetzt und Daten in die USA übertragen. Ohne Zustimmung
           funktioniert die Website genauso, nur die Messung entfällt. Details in der
           <a href="/datenschutz/" class="underline text-primary hover:text-accent">Datenschutzerklärung</a>.
@@ -63,7 +68,7 @@ const { storageKey, version, maxAgeDays } = consentConfig;
       </div>
     </div>
 
-    <script is:inline define:vars={{ services, storageKey, version, maxAgeDays }}>
+    <script is:inline define:vars={{ services, storageKey, version, maxAgeDays, conversionEvent, gtmId }}>
       (function () {
         var banner = document.getElementById('consent-banner');
         if (!banner) return;
@@ -101,7 +106,36 @@ const { storageKey, version, maxAgeDays } = consentConfig;
           });
         }
 
-        /* ---------- Loader je Dienst ---------- */
+        /* ---------- Google Tag Manager (GTM-Modus) ---------- */
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        var consentTypes = ['ad_storage', 'ad_user_data', 'ad_personalization', 'analytics_storage'];
+        function consentState(value) {
+          var o = {};
+          consentTypes.forEach(function (k) { o[k] = value; });
+          return o;
+        }
+
+        function loadGtm() {
+          if (loaded.gtm) return;
+          /* Consent Mode v2: GTM wird erst nach Zustimmung geladen, daher Default = granted */
+          gtag('consent', 'default', consentState('granted'));
+          window.dataLayer.push({ event: 'consent_marketing_granted' });
+          /* Standard-Snippet von Google */
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0];
+            var j = d.createElement(s);
+            var dl = l !== 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', gtmId);
+          loaded.gtm = true;
+        }
+
+        /* ---------- Loader je Dienst (Direkt-Modus) ---------- */
         var loaders = {
           openai: function (pixelId) {
             (function (w, d, s, u) {
@@ -137,6 +171,10 @@ const { storageKey, version, maxAgeDays } = consentConfig;
 
         function grant() {
           granted = true;
+          if (gtmId) {
+            try { loadGtm(); } catch (e) {}
+            return;
+          }
           services.forEach(function (s) {
             if (loaded[s.id] || !s.pixelId || !loaders[s.id]) return;
             try {
@@ -148,6 +186,12 @@ const { storageKey, version, maxAgeDays } = consentConfig;
 
         function revoke() {
           granted = false;
+          if (loaded.gtm) {
+            try {
+              gtag('consent', 'update', consentState('denied'));
+              window.dataLayer.push({ event: 'consent_marketing_revoked' });
+            } catch (e) {}
+          }
           try { if (window.oaiq) window.oaiq('consent', false); } catch (e) {}
           try { if (window.fbq) window.fbq('consent', 'revoke'); } catch (e) {}
           services.forEach(function (s) {
@@ -163,11 +207,14 @@ const { storageKey, version, maxAgeDays } = consentConfig;
           try {
             var host = new URL(a.href, location.href).hostname;
             if (!/(^|\.)anstoss24\.de$/.test(host)) return;
+            if (loaded.gtm) {
+              window.dataLayer.push({ event: conversionEvent, link_url: a.href, link_text: (a.textContent || '').trim().slice(0, 100) });
+            }
             if (loaded.openai && window.oaiq) {
-              window.oaiq('measure', 'custom', { type: 'custom' }, { custom_event_name: 'anstoss24_click' });
+              window.oaiq('measure', 'custom', { type: 'custom' }, { custom_event_name: conversionEvent });
             }
             if (loaded.meta && window.fbq) {
-              window.fbq('trackCustom', 'Anstoss24Click');
+              window.fbq('trackCustom', conversionEvent);
             }
           } catch (err) {}
         }, true);

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import { consentEnabled, isServiceEnabled, consentConfig } from '../data/consent';
+import { consentEnabled, isServiceEnabled, consentConfig, gtmEnabled } from '../data/consent';
 
 const title = 'Datenschutzerklärung';
 const description = 'Datenschutzerklärung von fussballtore.de – Informationen zum Umgang mit personenbezogenen Daten.';
@@ -9,6 +9,8 @@ const description = 'Datenschutzerklärung von fussballtore.de – Informationen
 const openaiEnabled = isServiceEnabled('openai');
 const metaEnabled = isServiceEnabled('meta');
 const consentMonths = Math.round(consentConfig.maxAgeDays / 30);
+// Zusatz für die Pixel-Abschnitte, wenn die Pixel über GTM statt direkt geladen werden
+const viaGtm = gtmEnabled ? ' (Einbindung über den Google Tag Manager, siehe oben)' : '';
 
 // Fortlaufende Nummerierung – bleibt korrekt, auch wenn Abschnitte
 // abhängig von src/data/consent.ts ein- oder ausgeblendet werden.
@@ -158,6 +160,47 @@ const num = () => `${++n}.`;
         </>
       )}
 
+      {gtmEnabled && (
+        <>
+          <h2>{num()} Google Tag Manager</h2>
+          <p>
+            Zur Einbindung der unten beschriebenen Marketing-Dienste nutzen wir den Google
+            Tag Manager. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street,
+            Dublin 4, Irland („Google“). Der Google Tag Manager ist ein technisches Werkzeug,
+            über das Scripts (sogenannte Tags) auf einer Website verwaltet und geladen werden.
+            Er setzt selbst keine Cookies und erstellt keine Nutzerprofile.
+          </p>
+          <h3>Was passiert dabei?</h3>
+          <p>
+            Das Script des Google Tag Managers wird erst geladen, nachdem du im Cookie-Banner
+            zugestimmt hast. Beim Laden werden technische Verbindungsdaten wie deine IP-Adresse
+            und Browser-Informationen an Server von Google übertragen; dabei kann es zu einer
+            Übermittlung in die USA kommen. Anschließend lädt der Tag Manager die unten
+            beschriebenen Dienste und übergibt ihnen Ereignisse wie den Aufruf einer Seite
+            oder den Klick auf einen Link zu anstoss24.de. Deine Einwilligungsentscheidung
+            wird dabei über den sogenannten Consent Mode an alle Tags weitergegeben; bei
+            Widerruf werden die Tags über die Ablehnung informiert.
+          </p>
+          <h3>Zweck und Rechtsgrundlage</h3>
+          <p>
+            Zweck ist die zentrale, technisch saubere Verwaltung der Marketing-Dienste. Die
+            Verarbeitung erfolgt ausschließlich auf Grundlage deiner Einwilligung nach
+            Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Du kannst die Einwilligung
+            jederzeit widerrufen, siehe Abschnitt „Cookies und Einwilligung“.
+          </p>
+          <h3>Datenübermittlung in die USA</h3>
+          <p>
+            Google LLC ist nach dem EU-US Data Privacy Framework (DPF) zertifiziert. Den
+            Eintrag kannst du unter
+            <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener noreferrer">dataprivacyframework.gov</a>
+            prüfen. Weitere Informationen findest du in den
+            <a href="https://marketingplatform.google.com/about/analytics/tag-manager/use-policy/" target="_blank" rel="noopener noreferrer">Nutzungsrichtlinien des Google Tag Managers</a>
+            und in der
+            <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Google</a>.
+          </p>
+        </>
+      )}
+
       {openaiEnabled && (
         <>
           <h2>{num()} OpenAI Conversion Tracking (OpenAI Pixel)</h2>
@@ -169,7 +212,7 @@ const num = () => `${++n}.`;
           </p>
           <h3>Was passiert dabei?</h3>
           <p>
-            Das Pixel-Script wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast.
+            Das Pixel-Script wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast{viaGtm}.
             Wenn du über eine Anzeige in ChatGPT auf unsere Website gelangst, enthält die
             aufgerufene Adresse eine Klick-Kennung von OpenAI. Das Pixel speichert diese
             Kennung im First-Party-Cookie „__oppref“ auf fussballtore.de, damit spätere
@@ -225,7 +268,7 @@ const num = () => `${++n}.`;
           </p>
           <h3>Was passiert dabei?</h3>
           <p>
-            Das Pixel-Script wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast.
+            Das Pixel-Script wird erst geladen, nachdem du im Cookie-Banner zugestimmt hast{viaGtm}.
             Es setzt die Cookies „_fbp“ und „_fbc“ auf fussballtore.de. So kann Meta
             nachverfolgen, ob du nach dem Klick auf eine unserer Anzeigen unsere Seiten
             aufgerufen oder auf einen Link zu anstoss24.de geklickt hast. Wir erfassen
