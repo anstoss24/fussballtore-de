@@ -109,18 +109,36 @@ const gtmId = gtmEnabled ? consentConfig.gtm.containerId.trim() : '';
         /* ---------- Google Tag Manager (GTM-Modus) ---------- */
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
-        var consentTypes = ['ad_storage', 'ad_user_data', 'ad_personalization', 'analytics_storage'];
+        var consentTypes = [
+          'ad_storage',
+          'ad_user_data',
+          'ad_personalization',
+          'analytics_storage',
+          'personalization_storage',
+          'functionality_storage',
+        ];
         function consentState(value) {
           var o = {};
           consentTypes.forEach(function (k) { o[k] = value; });
           return o;
         }
+        /* security_storage ist technisch notwendig und immer erlaubt */
+        function setConsent(command, value) {
+          var state = consentState(value);
+          if (command === 'default') state.security_storage = 'granted';
+          gtag('consent', command, state);
+        }
 
         function loadGtm() {
           if (loaded.gtm) return;
-          /* Consent Mode v2: GTM wird erst nach Zustimmung geladen, daher Default = granted */
-          gtag('consent', 'default', consentState('granted'));
-          window.dataLayer.push({ event: 'consent_marketing_granted' });
+          /*
+           * Consent Mode v2, Reihenfolge wie von Google vorgesehen:
+           * 1. default = denied (auch der Container selbst setzt beim Start denied)
+           * 2. Container laden
+           * 3. update = granted -> ueberschreibt jeden default, auch den des Containers
+           *    (im GTM-Vorschaumodus: "Neuer Wert auf Seite" = Gewaehrt)
+           */
+          setConsent('default', 'denied');
           /* Standard-Snippet von Google */
           (function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -130,9 +148,23 @@ const gtmId = gtmEnabled ? consentConfig.gtm.containerId.trim() : '';
             var dl = l !== 'dataLayer' ? '&l=' + l : '';
             j.async = true;
             j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            /* Nach dem Containerstart erneut granten, falls der Container
+               seine eigene Consent-Initialisierung spaeter ausfuehrt. */
+            j.onload = function () { try { grantGtmConsent(); } catch (e) {} };
             f.parentNode.insertBefore(j, f);
           })(window, document, 'script', 'dataLayer', gtmId);
           loaded.gtm = true;
+          grantGtmConsent();
+        }
+
+        function grantGtmConsent() {
+          setConsent('update', 'granted');
+          /* Event nur einmal pro Zustimmung, damit daran haengende Tags
+             nicht doppelt feuern. Das update selbst darf mehrfach kommen. */
+          if (!loaded.gtmGranted) {
+            loaded.gtmGranted = true;
+            window.dataLayer.push({ event: 'consent_marketing_granted' });
+          }
         }
 
         /* ---------- Loader je Dienst (Direkt-Modus) ---------- */
@@ -187,8 +219,9 @@ const gtmId = gtmEnabled ? consentConfig.gtm.containerId.trim() : '';
         function revoke() {
           granted = false;
           if (loaded.gtm) {
+            loaded.gtmGranted = false;
             try {
-              gtag('consent', 'update', consentState('denied'));
+              setConsent('update', 'denied');
               window.dataLayer.push({ event: 'consent_marketing_revoked' });
             } catch (e) {}
           }
