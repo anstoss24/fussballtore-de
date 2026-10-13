@@ -84,10 +84,10 @@ if (preselected?.next) {
 const images = new Map<string, string | undefined>();
 for (const p of panels) {
   if (p.kind === 'question') {
-    for (const c of p.choices) if (c.option.image) images.set(c.option.image, await tbImage(c.option.image));
+    for (const c of p.choices) if (c.option.image) images.set(c.option.image, tbImage(c.option.image));
   } else {
     for (const prod of p.option.products ?? [])
-      if (prod.image) images.set(prod.image, (await shopImage(prod.image, 480)) ?? prod.image);
+      if (prod.image) images.set(prod.image, shopImage(prod.image, 480) ?? prod.image);
   }
 }
 

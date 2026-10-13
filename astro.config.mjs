@@ -8,8 +8,7 @@ export default defineConfig({
   site: 'https://fussballtore.de',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
-  // Produkt- und Torberater-Bilder aus dem anstoss24-Shop werden beim Build zu WebP optimiert (src/utils/shop-image.ts)
-  image: { domains: ['cdn02.plentyone.com'] },
+  // Produkt- und Torberater-Bilder aus dem anstoss24-Shop: scripts/fetch-shop-images.mjs (prebuild) → public/shop-bilder/
   integrations: [
     tailwind(),
     sitemap({

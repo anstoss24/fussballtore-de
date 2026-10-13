@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { name, url, imageUrl, features, category, campaign } = Astro.props;
-const imageSrc = (await shopImage(imageUrl, 800)) ?? imageUrl;
+const imageSrc = shopImage(imageUrl, 800) ?? imageUrl;
 
 const priceInfo = (pricesData as Record<string, any>)[url];
 const price = priceInfo?.price;

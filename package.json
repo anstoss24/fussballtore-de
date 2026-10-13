@@ -10,7 +10,10 @@
     "astro": "astro",
     "fetch-prices": "node scripts/fetch-prices.mjs",
     "fetch-torberater": "node scripts/fetch-torberater.mjs",
-    "check-links": "node scripts/check-internal-links.mjs"
+    "check-links": "node scripts/check-internal-links.mjs",
+    "fetch-images": "node scripts/fetch-shop-images.mjs",
+    "prebuild": "node scripts/fetch-shop-images.mjs",
+    "predev": "node scripts/fetch-shop-images.mjs"
   },
   "dependencies": {
     "astro": "^5.17.1",
