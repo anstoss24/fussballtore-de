@@ -7,6 +7,7 @@
  * Shop gezogen). Ohne JavaScript führen die Antworten direkt in den
  * Torberater im Shop (Deep-Link mit Vorauswahl).
  */
+import { getImage } from 'astro:assets';
 import { addUtm } from '../utils/utm';
 import torberaterData from '../data/torberater.json';
 
@@ -19,6 +20,7 @@ const { campaign = 'torberater' } = Astro.props;
 type Product = { id: number; name: string; url: string; image: string | null; price: number | null; uvp: number | null };
 type Option = {
   label: string;
+  image?: string;
   total: number;
   priceMin: number | null;
   priceMax: number | null;
@@ -45,14 +47,6 @@ const HINTS: Record<string, string> = {
   'Einsatzzweck|Mobil': 'Frei versetzbar auf dem Platz',
   'Hinterbau|Alu-rundrohr': 'Geschlossener Rahmen aus Rohr',
   'Hinterbau|Tornetz': 'Klassisch mit Netz',
-};
-
-// Maßstabsgetreue Tor-Silhouetten (10 px = 1 m) für die Größen-Frage
-const GOAL_SIZES: Record<string, [number, number]> = {
-  Großfeldtor: [73.2, 24.4],
-  Jugendtor: [50, 20],
-  Bolzplatztor: [30, 20],
-  Minitor: [12, 8],
 };
 
 const label = (o: Option) => LABELS[o.label] ?? o.label;
@@ -92,6 +86,21 @@ function walk(step: Step, id: string, depth: number, trail: string[]) {
   });
 }
 walk(torberaterData.tree as Step, 'tb', 1, []);
+
+// Antwort-Bilder aus dem Shop: beim Build als WebP (2x für Retina) erzeugen
+const optionImages = new Map<string, string>();
+for (const p of panels) {
+  if (p.kind !== 'question') continue;
+  for (const o of p.step.options) {
+    if (!o.image || optionImages.has(o.image)) continue;
+    try {
+      const img = await getImage({ src: o.image, inferSize: true, width: 192, format: 'webp' });
+      optionImages.set(o.image, img.src);
+    } catch (err) {
+      console.warn(`Torberater-Bild nicht verfügbar: ${o.image}`);
+    }
+  }
+}
 
 const lastUpdated = new Date(torberaterData.lastUpdated).toLocaleDateString('de-DE', {
   day: '2-digit',
@@ -146,29 +155,26 @@ const lastUpdated = new Date(torberaterData.lastUpdated).toLocaleDateString('de-
               </h3>
               <div class:list={['grid gap-3', p.step.options.length > 2 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2']}>
                 {p.step.options.map((o, i) => {
-                  const size = p.depth === 1 ? GOAL_SIZES[o.label] : undefined;
                   const hint = HINTS[`${p.step.title}|${o.label}`];
+                  const img = o.image ? optionImages.get(o.image) : undefined;
                   return (
                     <a
                       href={addUtm(o.shopUrl, campaign, 'torberater-direkt')}
                       target="_blank"
                       rel="noopener"
                       data-tb-go={p.childIds[i]}
-                      class="group flex flex-col justify-between gap-3 rounded-xl border-2 border-neutral-200 hover:border-accent focus-visible:border-accent bg-white p-4 md:p-5 no-underline transition-colors"
+                      class="group flex flex-col items-center text-center justify-between gap-3 rounded-xl border-2 border-neutral-200 hover:border-accent focus-visible:border-accent bg-white p-4 md:p-5 no-underline transition-colors"
                     >
-                      {size && (
-                        <svg viewBox="0 0 80 28" class="w-full h-10 md:h-12" aria-hidden="true">
-                          <line x1="0" y1="27" x2="80" y2="27" class="stroke-neutral-200" stroke-width="1" />
-                          <rect
-                            x={(80 - size[0]) / 2}
-                            y={27 - size[1]}
-                            width={size[0]}
-                            height={size[1]}
-                            fill="none"
-                            class="stroke-primary group-hover:stroke-accent transition-colors"
-                            stroke-width="1.5"
-                          />
-                        </svg>
+                      {img && (
+                        <img
+                          src={img}
+                          alt=""
+                          width="96"
+                          height="96"
+                          loading={p.id === 'tb' ? 'eager' : 'lazy'}
+                          decoding="async"
+                          class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover bg-neutral-50 ring-1 ring-neutral-200 group-hover:ring-2 group-hover:ring-accent transition-all"
+                        />
                       )}
                       <span>
                         <span class="block font-heading font-bold text-primary text-base md:text-lg leading-snug group-hover:text-accent-dark transition-colors">
