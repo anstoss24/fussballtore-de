@@ -1,4 +1,4 @@
-import { getImage } from 'astro:assets';
+import { shopImage } from './shop-image';
 import torberaterData from '../data/torberater.json';
 import { LABELS } from '../data/torberater-texte';
 
@@ -77,22 +77,7 @@ export function tbProductName(name: string) {
 }
 
 /** Antwort-Bilder aus dem Shop beim Build als kleines WebP (2x für Retina) */
-const imageCache = new Map<string, Promise<string | undefined>>();
-export function tbImage(src?: string): Promise<string | undefined> {
-  if (!src) return Promise.resolve(undefined);
-  if (!imageCache.has(src)) {
-    imageCache.set(
-      src,
-      getImage({ src, inferSize: true, width: 192, format: 'webp' })
-        .then((img) => img.src)
-        .catch(() => {
-          console.warn(`Torberater-Bild nicht verfügbar: ${src}`);
-          return undefined;
-        })
-    );
-  }
-  return imageCache.get(src)!;
-}
+export const tbImage = (src?: string) => shopImage(src, 192);
 
 
 /** Alle Endpunkte des Baums als flache Liste (Pfad-Schlüssel wie im Torberater-Component) */

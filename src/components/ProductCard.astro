@@ -1,6 +1,7 @@
 ---
 import { addUtm } from '../utils/utm';
 import pricesData from '../data/prices.json';
+import { shopImage } from '../utils/shop-image';
 
 interface Props {
   name: string;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const { name, url, imageUrl, features, category, campaign } = Astro.props;
+const imageSrc = (await shopImage(imageUrl, 800)) ?? imageUrl;
 
 const priceInfo = (pricesData as Record<string, any>)[url];
 const price = priceInfo?.price;
@@ -29,10 +31,6 @@ const productSchema: Record<string, any> = {
   name,
   image: imageUrl,
   url,
-  brand: {
-    '@type': 'Brand',
-    name: 'anstoss24',
-  },
 };
 
 if (price) {
@@ -69,7 +67,7 @@ if (price) {
   <!-- Image -->
   <div class="relative aspect-[4/3] overflow-hidden bg-neutral-50">
     <img
-      src={imageUrl}
+      src={imageSrc}
       alt={name}
       loading="lazy"
       width="400"

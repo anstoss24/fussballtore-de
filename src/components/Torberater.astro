@@ -15,6 +15,7 @@
  * Zustimmung im Cookie-Banner (siehe src/data/consent.ts).
  */
 import { addUtm } from '../utils/utm';
+import { shopImage } from '../utils/shop-image';
 import {
   tbTree,
   tbLastUpdated,
@@ -81,8 +82,12 @@ if (preselected?.next) {
 
 const images = new Map<string, string | undefined>();
 for (const p of panels) {
-  if (p.kind !== 'question') continue;
-  for (const c of p.choices) if (c.option.image) images.set(c.option.image, await tbImage(c.option.image));
+  if (p.kind === 'question') {
+    for (const c of p.choices) if (c.option.image) images.set(c.option.image, await tbImage(c.option.image));
+  } else {
+    for (const prod of p.option.products ?? [])
+      if (prod.image) images.set(prod.image, (await shopImage(prod.image, 480)) ?? prod.image);
+  }
 }
 
 const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
@@ -230,7 +235,7 @@ const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
                 <div class="flex-shrink-0 self-start w-24 sm:w-full aspect-[4/3] bg-neutral-50 rounded-lg overflow-hidden">
                   {prod.image && (
                     <img
-                      src={prod.image}
+                      src={images.get(prod.image)}
                       alt={tbProductName(prod.name)}
                       loading="lazy"
                       decoding="async"
