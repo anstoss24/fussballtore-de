@@ -9,6 +9,9 @@ import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['material-vergleich'];
 
 // Live-Preise aus dem täglich aktualisierten Preis-Feed
 const priceOf = (id: string): number | null => {
@@ -49,41 +52,14 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-material.jpg',
     datePublished: '2025-01-15',
-    dateModified: '2026-07-21',
+    dateModified,
     inLanguage: 'de-DE',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/material-vergleich/',
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Start',
-        item: 'https://fussballtore.de/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Material-Vergleich',
-        item: 'https://fussballtore.de/material-vergleich/',
-      },
-    ],
   },
 ];
 ---
@@ -94,7 +70,7 @@ const schema = [
     subtitle="Welches Material ist das richtige für dein Fußballtor? Alle Fakten im direkten Vergleich."
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Material-Vergleich' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Material-Vergleich' }]} />
 
   <article class="container mx-auto py-12 md:py-16 max-w-4xl">
 

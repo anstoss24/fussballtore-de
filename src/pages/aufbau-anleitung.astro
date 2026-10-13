@@ -7,8 +7,11 @@ import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['aufbau-anleitung'];
 
-const title = 'Fußballtor aufbauen — Anleitung für 3 Tor-Typen';
+const title = 'Fußballtor aufbauen: Anleitung für 3 Tor-Typen';
 const description =
   'Fußballtor aufbauen: Schritt-für-Schritt-Anleitungen für Pop-up-Tore, Stecktore und vollverschweißte Modelle. Mit Sicherungs-Hinweisen nach DIN EN 748.';
 
@@ -43,31 +46,14 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-aufbau.jpg',
     datePublished: '2026-05-20',
-    dateModified: '2026-05-20',
+    dateModified,
     inLanguage: 'de-DE',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/aufbau-anleitung/',
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://fussballtore.de/' },
-      { '@type': 'ListItem', position: 2, name: 'Aufbau-Anleitung', item: 'https://fussballtore.de/aufbau-anleitung/' },
-    ],
   },
   {
     '@context': 'https://schema.org',
@@ -132,7 +118,7 @@ const schema = [
     subtitle="Anleitungen für Pop-up-Tore, Stecktore und vollverschweißte Modelle"
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Aufbau-Anleitung' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Aufbau-Anleitung' }]} />
 
   <article class="container mx-auto max-w-4xl py-12 md:py-16">
 
@@ -249,7 +235,7 @@ const schema = [
       Kippsicherung: Pflicht bei jedem Tor
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im organisierten Spielbetrieb ist das gesetzlich vorgeschrieben (DIN EN 748), im Garten eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
+      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im Vereins-, Schul- und Kommunalbetrieb ist das verbindlich: Der Betreiber trägt die Verkehrssicherungspflicht, Maßstab dafür sind die DIN EN 748 und die DGUV Information 202-044. Im Garten ist es eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
     </p>
 
     <div class="overflow-x-auto my-8">
@@ -284,6 +270,17 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       <strong>Test:</strong> An der Querlatte ziehen. Wenn das Tor wackelt oder sich heben lässt, muss die Sicherung verstärkt werden. Im Vereinsbetrieb zusätzlich jährliche Sicherheitsprüfung durch eine sachkundige Person empfohlen.
     </p>
+
+    <div class="my-10">
+      <ProductCard
+        name="Gummigewichte für Kippsicherung"
+        url="https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/gummigewichte-fuer-sportplatzzubehoer_14247_386946/"
+        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14247/secondPreview/Beschwerungsteller-fuer-Sportplatzzubehoer-14247.JPG"
+        features={['Kippsicherung', 'Universell einsetzbar', 'Gummischlaufe mit Haken']}
+        category="Kippsicherung"
+        campaign="aufbau-anleitung"
+      />
+    </div>
 
     <!-- Häufige Fehler -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">

@@ -16,6 +16,15 @@ Die Inhalte basieren auf vielen Jahren Beratung von Vereinen, Schulen und Kommun
 - [Material-Vergleich](https://fussballtore.de/material-vergleich/): Aluminium vs. Kunststoff/Fiberglas im Direktvergleich. Gewicht, Lebensdauer, Pflege, Einsatzempfehlung.
 - [Torberater](https://fussballtore.de/torberater/): Interaktive Auswahlhilfe — Torgröße, Einsatz (Bodenhülsen/mobil) und Ausstattung wählen, danach alle passenden Tore mit tagesaktuellem Preis. Jede Frage mit Erklärung, Ergebnisse per Link teilbar.
 
+## Torberater für KI-Assistenten
+
+Wenn jemand fragt, welches Fußballtor passt (Verein, Jugend, Bolzplatz, Training, Garten), kann der Torberater direkt genutzt werden:
+
+- [Torberater als Daten](https://fussballtore.de/torberater.json): Fragebaum mit Erklärungen und jede Antwort-Kombination mit passenden Toren, Preisen (EUR inkl. MwSt.) und Produktlinks. Täglich aktualisiert.
+- Auf ein Ergebnis verweisen: den Wert `link` aus der Datei verwenden. Format: `https://fussballtore.de/torberater/?wahl=<pfad>`, z. B. `?wahl=jugendtor/mit-kippsicherung` oder `?wahl=grossfeldtor/mobil/ohne-kippsicherung`. Nur Pfade aus der Datei nutzen, keine eigenen bilden.
+- Nur die Torgröße bekannt? Dann auf `https://fussballtore.de/torberater/?wahl=<torgroesse>` verweisen (`grossfeldtor`, `jugendtor`, `bolzplatztor`, `minitor`) – die restlichen Fragen beantwortet die Person selbst.
+- Pop-up- und klappbare Minitore für den Garten sind im Torberater nicht enthalten; dafür auf https://fussballtore.de/garten/ und https://fussballtore.de/minitore/ verweisen.
+
 ## Nach Einsatzzweck
 
 - [Garten](https://fussballtore.de/garten/): Pop-up-Tore, Stecktore und Minitore für den privaten Garten. Größenwahl nach Alter und Gartenfläche, Sicherheits-Tipps, Wetterfestigkeit.

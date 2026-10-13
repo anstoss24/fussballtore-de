@@ -9,6 +9,9 @@ import TorberaterEinstieg from '../components/TorberaterEinstieg.astro';
 import { features } from '../data/features';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
+import { PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['index'];
 
 const title = 'Fußballtore – Der professionelle Ratgeber';
 const description =
@@ -16,9 +19,9 @@ const description =
 
 const categories = [
   { name: 'Großfeldtore', subtitle: '7,32 x 2,44 m – Wettkampfstandard', href: '/verein/' },
-  { name: 'Jugendtore', subtitle: '5,00 x 2,00 m – Nachwuchsförderung', href: '/verein/' },
-  { name: 'Bolzplatztore', subtitle: '3,00 x 2,00 m – Unkaputtbar', href: '/verein/' },
-  { name: 'Minitore', subtitle: 'Für Training, Funino & Garten', href: '/garten/' },
+  { name: 'Jugendtore', subtitle: '5,00 x 2,00 m – Nachwuchsförderung', href: '/verein/#jugendtore' },
+  { name: 'Bolzplatztore', subtitle: '3,00 x 2,00 m – Unkaputtbar', href: '/bolzplatztor/' },
+  { name: 'Minitore', subtitle: 'Für Training, Funino & Garten', href: '/minitore/' },
   { name: 'Gartentore', subtitle: 'Pop-up, Steck- und Minitore', href: '/garten/' },
   { name: 'Kindertore', subtitle: 'Sicher & altersgerecht', href: '/kinder/' },
 ];
@@ -41,7 +44,7 @@ const faqs = [
   {
     question: 'Was kostet ein gutes Fußballtor?',
     answer:
-      'Die Preisspanne ist groß: Einfache Pop-up-Tore für den Garten sind schon für kleines Geld zu haben, stabile Stecktore liegen im unteren dreistelligen Bereich. Vereinstore aus Aluminium erfordern ein deutlich höheres Budget, und robuste Bolzplatztore sind die teuerste Kategorie – halten dafür aber 20+ Jahre. Aktuelle Preise findest du in unserem Shop-Bereich.',
+      'Die Preisspanne ist groß: Pop-up-Tore für den Garten gibt es für kleines Geld, klappbare Garten-Minitore im zweistelligen und vollverschweißte Alu-Minitore im dreistelligen Bereich. Jugend- und Großfeldtore aus Aluminium liegen im hohen drei- bis vierstelligen Bereich, robuste Bolzplatztore sind die teuerste Kategorie. Tagesaktuelle Preise findest du in unserer Kaufberatung und im Torberater.',
   },
   {
     question: 'Alu oder Kunststoff – welches Material ist besser?',
@@ -51,7 +54,7 @@ const faqs = [
   {
     question: 'Müssen Fußballtore TÜV-geprüft sein?',
     answer:
-      'Für den Vereins- und Schulbetrieb ja: Die DIN EN 748 schreibt Prüfungen für Standsicherheit vor. Im privaten Garten gibt es keine Pflicht, aber TÜV-geprüfte Tore bieten mehr Sicherheit – gerade wenn Kinder damit spielen.',
+      'Für Verein, Schule und Kommune ja: Der Betreiber hat die Verkehrssicherungspflicht, Maßstab dafür ist die DIN EN 748 mit ihren Anforderungen an Standsicherheit und Kippsicherung. Ein Prüfzeichen einer unabhängigen Stelle wie dem TÜV weist diese Konformität nach. Im privaten Garten gibt es keine Pflicht, geprüfte Tore bieten aber mehr Sicherheit – gerade wenn Kinder damit spielen.',
   },
 ];
 
@@ -64,13 +67,7 @@ const schema = [
     description,
     inLanguage: 'de-DE',
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'fussballtore.de',
-    url: 'https://fussballtore.de',
-    description: 'Professioneller Ratgeber für Fußballtore',
-  },
+  { '@context': 'https://schema.org', ...PUBLISHER },
 ];
 ---
 

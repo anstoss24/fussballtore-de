@@ -2,25 +2,30 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import pageDates from './src/data/page-dates.json' with { type: 'json' };
 
 export default defineConfig({
   site: 'https://fussballtore.de',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
-  // Torberater-Bilder aus dem anstoss24-Shop werden beim Build zu WebP optimiert
+  // Produkt- und Torberater-Bilder aus dem anstoss24-Shop werden beim Build zu WebP optimiert (src/utils/shop-image.ts)
   image: { domains: ['cdn02.plentyone.com'] },
   integrations: [
     tailwind(),
     sitemap({
-      i18n: { defaultLocale: 'de', locales: { de: 'de-DE' } },
       filter: (page) =>
         ![
           'https://fussballtore.de/datenschutz/',
           'https://fussballtore.de/impressum/',
           'https://fussballtore.de/404/',
         ].includes(page),
-      changefreq: 'monthly',
-      lastmod: new Date(),
+      // lastmod = letzte inhaltliche Änderung der Seite (src/data/page-dates.json), nicht der Build-Zeitpunkt
+      serialize(item) {
+        const slug = new URL(item.url).pathname.replace(/\//g, '') || 'index';
+        const date = pageDates[slug];
+        if (date) item.lastmod = date;
+        return item;
+      },
     }),
   ],
 });

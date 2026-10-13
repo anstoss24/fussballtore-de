@@ -8,9 +8,13 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['groessen'];
 
-const title = 'Fußballtor-Größen: Tabelle aller Maße nach Altersklasse (DFB)';
+const title = 'Fußballtor-Größen: alle Maße nach Altersklasse (DFB)';
 const description = 'Welches Tor für welche Jugend? Komplette Tabelle von Bambini bis Herren: alle Maße, Tortiefe und Spielformat. Inkl. Vorgaben nach DFB, FIFA und DIN EN 748.';
 
 const faqs = [
@@ -28,7 +32,7 @@ const faqs = [
   },
   {
     question: 'Gibt es einheitliche Maße für Minitore und Funino-Tore?',
-    answer: 'Nein, für Minitore und Funino-Tore gibt es keine einheitlich vorgeschriebenen Maße. Gängige Größen liegen zwischen 1,20 x 0,80 m und 1,80 x 1,20 m. Im Funino-Spielbetrieb werden oft Tore mit ca. 1,20 x 0,80 m verwendet.',
+    answer: 'Nein, für Minitore und Funino-Tore gibt es keine einheitlich vorgeschriebenen Maße. Üblich sind 1,20 x 0,80 m bis 1,80 x 1,20 m; im DFB-Kinderfußball sind Minitore bis maximal 2,00 x 1,20 m zulässig. Für das Jugendtraining gibt es Alu-Minitore bis 2,40 x 1,60 m. Im Funino-Spielbetrieb werden meist Tore mit 1,20 x 0,80 m verwendet.',
   },
   {
     question: 'Wie groß ist ein E-Jugend-Tor?',
@@ -47,42 +51,15 @@ const schema = [
     headline: title,
     description,
     image: 'https://fussballtore.de/og-groessen.jpg',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/groessen/',
     },
     datePublished: '2025-06-01',
-    dateModified: '2026-07-21',
+    dateModified,
     inLanguage: 'de-DE',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Start',
-        item: 'https://fussballtore.de/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Größen & Maße',
-        item: 'https://fussballtore.de/groessen/',
-      },
-    ],
   },
 ];
 ---
@@ -93,7 +70,7 @@ const schema = [
     subtitle="Alle Torgrößen im Überblick – von Mini bis Großfeld"
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Größen & Maße' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Größen & Maße' }]} />
 
   <article class="py-12 md:py-16">
     <div class="container mx-auto max-w-4xl">
@@ -104,7 +81,7 @@ const schema = [
           { label: 'Großfeldtor', text: '7,32 × 2,44 m (Tortiefe 1,50–2,00 m) — Herren, Frauen und C- bis A-Jugend.' },
           { label: 'Jugendtor', text: '5,00 × 2,00 m — E-Jugend (7-gegen-7) und D-Jugend (9-gegen-9).' },
           { label: 'Kleinfeldtor', text: '3,00 × 2,00 m — F-Jugend (5-gegen-5) und Bolzplatz.' },
-          { label: 'Minitor', text: '1,20 × 0,80 m bis 1,80 × 1,20 m — Bambini, Funino, Garten.' },
+          { label: 'Minitor', text: '1,20 × 0,80 m bis 1,80 × 1,20 m (DFB-Kinderfußball max. 2,00 × 1,20 m) — Bambini, Funino, Garten.' },
           { label: 'Herkunft der Maße', text: 'Die 7,32 × 2,44 m stammen aus dem englischen Maßsystem: 8 Yards Breite × 8 Fuß Höhe.' },
         ]}
         speakableId="tldr-groessen"
@@ -275,7 +252,7 @@ const schema = [
         </p>
       </div>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        An Bolzplatztore werden besondere Anforderungen gestellt: Sie müssen <strong>vandalismusresistent</strong>, wetterfest und extrem langlebig sein. Hochwertige Modelle bestehen aus massivem Alu-Ovalprofil, sind vollverschweißt und DIN-konform. Die Investition ist zwar höher als bei einfachen Toren, dafür halten Bolzplatztore problemlos 20 Jahre und mehr – ohne nennenswerten Wartungsaufwand.
+        An Bolzplatztore werden besondere Anforderungen gestellt: Sie müssen <strong>vandalismusresistent</strong>, wetterfest und extrem langlebig sein. Hochwertige Modelle bestehen aus massivem Alu-Ovalprofil, sind vollverschweißt und DIN-konform. Die Investition ist zwar höher als bei einfachen Toren, dafür sind Bolzplatztore auf jahrzehntelangen Dauereinsatz im öffentlichen Raum ausgelegt – bei geringem Wartungsaufwand.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
@@ -395,7 +372,7 @@ const schema = [
         <li><strong>Platzverhältnisse:</strong> Miss den verfügbaren Platz vor dem Kauf. Ein Großfeldtor braucht mit Torraum und Sicherheitszone deutlich mehr Fläche als nur 7,32 x 2,44 m.</li>
         <li><strong>Mehrfachnutzung:</strong> Wenn verschiedene Altersklassen dasselbe Feld nutzen, sind mobile Tore mit Rollen die beste Lösung. So kannst du schnell zwischen Jugendtoren und Großfeldtoren wechseln.</li>
         <li><strong>Material:</strong> Für dauerhafte Installation empfiehlt sich Aluminium. Für den Garten genügen oft leichtere Materialien wie Kunststoff oder Fiberglas. Alle Details dazu findest du im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a>.</li>
-        <li><strong>Normen:</strong> Für den offiziellen Spielbetrieb muss das Tor der DIN EN 748 entsprechen und TÜV-geprüft sein. Im privaten Bereich ist das keine Pflicht, aber ein Qualitätsmerkmal.</li>
+        <li><strong>Normen:</strong> Für den offiziellen Spielbetrieb muss das Tor der DIN EN 748 entsprechen; ein Prüfzeichen (z. B. TÜV) weist das nach. Im privaten Bereich ist das keine Pflicht, aber ein Qualitätsmerkmal.</li>
         <li><strong>Budget:</strong> Die Preisspanne ist groß – von günstigen Pop-up-Toren für den Garten bis hin zu robusten Bolzplatztoren in Profi-Qualität. Eine ausführliche Hilfe zur Entscheidung findest du in unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark underline underline-offset-2">Kaufberatung</a>.</li>
       </ul>
 
@@ -415,6 +392,8 @@ const schema = [
 
       {features.torberater && <TorberaterTeaser />}
 
+
+      <Sources />
 
       <RelatedContent
         items={[

@@ -7,6 +7,9 @@ import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['kinder'];
 
 const title = 'Fußballtor für Kinder – altersgerecht';
 const description =
@@ -47,42 +50,15 @@ const schema = [
     headline: title,
     description,
     image: 'https://fussballtore.de/og-kinder.jpg',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     datePublished: '2025-01-15',
-    dateModified: '2026-05-20',
+    dateModified,
     inLanguage: 'de-DE',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/kinder/',
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Start',
-        item: 'https://fussballtore.de/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Kindertore',
-        item: 'https://fussballtore.de/kinder/',
-      },
-    ],
   },
 ];
 ---
@@ -93,7 +69,7 @@ const schema = [
     subtitle="Sicher, altersgerecht und mit Spaßfaktor – so findest du das perfekte Tor für dein Kind"
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Kindertore' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Kindertore' }]} />
 
   <article class="container mx-auto py-12 md:py-16 max-w-4xl">
 
