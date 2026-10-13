@@ -6,6 +6,9 @@ import FAQSection from '../components/FAQSection.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { features } from '../data/features';
 import { tbLastUpdated } from '../utils/torberater';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['torberater'];
 
 if (!features.torberater) return Astro.redirect('/');
 
@@ -50,14 +53,9 @@ const schema = [
     url: 'https://fussballtore.de/torberater/',
     image: 'https://fussballtore.de/og-torberater.jpg',
     inLanguage: 'de-DE',
-    dateModified: tbLastUpdated.slice(0, 10),
+    dateModified,
     about: { '@type': 'Thing', name: 'Fußballtor' },
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
+    author: AUTHOR,
     publisher: { '@type': 'Organization', name: 'fussballtore.de', url: 'https://fussballtore.de' },
     isPartOf: { '@type': 'WebSite', name: 'fussballtore.de', url: 'https://fussballtore.de' },
     mainEntity: { '@id': 'https://fussballtore.de/torberater/#app' },
@@ -89,7 +87,7 @@ const schema = [
 
 <BaseLayout title={title} description={description} schema={schema} ogImage="/og-torberater.jpg">
   <link slot="head" rel="alternate" type="application/json" href="/torberater.json" title="Torberater als Daten (für KI-Assistenten)" />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Torberater' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Torberater' }]} />
 
   <section class="pb-12 md:pb-16 pt-1">
     <div class="container mx-auto">

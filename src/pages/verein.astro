@@ -8,7 +8,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['verein'];
 
 const title = 'Fußballtor für Vereine – DIN-konform';
 const description = 'Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m, DIN EN 748, TÜV-geprüft, fest oder mobil. Das passende Wettkampftor finden.';
@@ -44,41 +48,14 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-verein.jpg',
     datePublished: '2025-01-15',
-    dateModified: '2026-05-20',
+    dateModified,
     inLanguage: 'de-DE',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/verein/',
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Start',
-        item: 'https://fussballtore.de/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Vereinstore',
-        item: 'https://fussballtore.de/verein/',
-      },
-    ],
   },
   {
     '@context': 'https://schema.org',
@@ -138,7 +115,7 @@ const schema = [
     subtitle="Professionelle Tore für Wettkampf und Training – TÜV-geprüft und DIN-konform"
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Vereinstore' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Vereinstore' }]} />
 
   <article class="container mx-auto py-12 md:py-16 max-w-4xl">
 
@@ -219,7 +196,7 @@ const schema = [
 
     <!-- Jugendtore -->
     <section class="mt-14">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      <h2 id="jugendtore" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6 scroll-mt-24">
         Jugendtore – 5,00 x 2,00 m für den Nachwuchs
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
@@ -441,7 +418,9 @@ const schema = [
       </div>
     </section>
 
-    <RelatedContent
+    <Sources />
+
+      <RelatedContent
       items={[
         { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Wettkampf-Maße' },
         { href: '/material-vergleich/', title: 'Material', subtitle: 'Alu vs. Kunststoff' },

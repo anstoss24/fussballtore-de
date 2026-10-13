@@ -9,6 +9,9 @@ import TorberaterEinstieg from '../components/TorberaterEinstieg.astro';
 import { features } from '../data/features';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
+import { PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['index'];
 
 const title = 'Fußballtore – Der professionelle Ratgeber';
 const description =
@@ -64,13 +67,7 @@ const schema = [
     description,
     inLanguage: 'de-DE',
   },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'fussballtore.de',
-    url: 'https://fussballtore.de',
-    description: 'Professioneller Ratgeber für Fußballtore',
-  },
+  { '@context': 'https://schema.org', ...PUBLISHER },
 ];
 ---
 

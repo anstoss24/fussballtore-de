@@ -71,6 +71,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogIm
           ))
         : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Übersicht für KI-Systeme (llms.txt)" />
     <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col bg-white">

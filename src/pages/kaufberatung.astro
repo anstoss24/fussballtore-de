@@ -11,6 +11,9 @@ import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['kaufberatung'];
 
 // Echte Marktpreise aus dem täglich aktualisierten Preis-Feed (prices.json).
 // Der Preis-Cron committet auf main und triggert den Rebuild — die Zahlen
@@ -97,85 +100,15 @@ const schema = [
     headline: title,
     description: description,
     image: 'https://fussballtore.de/og-kaufberatung.jpg',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     datePublished: '2025-06-01',
-    dateModified: '2026-07-21',
+    dateModified,
     inLanguage: 'de-DE',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/kaufberatung/',
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Start',
-        item: 'https://fussballtore.de/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Kaufberatung',
-        item: 'https://fussballtore.de/kaufberatung/',
-      },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'Fußballtor gegen Umkippen sichern',
-    description:
-      'Schritt-für-Schritt-Anleitung, wie du ein freistehendes Fußballtor normgerecht gegen Umkippen sicherst – nach DIN EN 748.',
-    supply: [
-      { '@type': 'HowToSupply', name: 'Erdanker oder Heringe' },
-      { '@type': 'HowToSupply', name: 'Alternativ: Gegengewichte oder Sandsäcke' },
-      { '@type': 'HowToSupply', name: 'Alternativ: Bodenhülsen für feste Installation' },
-    ],
-    tool: [
-      { '@type': 'HowToTool', name: 'Hammer (für Erdanker)' },
-      { '@type': 'HowToTool', name: 'Wasserwaage' },
-    ],
-    step: [
-      {
-        '@type': 'HowToStep',
-        name: 'Untergrund prüfen',
-        text: 'Rasen ist ideal: weich bei Stürzen, gute Verankerung. Auf Pflaster oder Beton brauchst du Gegengewichte oder Bodenhülsen.',
-      },
-      {
-        '@type': 'HowToStep',
-        name: 'Tor mittig aufstellen',
-        text: 'Stelle das Tor an die gewünschte Position. Achte auf mindestens 2 m Auslauf hinter dem Tor und einen ebenen Untergrund.',
-      },
-      {
-        '@type': 'HowToStep',
-        name: 'Erdanker eindrehen oder Gewichte platzieren',
-        text: 'Erdanker im 45-Grad-Winkel durch die Bodenrahmen-Ösen in den Rasen drücken oder einhämmern. Bei mobilen Toren: Gegengewichte hinten an den Rahmen hängen.',
-      },
-      {
-        '@type': 'HowToStep',
-        name: 'Standfestigkeit prüfen',
-        text: 'An der Querlatte ziehen — das Tor darf sich nicht heben lassen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung vor.',
-      },
-      {
-        '@type': 'HowToStep',
-        name: 'Regelmäßig kontrollieren',
-        text: 'Vor jeder Nutzung Sichtprüfung. Im Vereinsbetrieb zusätzlich jährliche Prüfung durch eine sachkundige Person.',
-      },
-    ],
   },
 ];
 ---
@@ -187,7 +120,7 @@ const schema = [
     compact
   />
 
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Kaufberatung' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Kaufberatung' }]} />
 
   <article class="container mx-auto max-w-4xl py-8 md:py-12">
 

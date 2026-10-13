@@ -1,0 +1,18 @@
+---
+/** Quellen-Block: verlinkte Primärquellen (Normen, Verbände) für Fakten auf der Seite */
+import { SOURCES } from '../data/entities';
+interface Props { title?: string }
+const { title = 'Quellen' } = Astro.props;
+---
+
+<section class="mt-12 rounded-xl border border-neutral-200 bg-neutral-50 px-5 py-5 md:px-6" aria-labelledby="quellen">
+  <h2 id="quellen" class="font-heading text-lg font-bold text-primary mb-3">{title}</h2>
+  <ul class="space-y-2 text-sm text-neutral-600">
+    {SOURCES.map((s) => (
+      <li>
+        <a href={s.href} target="_blank" rel="noopener" class="font-medium text-accent-dark hover:text-accent underline underline-offset-2">{s.name}</a>
+        <span class="text-neutral-500"> – {s.note}</span>
+      </li>
+    ))}
+  </ul>
+</section>

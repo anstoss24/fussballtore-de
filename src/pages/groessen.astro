@@ -8,7 +8,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['groessen'];
 
 const title = 'Fußballtor-Größen: alle Maße nach Altersklasse (DFB)';
 const description = 'Welches Tor für welche Jugend? Komplette Tabelle von Bambini bis Herren: alle Maße, Tortiefe und Spielformat. Inkl. Vorgaben nach DFB, FIFA und DIN EN 748.';
@@ -47,42 +51,15 @@ const schema = [
     headline: title,
     description,
     image: 'https://fussballtore.de/og-groessen.jpg',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/groessen/',
     },
     datePublished: '2025-06-01',
-    dateModified: '2026-07-21',
+    dateModified,
     inLanguage: 'de-DE',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Start',
-        item: 'https://fussballtore.de/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Größen & Maße',
-        item: 'https://fussballtore.de/groessen/',
-      },
-    ],
   },
 ];
 ---
@@ -93,7 +70,7 @@ const schema = [
     subtitle="Alle Torgrößen im Überblick – von Mini bis Großfeld"
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Größen & Maße' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Größen & Maße' }]} />
 
   <article class="py-12 md:py-16">
     <div class="container mx-auto max-w-4xl">
@@ -415,6 +392,8 @@ const schema = [
 
       {features.torberater && <TorberaterTeaser />}
 
+
+      <Sources />
 
       <RelatedContent
         items={[

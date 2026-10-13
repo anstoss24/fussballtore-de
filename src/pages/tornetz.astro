@@ -9,6 +9,9 @@ import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
+import { AUTHOR, PUBLISHER } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['tornetz'];
 
 // Live-Preis aus dem täglich aktualisierten Preis-Feed
 const priceOf = (id: string): number | null => {
@@ -68,31 +71,14 @@ const schema = [
     description,
     image: 'https://fussballtore.de/og-tornetz.jpg',
     datePublished: '2026-05-20',
-    dateModified: '2026-07-21',
+    dateModified,
     inLanguage: 'de-DE',
-    author: {
-      '@type': 'Person',
-      name: 'Matthias Frank',
-      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
-      url: 'https://fussballtore.de/ueber-uns/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'fussballtore.de',
-      url: 'https://fussballtore.de',
-    },
+    author: AUTHOR,
+    publisher: PUBLISHER,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': 'https://fussballtore.de/tornetz/',
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://fussballtore.de/' },
-      { '@type': 'ListItem', position: 2, name: 'Tornetz', item: 'https://fussballtore.de/tornetz/' },
-    ],
   },
 ];
 ---
@@ -103,7 +89,7 @@ const schema = [
     subtitle="Material, Stärke, Maschenweite — so wählst du das richtige Netz"
     compact
   />
-  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Tornetz' }]} />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Tornetz' }]} />
 
   <article class="container mx-auto max-w-4xl py-12 md:py-16">
 

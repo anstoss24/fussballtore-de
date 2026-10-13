@@ -23,6 +23,8 @@ const speakableSchema = speakable
   ? {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
+      '@id': new URL(Astro.url.pathname, Astro.site).href,
+      url: new URL(Astro.url.pathname, Astro.site).href,
       speakable: {
         '@type': 'SpeakableSpecification',
         cssSelector: [`#${speakableId}`],
