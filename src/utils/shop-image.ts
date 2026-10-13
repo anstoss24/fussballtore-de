@@ -8,6 +8,20 @@ import { getImage } from 'astro:assets';
  */
 const cache = new Map<string, Promise<string | undefined>>();
 
+/** Das CDN antwortet beim Build gelegentlich nicht – bis zu drei Versuche mit Pause */
+async function optimize(url: string, width: number): Promise<string> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      return (await getImage({ src: url, inferSize: true, width, format: 'webp' })).src;
+    } catch (err) {
+      lastError = err;
+      await new Promise((r) => setTimeout(r, attempt * 1500));
+    }
+  }
+  throw lastError;
+}
+
 export function shopImage(src: string | undefined, width: number): Promise<string | undefined> {
   if (!src) return Promise.resolve(undefined);
   const url = src.replace('cdn02.plentymarkets.com', 'cdn02.plentyone.com');
@@ -15,9 +29,7 @@ export function shopImage(src: string | undefined, width: number): Promise<strin
   if (!cache.has(key)) {
     cache.set(
       key,
-      getImage({ src: url, inferSize: true, width, format: 'webp' })
-        .then((img) => img.src)
-        .catch(() => {
+      optimize(url, width).catch(() => {
           console.warn(`Shop-Bild nicht verfügbar, Original wird verwendet: ${src}`);
           return undefined;
         })
