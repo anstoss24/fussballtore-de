@@ -60,11 +60,35 @@ const schema = [
     },
     publisher: { '@type': 'Organization', name: 'fussballtore.de', url: 'https://fussballtore.de' },
     isPartOf: { '@type': 'WebSite', name: 'fussballtore.de', url: 'https://fussballtore.de' },
+    mainEntity: { '@id': 'https://fussballtore.de/torberater/#app' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': 'https://fussballtore.de/torberater/#app',
+    name: 'Torberater',
+    description: 'Kostenlose Auswahlhilfe für Fußballtore: Torgröße, Einsatz und Ausstattung wählen und alle passenden Tore mit aktuellem Preis sehen.',
+    url: 'https://fussballtore.de/torberater/',
+    applicationCategory: 'ShoppingApplication',
+    operatingSystem: 'Web',
+    browserRequirements: 'Läuft in jedem aktuellen Browser',
+    inLanguage: 'de-DE',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    featureList: [
+      'Auswahl nach Torgröße: Großfeldtor, Jugendtor, Bolzplatztor, Minitor',
+      'Fragen zu Aufstellung, Kippsicherung, Hinterbau und Netzaufhängung',
+      'Erklärung zu jeder Frage',
+      'Passende Tore mit tagesaktuellem Preis',
+      'Ergebnis per Link teilbar',
+    ],
+    publisher: { '@type': 'Organization', name: 'fussballtore.de', url: 'https://fussballtore.de' },
   },
 ];
 ---
 
 <BaseLayout title={title} description={description} schema={schema} ogImage="/og-torberater.jpg">
+  <link slot="head" rel="alternate" type="application/json" href="/torberater.json" title="Torberater als Daten (für KI-Assistenten)" />
   <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Torberater' }]} />
 
   <section class="pb-12 md:pb-16 pt-1">

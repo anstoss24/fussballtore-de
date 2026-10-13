@@ -120,6 +120,7 @@ Quelle/Details: https://fussballtore.de/aufbau-anleitung/
 - Minitor: Hinterbau aus Alu-Rundrohr oder Tornetz, danach Pfostenprofil oval oder rechteckig.
 - Tore ohne integrierte Kippsicherung müssen zusätzlich gegen Umkippen gesichert werden (Bodenhülsen, Erdanker oder Gegengewichte).
 - Ergebnisse sind per Link teilbar: https://fussballtore.de/torberater/?wahl=<pfad>, z. B. ?wahl=grossfeldtor/mobil/mit-kippsicherung
+- Alle gültigen Pfade mit passenden Toren und Preisen: https://fussballtore.de/torberater.json
 
 Quelle/Details: https://fussballtore.de/torberater/
 

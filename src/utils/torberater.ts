@@ -94,3 +94,14 @@ export function tbImage(src?: string): Promise<string | undefined> {
   return imageCache.get(src)!;
 }
 
+
+/** Alle Endpunkte des Baums als flache Liste (Pfad-Schlüssel wie im Torberater-Component) */
+export type TbEndpoint = { trail: string[]; key: string; option: TbOption };
+export function tbEndpoints(step: TbStep = tbTree, trail: string[] = [], prefix = ''): TbEndpoint[] {
+  return step.options.flatMap((o) => {
+    const chip = tbChip(o, step);
+    const key = prefix ? `${prefix}/${tbSlug(chip)}` : tbSlug(chip);
+    const t = [...trail, chip];
+    return o.next ? tbEndpoints(o.next, t, key) : [{ trail: t, key, option: o }];
+  });
+}

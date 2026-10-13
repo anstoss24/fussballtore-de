@@ -74,6 +74,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogIm
           ))
         : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col bg-white">
     <Header />
