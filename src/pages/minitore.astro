@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Torberater from '../components/Torberater.astro';
+import { features } from '../data/features';
 import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
@@ -272,6 +274,12 @@ const schema = [
           </div>
         </div>
       </div>
+
+      {features.torberater && (
+        <div class="mt-14">
+          <Torberater campaign="minitore-torberater" start="minitor" title="Das passende Minitor finden" />
+        </div>
+      )}
 
       <!-- Sicherheit -->
       <h2 class="font-heading text-xl md:text-2xl font-bold text-primary mt-12 mb-4">

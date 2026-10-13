@@ -197,6 +197,12 @@ const pages = [
     subtitle: 'Größen, Bauarten, Empfehlungen — klappbar bis Alu',
     accentLabel: 'Minitore',
   },
+  {
+    file: 'og-torberater.jpg',
+    title: 'Torberater',
+    subtitle: 'In wenigen Klicks zum passenden Fußballtor',
+    accentLabel: 'Torberater',
+  },
 ];
 
 for (const page of pages) {

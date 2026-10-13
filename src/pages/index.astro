@@ -5,6 +5,8 @@ import CategoryCard from '../components/CategoryCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
+import TorberaterEinstieg from '../components/TorberaterEinstieg.astro';
+import { features } from '../data/features';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 
@@ -74,12 +76,21 @@ const schema = [
 
 <BaseLayout title={title} description={description} schema={schema}>
   <!-- Hero -->
-  <HeroSection
-    title="Fußballtore – Der professionelle Ratgeber"
-    subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-    ctaText="Zur Kaufberatung"
-    ctaHref="/kaufberatung/"
-  />
+  {features.torberater ? (
+    <HeroSection
+      title="Fußballtore – Der professionelle Ratgeber"
+      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
+    >
+      <TorberaterEinstieg />
+    </HeroSection>
+  ) : (
+    <HeroSection
+      title="Fußballtore – Der professionelle Ratgeber"
+      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
+      ctaText="Zur Kaufberatung"
+      ctaHref="/kaufberatung/"
+    />
+  )}
 
   <!-- Category Grid -->
   <section class="py-16 md:py-20">

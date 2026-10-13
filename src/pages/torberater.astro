@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Torberater from '../components/Torberater.astro';
+import FAQSection from '../components/FAQSection.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import { features } from '../data/features';
+import { tbLastUpdated } from '../utils/torberater';
+
+if (!features.torberater) return Astro.redirect('/');
+
+const title = 'Torberater: Welches Fußballtor passt zu dir?';
+const description =
+  'In wenigen Klicks zum passenden Fußballtor: Torgröße, Einsatz und Ausstattung wählen und alle passenden Tore mit aktuellem Preis sehen – mit Erklärung zu jeder Frage.';
+
+const faqs = [
+  {
+    question: 'Welche Torgröße brauche ich?',
+    answer:
+      'Das hängt vom Einsatz ab: Großfeldtore (7,32 x 2,44 m) sind das Regelmaß für Erwachsene, Jugendtore (5,00 x 2,00 m) für den Nachwuchs. Bolzplatztore (3,00 x 2,00 m) sind für öffentliche Plätze gebaut, Minitore für Training, Funino und den Garten. Welche Größe zu welcher Altersklasse gehört, zeigt unsere Größen-Übersicht.',
+  },
+  {
+    question: 'Muss ein Fußballtor gegen Umkippen gesichert werden?',
+    answer:
+      'Für Tore im Vereins-, Schul- und Kommunalbetrieb schreibt die DIN EN 748 eine Sicherung gegen Umkippen vor – über Bodenhülsen, Erdanker, Gegengewichte oder fest integrierte Gewichte. Wählst du im Torberater ein Tor ohne integrierte Kippsicherung, musst du es zusätzlich sichern.',
+  },
+  {
+    question: 'Fest in Bodenhülsen oder mobil – was ist besser?',
+    answer:
+      'Tore in Bodenhülsen sind maximal standfest und die erste Wahl für den Hauptspielplatz. Mobile Tore lassen sich versetzen und sind flexibler für Trainings- und Mehrzweckplätze. Viele Vereine kombinieren beide Varianten.',
+  },
+  {
+    question: 'Kann ich mein Ergebnis mit anderen teilen?',
+    answer:
+      'Ja. Über „Ergebnis teilen“ bekommst du einen Link, der genau deine Auswahl öffnet – praktisch, wenn im Verein mehrere Personen mitentscheiden.',
+  },
+  {
+    question: 'Wie aktuell sind die Preise?',
+    answer:
+      'Trefferzahlen und Preise werden täglich aktualisiert. Verbindlich ist immer der Preis auf der Produktseite des Händlers.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url: 'https://fussballtore.de/torberater/',
+    image: 'https://fussballtore.de/og-torberater.jpg',
+    inLanguage: 'de-DE',
+    dateModified: tbLastUpdated.slice(0, 10),
+    about: { '@type': 'Thing', name: 'Fußballtor' },
+    author: {
+      '@type': 'Person',
+      name: 'Matthias Frank',
+      description: 'Tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore',
+      url: 'https://fussballtore.de/ueber-uns/',
+    },
+    publisher: { '@type': 'Organization', name: 'fussballtore.de', url: 'https://fussballtore.de' },
+    isPartOf: { '@type': 'WebSite', name: 'fussballtore.de', url: 'https://fussballtore.de' },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-torberater.jpg">
+  <Breadcrumb items={[{ label: 'Start', href: '/' }, { label: 'Torberater' }]} />
+
+  <section class="pb-12 md:pb-16 pt-1">
+    <div class="container mx-auto">
+      <Torberater
+        campaign="torberater-seite"
+        syncUrl
+        headingLevel={1}
+        title="Torberater: Welches Fußballtor passt zu dir?"
+        intro="In wenigen Klicks zum passenden Tor – mit Erklärung zu jeder Frage und allen Treffern mit aktuellem Preis."
+      />
+    </div>
+  </section>
+
+  <section class="pb-12 md:pb-16">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">So funktioniert der Torberater</h2>
+      <ol class="grid gap-4 md:grid-cols-3 list-none p-0">
+        <li class="rounded-xl border border-neutral-200 p-5">
+          <span class="font-mono text-sm text-accent">01</span>
+          <p class="font-heading font-bold text-primary mt-1">Torgröße wählen</p>
+          <p class="text-base text-neutral-500 mt-1">Großfeld, Jugend, Bolzplatz oder Minitor – je nachdem, wer wo spielt.</p>
+        </li>
+        <li class="rounded-xl border border-neutral-200 p-5">
+          <span class="font-mono text-sm text-accent">02</span>
+          <p class="font-heading font-bold text-primary mt-1">Ausstattung festlegen</p>
+          <p class="text-base text-neutral-500 mt-1">Ein bis zwei Fragen zu Aufstellung und Ausstattung. Unter „Was bedeutet das?“ steht jeweils die Erklärung.</p>
+        </li>
+        <li class="rounded-xl border border-neutral-200 p-5">
+          <span class="font-mono text-sm text-accent">03</span>
+          <p class="font-heading font-bold text-primary mt-1">Passende Tore vergleichen</p>
+          <p class="text-base text-neutral-500 mt-1">Du siehst alle Tore, die deine Kriterien erfüllen, mit aktuellem Preis – und kannst das Ergebnis teilen.</p>
+        </li>
+      </ol>
+
+      <RelatedContent
+        items={[
+          { href: '/kaufberatung/', title: 'Kaufberatung', subtitle: 'Größe, Material, Sicherheit, Preis' },
+          { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Tormaße nach Altersklasse' },
+          { href: '/verein/', title: 'Vereinstore', subtitle: 'DIN EN 748, fest oder mobil' },
+          { href: '/aufbau-anleitung/', title: 'Aufbau & Kippsicherung', subtitle: 'So steht dein Tor sicher' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Torberater" />
+    </div>
+  </div>
+</BaseLayout>

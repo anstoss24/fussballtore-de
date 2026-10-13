@@ -1,0 +1,474 @@
+{
+  "lastUpdated": "2026-10-13",
+  "source": "https://www.anstoss24.de/torberater/",
+  "tree": {
+    "title": "Torgröße",
+    "question": "Welche Torgröße?",
+    "options": [
+      {
+        "label": "Bolzplatztor",
+        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Torgroesse/Bolzplatztor_1.png",
+        "total": 6,
+        "priceMin": 839,
+        "priceMax": 3829,
+        "shopUrl": "https://www.anstoss24.de/torberater/?2=152",
+        "next": {
+          "title": "Hinterbau",
+          "question": "Welcher Hinterbau?",
+          "options": [
+            {
+              "label": "Alu-rundrohr",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Hinterbau/Alu-Rundrohr_1.png",
+              "total": 4,
+              "priceMin": 2219,
+              "priceMax": 3829,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=152&3=162",
+              "next": {
+                "title": "Geräuschdämmung",
+                "question": "Mit Geräuschdämmung (Sandfüllung)?",
+                "options": [
+                  {
+                    "label": "Mit",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Geraeuschdaemmung/mitdaemmung_1.png",
+                    "total": 2,
+                    "priceMin": 2559,
+                    "priceMax": 3829,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=152&3=162&99=163",
+                    "products": [
+                      {
+                        "id": 9754,
+                        "name": "Fussballtor - SILENCE Bolzplatztor - 3,00 x 2,00 m - UNKAPUTTBAR",
+                        "url": "https://www.anstoss24.de/fussballtor-silence-bolzplatztor-3-00-x-2-00-m-unkaputtbar/a-9754",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/9754/middle/Fussballtor-SILENCE-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-9754-Bolzplatztor-Unkaputtbar-2.png",
+                        "price": 2559,
+                        "uvp": 3079
+                      },
+                      {
+                        "id": 13020,
+                        "name": "Fussballtor - SILENCE Bolzplatztor - 3,00 x 2,00 m - mit Basketballaufbau - UNKAPUTTBAR",
+                        "url": "https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-silence-bolzplatztor-3-00-x-2-00-m-mit-basketballaufbau/a-13020",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/13020/middle/Fussballtor-SILENCE-Bolzplatztor-3-00-x-2-00-m-mit-Basketballaufbau-UNKAPUTTBAR-13020-Bolzplatztor-mit-BB-4.png",
+                        "price": 3829,
+                        "uvp": 4599
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Ohne",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Geraeuschdaemmung/ohnedaemmung_1.png",
+                    "total": 2,
+                    "priceMin": 2219,
+                    "priceMax": 3199,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=152&3=162&99=164",
+                    "products": [
+                      {
+                        "id": 255,
+                        "name": "Fussballtor - Bolzplatztor - 3,00 x 2,00 m - UNKAPUTTBAR",
+                        "url": "https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar/a-255",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/255/middle/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255-Bolzplatztor-Unkaputtbar-2.png",
+                        "price": 2219,
+                        "uvp": 2669
+                      },
+                      {
+                        "id": 13019,
+                        "name": "Fussballtor - Bolzplatztor - 3,00 x 2,00 m - mit Basketballaufbau - UNKAPUTTBAR",
+                        "url": "https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-mit-basketballaufbau/a-13019",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/13019/middle/Fussballtor-Bolzplatztor-3-00-x-2-00-m-mit-Basketballaufbau-UNKAPUTTBAR-13019-Bolzplatztor-mit-BB-4.png",
+                        "price": 3199,
+                        "uvp": 3839
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Tornetz",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Hinterbau/Tornetz_1.png",
+              "total": 2,
+              "priceMin": 839,
+              "priceMax": 2509,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=152&99=161",
+              "products": [
+                {
+                  "id": 4248,
+                  "name": "Fußballtor - mobiles Kleinfeldtor - 3,00 x 2,00 m - vollverschweißt, inkl. Tornetz",
+                  "url": "https://www.anstoss24.de/fussballtore/fussballtor-mobiles-kleinfeldtor-3-00-x-2-00-m-vollverschweisst/a-4248",
+                  "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/4248/middle/Fussballtor-mobiles-Kleinfeldtor-3-00-x-2-00-m-vollverschweisst--inkl--Tornetz-4248-Kleinfeldtor-mit-Netz.png",
+                  "price": 839,
+                  "uvp": 1009
+                },
+                {
+                  "id": 19355,
+                  "name": "Fußballtor - mobiles Kleinfeldtor mit Herkulesnetz - 3,00 x 2,00 m - vollverschweißt, vandalismussicher",
+                  "url": "https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-mobiles-kleinfeldtor-mit-herkulesnetz-3-00-x-2-00-m-vollverschweisst-vandalismussicher/a-19355",
+                  "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/19355/middle/Fussballtor-mobiles-Kleinfeldtor-mit-Herkulesnetz-3-00-x-2-00-m-vollverschweisst--vandalismussicher-19355-Kleinfeldtor-mit-Herkulesnetz.png",
+                  "price": 2509,
+                  "uvp": 3019
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "label": "Großfeldtor",
+        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Torgroesse/Grossfeldtor_2.png",
+        "total": 6,
+        "priceMin": 919,
+        "priceMax": 2019,
+        "shopUrl": "https://www.anstoss24.de/torberater/?2=149",
+        "next": {
+          "title": "Einsatzzweck",
+          "question": "Welcher Einsatzzweck?",
+          "options": [
+            {
+              "label": "In bodenhülsen stehend",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Einsatzzweck/In_Bodenhuelsen_stehend_1.png",
+              "total": 2,
+              "priceMin": 919,
+              "priceMax": 939,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=149&3=154",
+              "next": {
+                "title": "Netzaufhängung",
+                "question": "Welche Netzaufhängung?",
+                "options": [
+                  {
+                    "label": "Freie netzaufhängung",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Netzaufhaengung/Freie_Netzaufhaengung_2.png",
+                    "total": 1,
+                    "priceMin": 939,
+                    "priceMax": 939,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=149&3=154&99=156",
+                    "products": [
+                      {
+                        "id": 107,
+                        "name": "Fußballtor - Bundesliga - 7,32 x 2,44 m - freie Netzaufhängung",
+                        "url": "https://www.anstoss24.de/fussballtor-bundesliga/a-107",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/107/middle/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107-Fr-Aufha--ngung--1-.jpeg",
+                        "price": 939,
+                        "uvp": 1129
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Netzbügel",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Netzaufhaengung/Netzbuegel_2.png",
+                    "total": 1,
+                    "priceMin": 919,
+                    "priceMax": 919,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=149&3=154&99=157",
+                    "products": [
+                      {
+                        "id": 108,
+                        "name": "Fußballtor - Bundesliga - 7,32 x 2,44 m - mit Netzbügel",
+                        "url": "https://www.anstoss24.de/groae-feldtor-mit-freier-netzaufhaeaengung/a-108",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/108/middle/Fussballtor-Bundesliga-7-32-x-2-44-m-mit-Netzbuegel-108-Netzbu--gel.jpeg",
+                        "price": 919,
+                        "uvp": 1109
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Mobil",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Einsatzzweck/Mobil_1.png",
+              "total": 4,
+              "priceMin": 1549,
+              "priceMax": 2019,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=149&3=155",
+              "next": {
+                "title": "Kippsicherung",
+                "question": "Mit integrierter Kippsicherung (Stahlgewichte) gemäß DIN EN 748?",
+                "options": [
+                  {
+                    "label": "Mit",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Kippsicherung/Kippsicherung_2.png",
+                    "total": 1,
+                    "priceMin": 2019,
+                    "priceMax": 2019,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=149&3=155&99=159",
+                    "products": [
+                      {
+                        "id": 867,
+                        "name": "Transportables Fußballtor - Kippsicher - Vollverschweißt - 7,32 x 2,44 m, inkl. Tornetz",
+                        "url": "https://www.anstoss24.de/fussballtore/grossfeldtore/transportables-fussballtor-selbstsichernd-vollverschweisst-7-32-x-2-44-m/a-867",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/867/middle/Transportables-Fussballtor-Kippsicher-Vollverschweisst-7-32-x-2-44-m--inkl--Tornetz-867-Grossfeld-kippsicher.png",
+                        "price": 2019,
+                        "uvp": 2429
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Ohne",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Kippsicherung/Ohne_Kippsicherung_2.png",
+                    "total": 3,
+                    "priceMin": 1549,
+                    "priceMax": 1759,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=149&3=155&99=160",
+                    "products": [
+                      {
+                        "id": 1523,
+                        "name": "Fußball Großfeldtor 7,32 x 2,44 m - transportabel und vollverschweißt, inkl. Tornetz",
+                        "url": "https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst/a-1523",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/1523/middle/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst--inkl--Tornetz-1523-Grossfeld-mobil.png",
+                        "price": 1549,
+                        "uvp": 1859
+                      },
+                      {
+                        "id": 14627,
+                        "name": "Fußball Großfeldtor 7,32 x 2,44 m - vollverschweißt und mit Transportrollen, inkl. Tornetz",
+                        "url": "https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz/a-14627",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/14627/middle/Fussball-Grossfeldtor-7-32-x-2-44-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14627.png",
+                        "price": 1759,
+                        "uvp": 2119
+                      },
+                      {
+                        "id": 896,
+                        "name": "Fußballtor - mobiles Großfeldtor komplett mit Ovalprofil - 7,32 x 2,44 m - vollverschweißt, inkl. Tornetz",
+                        "url": "https://www.anstoss24.de/fussballtore/fussballtor-mobiles-grossfeldtor-7-32-x-2-44-m-vollverschweisst/a-896",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/896/middle/Fussballtor-mobiles-Grossfeldtor-komplett-mit-Ovalprofil-7-32-x-2-44-m-vollverschweisst--inkl--Tornetz-896-GF-Oval.jpeg",
+                        "price": 1669,
+                        "uvp": 2009
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "label": "Jugendtor",
+        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Torgroesse/Jugendtor_1.png",
+        "total": 4,
+        "priceMin": 1069,
+        "priceMax": 1679,
+        "shopUrl": "https://www.anstoss24.de/torberater/?2=151",
+        "next": {
+          "title": "Kippsicherung",
+          "question": "Mit integrierter Kippsicherung (Stahlgewichte) gemäß DIN EN 748?",
+          "options": [
+            {
+              "label": "Mit",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Kippsicherung/Kippsicherung_2.png",
+              "total": 1,
+              "priceMin": 1679,
+              "priceMax": 1679,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=151&99=159",
+              "products": [
+                {
+                  "id": 868,
+                  "name": "Transportables Jugendfußballtor - Kippsicher - Vollverschweißt - 5,00 x 2,00 m, inkl. Tornetz",
+                  "url": "https://www.anstoss24.de/fussballtore/transportables-jugendfussballtor-kippsicher-vollverschweisst-5-0-x-2-0-m/a-868",
+                  "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/868/middle/Transportables-Jugendfussballtor-Kippsicher-Vollverschweisst-5-00-x-2-00-m--inkl--Tornetz-868-Fussballtor-mobiles-Jugendtor-5-00-x-2-00-m-vollverschweisst--inkl--Tornetz-206-Jugendtor2.png",
+                  "price": 1679,
+                  "uvp": 2019
+                }
+              ]
+            },
+            {
+              "label": "Ohne",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Kippsicherung/Ohne_Kippsicherung_2.png",
+              "total": 3,
+              "priceMin": 1069,
+              "priceMax": 1309,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=151&99=160",
+              "products": [
+                {
+                  "id": 206,
+                  "name": "Fußballtor - mobiles Jugendtor - 5,00 x 2,00 m - vollverschweißt, inkl. Tornetz",
+                  "url": "https://www.anstoss24.de/fussballtore/grossfeld-und-jugendtore/fussballtor-mobiles-kleinfeldtor-5-00-x-2-00-m-vollverschweisst/a-206",
+                  "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/206/middle/Fussballtor-mobiles-Jugendtor-5-00-x-2-00-m-vollverschweisst--inkl--Tornetz-206-Jugendtor2.png",
+                  "price": 1069,
+                  "uvp": 1289
+                },
+                {
+                  "id": 14628,
+                  "name": "Transportables Jugendtor - 5,00 x 2,00 m - vollverschweißt und mit Transportrollen, inkl. Tornetz",
+                  "url": "https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz/a-14628",
+                  "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/14628/middle/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png",
+                  "price": 1309,
+                  "uvp": 1579
+                },
+                {
+                  "id": 210,
+                  "name": "Fußballtor - mobiles Jugendtor komplett mit Ovalprofil - 5,00 x 2,00 m - vollverschweißt, inkl. Tornetz",
+                  "url": "https://www.anstoss24.de/fussballtore/grossfeld-und-jugendtore/fussballtor-mobiles-kleinfeldtor-5-00-x-2-00-m-teilverschweisst/a-210",
+                  "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/210/middle/Fussballtor-mobiles-Jugendtor-komplett-mit-Ovalprofil-5-00-x-2-00-m-vollverschweisst--inkl--Tornetz-210-Jugendtor-oval.png",
+                  "price": 1199,
+                  "uvp": 1439
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "label": "Minitor",
+        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Torgroesse/Minitor_1.png",
+        "total": 13,
+        "priceMin": 9.9,
+        "priceMax": 949,
+        "shopUrl": "https://www.anstoss24.de/torberater/?2=153",
+        "next": {
+          "title": "Hinterbau",
+          "question": "Welcher Hinterbau?",
+          "options": [
+            {
+              "label": "Alu-rundrohr",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Hinterbau/Minitor_Rundrohr.png",
+              "total": 2,
+              "priceMin": 639,
+              "priceMax": 729,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=153&3=162",
+              "next": {
+                "title": "Pfostenprofil",
+                "question": "Welches Pfostenprofil?",
+                "options": [
+                  {
+                    "label": "Ovalprofil",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Pfostenprofil/Ovalprofil_1.png",
+                    "total": 1,
+                    "priceMin": 729,
+                    "priceMax": 729,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=153&3=162&99=167",
+                    "products": [
+                      {
+                        "id": 9696,
+                        "name": "Minitrainingstor Professional - vollverschweißt mit geschlossenem Hinterbau - unzerstörbar",
+                        "url": "https://www.anstoss24.de/fussballtore/minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar/a-9696",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/9696/middle/Minitrainingstor-Professional-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-9696-Minitorovalgh.png",
+                        "price": 729,
+                        "uvp": 879
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Rechteckprofil",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Pfostenprofil/Rechteckprofil_1.png",
+                    "total": 1,
+                    "priceMin": 639,
+                    "priceMax": 639,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=153&3=162&99=168",
+                    "products": [
+                      {
+                        "id": 18838,
+                        "name": "Aluminium Minitor - vollverschweißt mit geschlossenem Hinterbau - unzerstörbar",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar/a-18838",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/18838/middle/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838-Minitorrechteckiggh.png",
+                        "price": 639,
+                        "uvp": 769
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Tornetz",
+              "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Hinterbau/Minitor_Tornetz.png",
+              "total": 8,
+              "priceMin": 149,
+              "priceMax": 949,
+              "shopUrl": "https://www.anstoss24.de/torberater/?2=153&3=161",
+              "next": {
+                "title": "Pfostenprofil",
+                "question": "Welches Pfostenprofil?",
+                "options": [
+                  {
+                    "label": "Ovalprofil",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Pfostenprofil/Ovalprofil_1.png",
+                    "total": 4,
+                    "priceMin": 419,
+                    "priceMax": 949,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=153&3=161&99=167",
+                    "products": [
+                      {
+                        "id": 852,
+                        "name": "Minitrainingstor Professional - absolut wetterfest - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-ovalprofil-absolut-wetterfest-vollverschweisst/a-852",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/852/middle/Minitrainingstor-Professional-absolut-wetterfest-vollverschweisst-852-Tor55.png",
+                        "price": 419,
+                        "uvp": 509
+                      },
+                      {
+                        "id": 616349,
+                        "name": "Minitrainingstor ECO - besonders leicht - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/minitrainingstor-eco-besonders-leicht-vollverschweisst/a-616349",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/616349/middle/Minitrainingstor-ECO-besonders-leicht-vollverschweisst-616349-a7cf849b-22c2-491f-a7e6-d693b301b9a0--1-.jpg",
+                        "price": 419,
+                        "uvp": 519
+                      },
+                      {
+                        "id": 12472,
+                        "name": "Minitrainingstor Professional - absolut wetterfest - Kippsicher - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/minitrainingstor-professional-absolut-wetterfest-kippsicher-vollverschweisst/a-12472",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/12472/middle/Minitrainingstor-Professional-absolut-wetterfest-Kippsicher-vollverschweisst-12472-Tor33.png",
+                        "price": 949,
+                        "uvp": 1139
+                      },
+                      {
+                        "id": 15504,
+                        "name": "Walking-Fussballtor - 3,00 x 1,00 m - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/walking-fussballtor-3-00-x-1-00-m-vollverschweisst/a-15504",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/15504/middle/Walking-Fussballtor-3-00-x-1-00-m-vollverschweisst-15504-Tor31.png",
+                        "price": 709,
+                        "uvp": 859
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Rechteckprofil",
+                    "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Pfostenprofil/Rechteckprofil_1.png",
+                    "total": 4,
+                    "priceMin": 149,
+                    "priceMax": 779,
+                    "shopUrl": "https://www.anstoss24.de/torberater/?2=153&3=161&99=168",
+                    "products": [
+                      {
+                        "id": 14045,
+                        "name": "ELF Sports Aluminium Minitor light - zusammenklappbar",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/elf-sports-aluminium-minitor-zusammenklappbar/a-14045",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/14045/middle/ELF-Sports-Aluminium-Minitor-light-zusammenklappbar-14045-Gemini-Generated-Image-jc5k9pjc5k9pjc5k--1-.png",
+                        "price": 149,
+                        "uvp": 199
+                      },
+                      {
+                        "id": 18602,
+                        "name": "Aluminium Minitor Lightweight - 1,20 x 0,80 m - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-lightweight-1-20-x-0-80-m-vollverschweisst/a-18602",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/18602/middle/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Tor40.png",
+                        "price": 319,
+                        "uvp": 389
+                      },
+                      {
+                        "id": 209,
+                        "name": "Aluminium Minitor - absolut wetterfest - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/mobile-fussballtore/aluminium-minitor-absolut-wetterfest-vollverschweisst/a-209",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/209/middle/Aluminium-Minitor-absolut-wetterfest-vollverschweisst-209-Tor61.png",
+                        "price": 399,
+                        "uvp": 479
+                      },
+                      {
+                        "id": 12471,
+                        "name": "Aluminium Minitor - absolut wetterfest - Kippsicher - vollverschweißt",
+                        "url": "https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-absolut-wetterfest-kippsicher-vollverschweisst/a-12471",
+                        "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/12471/middle/Aluminium-Minitor-absolut-wetterfest-Kippsicher-vollverschweisst--12471-Tor32.png",
+                        "price": 779,
+                        "uvp": 939
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "fetch-prices": "node scripts/fetch-prices.mjs",
+    "fetch-torberater": "node scripts/fetch-torberater.mjs",
     "check-links": "node scripts/check-internal-links.mjs"
   },
   "dependencies": {
