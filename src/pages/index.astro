@@ -5,8 +5,12 @@ import CategoryCard from '../components/CategoryCard.astro';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
+import Torberater from '../components/Torberater.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
+
+// Torberater-Sektion unter dem Hero. Auf false setzen = Startseite wie vorher.
+const SHOW_TORBERATER = true;
 
 const title = 'Fußballtore – Der professionelle Ratgeber';
 const description =
@@ -74,12 +78,26 @@ const schema = [
 
 <BaseLayout title={title} description={description} schema={schema}>
   <!-- Hero -->
-  <HeroSection
-    title="Fußballtore – Der professionelle Ratgeber"
-    subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-    ctaText="Zur Kaufberatung"
-    ctaHref="/kaufberatung/"
-  />
+  {SHOW_TORBERATER ? (
+    <HeroSection
+      title="Fußballtore – Der professionelle Ratgeber"
+      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
+      ctaText="Passendes Tor finden"
+      ctaHref="#torberater"
+      secondaryCtaText="Zur Kaufberatung"
+      secondaryCtaHref="/kaufberatung/"
+    />
+  ) : (
+    <HeroSection
+      title="Fußballtore – Der professionelle Ratgeber"
+      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
+      ctaText="Zur Kaufberatung"
+      ctaHref="/kaufberatung/"
+    />
+  )}
+
+  <!-- Torberater (Daten von anstoss24.de) -->
+  {SHOW_TORBERATER && <Torberater campaign="startseite-torberater" />}
 
   <!-- Category Grid -->
   <section class="py-16 md:py-20">
