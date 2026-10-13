@@ -29,8 +29,8 @@ export function shopImage(src: string | undefined, width: number): Promise<strin
   if (!cache.has(key)) {
     cache.set(
       key,
-      optimize(url, width).catch(() => {
-          console.warn(`Shop-Bild nicht verfügbar, Original wird verwendet: ${src}`);
+      optimize(url, width).catch((err) => {
+          console.warn(`Shop-Bild nicht verfügbar, Original wird verwendet: ${src} (${err instanceof Error ? err.message : err})`);
           return undefined;
         })
     );
