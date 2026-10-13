@@ -110,7 +110,23 @@ Quelle/Details: https://fussballtore.de/tornetz/
 
 Quelle/Details: https://fussballtore.de/aufbau-anleitung/
 
+## Torberater (interaktive Auswahlhilfe)
+
+- Führt in 2–3 Fragen zum passenden Tor; danach werden alle passenden Tore mit tagesaktuellem Preis angezeigt.
+- Frage 1: Torgröße — Großfeldtor (7,32 × 2,44 m), Jugendtor (5,00 × 2,00 m), Bolzplatztor (3,00 × 2,00 m), Minitor (Training, Funino, Garten).
+- Großfeldtor: Einsatz in Bodenhülsen (dann Netzbügel oder freie Netzaufhängung) oder mobil (dann mit oder ohne integrierte Kippsicherung).
+- Jugendtor: mit oder ohne integrierte Kippsicherung (Stahlgewichte gemäß DIN EN 748).
+- Bolzplatztor: Hinterbau aus Alu-Rundrohr (mit oder ohne Geräuschdämmung per Sandfüllung) oder klassisch mit Tornetz.
+- Minitor: Hinterbau aus Alu-Rundrohr oder Tornetz, danach Pfostenprofil oval oder rechteckig.
+- Tore ohne integrierte Kippsicherung müssen zusätzlich gegen Umkippen gesichert werden (Bodenhülsen, Erdanker oder Gegengewichte).
+- Ergebnisse sind per Link teilbar: https://fussballtore.de/torberater/?wahl=<pfad>, z. B. ?wahl=grossfeldtor/mobil/mit-kippsicherung
+- Aktuelle Trefferzahlen und Einstiegspreise je Kombination stehen als Tabelle „Alle Ergebnisse im Überblick“ auf der Seite.
+
+Quelle/Details: https://fussballtore.de/torberater/
+
 ## Seitenübersicht
+
+- Torberater: https://fussballtore.de/torberater/
 
 - Startseite: https://fussballtore.de/
 - Über uns: https://fussballtore.de/ueber-uns/

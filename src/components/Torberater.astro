@@ -206,6 +206,7 @@ const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
               data-tb-result={p.option.total}
             >
               {p.option.total === 1 ? '1 passendes Tor' : `${p.option.total} passende Tore`}
+              <span class="sr-only">: {p.trail.join(', ')}</span>
             </h3>
             <button
               type="button"
