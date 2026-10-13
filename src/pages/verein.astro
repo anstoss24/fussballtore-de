@@ -11,7 +11,7 @@ import RelatedContent from '../components/RelatedContent.astro';
 import { addUtm } from '../utils/utm';
 
 const title = 'Fußballtor für Vereine – DIN-konform';
-const description = 'Professionelle Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m – DIN EN 748, TÜV-geprüft. Jetzt informieren und das passende Wettkampf-Fußballtor finden.';
+const description = 'Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m, DIN EN 748, TÜV-geprüft, fest oder mobil. Das passende Wettkampftor finden.';
 
 const faqs = [
   {
@@ -40,7 +40,7 @@ const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Fußballtore für Spiel- & Trainingsbetrieb',
+    headline: 'Fußballtore für Vereine: Spiel- & Trainingsbetrieb',
     description,
     image: 'https://fussballtore.de/og-verein.jpg',
     datePublished: '2025-01-15',
@@ -134,7 +134,7 @@ const schema = [
 
 <BaseLayout title={title} description={description} schema={schema} ogImage="/og-verein.jpg" ogType="article">
   <HeroSection
-    title="Fußballtore für Spiel- & Trainingsbetrieb"
+    title="Fußballtore für Vereine: Spiel- & Trainingsbetrieb"
     subtitle="Professionelle Tore für Wettkampf und Training – TÜV-geprüft und DIN-konform"
     compact
   />
@@ -146,7 +146,7 @@ const schema = [
       title="Vereinstor — die Pflicht-Kriterien"
       items={[
         { label: 'Regelmaße', text: 'Großfeld 7,32 × 2,44 m (ab C-Jugend, Herren, Frauen), Jugendtor 5 × 2 m (D-Jugend), Kleinfeld 3 × 2 m (F-Jugend).' },
-        { label: 'Norm', text: 'DIN EN 748 ist Pflicht im organisierten Spielbetrieb. TÜV-Prüfzeichen zwingend für Haftungssicherheit.' },
+        { label: 'Norm', text: 'Im Vereins- und Schulbetrieb müssen Tore der DIN EN 748 entsprechen (Verkehrssicherungspflicht). Ein TÜV-Prüfzeichen weist das nach und sichert die Haftung ab.' },
         { label: 'Material', text: 'Aluminium-Ovalprofil 120/100 mm ist der Standard. Vollverschweißt für maximale Stabilität.' },
         { label: 'Bauart', text: 'Bodenhülsen am Wettkampfplatz, transportable Tore mit Gegengewichten fürs Training.' },
         { label: 'Kippsicherung', text: 'Definierte Standsicherheits-Prüfung nach DIN EN 748. Jährliche Sichtprüfung durch sachkundige Person empfohlen.' },

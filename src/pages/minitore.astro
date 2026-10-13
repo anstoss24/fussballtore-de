@@ -33,8 +33,8 @@ const minAll = Math.min(
     .filter((p): p is number => p != null)
 );
 
-const title = 'Minitore & Mini-Fußballtore – Größen, Bauarten, Empfehlungen';
-const description = `Mini-Fußballtore im Überblick: alle Größen ab 1,20 × 0,80 m, klappbar oder vollverschweißtes Alu. Echte Preise ab ${fmtEur(minAll)} € und Praxis-Empfehlungen aus dem Fachhandel.`;
+const title = 'Minitore: Größen, Bauarten & Empfehlungen';
+const description = `Mini-Fußballtore im Überblick: Größen ab 1,20 × 0,80 m, klappbar oder vollverschweißtes Alu, Preise ab ${fmtEur(minAll)} € und Empfehlungen aus dem Fachhandel.`;
 
 const faqs = [
   {
@@ -59,7 +59,7 @@ const faqs = [
   {
     question: 'Braucht ein Minitor eine Kippsicherung?',
     answer:
-      'Sehr leichte Minitore unter 10 kg – etwa das Alu Minitor Lightweight – benötigen keine Kippsicherung, da von ihnen keine relevante Kippgefahr ausgeht. Leichte Kunststoff-Tore sollten mit den mitgelieferten Erdankern gesichert werden, damit sie bei Wind nicht verrutschen. Schwerere Minitore ab ca. 20 kg stehen durch ihr Eigengewicht und den Bodenrahmen stabil.',
+      'Sehr leichte Minitore unter 10 kg – etwa das Alu Minitor Lightweight – gelten in der Praxis als kippunkritisch, weil von ihnen keine relevante Kippgefahr ausgeht. Leichte Kunststoff-Tore sollten mit den mitgelieferten Erdankern gesichert werden, damit sie bei Wind nicht verrutschen. Schwerere Minitore ab ca. 20 kg stehen durch ihr Eigengewicht und den Bodenrahmen stabil.',
   },
 ];
 
@@ -128,7 +128,7 @@ const schema = [
           { label: 'Bauarten', text: 'Pop-up (Sekundenaufbau), klappbares Kunststoff-Tor (Garten/Training) oder vollverschweißtes Alu-Minitor (Verein/Dauereinsatz).' },
           { label: 'Einsatz', text: 'Funino (G-/F-Jugend nach DFB-Reform), Techniktraining, Garten, Schulhof.' },
           { label: 'Preis', text: `${fmtEur(minAll)} € (Pop-up-Set) bis ${fmtEur(priceOf('minitor-hinterbau') ?? 0)} € (Alu mit geschlossenem Hinterbau) — Live-Preise von anstoss24.de.` },
-          { label: 'Sicherheit', text: 'Unter 10 kg keine Kippsicherung nötig; leichte Tore mit Erdankern gegen Wind sichern.' },
+          { label: 'Sicherheit', text: 'Sehr leichte Tore unter 10 kg gelten als kippunkritisch; leichte Tore mit Erdankern gegen Wind sichern.' },
         ]}
         speakableId="tldr-minitore"
       />
@@ -242,7 +242,7 @@ const schema = [
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Das Lightweight-Modell ist mit unter 10 kg das leichteste vollverschweißte Alu-Minitor im Sortiment – so leicht, dass keine Kippsicherung nötig ist, und trotzdem ein Einteiler in Vereinsqualität. Das QuickPlay Kickster gibt es auch kompakter als <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">1,50 × 1,00 m-Variante</a>, für spontane Garten-Spiele genügt oft schon ein <a href={addUtm('https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Pop-up-Set</a>.
+        Das Lightweight-Modell ist mit unter 10 kg das leichteste vollverschweißte Alu-Minitor im Sortiment – so leicht, dass es in der Praxis als kippunkritisch gilt, und trotzdem ein Einteiler in Vereinsqualität. Das QuickPlay Kickster gibt es auch kompakter als <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">1,50 × 1,00 m-Variante</a>, für spontane Garten-Spiele genügt oft schon ein <a href={addUtm('https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Pop-up-Set</a>.
       </p>
 
       <!-- Verein/Kommune -->
@@ -286,7 +286,7 @@ const schema = [
         Sicherheit: Was bei Minitoren wirklich zählt
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Die gute Nachricht: Von leichten Minitoren geht deutlich weniger Gefahr aus als von großen Toren. Sehr leichte Modelle unter 10 kg brauchen <strong>keine Kippsicherung</strong>. Trotzdem gilt:
+        Die gute Nachricht: Von leichten Minitoren geht deutlich weniger Gefahr aus als von großen Toren. Sehr leichte Modelle unter 10 kg gelten in der Praxis als <strong>kippunkritisch</strong>. Trotzdem gilt:
       </p>
       <ul class="list-disc list-inside space-y-2 text-neutral-600 leading-relaxed mb-4 ml-2">
         <li><strong>Leichte Kunststoff-Tore</strong> mit den mitgelieferten Erdankern sichern – nicht wegen Kippgefahr, sondern damit sie bei Wind nicht durch den Garten fliegen.</li>

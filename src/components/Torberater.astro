@@ -50,6 +50,7 @@ const {
   headingLevel = 2,
 } = Astro.props;
 const Heading = headingLevel === 1 ? 'h1' : 'h2';
+const Sub = headingLevel === 1 ? 'h2' : 'h3';
 
 const SITE = 'https://fussballtore.de';
 
@@ -143,9 +144,9 @@ const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
       {p.kind === 'question' ? (
         <>
           <p class="text-xs font-mono text-neutral-400 mb-1">Frage {p.depth}</p>
-          <h3 class="font-heading text-lg md:text-xl font-bold text-primary outline-none" tabindex="-1" data-tb-focus>
+          <Sub class="font-heading text-lg md:text-xl font-bold text-primary outline-none" tabindex="-1" data-tb-focus>
             {p.step.question}
-          </h3>
+          </Sub>
           {HELP[p.step.title] && (
             <details class="mt-2 text-sm">
               <summary class="inline-flex items-center gap-1.5 cursor-pointer text-accent-dark font-medium list-none [&::-webkit-details-marker]:hidden">
@@ -204,7 +205,7 @@ const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
       ) : (
         <>
           <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
-            <h3
+            <Sub
               class="font-heading text-lg md:text-xl font-bold text-primary outline-none"
               tabindex="-1"
               data-tb-focus
@@ -212,7 +213,7 @@ const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
             >
               {p.option.total === 1 ? '1 passendes Tor' : `${p.option.total} passende Tore`}
               <span class="sr-only">: {p.trail.join(', ')}</span>
-            </h3>
+            </Sub>
             <button
               type="button"
               data-tb-share={`${SITE}/torberater/?wahl=${p.key}`}

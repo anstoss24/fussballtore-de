@@ -20,9 +20,9 @@ const fmtEur = (p: number) =>
   new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(p);
 const netzPreis = priceOf('tornetz-grossfeld');
 
-const title = 'Tornetz für Fußballtore: Welches Netz für welches Tor?';
+const title = 'Tornetz: Welches Netz für welches Fußballtor?';
 const description =
-  `Tornetz richtig wählen: Zuordnung für Großfeld-, Jugend- und Kleinfeldtore, PP oder PE, 4 oder 5 mm, Maschenweite und Netztiefe.${netzPreis ? ` Großfeld-Netz aktuell ab ${fmtEur(netzPreis)} €.` : ''}`;
+  `Tornetz richtig wählen: Großfeld, Jugend oder Kleinfeld, PP oder PE, 4 oder 5 mm, Maschenweite und Netztiefe.${netzPreis ? ` Großfeld-Netz ab ${fmtEur(netzPreis)} €.` : ''}`;
 
 const faqs = [
   {

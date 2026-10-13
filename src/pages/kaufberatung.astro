@@ -47,8 +47,8 @@ const pricesLastUpdated = Object.values(pricesData as Record<string, any>)
   .sort()
   .pop();
 
-const title = 'Fußballtor kaufen – Kaufberatung 2026 mit echten Preisen';
-const description = `Welches Fußballtor passt zu dir? Kaufberatung aus dem Fachhandel: Größen-Tabelle, echte Marktpreise (${fmtEur(minGoal)} € bis ${fmtEur(maxGoal)} €), DIN EN 748, Kippsicherung und 5-Punkte-Checkliste.`;
+const title = 'Fußballtor kaufen: Kaufberatung mit echten Preisen';
+const description = `Welches Fußballtor passt zu dir? Kaufberatung aus dem Fachhandel: Größen, Preise von ${fmtEur(minGoal)} € bis ${fmtEur(maxGoal)} €, DIN EN 748, Kippsicherung und Checkliste.`;
 
 const products = {
   grossfeld: {
@@ -70,11 +70,11 @@ const products = {
 const faqs = [
   {
     question: 'Welches Fußballtor ist für meinen Garten geeignet?',
-    answer: 'Für den Garten eignen sich Minitore (1,20 x 0,80 m bis 1,80 x 1,20 m) oder kleinere Jugendtore (3,00 x 2,00 m). Achte auf ein geringes Gewicht, einfachen Auf- und Abbau und eine Kippsicherung. Pop-up-Tore sind besonders praktisch, da sie in Sekunden stehen.',
+    answer: 'Für den Garten eignen sich Minitore (1,20 x 0,80 m bis 1,80 x 1,20 m) oder, wenn der Platz reicht, Kleinfeldtore (3,00 x 2,00 m). Achte auf ein geringes Gewicht, einfachen Auf- und Abbau und eine Kippsicherung. Pop-up-Tore sind besonders praktisch, da sie in Sekunden stehen.',
   },
   {
     question: 'Brauche ich ein TÜV-geprüftes Fußballtor?',
-    answer: 'Für den Vereinssport und öffentliche Plätze ist ein TÜV-geprüftes Tor nach DIN EN 748 Pflicht. Auch für den privaten Gebrauch empfehlen wir geprüfte Modelle, da sie garantiert sicher konstruiert sind. Besonders wenn Kinder mit dem Tor spielen, solltest du keine Kompromisse bei der Sicherheit eingehen.',
+    answer: 'Für den Vereinssport und öffentliche Plätze müssen Tore der DIN EN 748 entsprechen – das folgt aus der Verkehrssicherungspflicht des Betreibers. Ein TÜV-Prüfzeichen weist diese Konformität nach. Auch für den privaten Gebrauch empfehlen wir geprüfte Modelle, da sie garantiert sicher konstruiert sind. Besonders wenn Kinder mit dem Tor spielen, solltest du keine Kompromisse bei der Sicherheit eingehen.',
   },
   {
     question: 'Was kostet ein gutes Fußballtor?',
@@ -196,7 +196,7 @@ const schema = [
       items={[
         { label: 'Größe', text: 'Großfeld 7,32 × 2,44 m (Herren, ab C-Jugend), Jugendtor 5 × 2 m (E- und D-Jugend), Kleinfeld 3 × 2 m (F-Jugend, Bolzplatz), Minitor ab 1,20 × 0,80 m (Garten, Funino).' },
         { label: 'Material', text: 'Aluminium ist Standard im Verein (rostfrei, 15–25 Jahre). Kunststoff/Fiberglas nur für Garten-Minitore.' },
-        { label: 'Sicherheit', text: 'Im Verein Pflicht: DIN EN 748 + TÜV. Jedes freistehende Tor muss gegen Umkippen gesichert sein (Erdanker, Gegengewicht oder Bodenhülse).' },
+        { label: 'Sicherheit', text: 'Im Verein verbindlich: DIN EN 748, nachgewiesen durch ein Prüfzeichen (z. B. TÜV). Jedes freistehende Tor muss gegen Umkippen gesichert sein (Erdanker, Gegengewicht oder Bodenhülse).' },
         { label: 'Preis', text: 'Pop-up-Tor günstig, Jugend- und Großfeldtor mehrere hundert bis vierstellig. Tornetz und Kippsicherung extra einplanen.' },
         { label: 'Bauart', text: 'Fest installiert (Bodenhülsen) für Wettkampf, mobil mit Rollen für Training, faltbar für Garten/Urlaub.' },
       ]}
@@ -265,7 +265,7 @@ const schema = [
     </div>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Eine ausführliche Aufschlüsselung aller Maße nach Altersklasse findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>. Dort erklären wir auch, warum die DFB-Empfehlungen für Jugendtore seit 2024 angepasst wurden.
+      Eine ausführliche Aufschlüsselung aller Maße nach Altersklasse findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>. Die Hintergründe zur Kinderfußball-Reform des DFB stehen auf unserer <a href="/funino/" class="text-accent hover:text-accent-dark underline">Funino-Seite</a>.
     </p>
 
     <div class="bg-neutral-50 rounded-xl p-6 md:p-8 my-10">
@@ -481,7 +481,7 @@ const schema = [
       <ol class="text-neutral-600 leading-relaxed space-y-2 list-decimal list-inside">
         <li><strong>Größe bestimmen:</strong> Altersklasse und Einsatzort definieren das Maß. Im Zweifel hilft unsere <a href="/groessen/" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>.</li>
         <li><strong>Material wählen:</strong> Alu für den Verein, Kunststoff/Fiberglas für den Garten. Details im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.</li>
-        <li><strong>Sicherheit prüfen:</strong> TÜV-Zertifikat und DIN EN 748 sind Pflicht im Vereinssport – und auch privat sinnvoll.</li>
+        <li><strong>Sicherheit prüfen:</strong> TÜV-Prüfzeichen und DIN EN 748 sind im Vereinssport verbindlich – und auch privat sinnvoll.</li>
         <li><strong>Bauart festlegen:</strong> Fest (Bodenhülsen) für Wettkampfplätze, mobil für Trainingsplätze, faltbar für den Garten.</li>
         <li><strong>Budget planen:</strong> Tornetz und Kippsicherung einkalkulieren. Komplettangebote nutzen.</li>
       </ol>
