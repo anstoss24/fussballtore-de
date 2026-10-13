@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TorberaterTeaser from '../components/TorberaterTeaser.astro';
+import { features } from '../data/features';
 import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
@@ -488,6 +490,9 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Welches Tor am Ende auf deinem Platz steht, hängt von deinen individuellen Anforderungen ab. Für spezifische Empfehlungen schau dir unsere Unterseiten an: <a href="/garten/" class="text-accent hover:text-accent-dark underline">Gartentore</a>, <a href="/kinder/" class="text-accent hover:text-accent-dark underline">Kindertore</a>, <a href="/verein/" class="text-accent hover:text-accent-dark underline">Vereinstore</a>, <a href="/funino/" class="text-accent hover:text-accent-dark underline">Funino-Tore</a> oder <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark underline">Bolzplatztore</a>. Eine Schritt-für-Schritt-Anleitung zum Aufstellen findest du im <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark underline">Aufbau-Ratgeber</a>.
     </p>
+
+    {features.torberater && <TorberaterTeaser />}
+
 
     <RelatedContent
       items={[

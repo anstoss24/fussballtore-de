@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TorberaterTeaser from '../components/TorberaterTeaser.astro';
+import { features } from '../data/features';
 import HeroSection from '../components/HeroSection.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProductCard from '../components/ProductCard.astro';
@@ -410,6 +412,9 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-4">
         Egal für welche Größe du dich entscheidest – achte auf Qualität und Sicherheit. TÜV-geprüfte Tore von <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'groessen')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">spezialisierten Fachhändlern</a> bieten dir die Gewissheit, dass du ein normgerechtes und sicheres Tor bekommst.
       </p>
+
+      {features.torberater && <TorberaterTeaser />}
+
 
       <RelatedContent
         items={[

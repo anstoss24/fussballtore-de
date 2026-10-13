@@ -4,289 +4,383 @@
  *
  * Fragen, Antworten, Trefferzahlen und Produkte stammen aus
  * src/data/torberater.json (täglich per scripts/fetch-torberater.mjs aus dem
- * Shop gezogen). Ohne JavaScript führen die Antworten direkt in den
- * Torberater im Shop (Deep-Link mit Vorauswahl).
+ * Shop gezogen), Erklärtexte aus src/data/torberater-texte.ts.
+ * Ohne JavaScript führen die Antworten direkt in den Torberater im Shop.
+ *
+ * - start:   Torgröße vorauswählen (Slug, z. B. "bolzplatztor") – startet bei Frage 2
+ * - syncUrl: Auswahl in der URL halten (?wahl=…) – nur auf /torberater/
+ *
+ * Messung: dataLayer-Events torberater_antwort, torberater_ergebnis,
+ * torberater_navigation, torberater_teilen. Der GTM verarbeitet sie erst nach
+ * Zustimmung im Cookie-Banner (siehe src/data/consent.ts).
  */
-import { getImage } from 'astro:assets';
 import { addUtm } from '../utils/utm';
-import torberaterData from '../data/torberater.json';
+import {
+  tbTree,
+  tbLastUpdated,
+  tbLabel,
+  tbChip,
+  tbSlug,
+  tbMeta,
+  tbEuro,
+  tbProductName,
+  tbImage,
+  type TbOption,
+  type TbStep,
+} from '../utils/torberater';
+import { HINTS, HELP } from '../data/torberater-texte';
 
 interface Props {
-  campaign?: string;
+  campaign: string;
+  start?: string;
+  syncUrl?: boolean;
+  title?: string;
+  intro?: string;
+  /** 1 auf der eigenen Seite /torberater/, sonst Zwischenüberschrift */
+  headingLevel?: 1 | 2;
 }
 
-const { campaign = 'torberater' } = Astro.props;
+const {
+  campaign,
+  start,
+  syncUrl = false,
+  title = 'Welches Fußballtor passt zu dir?',
+  intro = 'Wenige Fragen – danach siehst du alle passenden Tore mit aktuellem Preis.',
+  headingLevel = 2,
+} = Astro.props;
+const Heading = headingLevel === 1 ? 'h1' : 'h2';
 
-type Product = { id: number; name: string; url: string; image: string | null; price: number | null; uvp: number | null };
-type Option = {
-  label: string;
-  image?: string;
-  total: number;
-  priceMin: number | null;
-  priceMax: number | null;
-  shopUrl: string;
-  next?: Step;
-  products?: Product[];
-};
-type Step = { title: string; question: string; options: Option[] };
+const SITE = 'https://fussballtore.de';
 
-// Shop-Labels sind GROSS geschrieben – hier die lesbare Form
-const LABELS: Record<string, string> = {
-  'Alu-rundrohr': 'Alu-Rundrohr',
-  'In bodenhülsen stehend': 'In Bodenhülsen',
-  'Freie netzaufhängung': 'Freie Netzaufhängung',
-};
-
-// Kurze Einordnung unter der Antwort (nur sachliche Beschreibung, keine Produktversprechen)
-const HINTS: Record<string, string> = {
-  'Torgröße|Großfeldtor': '7,32 × 2,44 m',
-  'Torgröße|Jugendtor': '5,00 × 2,00 m',
-  'Torgröße|Bolzplatztor': '3,00 × 2,00 m',
-  'Torgröße|Minitor': 'Training, Funino & Garten',
-  'Einsatzzweck|In bodenhülsen stehend': 'Fest im Boden verankert',
-  'Einsatzzweck|Mobil': 'Frei versetzbar auf dem Platz',
-  'Hinterbau|Alu-rundrohr': 'Geschlossener Rahmen aus Rohr',
-  'Hinterbau|Tornetz': 'Klassisch mit Netz',
-};
-
-const label = (o: Option) => LABELS[o.label] ?? o.label;
-// "Mit" / "Ohne" allein sagt in der Auswahl-Zeile nichts – Thema anhängen
-const chip = (o: Option, step: Step) =>
-  o.label === 'Mit' || o.label === 'Ohne' ? `${o.label} ${step.title}` : label(o);
-
-const euro = (n: number) =>
-  new Intl.NumberFormat('de-DE', {
-    minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
-    maximumFractionDigits: 2,
-  }).format(n) + ' €';
-
-// Shop-Namen beginnen oft mit "Fußballtor - " – das ist hier redundant
-const productName = (name: string) => {
-  const n = name.replace(/^Fu(ß|ss)balltor\s*-\s*/i, '');
-  return n.charAt(0).toLocaleUpperCase('de-DE') + n.slice(1);
-};
-
-const optionMeta = (o: Option) =>
-  [`${o.total} ${o.total === 1 ? 'Tor' : 'Tore'}`, o.priceMin != null ? `ab ${euro(o.priceMin)}` : null]
-    .filter(Boolean)
-    .join(' · ');
-
-// Baum in flache Panels umwandeln: Frage-Panels und Ergebnis-Panels
-type QuestionPanel = { kind: 'question'; id: string; depth: number; step: Step; trail: string[]; childIds: string[] };
-type ResultPanel = { kind: 'result'; id: string; option: Option; trail: string[] };
+// Baum in flache Panels umwandeln. Schlüssel = Auswahl-Pfad, z. B. "grossfeldtor/mobil/ohne-kippsicherung"
+type Choice = { option: TbOption; key: string; chip: string; frage: string };
+type QuestionPanel = { kind: 'question'; key: string; depth: number; step: TbStep; trail: string[]; choices: Choice[] };
+type ResultPanel = { kind: 'result'; key: string; option: TbOption; trail: string[] };
 const panels: (QuestionPanel | ResultPanel)[] = [];
 
-function walk(step: Step, id: string, depth: number, trail: string[]) {
-  const childIds = step.options.map((_, i) => `${id}-${i}`);
-  panels.push({ kind: 'question', id, depth, step, trail, childIds });
-  step.options.forEach((o, i) => {
-    const t = [...trail, chip(o, step)];
-    if (o.next) walk(o.next, childIds[i], depth + 1, t);
-    else panels.push({ kind: 'result', id: childIds[i], option: o, trail: t });
+function walk(step: TbStep, key: string, depth: number, trail: string[], prefix: string) {
+  const choices = step.options.map((option) => {
+    const chip = tbChip(option, step);
+    return { option, chip, frage: step.title, key: prefix ? `${prefix}/${tbSlug(chip)}` : tbSlug(chip) };
   });
-}
-walk(torberaterData.tree as Step, 'tb', 1, []);
-
-// Antwort-Bilder aus dem Shop: beim Build als WebP (2x für Retina) erzeugen
-const optionImages = new Map<string, string>();
-for (const p of panels) {
-  if (p.kind !== 'question') continue;
-  for (const o of p.step.options) {
-    if (!o.image || optionImages.has(o.image)) continue;
-    try {
-      const img = await getImage({ src: o.image, inferSize: true, width: 192, format: 'webp' });
-      optionImages.set(o.image, img.src);
-    } catch (err) {
-      console.warn(`Torberater-Bild nicht verfügbar: ${o.image}`);
-    }
+  panels.push({ kind: 'question', key, depth, step, trail, choices });
+  for (const c of choices) {
+    if (c.option.next) walk(c.option.next, c.key, depth + 1, [...trail, c.chip], c.key);
+    else panels.push({ kind: 'result', key: c.key, option: c.option, trail: [...trail, c.chip] });
   }
 }
 
-const lastUpdated = new Date(torberaterData.lastUpdated).toLocaleDateString('de-DE', {
+let rootKey = 'start';
+const preselected = start ? tbTree.options.find((o) => tbSlug(tbLabel(o)) === start) : undefined;
+if (preselected?.next) {
+  rootKey = start!;
+  walk(preselected.next, rootKey, 2, [tbChip(preselected, tbTree)], rootKey);
+} else {
+  walk(tbTree, rootKey, 1, [], '');
+}
+
+const images = new Map<string, string | undefined>();
+for (const p of panels) {
+  if (p.kind !== 'question') continue;
+  for (const c of p.choices) if (c.option.image) images.set(c.option.image, await tbImage(c.option.image));
+}
+
+const lastUpdated = new Date(tbLastUpdated).toLocaleDateString('de-DE', {
   day: '2-digit',
   month: '2-digit',
   year: 'numeric',
 });
 ---
 
-<section id="torberater" class="relative z-10 -mt-10 md:-mt-16 pb-6 md:pb-10 scroll-mt-24" aria-labelledby="torberater-title">
-  <div class="container mx-auto">
-    <div class="bg-white rounded-2xl border border-neutral-200 shadow-xl shadow-primary/5 overflow-hidden" data-tb-root>
-      <!-- Kopf -->
-      <div class="px-5 pt-6 pb-4 md:px-10 md:pt-8 border-b border-neutral-200">
-        <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">Torberater</p>
-        <h2 id="torberater-title" class="font-heading text-2xl md:text-3xl font-bold text-primary leading-tight">
-          Welches Fußballtor passt zu dir?
-        </h2>
-        <p class="text-neutral-500 text-base mt-1">
-          Wenige Fragen – danach siehst du alle passenden Tore mit aktuellem Preis.
-        </p>
-      </div>
+<div
+  class="bg-white rounded-2xl border border-neutral-200 shadow-xl shadow-primary/5 overflow-hidden"
+  data-tb-root={rootKey}
+  data-tb-sync={syncUrl ? '' : undefined}
+>
+  <!-- Kopf -->
+  <div class="px-5 pt-6 pb-4 md:px-10 md:pt-8 border-b border-neutral-200 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-2">Torberater</p>
+      <Heading class="font-heading text-2xl md:text-3xl font-bold text-primary leading-tight">{title}</Heading>
+      <p class="text-neutral-500 text-base mt-1">{intro}</p>
+    </div>
+    {preselected && (
+      <a href="/torberater/" class="text-sm font-medium text-accent hover:text-accent-dark whitespace-nowrap">
+        Andere Torgröße? Zum Torberater &rarr;
+      </a>
+    )}
+  </div>
 
-      {panels.map((p) => (
-        <div
-          class="px-5 py-6 md:px-10 md:py-8"
-          data-tb-panel={p.id}
-          hidden={p.id !== 'tb'}
-        >
-          <!-- Bisherige Auswahl + Navigation -->
-          {p.trail.length > 0 && (
-            <div class="flex flex-wrap items-center gap-2 mb-5">
-              <button type="button" data-tb-back class="inline-flex items-center gap-1 text-sm font-medium text-neutral-500 hover:text-primary transition-colors mr-1">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-                Zurück
-              </button>
-              {p.trail.map((t) => (
-                <span class="text-xs font-medium bg-accent/10 text-accent-dark px-2.5 py-1 rounded-full">{t}</span>
-              ))}
-              <button type="button" data-tb-restart class="text-sm text-neutral-400 hover:text-primary underline underline-offset-2 ml-auto">
-                Neu starten
-              </button>
-            </div>
+  {panels.map((p) => (
+    <div class="px-5 py-6 md:px-10 md:py-8" data-tb-panel={p.key} hidden={p.key !== rootKey}>
+      <!-- Bisherige Auswahl + Navigation -->
+      {p.trail.length > 0 && (
+        <div class="flex flex-wrap items-center gap-2 mb-5">
+          {p.key !== rootKey && (
+            <button type="button" data-tb-back class="inline-flex items-center gap-1 text-sm font-medium text-neutral-500 hover:text-primary transition-colors mr-1">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+              Zurück
+            </button>
           )}
-
-          {p.kind === 'question' ? (
-            <>
-              <p class="text-xs font-mono text-neutral-400 mb-1">Frage {p.depth}</p>
-              <h3 class="font-heading text-lg md:text-xl font-bold text-primary mb-5 outline-none" tabindex="-1" data-tb-focus>
-                {p.step.question}
-              </h3>
-              <div class:list={['grid gap-3', p.step.options.length > 2 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-1 sm:grid-cols-2']}>
-                {p.step.options.map((o, i) => {
-                  const hint = HINTS[`${p.step.title}|${o.label}`];
-                  const img = o.image ? optionImages.get(o.image) : undefined;
-                  return (
-                    <a
-                      href={addUtm(o.shopUrl, campaign, 'torberater-direkt')}
-                      target="_blank"
-                      rel="noopener"
-                      data-tb-go={p.childIds[i]}
-                      class="group flex flex-col items-center text-center justify-between gap-3 rounded-xl border-2 border-neutral-200 hover:border-accent focus-visible:border-accent bg-white p-4 md:p-5 no-underline transition-colors"
-                    >
-                      {img && (
-                        <img
-                          src={img}
-                          alt=""
-                          width="96"
-                          height="96"
-                          loading={p.id === 'tb' ? 'eager' : 'lazy'}
-                          decoding="async"
-                          class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover bg-neutral-50 ring-1 ring-neutral-200 group-hover:ring-2 group-hover:ring-accent transition-all"
-                        />
-                      )}
-                      <span>
-                        <span class="block font-heading font-bold text-primary text-base md:text-lg leading-snug group-hover:text-accent-dark transition-colors">
-                          {label(o)}
-                        </span>
-                        {hint && <span class="block text-sm text-neutral-500 leading-snug mt-0.5">{hint}</span>}
-                      </span>
-                      <span class="text-xs font-medium text-neutral-400">{optionMeta(o)}</span>
-                    </a>
-                  );
-                })}
-              </div>
-            </>
-          ) : (
-            <>
-              <h3 class="font-heading text-lg md:text-xl font-bold text-primary mb-5 outline-none" tabindex="-1" data-tb-focus>
-                {p.option.total === 1 ? '1 passendes Tor' : `${p.option.total} passende Tore`}
-              </h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(p.option.products ?? []).map((prod) => (
-                  <a
-                    href={addUtm(prod.url, campaign, 'torberater-produkt')}
-                    target="_blank"
-                    rel="noopener"
-                    class="group flex gap-4 sm:flex-col rounded-xl border border-neutral-200 hover:border-accent/40 hover:shadow-md bg-white p-3 sm:p-4 no-underline transition-all"
-                  >
-                    <div class="flex-shrink-0 self-start w-24 sm:w-full aspect-[4/3] bg-neutral-50 rounded-lg overflow-hidden">
-                      {prod.image && (
-                        <img
-                          src={prod.image}
-                          alt={productName(prod.name)}
-                          loading="lazy"
-                          decoding="async"
-                          width="400"
-                          height="300"
-                          class="w-full h-full object-contain p-2"
-                        />
-                      )}
-                    </div>
-                    <div class="flex flex-col justify-between gap-2 min-w-0">
-                      <span class="text-sm font-semibold text-primary leading-snug line-clamp-3 group-hover:text-accent-dark transition-colors">
-                        {productName(prod.name)}
-                      </span>
-                      <span>
-                        {prod.price != null && <span class="font-bold text-primary">{euro(prod.price)}</span>}
-                        {prod.uvp != null && (
-                          <span class="ml-1.5 text-xs text-neutral-400">UVP <span class="line-through">{euro(prod.uvp)}</span></span>
-                        )}
-                        <span class="block text-xs font-medium text-accent mt-1">Zum Tor auf anstoss24.de &rarr;</span>
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-              {p.option.total > (p.option.products?.length ?? 0) && (
-                <p class="mt-5">
-                  <a
-                    href={addUtm(p.option.shopUrl, campaign, 'torberater-alle')}
-                    target="_blank"
-                    rel="noopener"
-                    class="inline-flex items-center gap-2 text-accent font-medium hover:text-accent-dark"
-                  >
-                    Alle {p.option.total} Treffer im Torberater ansehen &rarr;
-                  </a>
-                </p>
-              )}
-            </>
+          {p.trail.map((t) => (
+            <span class="text-xs font-medium bg-accent/10 text-accent-dark px-2.5 py-1 rounded-full">{t}</span>
+          ))}
+          {p.key !== rootKey && (
+            <button type="button" data-tb-restart class="text-sm text-neutral-400 hover:text-primary underline underline-offset-2 ml-auto">
+              Neu starten
+            </button>
           )}
         </div>
-      ))}
+      )}
 
-      <!-- Fuß: Transparenz -->
-      <div class="px-5 py-3 md:px-10 bg-neutral-50 border-t border-neutral-200 text-xs text-neutral-400 flex flex-wrap gap-x-4 gap-y-1 justify-between">
-        <span>Stand {lastUpdated}</span>
-        <span>Preise inkl. MwSt., verbindlich ist der Preis im Shop.</span>
-      </div>
+      {p.kind === 'question' ? (
+        <>
+          <p class="text-xs font-mono text-neutral-400 mb-1">Frage {p.depth}</p>
+          <h3 class="font-heading text-lg md:text-xl font-bold text-primary outline-none" tabindex="-1" data-tb-focus>
+            {p.step.question}
+          </h3>
+          {HELP[p.step.title] && (
+            <details class="mt-2 text-sm">
+              <summary class="inline-flex items-center gap-1.5 cursor-pointer text-accent-dark font-medium list-none [&::-webkit-details-marker]:hidden">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                </svg>
+                Was bedeutet das?
+              </summary>
+              <div class="mt-2 max-w-3xl rounded-lg bg-neutral-50 border border-neutral-200 px-4 py-3 text-neutral-500 leading-relaxed">
+                {HELP[p.step.title].text}
+                {HELP[p.step.title].href && (
+                  <a href={HELP[p.step.title].href} class="block mt-1.5 font-medium text-accent hover:text-accent-dark">
+                    {HELP[p.step.title].linkText} &rarr;
+                  </a>
+                )}
+              </div>
+            </details>
+          )}
+          <div class:list={['grid gap-3 mt-5', p.choices.length > 2 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2']}>
+            {p.choices.map((c) => {
+              const hint = HINTS[`${p.step.title}|${c.option.label}`];
+              const img = c.option.image ? images.get(c.option.image) : undefined;
+              return (
+                <a
+                  href={addUtm(c.option.shopUrl, campaign, 'torberater-direkt')}
+                  target="_blank"
+                  rel="noopener"
+                  data-tb-go={c.key}
+                  data-tb-frage={c.frage}
+                  data-tb-antwort={c.chip}
+                  class="group flex flex-col items-center text-center justify-between gap-3 rounded-xl border-2 border-neutral-200 hover:border-accent focus-visible:border-accent bg-white p-4 md:p-5 no-underline transition-colors"
+                >
+                  {img && (
+                    <img
+                      src={img}
+                      alt=""
+                      width="96"
+                      height="96"
+                      loading={p.key === rootKey ? 'eager' : 'lazy'}
+                      decoding="async"
+                      class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover bg-neutral-50 ring-1 ring-neutral-200 group-hover:ring-2 group-hover:ring-accent transition-all"
+                    />
+                  )}
+                  <span>
+                    <span class="block font-heading font-bold text-primary text-base md:text-lg leading-snug group-hover:text-accent-dark transition-colors">
+                      {tbLabel(c.option)}
+                    </span>
+                    {hint && <span class="block text-sm text-neutral-500 leading-snug mt-0.5">{hint}</span>}
+                  </span>
+                  <span class="text-xs font-medium text-neutral-400">{tbMeta(c.option)}</span>
+                </a>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <>
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+            <h3
+              class="font-heading text-lg md:text-xl font-bold text-primary outline-none"
+              tabindex="-1"
+              data-tb-focus
+              data-tb-result={p.option.total}
+            >
+              {p.option.total === 1 ? '1 passendes Tor' : `${p.option.total} passende Tore`}
+            </h3>
+            <button
+              type="button"
+              data-tb-share={`${SITE}/torberater/?wahl=${p.key}`}
+              class="inline-flex items-center gap-1.5 text-sm font-medium text-primary border border-neutral-200 hover:border-primary/40 rounded-lg px-3 py-1.5 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+              </svg>
+              <span data-tb-share-label>Ergebnis teilen</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(p.option.products ?? []).map((prod) => (
+              <a
+                href={addUtm(prod.url, campaign, 'torberater-produkt')}
+                target="_blank"
+                rel="noopener"
+                class="group flex gap-4 sm:flex-col rounded-xl border border-neutral-200 hover:border-accent/40 hover:shadow-md bg-white p-3 sm:p-4 no-underline transition-all"
+              >
+                <div class="flex-shrink-0 self-start w-24 sm:w-full aspect-[4/3] bg-neutral-50 rounded-lg overflow-hidden">
+                  {prod.image && (
+                    <img
+                      src={prod.image}
+                      alt={tbProductName(prod.name)}
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="300"
+                      class="w-full h-full object-contain p-2"
+                    />
+                  )}
+                </div>
+                <div class="flex flex-col justify-between gap-2 min-w-0">
+                  <span class="text-sm font-semibold text-primary leading-snug line-clamp-3 group-hover:text-accent-dark transition-colors">
+                    {tbProductName(prod.name)}
+                  </span>
+                  <span>
+                    {prod.price != null && <span class="font-bold text-primary">{tbEuro(prod.price)}</span>}
+                    {prod.uvp != null && (
+                      <span class="ml-1.5 text-xs text-neutral-400">UVP <span class="line-through">{tbEuro(prod.uvp)}</span></span>
+                    )}
+                    <span class="block text-xs font-medium text-accent mt-1">Zum Tor auf anstoss24.de &rarr;</span>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+          {p.option.total > (p.option.products?.length ?? 0) && (
+            <p class="mt-5">
+              <a
+                href={addUtm(p.option.shopUrl, campaign, 'torberater-alle')}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 text-accent font-medium hover:text-accent-dark"
+              >
+                Alle {p.option.total} Treffer ansehen &rarr;
+              </a>
+            </p>
+          )}
+        </>
+      )}
     </div>
+  ))}
+
+  <!-- Fuß -->
+  <div class="px-5 py-3 md:px-10 bg-neutral-50 border-t border-neutral-200 text-xs text-neutral-400 flex flex-wrap gap-x-4 gap-y-1 justify-between">
+    <span>Stand {lastUpdated}</span>
+    <span>Preise inkl. MwSt., verbindlich ist der Preis im Shop.</span>
   </div>
-</section>
+</div>
 
 <script>
-  const root = document.querySelector<HTMLElement>('[data-tb-root]');
-  if (root) {
-    const history: string[] = ['tb'];
+  type Layer = { push: (e: Record<string, unknown>) => void };
 
-    const show = (id: string) => {
-      root.querySelectorAll<HTMLElement>('[data-tb-panel]').forEach((el) => {
-        el.hidden = el.dataset.tbPanel !== id;
-      });
-      const panel = root.querySelector<HTMLElement>(`[data-tb-panel="${id}"]`);
-      panel?.querySelector<HTMLElement>('[data-tb-focus]')?.focus({ preventScroll: true });
-      // Auf kleinen Screens nach oben holen, falls der Kopf aus dem Bild gescrollt ist
-      if (root.getBoundingClientRect().top < 0) root.scrollIntoView({ block: 'start' });
+  document.querySelectorAll<HTMLElement>('[data-tb-root]').forEach((root) => {
+    const rootKey = root.dataset.tbRoot!;
+    const sync = root.hasAttribute('data-tb-sync');
+    const panelOf = (key: string) => root.querySelector<HTMLElement>(`[data-tb-panel="${CSS.escape(key)}"]`);
+    let stack = [rootKey];
+
+    const track = (event: string, data: Record<string, unknown> = {}) => {
+      const w = window as unknown as { dataLayer?: Layer };
+      w.dataLayer = w.dataLayer || ([] as unknown as Layer);
+      w.dataLayer.push({ event, torberater_ort: location.pathname, ...data });
     };
 
-    root.addEventListener('click', (e) => {
+    const show = (key: string, scroll = true) => {
+      root.querySelectorAll<HTMLElement>('[data-tb-panel]').forEach((el) => {
+        el.hidden = el.dataset.tbPanel !== key;
+      });
+      const focus = panelOf(key)?.querySelector<HTMLElement>('[data-tb-focus]');
+      focus?.focus({ preventScroll: true });
+      // Auf kleinen Screens nach oben holen, falls der Kopf aus dem Bild gescrollt ist
+      if (scroll && root.getBoundingClientRect().top < 0) root.scrollIntoView({ block: 'start' });
+      if (focus?.dataset.tbResult) {
+        track('torberater_ergebnis', { torberater_pfad: key, torberater_treffer: Number(focus.dataset.tbResult) });
+      }
+    };
+
+    const writeUrl = () => {
+      if (!sync) return;
+      const key = stack[stack.length - 1];
+      const url = key === rootKey ? location.pathname : `${location.pathname}?wahl=${key}`;
+      history.pushState({ tb: key }, '', url);
+    };
+
+    // Stack aus einem Pfad aufbauen: "a/b/c" -> [root, "a", "a/b", "a/b/c"] (nur vorhandene Panels)
+    const stackFor = (key: string) => {
+      const parts = key.split('/');
+      const s = [rootKey];
+      parts.forEach((_, i) => {
+        const k = parts.slice(0, i + 1).join('/');
+        if (k !== rootKey && panelOf(k)) s.push(k);
+      });
+      return s;
+    };
+
+    const fromUrl = () => {
+      const wahl = new URLSearchParams(location.search).get('wahl');
+      stack = wahl && panelOf(wahl) ? stackFor(wahl) : [rootKey];
+      show(stack[stack.length - 1], false);
+    };
+
+    if (sync) {
+      fromUrl();
+      window.addEventListener('popstate', fromUrl);
+    }
+
+    root.addEventListener('click', async (e) => {
       const target = e.target as HTMLElement;
       const go = target.closest<HTMLElement>('[data-tb-go]');
+      const share = target.closest<HTMLElement>('[data-tb-share]');
+
       if (go) {
         // Antwort-Kacheln sind Shop-Links (Fallback ohne JS) – hier nur intern weiterblättern,
         // und nicht als Weiterleitung zu anstoss24 zählen
         e.preventDefault();
         e.stopPropagation();
-        history.push(go.dataset.tbGo!);
-        show(go.dataset.tbGo!);
+        const key = go.dataset.tbGo!;
+        track('torberater_antwort', {
+          torberater_frage: go.dataset.tbFrage,
+          torberater_antwort: go.dataset.tbAntwort,
+          torberater_schritt: stack.length,
+          torberater_pfad: key,
+        });
+        stack.push(key);
+        writeUrl();
+        show(key);
       } else if (target.closest('[data-tb-back]')) {
-        if (history.length > 1) history.pop();
-        show(history[history.length - 1]);
+        if (stack.length > 1) stack.pop();
+        track('torberater_navigation', { torberater_aktion: 'zurueck', torberater_pfad: stack[stack.length - 1] });
+        writeUrl();
+        show(stack[stack.length - 1]);
       } else if (target.closest('[data-tb-restart]')) {
-        history.length = 1;
-        show('tb');
+        stack = [rootKey];
+        track('torberater_navigation', { torberater_aktion: 'neustart', torberater_pfad: rootKey });
+        writeUrl();
+        show(rootKey);
+      } else if (share) {
+        const url = share.dataset.tbShare!;
+        const label = share.querySelector<HTMLElement>('[data-tb-share-label]')!;
+        track('torberater_teilen', { torberater_pfad: url.split('wahl=')[1] });
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: 'Torberater – fussballtore.de', url });
+          } else {
+            await navigator.clipboard.writeText(url);
+            label.textContent = 'Link kopiert ✓';
+            setTimeout(() => (label.textContent = 'Ergebnis teilen'), 2500);
+          }
+        } catch {
+          /* Teilen abgebrochen */
+        }
       }
     });
-  }
+  });
 </script>

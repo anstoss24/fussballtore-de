@@ -14,6 +14,7 @@ Die Inhalte basieren auf vielen Jahren Beratung von Vereinen, Schulen und Kommun
 - [Kaufberatung](https://fussballtore.de/kaufberatung/): Schritt-für-Schritt-Entscheidungshilfe — Größe, Material, Sicherheitsnorm, Bauart, Budget.
 - [Größen & Maße](https://fussballtore.de/groessen/): Alle offiziellen Fußballtor-Maße nach DFB und FIFA — vom Minitor bis zum Großfeldtor 7,32 × 2,44 m. Zuordnung Altersklasse → Torgröße.
 - [Material-Vergleich](https://fussballtore.de/material-vergleich/): Aluminium vs. Kunststoff/Fiberglas im Direktvergleich. Gewicht, Lebensdauer, Pflege, Einsatzempfehlung.
+- [Torberater](https://fussballtore.de/torberater/): Interaktive Auswahlhilfe — Torgröße, Einsatz (Bodenhülsen/mobil) und Ausstattung wählen, danach alle passenden Tore mit tagesaktuellem Preis. Jede Frage mit Erklärung, Ergebnisse per Link teilbar.
 
 ## Nach Einsatzzweck
 
