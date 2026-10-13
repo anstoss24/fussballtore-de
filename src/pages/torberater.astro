@@ -5,7 +5,7 @@ import Torberater from '../components/Torberater.astro';
 import FAQSection from '../components/FAQSection.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { features } from '../data/features';
-import { tbEndpoints, tbEuro, tbLastUpdated } from '../utils/torberater';
+import { tbLastUpdated } from '../utils/torberater';
 
 if (!features.torberater) return Astro.redirect('/');
 
@@ -40,10 +40,6 @@ const faqs = [
       'Trefferzahlen und Preise werden täglich aktualisiert. Verbindlich ist immer der Preis auf der Produktseite des Händlers.',
   },
 ];
-
-// Statische Übersicht aller Antwort-Kombinationen: lesbar für Crawler, KI-Suche und ohne JS
-const endpoints = tbEndpoints();
-const stand = new Date(tbLastUpdated).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
 const schema = [
   {
@@ -103,37 +99,6 @@ const schema = [
           <p class="text-base text-neutral-500 mt-1">Du siehst alle Tore, die deine Kriterien erfüllen, mit aktuellem Preis – und kannst das Ergebnis teilen.</p>
         </li>
       </ol>
-
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-2">Alle Ergebnisse im Überblick</h2>
-      <p class="text-neutral-500 mb-5">
-        Jede Antwort-Kombination des Torberaters mit Anzahl der passenden Tore und Einstiegspreis. Stand: {stand}, Preise inkl. MwSt.
-      </p>
-      <div class="overflow-x-auto rounded-xl border border-neutral-200">
-        <table class="w-full text-left text-sm md:text-base">
-          <thead class="bg-neutral-50 text-neutral-500">
-            <tr>
-              <th scope="col" class="px-4 py-3 font-semibold">Torgröße und Ausstattung</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-right">Passende Tore</th>
-            </tr>
-          </thead>
-          <tbody>
-            {endpoints.map((e) => (
-              <tr class="border-t border-neutral-200">
-                <th scope="row" class="px-4 py-3 font-normal">
-                  <a href={`/torberater/?wahl=${e.key}`} class="no-underline group">
-                    <span class="block font-semibold text-primary">{e.groesse}</span>
-                    <span class="text-accent-dark group-hover:text-accent underline underline-offset-2">{e.merkmale.join(', ')}</span>
-                  </a>
-                </th>
-                <td class="px-4 py-3 text-right whitespace-nowrap">
-                  <span class="block font-semibold text-primary">{e.option.total} {e.option.total === 1 ? 'Tor' : 'Tore'}</span>
-                  {e.option.priceMin != null && <span class="text-neutral-500">ab {tbEuro(e.option.priceMin)}</span>}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
 
       <RelatedContent
         items={[

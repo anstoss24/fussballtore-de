@@ -94,13 +94,3 @@ export function tbImage(src?: string): Promise<string | undefined> {
   return imageCache.get(src)!;
 }
 
-/** Alle Endpunkte des Baums als flache Liste – für die statische Übersicht (Crawler, KI-Suche, ohne JS) */
-export type TbEndpoint = { groesse: string; merkmale: string[]; key: string; option: TbOption };
-export function tbEndpoints(step: TbStep = tbTree, trail: string[] = [], prefix = ''): TbEndpoint[] {
-  return step.options.flatMap((o) => {
-    const chip = tbChip(o, step);
-    const key = prefix ? `${prefix}/${tbSlug(chip)}` : tbSlug(chip);
-    const t = [...trail, chip];
-    return o.next ? tbEndpoints(o.next, t, key) : [{ groesse: t[0], merkmale: t.slice(1), key, option: o }];
-  });
-}
