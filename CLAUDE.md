@@ -67,3 +67,10 @@ Produktdaten siehe: `src/data/products.json`
 - DSGVO-konform: Impressum, Datenschutz, Cookie-Hinweis
 - Kein JavaScript-Framework nötig – so wenig JS wie möglich
 - Semantisches HTML5 (header, nav, main, article, section, footer)
+
+## Arbeitsregeln (Stand 26.10.2026)
+- Fakten zu Produkten und Tornetzen nur aus der Produktbeschreibung auf anstoss24.de, Shop-Wortlaut bevorzugen. Keine erfundenen oder selbst gerechneten Zahlen.
+- Push auf `main` = sofort live. Nur nach Freigabe, Änderungen auf einem Feature-Branch bündeln, nicht im Minutentakt pushen.
+- Cloudflare-Funktionen, die HTML umschreiben (Email Obfuscation, Rocket Loader, Minify, Mirage), bleiben aus.
+- Search Console: Validierung für „Seite mit Weiterleitung" und „Alternative Seite mit richtigem kanonischen Tag" nie starten, die bleiben absichtlich.
+- Änderungen, Entscheidungen und offene Punkte im Logbuch festhalten: `docs/seo-logbuch.md`.
