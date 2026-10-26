@@ -11,9 +11,9 @@ import { AUTHOR, PUBLISHER } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['kinder'];
 
-const title = 'Fußballtor für Kinder – altersgerecht';
+const title = 'Kindertor: die richtige Größe von 3 bis 12 Jahren';
 const description =
-  'Das richtige Fußballtor für Kinder finden: Altersgerechte Größen, kippsichere Modelle und die besten Tore für Garten und Spielfeld. Ab 3 Jahren.';
+  'Welches Kindertor für welches Alter? Fußballtore für Kinder ab 3 Jahren: altersgerechte Größen, kippsichere Modelle und Tipps für Garten und Verein.';
 
 const faqs = [
   {
@@ -22,9 +22,19 @@ const faqs = [
       'Ein Fußballtor ist ab etwa 3 Jahren sinnvoll. Für die Kleinsten eignen sich leichte Pop-up-Tore aus Stoff, die weich und sicher sind. Ab 5–6 Jahren können stabile Stecktore zum Einsatz kommen, die auch stärkere Schüsse aushalten.',
   },
   {
+    question: 'Welches Kindertor für 3-Jährige?',
+    answer:
+      'Für 3-Jährige reicht ein kleines Pop-up-Tor aus weichem Stoff mit 80 x 60 cm bis 120 x 80 cm. Es hat keine harten Kanten, kann nicht umkippen und lässt sich auch drinnen aufstellen. Dazu am besten einen Softball verwenden.',
+  },
+  {
     question: 'Welche Fußballtor-Größe passt für 6-Jährige?',
     answer:
       'Für 6-jährige Kinder empfehlen wir Tore mit ca. 1,20 x 0,80 m bis 1,50 x 1,00 m. Diese Größe ist altersgerecht, nicht zu überdimensioniert und passt in die meisten Gärten. Pop-up-Tore oder leichte Stecktore sind ideal.',
+  },
+  {
+    question: 'Welches Fußballtor für 8-Jährige?',
+    answer:
+      'Mit 8 Jahren schießen Kinder schon kräftig. Empfehlenswert ist ein Stecktor oder ein Alu-Minitor mit 1,20 x 0,80 m bis 1,80 x 1,20 m, das im Rasen verankert wird. Pop-up-Tore aus Stoff reichen ab etwa 8 bis 9 Jahren meist nicht mehr aus, weil sie bei harten Schüssen stark nachgeben.',
   },
   {
     question: 'Wie sichere ich ein Kinder-Fußballtor gegen Umkippen?',
@@ -65,8 +75,8 @@ const schema = [
 
 <BaseLayout title={title} description={description} schema={schema} ogImage="/og-kinder.jpg" ogType="article">
   <HeroSection
-    title="Fußballtore für Kinder"
-    subtitle="Sicher, altersgerecht und mit Spaßfaktor – so findest du das perfekte Tor für dein Kind"
+    title="Kindertore: das richtige Fußballtor für jedes Alter"
+    subtitle="Sicher, altersgerecht und mit Spaßfaktor – so findest du das perfekte Kindertor von 3 bis 12 Jahren"
     compact
   />
   <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Kindertore' }]} />
@@ -89,13 +99,13 @@ const schema = [
     <!-- Einleitung -->
     <div class="prose prose-lg max-w-none">
       <p class="text-lg md:text-xl text-neutral-600 leading-relaxed mb-6">
-        Ein <strong>Fußballtor für Kinder</strong> ist mehr als nur ein Spielzeug – es ist der Startschuss für eine
+        Ein <strong>Kindertor</strong> – also ein Fußballtor für Kinder – ist mehr als nur ein Spielzeug: Es ist der Startschuss für eine
         lebenslange Begeisterung. Ob im Garten, im Park oder im Kinderzimmer: Mit dem richtigen Tor
         macht Kicken erst richtig Spaß. Doch welches Tor passt zu welchem Alter? Worauf musst du bei
         Sicherheit und Größe achten? Und welches Material hält dem Spieltrieb deines Nachwuchses stand?
       </p>
       <p class="text-neutral-600 leading-relaxed mb-6">
-        In diesem Ratgeber findest du alle Antworten. Wir zeigen dir, welches Kinder-Fußballtor für
+        In diesem Ratgeber findest du alle Antworten. Wir zeigen dir, welches Kindertor für
         welche Altersgruppe geeignet ist, worauf du bei der Sicherheit unbedingt achten solltest und
         welche Tor-Typen sich in der Praxis bewährt haben. Damit dein Kind sicher spielen kann – und
         du als Elternteil ein gutes Gefühl hast.
@@ -105,7 +115,7 @@ const schema = [
     <!-- Ab welchem Alter -->
     <section class="mt-12 md:mt-16">
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
-        Ab welchem Alter ein Fußballtor? Empfehlung nach Altersgruppe
+        Welches Kindertor ab welchem Alter? Empfehlung nach Altersgruppe
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-6">
         Die Frage „<em>Fußballtor für Kinder ab welchem Alter?</em>" stellen sich viele Eltern. Die gute
@@ -115,7 +125,7 @@ const schema = [
 
       <div class="space-y-6 mb-8">
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-100">
-          <h3 class="font-heading text-lg font-bold text-primary mb-2">3–5 Jahre: Die ersten Torschüsse</h3>
+          <h3 class="font-heading text-lg font-bold text-primary mb-2">Kindertor ab 3 Jahren: Die ersten Torschüsse</h3>
           <p class="text-neutral-600 leading-relaxed">
             In diesem Alter steht der Spaß an erster Stelle. Dein Kind lernt gerade erst, gezielt zu schießen.
             <strong>Pop-up-Tore</strong> aus leichtem Stoff sind ideal: Sie sind weich, haben keine harten Kanten
@@ -126,7 +136,7 @@ const schema = [
         </div>
 
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-100">
-          <h3 class="font-heading text-lg font-bold text-primary mb-2">6–8 Jahre: Erstes echtes Spielen</h3>
+          <h3 class="font-heading text-lg font-bold text-primary mb-2">Kindertor ab 6 Jahren: Erstes echtes Spielen</h3>
           <p class="text-neutral-600 leading-relaxed">
             Jetzt wird es ernster: Dein Kind spielt gezielt, schießt härter und möchte „richtige" Tore.
             Stecktore aus Fiberglas oder Kunststoff sind hier eine gute Wahl. Auch hochwertige
@@ -137,21 +147,21 @@ const schema = [
         </div>
 
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-100">
-          <h3 class="font-heading text-lg font-bold text-primary mb-2">9–12 Jahre: Training und Technik</h3>
+          <h3 class="font-heading text-lg font-bold text-primary mb-2">Kindertor ab 9 Jahren: Training und Technik</h3>
           <p class="text-neutral-600 leading-relaxed">
             Dein Kind trainiert gezielt, spielt im Verein und braucht ein Tor, das auch härtere Schüsse aushält.
             Stabile Stecktore oder sogar kleinere Alu-Tore sind jetzt sinnvoll. Für den Garten empfehlen wir
             <strong>1,80 x 1,20 m bis 3,00 x 2,00 m</strong>. Im Vereinsbetrieb spielen E-Jugend (U10/U11)
-            und D-Jugend (U12/U13) auf <strong>5,00 x 2,00 m</strong> Jugendtoren — die E-Jugend im 7-gegen-7, die D-Jugend im 9-gegen-9. Schau dir dazu auch unsere
+            und D-Jugend (U12/U13) auf <strong>5,00 x 2,00 m</strong> <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtoren</a> — die E-Jugend im 7-gegen-7, die D-Jugend im 9-gegen-9. Das ist ein Vereinstor, kein Gartentor. Schau dir dazu auch unsere
             <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>
             an, um die optimalen Maße für dein Kind zu finden.
           </p>
         </div>
 
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-100">
-          <h3 class="font-heading text-lg font-bold text-primary mb-2">Ab 12 Jahre: Jugend- und Großfeldtore</h3>
+          <h3 class="font-heading text-lg font-bold text-primary mb-2">Ab 12 Jahren: Jugend- und Großfeldtore</h3>
           <p class="text-neutral-600 leading-relaxed">
-            D-Jugend (U12/U13) spielt im Verein auf Jugendtoren (5,00 x 2,00 m). Ab der C-Jugend (U14/U15)
+            D-Jugend (U12/U13) spielt im Verein auf <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtoren (5,00 x 2,00 m)</a>. Ab der C-Jugend (U14/U15)
             wird bereits auf <strong>Großfeldtoren (7,32 x 2,44 m)</strong> gespielt – das sind die gleichen
             Maße wie bei den Erwachsenen. Für den Garten sind Tore um <strong>3,00 x 2,00 m</strong> ein guter
             Kompromiss zwischen Wettkampfgefühl und Platz. Informiere dich in unserer
@@ -195,12 +205,12 @@ const schema = [
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="py-3 px-4 font-medium">9–10 Jahre (E-Jugend)</td>
-              <td class="py-3 px-4">Garten: 180 x 120 – 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: Jugendtore (500 x 200 cm, 7-gegen-7)</span></td>
+              <td class="py-3 px-4">Garten: 180 x 120 – 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtore</a> (500 x 200 cm, 7-gegen-7)</span></td>
               <td class="py-3 px-4">Stecktor, Alu-Minitor</td>
             </tr>
             <tr class="border-b border-neutral-100 bg-neutral-50">
               <td class="py-3 px-4 font-medium">11–12 Jahre (D-Jugend)</td>
-              <td class="py-3 px-4">Garten: 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: Jugendtore (500 x 200 cm)</span></td>
+              <td class="py-3 px-4">Garten: 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtore</a> (500 x 200 cm, 9-gegen-9)</span></td>
               <td class="py-3 px-4">Alu-Minitor, Jugendtor</td>
             </tr>
             <tr class="border-b border-neutral-100">

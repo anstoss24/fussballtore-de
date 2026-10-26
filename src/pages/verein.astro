@@ -23,6 +23,10 @@ const faqs = [
     answer: 'Im Erwachsenen-Bereich sowie ab der C-Jugend (U14) gilt das Regelmaß 7,32 x 2,44 m (Großfeldtor). E- und D-Jugend spielen auf Jugendtoren mit 5,00 x 2,00 m — die E-Jugend im 7-gegen-7, die D-Jugend im 9-gegen-9. Eine vollständige Übersicht aller Torgrößen findest du in unserer Größen-Übersicht.',
   },
   {
+    question: 'Welches Tor brauchen E-Jugend und D-Jugend im Verein?',
+    answer: 'Beide Altersklassen spielen auf dasselbe Jugendtor mit 5,00 x 2,00 m — die E-Jugend im 7-gegen-7, die D-Jugend im 9-gegen-9. Ein Verein braucht dafür keine zwei Torgrößen. Praktisch sind vollverschweißte, mobile Jugendtore mit Transportrollen, die sich bei Platzwechsel oder zum Mähen verschieben lassen.',
+  },
+  {
     question: 'Müssen Vereinstore TÜV-geprüft sein?',
     answer: 'Ja. Im organisierten Spielbetrieb und im Schulbereich müssen Fußballtore der DIN EN 748 entsprechen. Diese Norm regelt Standsicherheit, Kippsicherung und Verarbeitungsqualität – sie schreibt jedoch kein bestimmtes Material vor. TÜV-geprüfte Tore erfüllen diese Norm nachweislich und minimieren das Haftungsrisiko für den Verein.',
   },
@@ -197,7 +201,7 @@ const schema = [
     <!-- Jugendtore -->
     <section class="mt-14">
       <h2 id="jugendtore" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6 scroll-mt-24">
-        Jugendtore – 5,00 x 2,00 m für den Nachwuchs
+        Jugendtore für E- und D-Jugend – 5,00 x 2,00 m
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
         <p>
@@ -207,16 +211,31 @@ const schema = [
           Bei Jugendtoren hast du die Wahl zwischen fest installierten und mobilen Varianten. Gerade wenn mehrere Mannschaften denselben Platz nutzen, sind <strong>mobile Jugendtore</strong> praktisch: Sie lassen sich mit Transportrollen einfach verschieben und bei Nichtgebrauch am Spielfeldrand lagern.
         </p>
         <p>
-          Das folgende vollverschweißte Jugendtor wird inklusive Tornetz und Transportrollen geliefert – eine robuste All-in-one-Lösung für den Jugend-Spielbetrieb. Auch als <a href={addUtm('https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Variante mit angeschweißten Tragegriffen</a> erhältlich.
+          Das <strong>E-Jugend-Tor</strong> und das <strong>D-Jugend-Tor</strong> sind dasselbe Tor: Beide Altersklassen spielen auf 5,00 x 2,00 m. Ein Verein braucht also keine zwei Torgrößen für den Nachwuchs, sondern ein stabiles Jugendtor, das beide Jahrgänge über mehrere Saisons nutzen. Entscheidend ist dann nur noch die Ausstattung.
         </p>
       </div>
 
-      <div class="my-8 max-w-md">
+      <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Mit oder ohne Tragegriffe?</h3>
+      <div class="prose text-neutral-600 leading-relaxed">
+        <p>
+          Beide vollverschweißten Jugendtore kommen inklusive Tornetz und Transportrollen. Die Variante <strong>ohne Tragegriffe</strong> reicht, wenn das Tor meist auf einem Platz bleibt und nur zum Mähen gerollt wird. Die Variante <strong>mit angeschweißten Tragegriffen</strong> lohnt sich, wenn das Tor regelmäßig zwischen Plätzen oder über Kanten getragen wird – zwei Personen heben es damit deutlich leichter an.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
         <ProductCard
           name="Jugendtor 5 x 2 m – vollverschweißt, Transportrollen, inkl. Netz"
           url="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/"
           imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
           features={["Vollverschweißt", "Transportrollen", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"]}
+          category="Jugendtore"
+          campaign="verein"
+        />
+        <ProductCard
+          name="Jugendtor 5 x 2 m – vollverschweißt, Transportrollen + Tragegriffe, inkl. Netz"
+          url="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/"
+          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
+          features={["Vollverschweißt", "Transportrollen + Tragegriffe", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"]}
           category="Jugendtore"
           campaign="verein"
         />

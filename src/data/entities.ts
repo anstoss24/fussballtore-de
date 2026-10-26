@@ -51,6 +51,11 @@ export const SOURCES = [
     note: 'Spielformen und Altersklassen des DFB',
   },
   {
+    name: 'DFB: Spielformen im Kinderfußball (Booklet, 2019)',
+    href: 'https://assets.dfb.de/uploads/000/236/239/original_Booklet_-_Spielformen_im_Kinderfu%C3%9Fball.pdf',
+    note: 'Feldgrößen, Minitor-Maximalmaß 2,00 × 1,20 m und 6-m-Schusszone im 3-gegen-3',
+  },
+  {
     name: 'IFAB: Spielregel 1 – Das Spielfeld',
     href: 'https://www.theifab.com/laws/latest/the-field-of-play/',
     note: 'Offizielles Tormaß 7,32 × 2,44 m',
