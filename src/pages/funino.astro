@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import { AUTHOR, PUBLISHER } from '../data/entities';
 import pageDates from '../data/page-dates.json';
@@ -25,6 +26,11 @@ const faqs = [
     question: 'Wie viele Tore brauche ich für ein Funino-Feld?',
     answer:
       'Vier Tore pro Spielfeld. Beim Funino stehen je zwei Tore nebeneinander auf jeder Grundlinie – Spieler können entscheiden, in welches der beiden Tore sie schießen. Das fördert Übersicht und Entscheidungsverhalten.',
+  },
+  {
+    question: 'Wie groß ist ein Funino-Feld?',
+    answer:
+      'Das DFB-Booklet „Spielformen im Kinderfußball" gibt für das 3-gegen-3 ein Spielfeld von ca. 25 × 20 m vor, mit zwei Minitoren (max. 2,00 × 1,20 m) auf jeder Grundlinie und einer 6-m-Schusszone, aus der allein Tore erzielt werden dürfen. Die Landesverbände können die Feldgröße leicht anpassen.',
   },
   {
     question: 'Was unterscheidet Funino von normalem Kinderfußball?',
@@ -123,7 +129,7 @@ const schema = [
         </thead>
         <tbody class="text-neutral-600">
           <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">1,20 × 0,80 m</td>
+            <td class="px-4 py-3 font-medium">1,20 × 0,80 m (120 × 80 cm)</td>
             <td class="px-4 py-3">G- und F-Jugend</td>
             <td class="px-4 py-3">Kompakt, gängiges Funino-Format</td>
           </tr>
@@ -148,6 +154,45 @@ const schema = [
       Eine vollständige Übersicht aller Tor-Größen findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
     </p>
 
+    <!-- Funino-Feld -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Das Funino-Feld: Maße und Aufbau
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Das DFB-Booklet „Spielformen im Kinderfußball" gibt für das 3-gegen-3 ein Spielfeld von <strong>ca. 25 × 20 m</strong> vor. Auf jeder Grundlinie stehen <strong>zwei Minitore nebeneinander</strong>, jedes maximal 2,00 × 1,20 m groß. Tore dürfen nur aus der <strong>6-m-Schusszone</strong> vor den Toren erzielt werden – so entstehen viele Dribblings und Pässe in Tornähe statt weiter Schüsse. Die Landesverbände übernehmen diese Vorgaben weitgehend, kleine Abweichungen bei der Feldgröße sind möglich.
+    </p>
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Element</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Vorgabe (DFB)</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Spielfeld 3 gegen 3</td>
+            <td class="px-4 py-3">ca. 25 × 20 m</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Tore</td>
+            <td class="px-4 py-3">4 Minitore, je zwei pro Grundlinie, max. 2,00 × 1,20 m</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Schusszone</td>
+            <td class="px-4 py-3">6 m vor der Grundlinie – nur hier zählen Tore</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Torwart</td>
+            <td class="px-4 py-3">keiner</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      <strong>Praxis-Tipp für den Aufbau:</strong> Markiere die Schusszone mit Hütchen oder flachen Markierungstellern, nicht mit Stangen – die Kinder laufen quer durch die Zone. Pro Trainingsgruppe entstehen oft zwei bis drei Felder nebeneinander, deshalb lohnt es sich, die Tore mit Erdankern statt Gewichten zu sichern. Wie du Minitore richtig sicherst, zeigt unsere <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Aufbau-Anleitung</a>.
+    </p>
+
     <!-- Welches Material? -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
       Welches Material für Funino-Tore?
@@ -164,6 +209,11 @@ const schema = [
     <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Aluminium (Steckverbindung) / Fiberglas</h3>
     <p class="text-neutral-600 leading-relaxed mb-4">
       Tore wie das QuickPlay Kickster werden gesteckt und in einer Tragetasche transportiert. Aufbau in unter 2 Minuten. Etwas weniger stabil als vollverschweißte Modelle, dafür kompakter im Transport. Beliebt bei mobilen Trainern und Schulen.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Klappbare Funino-Tore oder vollverschweißt?</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Klappbare Funino-Tore, deren Rahmen sich für den Transport zusammenfaltet, sind beliebt bei Trainern, die ihre Tore im Kofferraum mitnehmen. Ihre Schwachstelle sind die Gelenke und Verriegelungen: Bei täglichem Auf- und Abbau leiern sie mit der Zeit aus. Unsere Empfehlung: Hat der Verein einen festen Platz, sind <strong>vollverschweißte Alu-Minitore</strong> die bessere Wahl. Müssen die Tore wirklich mobil sein, erfüllt ein <strong>Stecktor mit Tragetasche</strong> denselben Zweck wie ein klappbares Tor – ohne bewegliche Gelenke.
     </p>
 
     <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kunststoff / Pop-up</h3>
@@ -244,12 +294,14 @@ const schema = [
       Du suchst andere Tor-Typen? Schau dir unsere Ratgeber für <a href="/kinder/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kindertore</a>, <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Gartentore</a> oder <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereinstore</a> an.
     </p>
 
+    <Sources />
+
     <RelatedContent
       items={[
         { href: '/minitore/', title: 'Minitore', subtitle: 'Größen, Bauarten, Empfehlungen' },
+        { href: '/kinder/', title: 'Kindertore', subtitle: 'Das richtige Tor für jedes Alter' },
         { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle offiziellen Tor-Maße' },
         { href: '/verein/', title: 'Vereinstore', subtitle: 'DIN-konform für den Spielbetrieb' },
-        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Schritt-für-Schritt' },
       ]}
     />
   </article>
