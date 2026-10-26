@@ -54,7 +54,12 @@ const faqs = [
   {
     question: 'Was ist die richtige Maschenweite?',
     answer:
-      'Standard ist 12 × 12 cm (quadratisch) oder 12 × 12 cm Wabenform. Quadratische Maschen sind günstiger, Waben sehen edler aus und werden im Wettkampf bevorzugt. Beide halten den Ball gleich gut zurück.',
+      'Für Großfeld- und Jugendtore sind 12 cm Standard. Netze für Minitore gibt es mit 4,5 oder 10 cm Maschenweite. Wichtiger als die Maschenform ist die Verarbeitung: Knotenlose Netze verschleißen deutlich weniger als geknotete, weil die Maschenverbindungen nicht aneinander scheuern.',
+  },
+  {
+    question: 'Wie viele Löcher hat ein Tornetz?',
+    answer:
+      'Eine feste Zahl gibt es nicht – sie ergibt sich aus Maschenweite und Netzgröße. Tornetze für Großfeld- und Jugendtore haben 12 cm Maschenweite, Netze für Minitore 4,5 oder 10 cm. Für den Kauf zählt nicht die Maschenzahl, sondern dass Tormaß, Netztiefe und Maschenweite zum Tor passen.',
   },
   {
     question: 'Brauche ich ein Ersatznetz oder nur das passende?',
@@ -98,7 +103,7 @@ const schema = [
       items={[
         { label: 'Material', text: 'Polypropylen (PP) ist Standard. Polyethylen (PE) im Profibereich. Beide sind UV- und witterungsfest.' },
         { label: 'Garnstärke', text: 'Vereinsbetrieb mindestens 4 mm. Profibereich oft 5 mm. Pop-up- und Garten-Tore: 2–3 mm reichen.' },
-        { label: 'Maschenweite', text: 'Standard 12 × 12 cm — quadratisch oder als Wabenform. Beide stoppen den Ball gleich gut.' },
+        { label: 'Maschenweite', text: '12 cm bei Großfeld- und Jugendtoren, 4,5 oder 10 cm bei Minitoren. Knotenlose Netze verschleißen weniger als geknotete.' },
         { label: 'Netztiefe Großfeld', text: 'Oben 80 cm, unten 200 cm — damit der Ball sauber ins Netz fällt.' },
         { label: 'Lebensdauer', text: 'Hochwertige Netze halten bei guter Pflege mehrere Saisons. Sichtprüfung vor jeder Nutzung.' },
       ]}
@@ -221,23 +226,23 @@ const schema = [
 
     <!-- Maschenweite -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
-      Maschenweite und Knotenform
+      Maschenweite und Verarbeitung: knotenlos oder geknotet?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Standardmaschenweite für Fußballtore beträgt <strong>12 × 12 cm</strong>. Das ist klein genug, damit der Ball sicher zurückgehalten wird — und groß genug, damit das Netz nicht zu schwer wird. Zwei Knotenformen sind üblich:
+      Die Standardmaschenweite für Großfeld- und Jugendtore beträgt <strong>12 cm</strong>. Das ist eng genug, damit der Ball sicher zurückgehalten wird — und weit genug, damit das Netz nicht unnötig schwer wird. Netze für <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitore</a> gibt es mit <strong>4,5 oder 10 cm</strong> Maschenweite. Beim Garn unterscheidet man zwei Verarbeitungen:
     </p>
     <ul class="space-y-3 text-neutral-600 leading-relaxed mb-6">
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
-        <span><strong>Quadratisch:</strong> Klassische Variante, günstig, funktional. Der Standard im Amateurbereich.</span>
+        <span><strong>Geknotet:</strong> Die Maschen sind an den Kreuzungspunkten verknotet. Die klassische Bauweise — die Knoten scheuern aber bei jedem Torschuss aneinander.</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
-        <span><strong>Wabenform (hexagonal):</strong> Hochwertige Optik, gleichmäßigere Spannung. Wird im Wettkampfbereich gern eingesetzt.</span>
+        <span><strong>Knotenlos (gewirkt):</strong> Die Maschen sind ohne Knoten verbunden. Die Energie des Torschusses wird materialschonend gedämpft, nichts scheuert — der Verschleiß ist deutlich geringer. So sind die 4-mm-Vereinsnetze im Fachhandel gefertigt, wie sie auch in der Bundesliga hängen.</span>
       </li>
     </ul>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Beide Formen halten den Ball gleich gut zurück. Es ist eine ästhetische und Budget-Entscheidung.
+      Dazu kommt eine <strong>verstärkte Netzumrandung</strong>: Sie verhindert, dass das Netz aus den Netzhaken reißt, und macht die Abschlusskanten deutlich robuster.
     </p>
 
     <!-- Netztiefe -->
@@ -293,9 +298,9 @@ const schema = [
       <div>
         <ProductCard
           name="Tornetz für Großfeldtore – Stärke 4 mm"
-          url="https://www.anstoss24.de/tornetze/tornetze-grossfeld_25_5104/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/25/secondPreview/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25_1.jpg"
-          features={['Polypropylen', '4 mm Stärke', 'Farbwahl', 'Bundesliga-Qualität']}
+          url="https://www.anstoss24.de/fussballtore/tornetze/tornetz-fuer-grossfeldtore-staerke-4-mm_617025_1055254/"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/617025/full/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-617025-Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25-1.jpg"
+          features={['Polypropylen', '4 mm, knotenlos', 'Maschenweite 12 cm', 'Farbwahl']}
           category="Tornetz Großfeld"
           campaign="tornetz"
         />
@@ -304,7 +309,7 @@ const schema = [
         <div class="bg-neutral-50 rounded-xl p-6">
           <h3 class="font-heading text-lg font-bold text-primary mt-0 mb-3">Das Standard-Netz für Vereine</h3>
           <p class="text-neutral-600 leading-relaxed mb-3">
-            Polypropylen, 4 mm Garnstärke, Maschenweite 12 × 12 cm. Verfügbar in mehreren Farben — passend zu deinen Vereinsfarben. Hält bei guter Pflege mehrere Saisons.
+            Polypropylen hochfest, 4 mm, knotenlos, Maschenweite 12 cm. Netztiefe wählbar — zum Beispiel 80 cm oben und 200 cm unten. In vielen Farben und Farbkombinationen, passend zu deinen Vereinsfarben.
           </p>
           <p class="text-neutral-600 leading-relaxed text-sm">
             Tipp: Im Winter abnehmen — das verdoppelt die Lebensdauer.
