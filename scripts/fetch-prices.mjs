@@ -108,6 +108,7 @@ async function main() {
 
   const prices = {};
   const priceValidUntil = getPriceValidUntil();
+  const failed = [];
 
   for (const product of productsData.products) {
     process.stdout.write(`${product.id}... `);
@@ -128,6 +129,7 @@ async function main() {
       );
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
+      failed.push({ id: product.id, url: product.url, reason: err.message });
       if (existingPrices[product.url]) {
         prices[product.url] = existingPrices[product.url];
         console.log(`  -> keeping existing price: ${existingPrices[product.url].price} EUR`);
@@ -137,6 +139,18 @@ async function main() {
 
   writeFileSync(pricesPath, JSON.stringify(prices, null, 2) + '\n');
   console.log(`\nDone. Prices written to src/data/prices.json`);
+
+  // Shop-Seite nicht erreichbar (z. B. Artikel umgezogen → 404): Die übrigen Preise
+  // sind oben bereits geschrieben, der alte Preis bleibt stehen. Aber der Lauf wird
+  // rot, damit GitHub eine Mail schickt – sonst bleibt ein toter Shop-Link monatelang
+  // unbemerkt (so geschehen beim Großfeld-Tornetz, Juli–Oktober 2026).
+  if (failed.length) {
+    console.log(`\n${failed.length} Produkt(e) im Shop nicht erreichbar – URL in src/data/products.json prüfen:`);
+    for (const f of failed) {
+      console.log(`::error title=Shop-Link kaputt: ${f.id}::${f.reason} – ${f.url}`);
+    }
+    process.exitCode = 1;
+  }
 }
 
 main().catch(err => {

@@ -21,6 +21,9 @@ jobs:
           node-version: 22
 
       - name: Fetch prices from anstoss24.de
+        id: prices
+        # Fehler hier sollen die übrigen Preise nicht blockieren – rot wird der Lauf am Ende.
+        continue-on-error: true
         run: node scripts/fetch-prices.mjs
 
       - name: Fetch Torberater from anstoss24.de
@@ -34,3 +37,9 @@ jobs:
           git add src/data/prices.json src/data/torberater.json
           git commit -m "Preise automatisch aktualisiert ($(date +%Y-%m-%d))"
           git push
+
+      - name: Fail if a shop product page is unreachable
+        if: steps.prices.outcome == 'failure'
+        run: |
+          echo "::error::Mindestens eine Produktseite auf anstoss24.de ist nicht erreichbar (z. B. 404). Details im Schritt 'Fetch prices'. URL in src/data/products.json aktualisieren."
+          exit 1
