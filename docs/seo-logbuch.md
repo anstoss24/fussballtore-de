@@ -33,6 +33,6 @@ Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen 
 ### Offen
 - [ ] Ab ca. 07.12.2026: GSC-Export pro Seite vergleichen. Liegt die CTR der D-/E-/F-Jugend-Suchen weiter unter 1 %, /jugendtor/ bauen.
 - [ ] 404-Validierung in der Search Console abwarten (Mail kommt).
-- [ ] `scripts/fetch-prices.mjs`: bei HTTP-Fehler (z. B. 404) laut werden statt still den alten Preis zu behalten.
+- [x] `scripts/fetch-prices.mjs`: Preis-Job wird bei nicht erreichbarer Shop-Seite rot, GitHub schickt eine Mail (erledigt 26.10.).
 - [ ] /tornetz/: Abschnitt Polypropylen vs. Polyethylen und „5–6 mm für Bolzplatz" auf Shop-Stand bringen (Shop führt nur PP, 4 mm).
 - [ ] Optional: Versand- und Rückgabeangaben ins Produkt-Markup, nur mit Shop-Daten.
