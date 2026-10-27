@@ -25,41 +25,41 @@ const netzPreis = priceOf('tornetz-grossfeld');
 
 const title = 'Tornetz: Welches Netz für welches Fußballtor?';
 const description =
-  `Tornetz richtig wählen: Großfeld, Jugend oder Kleinfeld, PP oder PE, 4 oder 5 mm, Maschenweite und Netztiefe.${netzPreis ? ` Großfeld-Netz ab ${fmtEur(netzPreis)} €.` : ''}`;
+  `Tornetz richtig wählen: Großfeld, Jugend, Kleinfeld oder Minitor – Garnstärke, Maschenweite und Netztiefe im Überblick.${netzPreis ? ` Großfeld-Netz ab ${fmtEur(netzPreis)} €.` : ''}`;
 
 const faqs = [
   {
     question: 'Welches Tornetz für ein Großfeldtor (7,32 × 2,44 m)?',
     answer:
-      'Für Großfeldtore empfehlen wir Polypropylen (PP), Garnstärke 4 mm, Maschenweite 12 × 12 cm. Die Netztiefe sollte oben 80 cm, unten 200 cm betragen, damit der Ball nach dem Torschuss sauber ins Netz fällt.',
+      'Für Großfeldtore empfehlen wir ein knotenloses Netz aus hochfestem Polypropylen (PP) mit 4 mm Stärke und 12 cm Maschenweite. Die Netztiefe ist wählbar: 0,80 / 1,50 m, 0,80 / 2,00 m oder 2,00 / 2,00 m (oben / unten). Wer Wabenoptik möchte, nimmt die Variante mit wabenförmigen Maschen in 3,5 mm.',
   },
   {
     question: 'Was kostet ein Tornetz?',
-    answer: `Ein Vereins-Tornetz für Großfeldtore (PP, 4 mm, 12er-Masche) kostet aktuell ${netzPreis ? fmtEur(netzPreis) + ' €' : 'unter 100 €'} pro Stück — der Preis stammt aus dem täglich aktualisierten Feed von anstoss24.de. Netze für Jugend- und Kleinfeldtore liegen darunter, dickere 5-mm-Wettkampfnetze darüber. Dünne Ersatznetze für Garten-Tore gibt es deutlich günstiger.`,
+    answer: `Ein Vereins-Tornetz für Großfeldtore (PP, 4 mm, 12er-Masche) kostet aktuell ${netzPreis ? fmtEur(netzPreis) + ' €' : 'unter 100 €'} pro Stück — der Preis stammt aus dem täglich aktualisierten Feed von anstoss24.de. Die Preise der Netze für Jugend-, Kleinfeld- und Minitore findest du direkt im Shop.`,
   },
   {
     question: 'Welches Tornetz passt auf ein 3 x 2 m Tor?',
-    answer: 'Für Kleinfeld- und Bolzplatztore (3,00 x 2,00 m) brauchst du ein Netz mit passender Netztiefe von etwa 80 cm oben und 100 cm unten. Für Bolzplätze empfehlen sich dickere Garnstärken (5–6 mm), im Vereins- und Schulbetrieb reichen 4 mm. Wichtig: Das Netz muss zur Tortiefe deines Tors passen — miss vor der Bestellung nach.',
+    answer: 'Für Kleinfeld-, Futsal- und Bolzplatztore (3,00 x 2,00 m) gibt es ein eigenes Netz: Polypropylen, knotenlos, 4 mm Stärke, 10 cm Maschenweite. Die Netztiefe beträgt oben 0,80 m und unten 1,00 oder 1,50 m. Wichtig: Das Netz muss zur Tortiefe deines Tors passen — miss vor der Bestellung nach.',
   },
   {
-    question: 'Polypropylen oder Polyethylen — was ist besser?',
+    question: 'Aus welchem Material ist ein gutes Tornetz?',
     answer:
-      'PP (Polypropylen) ist der Standard für Wettkampfnetze: UV-beständig, witterungsfest, langlebig. PE (Polyethylen) bietet eine gleichmäßigere Oberfläche und wird im Profibereich häufig eingesetzt. Beide halten bei guter Pflege mehrere Saisons.',
+      'Aus hochfestem Polypropylen (PP). Es ist langlebig, witterungsbeständig und UV-stabil. Alle Vereinsnetze im Fachhandel von anstoss24 – vom Minitor- bis zum Großfeldnetz – sind aus PP gefertigt, knotenlos verarbeitet und haben eine verstärkte Netzumrandung.',
   },
   {
     question: 'Wie oft muss ein Tornetz gewechselt werden?',
     answer:
-      'Bei normaler Vereinsnutzung halten Qualitätsnetze meist mehrere Saisons. Stark beanspruchte Netze (täglicher Trainingsbetrieb, Bolzplatz) müssen früher ersetzt werden. Sichtprüfung vor jeder Nutzung: Lose Knoten oder gerissene Maschen sind Wechsel-Anzeichen.',
+      'Bei normaler Vereinsnutzung halten Qualitätsnetze meist mehrere Saisons. Stark beanspruchte Netze (täglicher Trainingsbetrieb, Bolzplatz) müssen früher ersetzt werden. Sichtprüfung vor jeder Nutzung: Gerissene Maschen oder eine gelöste Umrandung sind Wechsel-Anzeichen.',
   },
   {
     question: 'Was ist die richtige Maschenweite?',
     answer:
-      'Für Großfeld- und Jugendtore sind 12 cm Standard. Netze für Minitore gibt es mit 4,5 oder 10 cm Maschenweite. Wichtiger als die Maschenform ist die Verarbeitung: Knotenlose Netze verschleißen deutlich weniger als geknotete, weil die Maschenverbindungen nicht aneinander scheuern.',
+      'Für Großfeld- und Jugendtore sind 12 cm Standard, für Kleinfeld- und Bolzplatztore 10 cm. Netze für Minitore gibt es mit 4,5 oder 10 cm Maschenweite. Für Großfeldtore gibt es neben quadratischen auch wabenförmige Maschen. Wichtiger als die Maschenform ist die Verarbeitung: Knotenlose Netze verschleißen deutlich weniger als geknotete, weil die Maschenverbindungen nicht aneinander scheuern.',
   },
   {
     question: 'Wie viele Löcher hat ein Tornetz?',
     answer:
-      'Eine feste Zahl gibt es nicht – sie ergibt sich aus Maschenweite und Netzgröße. Tornetze für Großfeld- und Jugendtore haben 12 cm Maschenweite, Netze für Minitore 4,5 oder 10 cm. Für den Kauf zählt nicht die Maschenzahl, sondern dass Tormaß, Netztiefe und Maschenweite zum Tor passen.',
+      'Eine feste Zahl gibt es nicht – sie ergibt sich aus Maschenweite und Netzgröße. Tornetze für Großfeld- und Jugendtore haben 12 cm Maschenweite, Netze für Kleinfeld- und Bolzplatztore 10 cm, Netze für Minitore 4,5 oder 10 cm. Für den Kauf zählt nicht die Maschenzahl, sondern dass Tormaß, Netztiefe und Maschenweite zum Tor passen.',
   },
   {
     question: 'Brauche ich ein Ersatznetz oder nur das passende?',
@@ -101,9 +101,9 @@ const schema = [
     <TldrBlock
       title="Tornetz auf einen Blick"
       items={[
-        { label: 'Material', text: 'Polypropylen (PP) ist Standard. Polyethylen (PE) im Profibereich. Beide sind UV- und witterungsfest.' },
-        { label: 'Garnstärke', text: 'Vereinsbetrieb mindestens 4 mm. Profibereich oft 5 mm. Pop-up- und Garten-Tore: 2–3 mm reichen.' },
-        { label: 'Maschenweite', text: '12 cm bei Großfeld- und Jugendtoren, 4,5 oder 10 cm bei Minitoren. Knotenlose Netze verschleißen weniger als geknotete.' },
+        { label: 'Material', text: 'Hochfestes Polypropylen (PP): langlebig, witterungsbeständig, UV-stabil.' },
+        { label: 'Garnstärke', text: '4 mm für Großfeld-, Jugend- und Kleinfeldtore, 3,5 mm beim Großfeldnetz mit Wabenmaschen, 2,3 oder 3,0 mm für Minitore.' },
+        { label: 'Maschenweite', text: '12 cm bei Großfeld- und Jugendtoren, 10 cm bei Kleinfeldtoren, 4,5 oder 10 cm bei Minitoren. Knotenlose Netze verschleißen weniger als geknotete.' },
         { label: 'Netztiefe Großfeld', text: 'Oben 80 cm, unten 200 cm — damit der Ball sauber ins Netz fällt.' },
         { label: 'Lebensdauer', text: 'Hochwertige Netze halten bei guter Pflege mehrere Saisons. Sichtprüfung vor jeder Nutzung.' },
       ]}
@@ -120,7 +120,7 @@ const schema = [
       Welches Tornetz für welches Tor?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Netz-Wahl richtet sich nach dem <strong>Tormaß</strong> und der <strong>Tortiefe</strong> deines Tors. Die Übersicht zeigt die bewährte Zuordnung für die drei Standard-Torgrößen:
+      Die Netz-Wahl richtet sich nach dem <strong>Tormaß</strong> und der <strong>Tortiefe</strong> deines Tors. Die Übersicht zeigt, welche Netze es für die gängigen Torgrößen im Fachhandel gibt:
     </p>
 
     <div class="overflow-x-auto my-8">
@@ -136,21 +136,27 @@ const schema = [
         <tbody class="text-neutral-600">
           <tr class="border-t border-neutral-200">
             <td class="px-4 py-3 font-medium">Großfeldtor (7,32 × 2,44 m)</td>
-            <td class="px-4 py-3">80 / 150 cm (Verein) oder 80 / 200 cm (Profi)</td>
-            <td class="px-4 py-3">4–5 mm</td>
-            <td class="px-4 py-3">12 × 12 cm</td>
+            <td class="px-4 py-3">80 / 150, 80 / 200 oder 200 / 200 cm</td>
+            <td class="px-4 py-3">4 mm (Wabenmasche: 3,5 mm)</td>
+            <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200 bg-neutral-50/50">
             <td class="px-4 py-3 font-medium">Jugendtor (5,00 × 2,00 m)</td>
-            <td class="px-4 py-3">80 / 150 cm</td>
+            <td class="px-4 py-3">100 / 100, 80 / 150 oder 90 / 200 cm</td>
             <td class="px-4 py-3">4 mm</td>
-            <td class="px-4 py-3">12 × 12 cm</td>
+            <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200">
             <td class="px-4 py-3 font-medium">Kleinfeld-/Bolzplatztor (3,00 × 2,00 m)</td>
-            <td class="px-4 py-3">80 / 100 cm</td>
-            <td class="px-4 py-3">4 mm (Bolzplatz: 5–6 mm)</td>
-            <td class="px-4 py-3">12 × 12 cm</td>
+            <td class="px-4 py-3">80 / 100 oder 80 / 150 cm</td>
+            <td class="px-4 py-3">4 mm</td>
+            <td class="px-4 py-3">10 cm</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Minitor (1,20 × 0,80 / 1,80 × 1,20 / 2,40 × 1,60 m)</td>
+            <td class="px-4 py-3">passend zur Torgröße</td>
+            <td class="px-4 py-3">2,3 oder 3,0 mm</td>
+            <td class="px-4 py-3">4,5 oder 10 cm</td>
           </tr>
         </tbody>
       </table>
@@ -162,63 +168,54 @@ const schema = [
 
     <!-- Material -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
-      Material: Polypropylen oder Polyethylen?
+      Material: hochfestes Polypropylen
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Zwei Materialien dominieren den Markt für Vereinsnetze. Beide sind synthetisch, UV-beständig und verrotten nicht — die Unterschiede liegen im Detail.
-    </p>
-
-    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Polypropylen (PP)</h3>
-    <p class="text-neutral-600 leading-relaxed mb-4">
-      Der Standard im Vereinsfußball. PP-Netze sind günstiger in der Anschaffung, kommen in verschiedenen Stärken (3 mm bis 5 mm) und Farben (weiß, schwarz, gelb, rot, blau). Witterungsbeständig, UV-stabil, langlebig. Für die meisten Vereine die richtige Wahl.
-    </p>
-
-    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Polyethylen (PE)</h3>
-    <p class="text-neutral-600 leading-relaxed mb-4">
-      PE-Netze sind die hochwertigere Variante. Sie haben eine glattere Oberfläche, sehen edler aus und werden im Profibereich häufig eingesetzt. Höherer Preis, vergleichbare Lebensdauer wie PP. Lohnt sich vor allem, wenn das Tor regelmäßig im Fernsehen oder bei wichtigen Spielen gezeigt wird.
-    </p>
-
-    <p class="text-neutral-600 leading-relaxed mb-4">
-      Für den durchschnittlichen Vereinsbetrieb empfehlen wir <strong>PP in 4 mm Stärke</strong>. Damit fährst du langfristig gut und hast genug Robustheit für harten Trainings- und Spielbetrieb.
+      Vereinsnetze sind aus <strong>hochfestem Polypropylen (PP)</strong> gefertigt. Das Material ist langlebig, witterungsbeständig und UV-stabil. Großfeld- und Jugendnetze gibt es in vielen Farben und Farbkombinationen passend zu den Vereinsfarben, Kleinfeldnetze in Grün, Weiß und Gelb, Minitornetze in Grün und Blau.
     </p>
 
     <!-- Garnstärke -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
-      Garnstärke: 3 mm, 4 mm oder 5 mm?
+      Garnstärke: welches Netz wie dick?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Garnstärke entscheidet, wie viel ein Netz aushält. Faustregel: Je dicker, desto langlebiger — aber auch teurer. Eine Übersicht:
+      Die Garnstärke richtet sich nach der Torgröße. Die Vereinsnetze im Fachhandel im Überblick:
     </p>
 
     <div class="overflow-x-auto my-8">
       <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
         <thead class="bg-neutral-50">
           <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Netz</th>
             <th class="px-4 py-3 font-heading font-bold text-primary">Stärke</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatz</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Lebensdauer</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Maschenweite</th>
           </tr>
         </thead>
         <tbody class="text-neutral-600">
           <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">2–3 mm</td>
-            <td class="px-4 py-3">Pop-up-Tore, Garten, Hobby</td>
-            <td class="px-4 py-3">eher kurze Saison-Nutzung</td>
+            <td class="px-4 py-3 font-medium">Großfeldtor 7,32 × 2,44 m</td>
+            <td class="px-4 py-3">4 mm</td>
+            <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">4 mm</td>
-            <td class="px-4 py-3">Vereinsbetrieb (Standard)</td>
-            <td class="px-4 py-3">mehrere Saisons</td>
+            <td class="px-4 py-3 font-medium">Großfeldtor, wabenförmige Maschen</td>
+            <td class="px-4 py-3">3,5 mm</td>
+            <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">5 mm</td>
-            <td class="px-4 py-3">Wettkampf, Profibereich</td>
-            <td class="px-4 py-3">langlebig</td>
+            <td class="px-4 py-3 font-medium">Jugendtor 5,00 × 2,00 m</td>
+            <td class="px-4 py-3">4 mm</td>
+            <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">6 mm+</td>
-            <td class="px-4 py-3">Bolzplatz, vandalismusgefährdet</td>
-            <td class="px-4 py-3">besonders langlebig</td>
+            <td class="px-4 py-3 font-medium">Kleinfeld-, Futsal- und Bolzplatztor 3,00 × 2,00 m</td>
+            <td class="px-4 py-3">4 mm</td>
+            <td class="px-4 py-3">10 cm</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Minitore</td>
+            <td class="px-4 py-3">2,3 oder 3,0 mm</td>
+            <td class="px-4 py-3">4,5 oder 10 cm</td>
           </tr>
         </tbody>
       </table>
@@ -229,7 +226,7 @@ const schema = [
       Maschenweite und Verarbeitung: knotenlos oder geknotet?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Standardmaschenweite für Großfeld- und Jugendtore beträgt <strong>12 cm</strong>. Das ist eng genug, damit der Ball sicher zurückgehalten wird — und weit genug, damit das Netz nicht unnötig schwer wird. Netze für <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitore</a> gibt es mit <strong>4,5 oder 10 cm</strong> Maschenweite. Beim Garn unterscheidet man zwei Verarbeitungen:
+      Die Standardmaschenweite für Großfeld- und Jugendtore beträgt <strong>12 cm</strong>, für Kleinfeld- und Bolzplatztore <strong>10 cm</strong>. Das ist eng genug, damit der Ball sicher zurückgehalten wird — und weit genug, damit das Netz nicht unnötig schwer wird. Netze für <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitore</a> gibt es mit <strong>4,5 oder 10 cm</strong> Maschenweite. Für Großfeldtore gibt es neben quadratischen auch <strong>wabenförmige Maschen</strong>. Beim Garn unterscheidet man zwei Verarbeitungen:
     </p>
     <ul class="space-y-3 text-neutral-600 leading-relaxed mb-6">
       <li class="flex items-start gap-3">
@@ -346,10 +343,10 @@ const schema = [
       Fazit: Beim Netz lohnt sich Qualität
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Ein gutes Tornetz ist nicht teuer — ein schlechtes wird teuer. Wir empfehlen für den Vereinsbetrieb durchgehend <strong>PP-Netze in 4 mm Stärke mit 12 × 12 cm Maschenweite</strong>. Das ist die Kombination, die sich in der Praxis bewährt hat.
+      Ein gutes Tornetz ist nicht teuer — ein schlechtes wird teuer. Wir empfehlen für den Vereinsbetrieb <strong>knotenlose PP-Netze in 4 mm Stärke</strong>, mit 12 cm Maschenweite für Großfeld- und Jugendtore und 10 cm für Kleinfeldtore.
     </p>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Für Bolzplätze und vandalismusgefährdete Standorte greif zu 5 oder 6 mm. Mehr zu vandalismusresistenten Lösungen findest du im <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>.
+      Für Bolzplätze und vandalismusgefährdete Standorte gibt es vollverschweißte Kleinfeldtore mit Herkulesnetz und Netzaufhängung mit Stangensystem. Mehr dazu findest du im <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>.
     </p>
 
     <RelatedContent
