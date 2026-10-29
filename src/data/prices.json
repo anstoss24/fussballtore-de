@@ -48,9 +48,23 @@
     "priceValidUntil": "2026-11-28",
     "lastUpdated": "2026-10-29"
   },
+  "https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-mobiles-kleinfeldtor-mit-herkulesnetz-3-00-x-2-00-m-vollverschweisst-vandalismussicher_19355_726903/": {
+    "price": 2509,
+    "uvp": 3019,
+    "currency": "EUR",
+    "priceValidUntil": "2026-11-28",
+    "lastUpdated": "2026-10-29"
+  },
   "https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/": {
     "price": 2219,
     "uvp": 2669,
+    "currency": "EUR",
+    "priceValidUntil": "2026-11-28",
+    "lastUpdated": "2026-10-29"
+  },
+  "https://www.anstoss24.de/fussballtor-silence-bolzplatztor-3-00-x-2-00-m-unkaputtbar_9754_106539/": {
+    "price": 2559,
+    "uvp": 3079,
     "currency": "EUR",
     "priceValidUntil": "2026-11-28",
     "lastUpdated": "2026-10-29"

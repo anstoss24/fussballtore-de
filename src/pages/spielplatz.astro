@@ -1,0 +1,298 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Torberater from '../components/Torberater.astro';
+import { features } from '../data/features';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
+import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['spielplatz'];
+
+const findProduct = (id: string) => productsData.products.find((p) => p.id === id)!;
+const silence = findProduct('bolzplatz-silence');
+const minitorHinterbau = findProduct('minitor-hinterbau');
+
+const BASKETBALL_URL =
+  'https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-mit-basketballaufbau_13019_289877/';
+const ERDANKER_URL =
+  'https://www.anstoss24.de/fussballtore/erdanker-zum-einbetonieren-mit-edelstahlschraube-und-gewindehu-lse-kippsicherung_9674_106217/';
+
+const title = 'Fußballtor für den Spielplatz: Norm & Lärm';
+const description =
+  'Fußballtor für Spielplatz und Wohnanlage: welche Norm für frei zugängliche Tore gilt, passende Größen, feste Verankerung und wie ein Tor leiser wird.';
+
+const faqs = [
+  {
+    question: 'Welches Fußballtor eignet sich für einen Spielplatz?',
+    answer:
+      'Auf einem öffentlichen Spielplatz steht das Tor dauerhaft draußen und wird ohne Aufsicht bespielt. Bewährt haben sich vollverschweißte Alu-Tore mit geschlossenem Hinterbau statt losem Netz, die fest im Boden verankert werden: ein Bolzplatztor 3 × 2 m für die Ballspielfläche, ein Minitor für Bereiche mit jüngeren Kindern.',
+  },
+  {
+    question: 'Gilt die DIN EN 1176 auch für Fußballtore auf dem Spielplatz?',
+    answer:
+      'Für frei zugängliche Multisportgeräte ohne Aufsicht gibt es eine eigene Norm, die DIN EN 15312. In deren Anwendungsbereich sind Spielplatzgeräte nach der Normenreihe EN 1176 ausdrücklich ausgenommen, ebenso Fußballtore nach EN 748 und Tore nach EN 16579. Einzelne Tore fallen je nach Größe und Gewicht unter DIN EN 748 oder DIN EN 16579. Welche Norm ein Tor erfüllt, steht in der Produktbeschreibung.',
+  },
+  {
+    question: 'Wie lässt sich der Lärm eines Bolzplatztors reduzieren?',
+    answer:
+      'Laut wird es vor allem, wenn der Ball auf den Metallrahmen trifft. Beim SILENCE Bolzplatztor ist die Alu-Konstruktion laut anstoss24 mit Sand gefüllt, wodurch das Aufprallgeräusch von Schüssen extrem gedämpft wird. Dazu hilft die Planung: Ballspielfläche mit Abstand zu Wohnhäusern und zu ruhigen Bereichen anlegen.',
+  },
+  {
+    question: 'Muss ein Fußballtor auf dem Spielplatz einbetoniert werden?',
+    answer:
+      'Ein frei zugängliches Tor muss so gesichert sein, dass es nicht umstürzen kann, auch wenn Kinder daran klettern. Die Norm für frei zugängliche Multisportgeräte ist auf die feste Installation ausgelegt. Die Bolzplatztore UNKAPUTTBAR und SILENCE sind laut Shop für eine Fundamentverankerung an vier Stellen mittels Erdankern vorgerichtet.',
+  },
+  {
+    question: 'Welche Torgröße passt auf einen Spielplatz?',
+    answer:
+      'Für eine eigene Ballspielfläche, auf der auch ältere Kinder und Jugendliche spielen, ist das Bolzplatzmaß 3,00 × 2,00 m die übliche Wahl. In Spielbereichen für jüngere Kinder oder auf kleinen Flächen in Wohnanlagen passen Minitore ab 1,20 × 0,80 m besser.',
+  },
+  {
+    question: 'Wer ist für die Sicherheit eines Spielplatztors verantwortlich?',
+    answer:
+      'Der Betreiber des Spielplatzes, also zum Beispiel die Kommune, das Wohnungsunternehmen oder die Eigentümergemeinschaft. Er trägt die Verkehrssicherungspflicht und muss dafür sorgen, dass Tore sicher stehen und regelmäßig kontrolliert werden. Bei Unsicherheit hilft ein Sachverständiger für Spielplatzsicherheit weiter.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-spielplatz.jpg',
+    datePublished: '2026-10-29',
+    dateModified,
+    inLanguage: 'de-DE',
+    author: AUTHOR,
+    publisher: PUBLISHER,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/spielplatz/',
+    },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-spielplatz.jpg" ogType="article">
+  <HeroSection
+    title="Fußballtor für den Spielplatz"
+    subtitle="Was Kommunen, Wohnungsunternehmen und Eigentümergemeinschaften bei frei zugänglichen Spielflächen beachten sollten"
+    compact
+  />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Spielplatz' }]} />
+
+  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+
+    <TldrBlock
+      title="Fußballtor für den Spielplatz – das Wichtigste"
+      items={[
+        { label: 'Bauart', text: 'Vollverschweißtes Alu-Tor mit geschlossenem Hinterbau statt losem Netz, fest im Boden verankert.' },
+        { label: 'Größe', text: '3,00 × 2,00 m für die Ballspielfläche, Minitore ab 1,20 × 0,80 m für Bereiche mit jüngeren Kindern.' },
+        { label: 'Norm', text: 'Für frei zugängliche Multisportgeräte ohne Aufsicht gilt die DIN EN 15312. Die Spielplatzgeräte-Normen DIN EN 1176 sind dort ausdrücklich ausgenommen.' },
+        { label: 'Lärm', text: 'In Wohnnähe ein echtes Thema. Bei sandgefüllten Toren wird das Aufprallgeräusch laut Hersteller stark gedämpft.' },
+        { label: 'Verantwortung', text: 'Der Betreiber (Kommune, Vermieter, Eigentümergemeinschaft) trägt die Verkehrssicherungspflicht.' },
+      ]}
+      speakableId="tldr-spielplatz"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Ein <strong>Fußballtor für den Spielplatz</strong> steht dort, wo niemand aufpasst: Rund um die Uhr erreichbar, von Kleinkindern bis Jugendlichen genutzt und oft nur wenige Meter von Wohnhäusern entfernt. Daraus ergeben sich drei Fragen, die ein Gartentor oder ein Vereinstor nie beantworten muss: Hält es Klettern und Vandalismus aus? Welche Norm gilt für frei zugängliche Tore? Und wie laut ist es für die Nachbarn?
+    </p>
+
+    <!-- Direktantwort -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welches Fußballtor gehört auf einen Spielplatz?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Auf einen öffentlichen Spielplatz oder den Spielplatz einer Wohnanlage gehört ein Tor, das <strong>ohne Aufsicht sicher bleibt</strong>. Das heißt in der Praxis: komplett aus Aluminium und vollverschweißt, ohne Schraub- oder Steckverbindungen, mit <strong>geschlossenem Hinterbau</strong> aus Metallstreben statt Netz und <strong>fest verankert</strong>. Pop-up-, Steck- und klappbare Tore aus dem Garten-Bereich sind dafür nicht gemacht.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Diese Anforderungen decken sich weitgehend mit denen an ein <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a>. Auf dem Spielplatz kommen zwei Punkte hinzu: Die Nutzer sind im Schnitt jünger, und die Wohnbebauung ist meist näher.
+    </p>
+
+    <!-- Norm -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Spielplatzgerät oder Sportgerät? Welche Norm gilt
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Viele denken beim Spielplatz zuerst an die <strong>DIN EN 1176</strong>, die Normenreihe für Spielplatzgeräte und Spielplatzböden. Für Ballspielgeräte, die frei zugänglich und ohne Aufsicht genutzt werden, gibt es aber eine eigene Norm: die <strong>DIN EN 15312</strong> für frei zugängliche Multisportgeräte, seit Juni 2026 in neuer Ausgabe. Sie gilt für Geräte, die fest installiert und vor allem von Kindern und Jugendlichen genutzt werden, darunter auch solche für Fußball. Spielplatzgeräte nach EN 1176 sind in ihrem Anwendungsbereich ausdrücklich ausgenommen.
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Norm</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Worum es geht</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">DIN EN 15312</td>
+            <td class="px-4 py-3">Frei zugängliche Multisportgeräte ohne Aufsicht, für die feste Installation</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">DIN EN 16579</td>
+            <td class="px-4 py-3">Ortsveränderliche und standortgebundene Spielfeldtore über 10 kg, auch in öffentlichen Freizeitbereichen</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">DIN EN 748</td>
+            <td class="px-4 py-3">Fußballtore 5,00 × 2,00 m und 7,32 × 2,44 m für Training und Wettkampf</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">DIN EN 1176</td>
+            <td class="px-4 py-3">Spielplatzgeräte und Spielplatzböden</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">DIN 18034-1</td>
+            <td class="px-4 py-3">Planung, Bau und Betrieb von Spielplätzen, mit eigenen Flächentypen vorrangig für Ballspiele, aber ohne Sicherheitsanforderungen an Geräte</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für die Auswahl heißt das: Achte darauf, dass in der Produktbeschreibung eine Norm steht, die zum frei zugänglichen Einsatz passt. Die beiden Bolzplatztore UNKAPUTTBAR und SILENCE sind laut anstoss24 TÜV-geprüft nach DIN EN 15312. Für das Alu-Minitor mit geschlossenem Hinterbau nennt der Shop die DIN EN 16579:2020-01.
+    </p>
+
+    <!-- Lärm -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Lärm im Wohngebiet: das leise Bolzplatztor
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Neben den Stimmen der Kinder ist auf einem Spielplatz mit Tor vor allem eines zu hören: das <strong>Scheppern, wenn der Ball auf den Metallrahmen trifft</strong>. Gerade in Wohnanlagen, in denen der Spielplatz im Innenhof liegt, kann das zum Dauerthema werden.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Eine Lösung ist ein Tor mit gefülltem Rahmen. Beim <strong>SILENCE Bolzplatztor</strong> ist die Alu-Konstruktion laut anstoss24 mit Sand gefüllt, „daher ist das Aufprallgeräusch von Schüssen oder anderen Einwirkungen extrem gedämpft“. Der Shop beschreibt es als zusätzlich extrem gut geeignet für öffentliche Sport- und Spielplätze. Ansonsten entspricht es dem Bolzplatztor UNKAPUTTBAR: 3,00 × 2,00 m, Torrahmen aus Alu-Ovalprofil 120 × 100 mm, Rückwand aus Rundrohren, Strebenabstand 86 mm.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Mindestens genauso wichtig ist der Standort. Die DGUV empfiehlt für die Außenspielflächen von Kitas und Schulen, Ballspielflächen räumlich oder baulich von ruhigen Bereichen wie Sandkästen abzutrennen. Für öffentliche Spielplätze ist das eine sinnvolle Faustregel: Tor so ausrichten, dass Schüsse nicht in Richtung Wohnhäuser, Sandkasten oder Sitzbänke gehen.
+    </p>
+
+    <!-- Produkte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Unsere Empfehlungen für Spielplätze
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Für die Ballspielfläche in Wohnnähe empfehlen wir das geräuschgedämpfte SILENCE Bolzplatztor. Für Spielbereiche jüngerer Kinder oder kleine Flächen passt das Alu-Minitor mit geschlossenem Hinterbau, das es laut Shop in drei Größen ab 1,20 × 0,80 m gibt:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Ballspielfläche in Wohnnähe</p>
+        <ProductCard
+          name={silence.name}
+          url={silence.url}
+          imageUrl={silence.imageUrl}
+          features={silence.features}
+          category="Bolzplatztor"
+          campaign="spielplatz"
+        />
+      </div>
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Kleine Flächen, jüngere Kinder</p>
+        <ProductCard
+          name={minitorHinterbau.name}
+          url={minitorHinterbau.url}
+          imageUrl={minitorHinterbau.imageUrl}
+          features={['Geschlossener Hinterbau', 'Vandalismussicher', 'DIN EN 16579', 'TÜV-geprüft']}
+          category="Minitor"
+          campaign="spielplatz"
+        />
+      </div>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Soll auf einer kleinen Fläche mehr als Fußball möglich sein, gibt es das Bolzplatztor auch <a href={addUtm(BASKETBALL_URL, 'spielplatz')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">mit Basketballaufbau</a>: laut Shop mit einem Zielbrett von 1,20 × 0,90 m, Korb und feuerverzinktem Kettennetz.
+    </p>
+
+    <!-- Größe -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welche Torgröße für welchen Spielplatz?
+    </h2>
+    <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
+      <li><strong>Eigene Ballspielfläche:</strong> 3,00 × 2,00 m, das klassische Bolzplatzmaß. Hier spielen auch ältere Kinder und Jugendliche.</li>
+      <li><strong>Spielplatz für jüngere Kinder:</strong> Minitor 1,20 × 0,80 m, das gängigste Minitor-Maß.</li>
+      <li><strong>Mittlere Flächen in Wohnanlagen:</strong> Minitore 1,80 × 1,20 m oder größer, je nach Platz und Alter der Kinder.</li>
+    </ul>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Alle gängigen Tormaße findest du in der <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>. Mehr zu den kleinen Toren steht im Ratgeber <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitore</a>.
+    </p>
+
+    <!-- Verankerung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Einbau: fest verankert statt nur hingestellt
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein Tor auf dem Spielplatz wird beklettert, als Sitzplatz benutzt und mal kräftig angeschoben. Es muss deshalb so verankert sein, dass es auch dann nicht umstürzt. Die DGUV verlangt das für Außenspielflächen von Kitas, Horten und Schulen ausdrücklich, und die Norm für frei zugängliche Multisportgeräte ist auf feste Installation ausgelegt.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Bolzplatztore UNKAPUTTBAR und SILENCE sind laut Produktbeschreibung für eine <strong>Fundamentverankerung an je vier Stellen mittels Erdankern</strong> vorgerichtet. Passende <a href={addUtm(ERDANKER_URL, 'spielplatz')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">Erdanker zum Einbetonieren</a> gibt es im Shop. Die Anlieferung erfolgt per Spedition. Plane den Einbau also mit dem Bauhof oder dem Garten- und Landschaftsbauer ein. Grundlagen zum sicheren Aufstellen stehen in der <a href="/aufbau-anleitung/#kippsicherung" class="text-accent hover:text-accent-dark transition-colors font-medium">Anleitung zur Kippsicherung</a>.
+    </p>
+
+    {features.torberater && (
+      <div class="mt-14">
+        <Torberater campaign="spielplatz-torberater" start="bolzplatztor" title="Das passende Tor für den Spielplatz finden" />
+      </div>
+    )}
+
+    <!-- Verantwortung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Spielplatz in der Wohnanlage: Wer ist verantwortlich?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Nicht nur Kommunen betreiben Spielplätze. Auch Wohnungsunternehmen, Vermieter und Eigentümergemeinschaften haben oft eine Spielfläche im Hof. Wer den Spielplatz betreibt, trägt die <strong>Verkehrssicherungspflicht</strong>: Das Tor muss sicher stehen, und Schäden müssen erkannt und behoben werden.
+    </p>
+    <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
+      <li><strong>Vor dem Kauf:</strong> Prüfe, welche Norm in der Produktbeschreibung steht und ob sie zum frei zugänglichen Einsatz passt.</li>
+      <li><strong>Beim Einbau:</strong> Verankerung nach Herstellerangabe, Tor nicht in Richtung Wohnhäuser oder Sandkasten ausrichten.</li>
+      <li><strong>Im Betrieb:</strong> Tor regelmäßig auf lose Teile, Risse und einen festen Stand kontrollieren und die Kontrollen schriftlich festhalten.</li>
+    </ul>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Wir sind keine Juristen. Wie oft und durch wen kontrolliert werden muss, klärst du im Zweifel mit einem Sachverständigen für Spielplatzsicherheit oder mit deiner Versicherung.
+    </p>
+
+    <!-- Abgrenzung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Spielplatz, Bolzplatz oder Schulhof?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Übergänge sind fließend. Geht es dir um das Tor als Produkt, also Bauart, Material und Größen von Bolzplatztoren für öffentliche Plätze, findest du mehr im Ratgeber <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a>. Steht das Tor auf einem Schulhof, im Schulsport oder in einer Kita, lies den Ratgeber <a href="/schule/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für die Schule</a>. Fragen zur Bestellung beantwortet <a href={addUtm('https://www.anstoss24.de/fussballtore/bolzplatztore/', 'spielplatz')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24</a> direkt.
+    </p>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Robust, verankert und möglichst leise
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein gutes Spielplatztor fällt nicht auf: Es steht fest, übersteht Klettern und Vandalismus und stört die Nachbarn nicht. Achte auf eine vollverschweißte Alu-Konstruktion mit geschlossenem Hinterbau, eine Norm für den frei zugänglichen Einsatz und eine feste Verankerung. In Wohnnähe lohnt sich ein sandgefülltes, geräuschgedämpftes Tor.
+    </p>
+
+    <Sources items={[Q.din15312, Q.en15312Scope, Q.din16579, Q.din748, Q.din18034, Q.dguv202022]} />
+
+    <RelatedContent
+      items={[
+        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher für öffentliche Plätze' },
+        { href: '/schule/', title: 'Schule & Kita', subtitle: 'Tore für Schulhof und Schulsport' },
+        { href: '/minitore/', title: 'Minitore', subtitle: 'Kleine Tore für jüngere Kinder' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau & Kippsicherung', subtitle: 'Tore sicher verankern' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Fußballtor für den Spielplatz" />
+    </div>
+  </div>
+</BaseLayout>

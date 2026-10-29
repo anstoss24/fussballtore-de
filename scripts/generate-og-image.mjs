@@ -203,6 +203,18 @@ const pages = [
     subtitle: 'In wenigen Klicks zum passenden Fußballtor',
     accentLabel: 'Torberater',
   },
+  {
+    file: 'og-schule.jpg',
+    title: 'Fußballtor für die Schule',
+    subtitle: 'Schulhof, Schulsport, Kita – sicher und robust',
+    accentLabel: 'Schule',
+  },
+  {
+    file: 'og-spielplatz.jpg',
+    title: 'Fußballtor für den Spielplatz',
+    subtitle: 'Frei zugänglich, robust, leise – worauf es ankommt',
+    accentLabel: 'Spielplatz',
+  },
 ];
 
 for (const page of pages) {

@@ -57,12 +57,28 @@
       "idealFor": ["Kleinfeldtraining", "Schulen", "F-Jugend", "Vereine"]
     },
     {
+      "id": "kleinfeldtor-herkulesnetz",
+      "name": "Mobiles Kleinfeldtor 3 x 2 m mit Herkulesnetz – vollverschweißt, vandalismussicher",
+      "url": "https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-mobiles-kleinfeldtor-mit-herkulesnetz-3-00-x-2-00-m-vollverschweisst-vandalismussicher_19355_726903/",
+      "imageUrl": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/19355/full/Fussballtor-mobiles-Kleinfeldtor-mit-Herkulesnetz-3-00-x-2-00-m-vollverschweisst--vandalismussicher-19355-Kleinfeldtor-mit-Herkulesnetz.png",
+      "features": ["Herkulesnetz", "Vollverschweißt", "Ovalprofil 120/100 mm", "Mit Kippsicherung DIN EN 748", "Inkl. Netz"],
+      "idealFor": ["Schulsportplatz", "Schulen", "Mehrzweckflächen"]
+    },
+    {
       "id": "bolzplatz-unkaputtbar",
       "name": "Bolzplatztor UNKAPUTTBAR 3 x 2 m",
       "url": "https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/",
       "imageUrl": "https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/255/secondPreview/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255.jpg",
       "features": ["Vollverschweißt", "Vandalismusresistent", "Geschlossener Hinterbau", "TÜV-geprüft", "5 Jahre Garantie"],
       "idealFor": ["Kommunen", "Schulen", "Öffentliche Bolzplätze"]
+    },
+    {
+      "id": "bolzplatz-silence",
+      "name": "SILENCE Bolzplatztor 3 x 2 m – mit Sand gefüllt, geräuschgedämpft",
+      "url": "https://www.anstoss24.de/fussballtor-silence-bolzplatztor-3-00-x-2-00-m-unkaputtbar_9754_106539/",
+      "imageUrl": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/9754/full/Fussballtor-SILENCE-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-9754-Bolzplatztor-Unkaputtbar-2.png",
+      "features": ["Mit Sand gefüllt, Aufprall gedämpft", "Vollverschweißt", "TÜV-geprüft nach DIN EN 15312", "5 Jahre Garantie"],
+      "idealFor": ["Spielplätze", "Öffentliche Sport- und Spielplätze", "Wohnanlagen"]
     },
     {
       "id": "quickplay-150",

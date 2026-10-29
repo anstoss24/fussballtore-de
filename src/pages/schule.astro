@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Torberater from '../components/Torberater.astro';
+import { features } from '../data/features';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
+import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['schule'];
+
+const findProduct = (id: string) => productsData.products.find((p) => p.id === id)!;
+const bolzplatztor = findProduct('bolzplatz-unkaputtbar');
+const kleinfeldtor = findProduct('kleinfeldtor-herkulesnetz');
+const minitorHinterbau = findProduct('minitor-hinterbau');
+
+const title = 'Fußballtor für die Schule & den Schulhof';
+const description =
+  'Fußballtor für Schule, Schulhof und Kita: welches Tor wohin passt, welche Norm gilt, Kippsicherung und Prüfung nach DGUV – und was der Ganztag ab 2026 ändert.';
+
+const faqs = [
+  {
+    question: 'Welches Fußballtor eignet sich für den Schulhof?',
+    answer:
+      'Auf dem Schulhof wird das Tor in der Pause und oft auch nachmittags ohne direkte Aufsicht bespielt. Bewährt haben sich vollverschweißte Alu-Tore mit geschlossenem Hinterbau statt losem Netz, die fest im Boden verankert werden – als Bolzplatztor 3 × 2 m oder für kleinere Höfe und jüngere Kinder als Minitor.',
+  },
+  {
+    question: 'Gilt die DIN EN 748 für alle Fußballtore an Schulen?',
+    answer:
+      'Nein. Die DIN EN 748 gilt für Fußballtore in den Größen 5,00 × 2,00 m und 7,32 × 2,44 m für Training und Wettkampf. Leichtere Tore dieser Größen sowie andere Spielfeldtore über 10 kg – etwa Kleinfeld- und Minitore – fallen unter die DIN EN 16579, die ausdrücklich auch Bildungseinrichtungen nennt. Frei zugängliche, fest installierte Multisportanlagen regelt die DIN EN 15312.',
+  },
+  {
+    question: 'Wie oft müssen Tore im Schulsport geprüft werden?',
+    answer:
+      'Die DGUV Information 202-044 nennt zwei Stufen: eine Funktionsprüfung durch die Sportlehrkraft vor jeder Benutzung und eine Prüfung durch befähigte Personen, periodisch, mindestens einmal jährlich entsprechend der Gefährdungsbeurteilung, mit Prüfbefund.',
+  },
+  {
+    question: 'Müssen Schultore gegen Umkippen gesichert sein?',
+    answer:
+      'Ja. Die DGUV Information 202-044 fordert bei Ballspieltoren eine Sicherung gegen Umstürzen im Spielbetrieb und bei der Lagerung sowie einen Warnhinweis, dass Netze und Torrahmen nicht beklettert werden dürfen. Für Außenspielflächen von Kitas und Schulen verlangt die DGUV Information 202-022, dass Tore so standsicher verankert werden, dass sie auch dann nicht umstürzen, wenn Kinder daran klettern oder turnen.',
+  },
+  {
+    question: 'Welches Fußballtor passt auf das Außengelände einer Kita?',
+    answer:
+      'Für Kita-Kinder reichen kleine Tore, etwa ein Minitor 1,20 × 0,80 m. Wichtiger als die Größe ist die Standsicherheit: Die DGUV verlangt eine Verankerung über Fundamente, Bodenhülsen oder Ausgleichsgewichte. Nur sehr leichte und kleine Tore aus Kunststoff oder dünnwandigem Aluminium dürfen ohne Fundament stehen – nach Herstellerangaben.',
+  },
+  {
+    question: 'Was hat der Ganztags-Rechtsanspruch mit dem Schulhof zu tun?',
+    answer:
+      'Seit dem 1. August 2026 gilt der Rechtsanspruch auf ganztägige Bildung und Betreuung für Kinder der ersten Klassenstufe; ab dem Schuljahr 2029/30 gilt er für die Klassenstufen eins bis vier. Der Anspruch umfasst laut § 24 SGB VIII acht Stunden an Werktagen. Mehr Zeit an der Grundschule heißt für viele Schulen auch: Das Außengelände wird länger und intensiver genutzt.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-schule.jpg',
+    datePublished: '2026-10-29',
+    dateModified,
+    inLanguage: 'de-DE',
+    author: AUTHOR,
+    publisher: PUBLISHER,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/schule/',
+    },
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-schule.jpg" ogType="article">
+  <HeroSection
+    title="Fußballtor für die Schule"
+    subtitle="Schulhof, Schulsport und Kita-Außengelände: welches Tor wohin gehört und welche Regeln gelten"
+    compact
+  />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Schule' }]} />
+
+  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+
+    <TldrBlock
+      title="Fußballtor für die Schule – das Wichtigste"
+      items={[
+        { label: 'Schulhof', text: 'Frei bespielt, oft ohne Aufsicht: vollverschweißtes Alu-Tor mit geschlossenem Hinterbau, fest verankert.' },
+        { label: 'Schulsport', text: 'Kleinfeld- oder Jugendtor mit Netz. Jedes Tor muss gegen Umstürzen gesichert sein, auch bei der Lagerung (DGUV 202-044).' },
+        { label: 'Kita', text: 'Kleine Tore reichen, müssen aber standsicher verankert sein, auch wenn Kinder daran klettern (DGUV 202-022).' },
+        { label: 'Normen', text: 'DIN EN 748 nur für 5 × 2 m und 7,32 × 2,44 m über 42 kg. Andere Tore über 10 kg: DIN EN 16579. Frei zugängliche Multisportanlagen: DIN EN 15312.' },
+        { label: 'Prüfung', text: 'Sichtprüfung durch die Sportlehrkraft vor jeder Benutzung, Prüfung durch eine befähigte Person mindestens einmal jährlich.' },
+      ]}
+      speakableId="tldr-schule"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Wer ein <strong>Fußballtor für die Schule</strong> sucht, sucht eigentlich eines von drei verschiedenen Toren: eines für den <strong>Schulhof</strong>, auf dem in der Pause und am Nachmittag frei gekickt wird, eines für den <strong>Schulsport</strong> auf dem Sportplatz und manchmal eines für das <strong>Außengelände der Kita</strong> nebenan. Die drei Orte stellen unterschiedliche Anforderungen. Hier steht, welches Tor wohin passt und welche Regeln dafür gelten.
+    </p>
+
+    <!-- Direktantwort -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welches Fußballtor passt zur Schule?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Entscheidend ist nicht die Schulform, sondern <strong>wo das Tor steht und ob jemand daneben steht</strong>. Ein Tor im Sportunterricht wird von einer Lehrkraft beaufsichtigt, aufgebaut und geprüft. Ein Tor auf dem Schulhof steht dagegen dauerhaft draußen und wird von vielen Kindern gleichzeitig genutzt – auch zum Klettern und Draufsitzen.
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatzort</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Passendes Tor</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Darauf kommt es an</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Schulhof (Pause, Nachmittag)</td>
+            <td class="px-4 py-3">Bolzplatztor 3,00 × 2,00 m oder Alu-Minitor</td>
+            <td class="px-4 py-3">Vollverschweißt, geschlossener Hinterbau, fest verankert</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Schulsportplatz</td>
+            <td class="px-4 py-3">Kleinfeldtor 3,00 × 2,00 m oder Jugendtor 5,00 × 2,00 m</td>
+            <td class="px-4 py-3">Kippsicherung im Spielbetrieb und bei der Lagerung</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Grundschulhof, Ganztag</td>
+            <td class="px-4 py-3">Alu-Minitor 1,20 × 0,80 m bis 1,80 × 1,20 m</td>
+            <td class="px-4 py-3">Robust, ohne loses Netz, für kleine Spielflächen</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Kita-Außengelände</td>
+            <td class="px-4 py-3">Minitor 1,20 × 0,80 m</td>
+            <td class="px-4 py-3">Standsicher verankert, auch wenn Kinder klettern</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Alle Tormaße mit den offiziellen Vorgaben findest du in der <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
+    </p>
+
+    <!-- Schulhof -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fußballtor für den Schulhof: robust und ohne loses Netz
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein Schulhoftor hat dasselbe Belastungsprofil wie ein öffentlicher Bolzplatz: dauerhaft draußen, viele Nutzer, wenig Aufsicht. Deshalb gelten hier im Kern dieselben Kriterien wie beim <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a>.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Geschlossener Hinterbau statt Netz</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein loses Tornetz hält auf dem Schulhof selten lange: Es wird heruntergezogen, als Hängematte benutzt oder abgerissen. Bei Toren mit <strong>geschlossenem Hinterbau</strong> bilden Metallstreben die Rückwand. Wichtig ist dabei der Abstand der Streben, damit niemand mit Kopf oder Gliedmaßen hängen bleibt – die DGUV verlangt für Ballspielanlagen auf Außenspielflächen ausdrücklich, dass die Anforderungen an Fangstellen eingehalten werden. Beim Bolzplatztor UNKAPUTTBAR gibt anstoss24 einen Strebenabstand von 86 mm an, der laut Produktbeschreibung der DIN EN 15312 entspricht.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Fest im Boden verankert</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Schulhoftore werden in der Regel fest montiert. Tore für Fußball müssen auf Außenspielflächen von Kitas, Horten und Schulen laut DGUV so standsicher verankert werden, dass sie auch dann nicht umstürzen, wenn Kinder daran klettern oder turnen – über ausreichend dimensionierte Fundamente, Bodenhülsen oder Ausgleichsgewichte. Das Bolzplatztor UNKAPUTTBAR ist laut Shop für eine Fundamentverankerung an vier Stellen mittels Erdankern vorgerichtet.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Die richtige Größe für den Hof</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Auf größeren Schulhöfen, etwa an weiterführenden Schulen, bietet sich das Bolzplatzmaß 3,00 × 2,00 m an. Auf kleinen Grundschulhöfen oder wenn mehrere Gruppen nebeneinander spielen sollen, passen Minitore besser. Die gängigen Minitor-Größen und Bauarten erklären wir im Ratgeber <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitore</a>.
+    </p>
+
+    <!-- Produkte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Unsere Empfehlungen für Schulhof und Schulsport
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Für den frei bespielten Schulhof empfehlen wir ein vollverschweißtes Bolzplatztor mit geschlossenem Hinterbau. Für den Schulsportplatz passt ein mobiles Kleinfeldtor, das sich mit der passenden Kippsicherung sicher aufstellen lässt:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Schulhof</p>
+        <ProductCard
+          name={bolzplatztor.name}
+          url={bolzplatztor.url}
+          imageUrl={bolzplatztor.imageUrl}
+          features={['Vollverschweißt', 'Geschlossener Hinterbau', 'TÜV-geprüft nach DIN EN 15312', '5 Jahre Garantie']}
+          category="Bolzplatztor"
+          campaign="schule"
+        />
+      </div>
+      <div>
+        <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Schulsportplatz</p>
+        <ProductCard
+          name={kleinfeldtor.name}
+          url={kleinfeldtor.url}
+          imageUrl={kleinfeldtor.imageUrl}
+          features={kleinfeldtor.features}
+          category="Kleinfeldtor"
+          campaign="schule"
+        />
+      </div>
+    </div>
+
+    <!-- Ganztag -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Ganztag ab 2026: Der Schulhof wird zum Nachmittagsort
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Seit dem <strong>1. August 2026</strong> gilt der Rechtsanspruch auf ganztägige Bildung und Betreuung – zunächst für Kinder der ersten Klassenstufe. In den Folgejahren wird er laut Bundesministerium schrittweise auf die Klassenstufen zwei bis vier ausgeweitet, sodass er <strong>ab dem Schuljahr 2029/30</strong> für alle Kinder der Klassenstufen eins bis vier gilt. Nach § 24 Absatz 4 SGB VIII besteht der Anspruch an Werktagen im Umfang von acht Stunden täglich.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für viele Grundschulen heißt das: Das Außengelände wird länger und von mehr Kindern genutzt als bisher. Ein Tor, das nur für die große Pause gedacht war, steht dann auch am Nachmittag im Dauereinsatz. Genau dafür lohnen sich vollverschweißte Tore ohne loses Netz, die fest verankert sind.
+    </p>
+
+    <!-- Schulsport -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Tore für den Schulsport: Sicherung gegen Umstürzen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Im Sportunterricht werden Tore oft umgestellt, zur Seite geschoben oder am Rand gelagert. Die DGUV Information 202-044 für Sportstätten und Sportgeräte nennt für Ballspieltore unter anderem diese Anforderungen:
+    </p>
+    <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
+      <li><strong>Sicherung gegen Umstürzen</strong> im Spielbetrieb und bei der Lagerung</li>
+      <li><strong>Warnhinweis</strong> am Tor, dass Netze und Torrahmen nicht beklettert werden dürfen</li>
+      <li><strong>Keine offenen Netzhaken</strong> aus Stahl, Öffnungen an Netzbefestigungen nicht größer als 5 mm</li>
+      <li><strong>Bodenrahmen</strong> nicht breiter als die Torpfosten</li>
+    </ul>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Dazu kommt die Prüfung: Die Sportlehrkraft prüft die sichere Funktion <strong>vor jeder Benutzung</strong>, eine befähigte Person prüft <strong>mindestens einmal jährlich</strong> entsprechend der Gefährdungsbeurteilung, mit Prüfbefund.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Das empfohlene mobile Kleinfeldtor mit Herkulesnetz entspricht laut Produktbeschreibung in Verbindung mit den passenden Sicherheits-Verankerungs-Systemen oder einem kompatiblen Zusatzgewicht der DIN EN 748 zur Kippsicherung und wird mit einem Aufkleber mit Warnhinweisen geliefert. Wie du Tore richtig sicherst, steht in der <a href="/aufbau-anleitung/#kippsicherung" class="text-accent hover:text-accent-dark transition-colors font-medium">Anleitung zur Kippsicherung</a>. Spielt die Schule auch auf Jugendtore 5 × 2 m, findest du Modelle und Hinweise bei den <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors font-medium">Jugendtoren im Vereins-Ratgeber</a>.
+    </p>
+
+    <!-- Kita -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Kita-Außengelände: kleine Tore, gleiche Sorgfalt
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die DGUV Information 202-022 richtet sich an Träger, Leitungen und pädagogische Fachkräfte und gilt für Außenspielflächen in Kindertageseinrichtungen, Horten und Schulen. Sie empfiehlt Flächen für Ballspiele, die von anderen Spielangeboten freigehalten werden, und eine Abtrennung zu ruhigen Bereichen wie dem Sandkasten.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für die Tore selbst gilt dieselbe Regel wie auf dem Schulhof: standsicher verankern, auch für den Fall, dass Kinder daran klettern oder turnen. Eine Ausnahme nennt die DGUV ausdrücklich: <strong>Sehr leichte und kleine Tore aus Kunststoff oder dünnwandigem Aluminium</strong> können auch ohne Fundamente aufgestellt werden, dabei sind die Herstellerangaben einzuhalten.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für Kitas, die ein dauerhaft stehendes Tor suchen, ist das <a href={addUtm(minitorHinterbau.url, 'schule')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">Alu-Minitor mit geschlossenem Hinterbau</a> eine Option: Laut anstoss24 ist es vandalismussicher, TÜV-geprüft, hat einen Strebenabstand von 86 mm nach DIN EN 16579:2020-01 und wiegt in der Größe 1,20 × 0,80 m ca. 20 kg. Welche Tore für welches Alter passen, steht im Ratgeber <a href="/kinder/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für Kinder</a>.
+    </p>
+
+    {features.torberater && (
+      <div class="mt-14">
+        <Torberater campaign="schule-torberater" start="bolzplatztor" title="Das passende Tor für den Schulhof finden" />
+      </div>
+    )}
+
+    <!-- Normen -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welche Norm gilt für welches Schultor?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für Fußballtore gibt es nicht die eine Norm. Welche gilt, hängt von Torgröße, Gewicht und davon ab, ob das Tor frei zugänglich ohne Aufsicht steht. Die Anwendungsbereiche laut DIN Media:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Norm</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Gilt für</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">An der Schule typisch</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">DIN EN 748</td>
+            <td class="px-4 py-3">Fußballtore 5,00 × 2,00 m und 7,32 × 2,44 m für Training und Wettkampf (Tore dieser Größen von 10 bis 42 kg ausgenommen)</td>
+            <td class="px-4 py-3">Jugend- und Großfeldtore auf dem Schulsportplatz</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">DIN EN 16579</td>
+            <td class="px-4 py-3">Ortsveränderliche und standortgebundene Spielfeldtore über 10 kg, ausdrücklich auch in Bildungseinrichtungen</td>
+            <td class="px-4 py-3">Kleinfeld- und Minitore</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">DIN EN 15312</td>
+            <td class="px-4 py-3">Frei zugängliche Multisportgeräte ohne Aufsicht, für die feste Installation</td>
+            <td class="px-4 py-3">Fest installierte Bolzplatz- und Ballspielanlagen</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ergänzend gelten die Hinweise der gesetzlichen Unfallversicherung: die <strong>DGUV Information 202-044</strong> für Sportstätten und Sportgeräte und die <strong>DGUV Information 202-022</strong> für Außenspielflächen. Welche Norm ein bestimmtes Tor erfüllt, steht in der Produktbeschreibung. Achte beim Vergleich darauf, dass die Angabe zum Einsatzort passt. Fragen zur Bestellung beantwortet <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'schule')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24</a> direkt.
+    </p>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Erst den Einsatzort klären, dann das Tor
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für den Schulsport brauchst du ein Tor mit Netz und eine zuverlässige Kippsicherung. Für den Schulhof brauchst du ein Tor, das ohne Aufsicht klarkommt: vollverschweißt, mit geschlossenem Hinterbau und fest verankert. Mit dem Ganztag wird diese zweite Frage für viele Grundschulen wichtiger. Steht das Tor nicht auf dem Schulgelände, sondern auf einem öffentlichen Spielplatz, lies weiter im Ratgeber <a href="/spielplatz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für den Spielplatz</a>.
+    </p>
+
+    <Sources items={[Q.din748, Q.din16579, Q.din15312, Q.dguv202044, Q.dguv202022, Q.sgb8, Q.bmbfsfjGanztag]} />
+
+    <RelatedContent
+      items={[
+        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher für öffentliche Plätze' },
+        { href: '/spielplatz/', title: 'Spielplatz', subtitle: 'Tore für frei zugängliche Spielflächen' },
+        { href: '/minitore/', title: 'Minitore', subtitle: 'Größen und Bauarten im Überblick' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau & Kippsicherung', subtitle: 'Tore sicher aufstellen' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Fußballtor für die Schule" />
+    </div>
+  </div>
+</BaseLayout>
