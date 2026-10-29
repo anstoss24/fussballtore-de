@@ -43,6 +43,8 @@ Primäre Vorbilder sind:
 | Garten-Tore | `/garten` | fußballtor garten |
 | Kinder-Tore | `/kinder` | fußballtor kinder |
 | Vereins-/Wettkampf-Tore | `/verein` | fußballtor verein wettkampf |
+| Schule & Kita | `/schule` | fußballtor schule, fußballtor schulhof |
+| Spielplatz | `/spielplatz` | fußballtor spielplatz, tor für spielplatz |
 | Impressum | `/impressum` | – |
 | Datenschutz | `/datenschutz` | – |
 
