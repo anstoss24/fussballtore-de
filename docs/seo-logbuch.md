@@ -55,3 +55,17 @@ Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen 
 - [x] `scripts/fetch-prices.mjs`: Preis-Job wird bei nicht erreichbarer Shop-Seite rot, GitHub schickt eine Mail (erledigt 26.10.).
 - [x] /tornetz/ und /verein/: Tornetz-Fakten auf Shop-Stand (nur PP, Shop-Stärken, Maschen, Netztiefen; PE und 5/6 mm raus), erledigt 27.10. Erfahrungswerte (Lebensdauer, Pflege, Ersatznetz) bleiben bewusst drin, Entscheidung Matze.
 - [ ] Optional: Versand- und Rückgabeangaben ins Produkt-Markup, nur mit Shop-Daten.
+
+## 29.10.2026 – Grafischer Feinschliff (Branch `feature/feinschliff`, nicht live)
+
+### Geändert
+- Kontrast: Grün und Grautöne eine Stufe dunkler (Buttons, Links, Fließtext WCAG AA), kleinste Schrift 13 px.
+- Startseiten-Hero mit echtem Shop-Foto statt Verlauf und Spielfeldlinien, Kategorien mit Fotos im 4er-Raster (8 Kategorien).
+- Shop-Bilder in voller Auflösung (`/full/`-Variante, bis ~1280 px), redaktionelle Fotos in `src/data/fotos.json`.
+- Komponenten ruhiger: Produktkarte, TL;DR, FAQ, Trust-Leiste ohne Vorlagen-Symbole; einheitliche Radien; sichtbarer Fokus.
+- Bugs: Cookie-Banner mobil kompakt, kein Seitwärts-Scrollen bei 768 px (Desktop-Menü ab 1024 px).
+- Texte, Überschriften, Schema und Seitenaufbau unverändert.
+
+### Offen
+- [ ] Shop: Produktbild von Artikel 14045 (ELF Sports Alu-Minitor light) ist laut Dateiname KI-generiert („Gemini-Generated-Image") und erscheint im Torberater. Im Shop durch ein echtes Foto ersetzen.
+- [ ] Freigabe Matze, dann Merge nach `main` (gebündelt, ein Deploy).

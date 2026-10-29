@@ -44,6 +44,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Sprungmarken landen unter dem festen Header, nicht dahinter */
+    scroll-padding-top: 5rem;
     /* erlaubt weiches Auf- und Zuklappen von <details> (FAQ) */
     interpolate-size: allow-keywords;
   }
