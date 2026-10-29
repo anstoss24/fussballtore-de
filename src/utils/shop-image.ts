@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import fotos from '../data/fotos.json';
 
 /**
  * Produkt- und Torberater-Bilder aus dem anstoss24-Shop: scripts/fetch-shop-images.mjs
@@ -17,4 +18,17 @@ const manifest: Record<string, Record<string, string>> = existsSync(MANIFEST)
 export function shopImage(src: string | undefined, width: number): string | undefined {
   if (!src) return undefined;
   return manifest[src]?.[String(width)];
+}
+
+/** Redaktionelle Fotos aus dem Shop (src/data/fotos.json), lokal als WebP in 640 und 1280 px */
+export type FotoKey = keyof typeof fotos;
+export function foto(key: FotoKey) {
+  const f = fotos[key];
+  const s = shopImage(f.url, 640);
+  const l = shopImage(f.url, 1280);
+  return {
+    src: l ?? s ?? f.url,
+    srcset: s && l ? `${s} 640w, ${l} 1280w` : undefined,
+    alt: f.alt,
+  };
 }

@@ -31,16 +31,40 @@ for (const f of readdirSync('src/pages').filter((f) => f.endsWith('.astro'))) {
   const src = readFileSync(`src/pages/${f}`, 'utf8');
   for (const m of src.matchAll(/imageUrl="(https:\/\/[^"]+)"/g)) add(m[1], 800);
 }
-// Torberater: Antwort-Bilder klein, Produktbilder mittel
+// Redaktionelle Fotos (Hero, Kategorien): src/data/fotos.json, groß für randlose Flächen
+if (existsSync('src/data/fotos.json')) {
+  for (const f of Object.values(readJson('src/data/fotos.json'))) {
+    add(f.url, 640);
+    add(f.url, 1280);
+  }
+}
+// Torberater: Antwort-Bilder klein (Liste) und mittel (Startseiten-Kacheln), Produktbilder mittel
 if (existsSync('src/data/torberater.json')) {
   const walk = (step) => {
     for (const o of step.options ?? []) {
       add(o.image, 192);
+      add(o.image, 480);
       for (const prod of o.products ?? []) add(prod.image, 480);
       if (o.next) walk(o.next);
     }
   };
   walk(readJson('src/data/torberater.json').tree);
+}
+
+// Der Shop liefert dieselben Bilder in mehreren Größen (/secondPreview/, /middle/, /full/).
+// Wir laden zuerst /full/ (bis ~1280 px) und fallen sonst auf die eingetragene Variante zurück.
+const fullVariant = (url) => url.replace(/\/item\/images\/(\d+)\/(secondPreview|middle|preview)\//, '/item/images/$1/full/');
+
+async function downloadBest(url) {
+  const full = fullVariant(url);
+  if (full !== url) {
+    try {
+      return await download(full);
+    } catch {
+      /* Fallback auf die eingetragene Variante */
+    }
+  }
+  return download(url);
 }
 
 async function download(url) {
@@ -76,7 +100,7 @@ for (const [url, widths] of jobs) {
     continue;
   }
   try {
-    const buf = await download(url);
+    const buf = await downloadBest(url);
     for (const w of missing) {
       await sharp(buf).resize({ width: w, withoutEnlargement: true }).webp({ quality: 80 }).toFile(`${OUT_DIR}/${hash}-${w}.webp`);
     }
