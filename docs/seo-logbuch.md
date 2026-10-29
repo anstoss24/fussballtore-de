@@ -3,6 +3,25 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 29.10.2026
+
+### Neue Seiten (Branch `feature/oeffentlich-inhalt`, nicht live)
+- `/schule/`: Fußballtor für Schule, Schulhof, Schulsport und Kita-Außengelände. Normen-Abgrenzung DIN EN 748 / 16579 / 15312, DGUV 202-044 und 202-022, Ganztags-Rechtsanspruch ab 01.08.2026 (Quelle BMBFSFJ + § 24 Abs. 4 SGB VIII). Empfehlungen: Bolzplatztor UNKAPUTTBAR (Schulhof), mobiles Kleinfeldtor mit Herkulesnetz (Schulsport), Textlink Alu-Minitor mit Hinterbau (Kita).
+- `/spielplatz/`: Fußballtor für öffentliche Spielplätze und Wohnanlagen. DIN EN 15312 vs. DIN EN 1176, Lärm, Verankerung, Betreiberverantwortung. Empfehlungen: SILENCE Bolzplatztor (sandgefüllt, geräuschgedämpft), Alu-Minitor mit Hinterbau; Textlinks Bolzplatztor mit Basketballaufbau und Erdanker.
+- products.json: neu `bolzplatz-silence` und `kleinfeldtor-herkulesnetz` (Preis-Feed läuft mit). OG-Bilder `og-schule.jpg`, `og-spielplatz.jpg` neu generiert, alle anderen byte-gleich.
+- Interne Links auf die neuen Seiten: Startseiten-Kategorien, Footer, /bolzplatztor/ (Intro + Weiterführend), /minitore/, /verein/, llms.txt, llms-full.txt. Datum in page-dates.json nur für die neuen Seiten gesetzt.
+
+### Entscheidungen
+- Keine eigene Kommunen-Seite: /bolzplatztor/ bleibt die Seite für Kommunen und öffentliche Plätze (Intention: das Produkt Bolzplatztor). /schule/ = Einsatzort Schule/Kita, /spielplatz/ = Einsatzort Spielplatz/Wohnanlage.
+- Normen nur mit Anwendungsbereich laut DIN Media bzw. EN-Volltext; DGUV-Aussagen wörtlich aus den PDFs.
+- Keine Aussagen zu Förderung, Kauf auf Rechnung, Angeboten oder Datenblättern. Nur ein neutraler Satz „Fragen zur Bestellung beantwortet anstoss24 direkt“.
+
+### Offen
+- [ ] Fachliche Prüfung durch Matze: Normen-Aussagen auf /bolzplatztor/, /verein/, /kinder/, Startseite stellen DIN EN 748 teils als Pflicht für alle Schul-/Kommunaltore dar. Laut DIN Media gilt sie nur für 5 × 2 m und 7,32 × 2,44 m. Nicht geändert, Entscheidung offen.
+- [ ] /bolzplatztor/ und /verein/ enthalten noch Förderungs-Hinweise (Abschnitt, FAQ, Description, llms.txt). Nicht geändert, Entscheidung offen.
+- [ ] Shop-Texte: Bolzplatztore nennen DIN EN 15312:2010-12 (zurückgezogen, aktuell 2026-06), Gewichte widersprüchlich (UNKAPUTTBAR 80–90 kg vs. 96 kg; SILENCE 140–150 kg vs. 125 kg), Minitor-Hinterbau 2,40 × 1,20 m im Text vs. Variante 2,4 × 1,6 m.
+- [ ] Nach Merge: neue URLs /schule/ und /spielplatz/ in der Search Console per URL-Prüfung einreichen.
+
 ## 26.10.2026
 
 ### Search Console: Indexierung (kein Defekt)
