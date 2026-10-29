@@ -8,26 +8,31 @@ export default {
           DEFAULT: '#0f172a',
           light: '#1e293b',
         },
+        // Grün um eine Stufe dunkler: weiße Schrift auf Buttons und grüne Links erreichen WCAG AA (5:1)
         accent: {
-          DEFAULT: '#16a34a',
+          DEFAULT: '#15803d',
           light: '#22c55e',
-          dark: '#15803d',
+          dark: '#166534',
         },
         warm: {
           DEFAULT: '#f59e0b',
           light: '#fbbf24',
         },
+        // Grautöne aus derselben Slate-Familie wie primary; Text-Grau dunkler für bessere Lesbarkeit
         neutral: {
           50: '#f8fafc',
+          100: '#f1f5f9',
           200: '#e2e8f0',
-          400: '#94a3b8',
-          500: '#64748b',
+          300: '#cbd5e1',
+          400: '#64748b',
+          500: '#475569',
+          600: '#334155',
+          700: '#1e293b',
         },
       },
       fontFamily: {
         heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         body: ['"DM Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       container: {
         center: true,
@@ -45,7 +50,14 @@ export default {
         },
       },
       fontSize: {
+        // Kleinste Schrift 13 px statt 12 px
+        xs: ['0.8125rem', { lineHeight: '1.25rem' }],
         base: ['1.125rem', { lineHeight: '1.75' }],
+      },
+      borderRadius: {
+        // Einheitliche Radien: Karten/Boxen = xl (12 px), Buttons/Felder = lg (8 px)
+        xl: '0.75rem',
+        '2xl': '0.75rem',
       },
     },
   },

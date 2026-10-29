@@ -20,29 +20,22 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ===== CSS Variables ===== */
 
 :root {
   --color-primary: #0f172a;
   --color-primary-light: #1e293b;
-  --color-accent: #16a34a;
+  --color-accent: #15803d;
   --color-accent-light: #22c55e;
-  --color-accent-dark: #15803d;
+  --color-accent-dark: #166534;
   --color-warm: #f59e0b;
   --color-warm-light: #fbbf24;
   --color-bg: #ffffff;
   --color-bg-alt: #f8fafc;
   --color-text: #0f172a;
-  --color-text-light: #64748b;
-  --color-text-muted: #94a3b8;
+  --color-text-light: #475569;
+  --color-text-muted: #64748b;
   --color-border: #e2e8f0;
 }
 
@@ -51,6 +44,18 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* erlaubt weiches Auf- und Zuklappen von <details> (FAQ) */
+    interpolate-size: allow-keywords;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  :focus-visible {
+    outline: 3px solid theme('colors.accent.DEFAULT');
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
   body {
@@ -61,10 +66,13 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold leading-tight;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
   }
 
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;
+    letter-spacing: -0.025em;
   }
 
   h2 {
@@ -77,6 +85,35 @@
 
   a {
     @apply text-accent-dark hover:text-accent transition-colors;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Tabellen: Zahlen bündig */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* FAQ & Aufklappboxen: Inhalt gleitet auf statt zu springen (Chrome/Edge; sonst ohne Animation) */
+  details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 280ms cubic-bezier(0.23, 1, 0.32, 1), content-visibility 280ms allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after,
+    details::details-content {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
   }
 
   img {
@@ -88,7 +125,7 @@
 
 @layer components {
   .prose {
-    @apply max-w-[65ch];
+    @apply max-w-[68ch];
   }
 
   .prose p {
