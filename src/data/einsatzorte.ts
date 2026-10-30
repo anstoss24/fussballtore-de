@@ -122,13 +122,13 @@ export const EINSATZORTE: Einsatzort[] = [
     name: 'Kommune & öffentliche Plätze',
     subtitle: 'Bolzplatz, Sportplatz, Freizeitanlage',
     href: '/kommune/',
-    // Hinweise und Belege vom kommune-Agenten (30.10.), Tabelle unter H2 „Welche Fußballtore braucht eine Kommune?“
+    // Hinweise und Belege vom kommune-Agenten (30.10.): Kurzantwort-Satz unter H2 „Welche Fußballtore braucht eine Kommune?“ plus #bolzplatz, #sportplatz, #freizeitanlage
     tore: [
       { torart: 'grossfeld', hinweis: 'Kommunaler Sportplatz mit Vereinsbetrieb', beleg: 'kommune.astro: H2 „Kommunaler Sportplatz: Großfeld-, Jugend- und Kleinfeldtore“ (#sportplatz), DIN EN 748' },
       { torart: 'jugend', hinweis: 'Kommunaler Sportplatz, E- und D-Jugend', beleg: 'kommune.astro: #sportplatz, DIN EN 748' },
       { torart: 'kleinfeld', hinweis: 'Sportplatz, F-Jugend und Training', beleg: 'kommune.astro: #sportplatz, DIN EN 16579' },
       { torart: 'bolzplatz', hinweis: 'Öffentlicher Bolzplatz ohne Aufsicht', beleg: 'kommune.astro: H2 „Öffentlicher Bolzplatz: Tore für den Betrieb ohne Aufsicht“ (#bolzplatz), DIN EN 15312' },
-      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Freizeitanlage, Park: nur robuste Alu-Minitore, keine Pop-up- oder Klapptore', beleg: 'kommune.astro: H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“ (#freizeitanlage), DIN EN 16579; Pop-up/klappbar ausgeschlossen im Absatz nach der ersten Tabelle' },
+      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Freizeitanlage, Park: nur robuste Alu-Minitore, keine Pop-up- oder Klapptore', beleg: 'kommune.astro: H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“ (#freizeitanlage), DIN EN 16579; Pop-up/klappbar ausgeschlossen im Abschnitt #freizeitanlage' },
     ],
   },
   {
@@ -137,11 +137,11 @@ export const EINSATZORTE: Einsatzort[] = [
     subtitle: 'Schulhof, Schulsport, Kita',
     href: '/schule/',
     tore: [
-      { torart: 'grossfeld', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Tabelle „Welche Norm gilt für welches Schultor?“, Zeile DIN EN 748 „Jugend- und Großfeldtore auf dem Schulsportplatz“' },
-      { torart: 'jugend', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeile Schulsportplatz' },
-      { torart: 'kleinfeld', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeile Schulsportplatz' },
-      { torart: 'bolzplatz', hinweis: 'Schulhof, ohne Aufsicht', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeile Schulhof' },
-      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Grundschulhof, Ganztag und Kita', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeilen Schulhof/Grundschulhof „Alu-Minitor“, Kita „Minitor“; Abschnitt Kita: Alu-Minitor mit geschlossenem Hinterbau; Pop-up-Tore nennt die Seite nicht' },
+      { torart: 'grossfeld', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Kurzantwort-Satz unter H2 „Welches Fußballtor passt zur Schule?“; Normtabelle „Welche Norm gilt für welches Schultor?“, Zeile DIN EN 748' },
+      { torart: 'jugend', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Kurzantwort-Satz unter H2 „Welches Fußballtor passt zur Schule?“ (Schulsport)' },
+      { torart: 'kleinfeld', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Kurzantwort-Satz unter H2 „Welches Fußballtor passt zur Schule?“ (Schulsport)' },
+      { torart: 'bolzplatz', hinweis: 'Schulhof, ohne Aufsicht', beleg: 'schule.astro: Kurzantwort-Satz unter H2 „Welches Fußballtor passt zur Schule?“ (Schulhof); H3 „Die richtige Größe für den Hof“' },
+      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Grundschulhof, Ganztag und Kita', beleg: 'schule.astro: Kurzantwort-Satz unter H2 „Welches Fußballtor passt zur Schule?“; H3 „Die richtige Größe für den Hof“; H2 Kita: Alu-Minitor mit geschlossenem Hinterbau; Pop-up-Tore nennt die Seite nicht' },
     ],
   },
   {
