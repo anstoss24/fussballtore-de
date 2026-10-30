@@ -105,9 +105,6 @@ const schema = [
       Wer für eine <strong>Kommune Fußballtore</strong> beschafft, hat selten nur einen Platz im Blick: den Bolzplatz im Wohngebiet, den Sportplatz, auf dem der Verein trainiert, die Freizeitanlage am Park, dazu Schulhöfe und Spielplätze. Ein Tor für alles gibt es nicht. Hier steht, welche <strong>Torart</strong> auf welche kommunale Fläche passt, welche Norm jeweils gilt und worauf es beim Einbau ankommt.
     </p>
 
-    <!-- Welche Torarten passen hier? Direkt nach der Einleitung (src/data/einsatzorte.ts) -->
-    <TorartenFuerEinsatzort ort="kommune" />
-
     <!-- Direktantwort -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
       Welche Fußballtore braucht eine Kommune?
@@ -158,6 +155,9 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Pop-up-Tore und klappbare Minitore aus dem Garten- und Trainingsbereich sind für dauerhaft frei zugängliche Flächen nicht gemacht. Alle Tormaße mit den offiziellen Vorgaben findest du in der <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
     </p>
+
+    <!-- Welche Torarten passen hier? Hinter der Tabelle „Welches Tor passt …“, damit sie nicht doppelt wirkt (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="kommune" />
 
     <!-- Bolzplatz -->
     <h2 id="bolzplatz" class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4 scroll-mt-24">
