@@ -1,0 +1,75 @@
+---
+/**
+ * „Welches Fußballtor suchst du?“ mit Umschalter Torart | Einsatzort – ohne JavaScript:
+ * zwei Radio-Inputs steuern per Geschwister-Selektor, welcher Kartensatz sichtbar ist.
+ * Beide Kartensätze stehen vollständig im HTML (alle Links crawlbar).
+ */
+import Raster from './Raster.astro';
+import { torartKarten, einsatzortKarten } from './daten';
+---
+
+<section class="umschalter py-16 md:py-20" aria-labelledby="tor-suche">
+  <div class="container mx-auto">
+    <div class="mb-6 md:mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <h2 id="tor-suche" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">Welches Fußballtor suchst du?</h2>
+        <p class="text-neutral-600 m-0">Die Torart ergibt sich aus Maß und Bauart. An jedem Einsatzort können mehrere Torarten stehen.</p>
+      </div>
+    </div>
+
+    <input class="sr-only" type="radio" name="tor-ansicht" id="ansicht-torart" checked />
+    <input class="sr-only" type="radio" name="tor-ansicht" id="ansicht-einsatzort" />
+
+    <div class="schalter mb-6 md:mb-8 inline-grid grid-cols-2 rounded-full bg-neutral-100 p-1 ring-1 ring-neutral-200">
+      <label for="ansicht-torart" class="schalter-torart">Nach Torart</label>
+      <label for="ansicht-einsatzort" class="schalter-einsatzort">Nach Einsatzort</label>
+    </div>
+
+    <div class="panel panel-torart" aria-labelledby="nach-torart">
+      <h3 id="nach-torart" class="sr-only">Fußballtore nach Torart</h3>
+      <Raster karten={torartKarten} stil="foto" eager />
+    </div>
+    <div class="panel panel-einsatzort" aria-labelledby="nach-einsatzort">
+      <h3 id="nach-einsatzort" class="sr-only">Fußballtore nach Einsatzort</h3>
+      <Raster karten={einsatzortKarten} stil="foto" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .schalter label {
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    text-align: center;
+    font-family: theme('fontFamily.heading');
+    font-weight: 700;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    color: theme('colors.neutral.600');
+    transition: background-color 200ms ease-out, color 200ms ease-out, box-shadow 200ms ease-out;
+  }
+  .schalter label:hover {
+    color: theme('colors.primary.DEFAULT');
+  }
+  #ansicht-torart:checked ~ .schalter .schalter-torart,
+  #ansicht-einsatzort:checked ~ .schalter .schalter-einsatzort {
+    background: theme('colors.white');
+    color: theme('colors.primary.DEFAULT');
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  }
+  #ansicht-torart:focus-visible ~ .schalter .schalter-torart,
+  #ansicht-einsatzort:focus-visible ~ .schalter .schalter-einsatzort {
+    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline-offset: 2px;
+  }
+  #ansicht-torart:checked ~ .panel-einsatzort,
+  #ansicht-einsatzort:checked ~ .panel-torart {
+    display: none;
+  }
+  @media (max-width: 389px) {
+    .schalter label {
+      padding-inline: 0.875rem;
+    }
+  }
+</style>

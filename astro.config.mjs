@@ -12,7 +12,9 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
+      // /vorschlag-*/ = Startseiten-Entwürfe (noindex), nicht in die Sitemap
       filter: (page) =>
+        !page.includes('/vorschlag-') &&
         ![
           'https://fussballtore.de/datenschutz/',
           'https://fussballtore.de/impressum/',
