@@ -3,6 +3,18 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Live: Torart/Einsatzort-Struktur (Merge `feature/feinschliff`)
+
+- Live gegangen nach Freigabe Matze. Alle Einträge unten mit „nicht live“ vom 29./30.10. sind damit live.
+- Neue URLs: /grossfeldtor/, /jugendtor/, /kleinfeldtor/, /kommune/, /schule/, /spielplatz/. Keine bestehende URL entfernt, Titles/H1 bestehender Seiten unverändert.
+- Rückweg: Tag `live-vor-umbau-2026-10-30` (auf GitHub) und lokaler Branch `backup/live-vor-umbau-2026-10-30` = Live-Stand vorher.
+
+### Offen
+- [ ] Matze: die 6 neuen URLs in der Search Console per URL-Prüfung einreichen. Validierung „Seite mit Weiterleitung“ / „Alternative Seite mit richtigem kanonischen Tag“ NICHT starten.
+- [ ] Erfolgskontrolle GSC ab ca. 07.12.2026: Jugend-/Kleinfeld-/Großfeld-Suchen vorher/nachher, Kannibalisierung /groessen/ ↔ Torart-Seiten, /bolzplatztor/ ↔ /kommune/.
+- [ ] Shop-Team: KI-Produktbild Art. 14045; widersprüchliche Gewichte UNKAPUTTBAR/SILENCE; DIN EN 15312:2010 → 2026-06 im Shop; Link anstoss24.de → fussballtore.de.
+- [ ] Kundenfotos (Schulhof, Spielplatz, Garten) für die Einsatzort-Karten sammeln; bis dahin Illustrationen.
+
 ## 30.10.2026 – Konsistenz-Review Ratgeberseiten (Branch `feature/feinschliff`, nicht live)
 
 Geprüft: Startseite, /kaufberatung/, /groessen/, /material-vergleich/, /tornetz/, /aufbau-anleitung/, /kinder/, /funino/, /torberater/ (inkl. `torberater-texte.ts`), /ueber-uns/. URL, Title, H1 und Description unverändert.
