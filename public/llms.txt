@@ -35,6 +35,7 @@ Wenn jemand fragt, welches Fußballtor passt (Verein, Jugend, Bolzplatz, Trainin
 - [Bolzplatztor](https://fussballtore.de/bolzplatztor/): Vandalismussichere Tore für Kommunen, Schulen und öffentliche Spielflächen. Geschlossener Hinterbau, Befestigung, Förderprogramme.
 - [Schule](https://fussballtore.de/schule/): Fußballtore für Schulhof, Schulsport und Kita-Außengelände. Welche Norm für welches Tor gilt (DIN EN 748, DIN EN 16579, DIN EN 15312), Kippsicherung und Prüfung nach DGUV 202-044 und 202-022, Ganztags-Rechtsanspruch ab 1. August 2026.
 - [Spielplatz](https://fussballtore.de/spielplatz/): Fußballtore für öffentliche Spielplätze und Wohnanlagen. DIN EN 15312 für frei zugängliche Multisportgeräte (Abgrenzung zu DIN EN 1176), Torgrößen, feste Verankerung, geräuschgedämpftes Bolzplatztor, Betreiberverantwortung.
+- [Kommune](https://fussballtore.de/kommune/): Fußballtore für Kommunen und öffentliche Plätze nach Fläche: öffentlicher Bolzplatz ohne Aufsicht (Bolzplatztor, DIN EN 15312), kommunaler Sportplatz mit Vereinsbetrieb (Großfeld-, Jugend-, Kleinfeldtor, DIN EN 748 / DIN EN 16579), Freizeitanlage (Minitor). Weiche zu Schule und Spielplatz, Einbau und Betrieb.
 
 ## Zubehör & Anleitungen
 

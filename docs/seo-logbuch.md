@@ -3,6 +3,23 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Neue Seite /kommune/ (Branch `feature/feinschliff`, nicht live)
+
+### Neu
+- `/kommune/`: Fußballtore für Kommunen und öffentliche Plätze. Einsatzort-Seite (keine Torart-Seite): ordnet kommunale Flächen den Torarten zu – öffentlicher Bolzplatz ohne Aufsicht → Bolzplatztor (DIN EN 15312), kommunaler Sportplatz mit Vereinsbetrieb → Großfeld-/Jugend-/Kleinfeldtor (DIN EN 748 bzw. 16579), Freizeitanlage/kleine Flächen → Alu-Minitor mit Hinterbau (DIN EN 16579), Schulhof → /schule/, Spielplatz → /spielplatz/. Dazu Normen-Tabelle, Planung/Einbau/Betrieb, FAQ.
+- Empfehlungen: Bolzplatztor UNKAPUTTBAR (Bolzplatz), Jugendtor 5 × 2 m ohne Griffe (Sportplatz); Textlinks SILENCE, Kleinfeldtor mit Herkulesnetz, Alu-Minitor mit Hinterbau, Erdanker.
+- Produktfakten am 30.10. live im Shop geprüft (Shop-Wortlaut). Normen nur mit den bereits belegten Anwendungsbereichen aus `SOURCES_OEFFENTLICH`.
+- OG-Bild `og-kommune.jpg`, page-dates, llms.txt, llms-full.txt, Seitenstruktur in CLAUDE.md.
+- Platzhalter `<!-- EINSATZORT-MAPPING -->` nach der Einleitung für den Mapping-Baustein aus `src/data/einsatzorte.ts`.
+
+### Entscheidungen
+- Entscheidung vom 29.10. („keine eigene Kommunen-Seite“) aufgehoben: Matze trennt jetzt Torarten (Sortiment) von Einsatzorten. /bolzplatztor/ = Produkt, /kommune/ = Ort, Weiche in beide Richtungen.
+- Kein Produkt als „Kommunentor“ bezeichnet. Keine Förderung, kein Kauf auf Rechnung/Angebot/Datenblatt, keine Prüfintervalle, kein Lärmrecht. Torgewichte weggelassen (Shop widersprüchlich).
+
+### Offen
+- [ ] /bolzplatztor/ verlinkt noch nicht auf /kommune/ und spricht in Description/Hero/FAQ selbst Kommunen an (plus DIN-EN-748-Pflicht und Förderung, siehe 29.10.). Für saubere Abgrenzung Intro-Weiche auf /kommune/ ergänzen und Kommunen-Wording zurücknehmen – Freigabe Matze.
+- [ ] Nach Merge: /kommune/ in der Search Console per URL-Prüfung einreichen.
+
 ## 29.10.2026 – Grafischer Feinschliff (Branch `feature/feinschliff`, nicht live)
 
 ### Geändert

@@ -91,6 +91,17 @@ Quelle/Details: https://fussballtore.de/schule/
 
 Quelle/Details: https://fussballtore.de/spielplatz/
 
+## Fußballtore für Kommunen und öffentliche Plätze
+
+- Grundsatz: Die Torart richtet sich nach der Fläche und danach, ob ohne Aufsicht gespielt wird, nicht nach dem Betreiber.
+- Öffentlicher Bolzplatz (frei zugänglich, ohne Aufsicht): Bolzplatztor 3,00 × 2,00 m, vollverschweißt, geschlossener Hinterbau, fest verankert. Norm: DIN EN 15312:2026-06 (frei zugängliche Multisportgeräte ohne Aufsicht, feste Installation).
+- Kommunaler Sportplatz mit Vereinsbetrieb: Großfeldtor 7,32 × 2,44 m, Jugendtor 5,00 × 2,00 m, Kleinfeldtor 3,00 × 2,00 m mit Netz und Kippsicherung. DIN EN 748 gilt für 5,00 × 2,00 m und 7,32 × 2,44 m (Training und Wettkampf), DIN EN 16579 für andere Spielfeldtore über 10 kg.
+- Freizeitanlage, Park, kleine Ballspielflächen: robuste Alu-Minitore mit geschlossenem Hinterbau. DIN EN 16579 nennt öffentliche Freizeitbereiche ausdrücklich.
+- Schulhof/Schulsport und Spielplatz: eigene Ratgeber (/schule/, /spielplatz/).
+- Betrieb: Der Betreiber der Fläche trägt die Verkehrssicherungspflicht.
+
+Quelle/Details: https://fussballtore.de/kommune/
+
 ## Kinder- und Jugendtore
 
 - Altersgerechte Torwahl von 3 bis 14 Jahren: Pop-up-Tore für die Kleinsten, Stecktore für Grundschulkinder, Alu-Minitore für ältere Kinder.
@@ -160,5 +171,6 @@ Quelle/Details: https://fussballtore.de/torberater/
 - Bolzplatztor: https://fussballtore.de/bolzplatztor/
 - Schule: https://fussballtore.de/schule/
 - Spielplatz: https://fussballtore.de/spielplatz/
+- Kommune: https://fussballtore.de/kommune/
 - Tornetz: https://fussballtore.de/tornetz/
 - Aufbau-Anleitung: https://fussballtore.de/aufbau-anleitung/

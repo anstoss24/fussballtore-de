@@ -215,6 +215,12 @@ const pages = [
     subtitle: 'Frei zugänglich, robust, leise – worauf es ankommt',
     accentLabel: 'Spielplatz',
   },
+  {
+    file: 'og-kommune.jpg',
+    title: 'Fußballtore für Kommunen',
+    subtitle: 'Bolzplatz, Sportplatz, Freizeitanlage – welche Torart wohin',
+    accentLabel: 'Kommune',
+  },
 ];
 
 for (const page of pages) {

@@ -45,6 +45,7 @@ Primäre Vorbilder sind:
 | Vereins-/Wettkampf-Tore | `/verein` | fußballtor verein wettkampf |
 | Schule & Kita | `/schule` | fußballtor schule, fußballtor schulhof |
 | Spielplatz | `/spielplatz` | fußballtor spielplatz, tor für spielplatz |
+| Kommune & öffentliche Plätze | `/kommune` | fußballtor kommune, fußballtore für öffentliche plätze |
 | Impressum | `/impressum` | – |
 | Datenschutz | `/datenschutz` | – |
 
