@@ -3,6 +3,37 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Konsistenz-Review Torart-/Einsatzort-Seiten (Branch `feature/feinschliff`, nicht live)
+
+Matze: „prüfe wirklich nochmal alles auf Durchgängigkeit und vermeide doppelte Erwähnungen.“ Geprüft: /grossfeldtor/, /jugendtor/, /kleinfeldtor/, /bolzplatztor/, /minitore/, /verein/, /kommune/, /schule/, /spielplatz/, /garten/.
+
+### Abgrenzungsregeln
+- Torart-Seite = Produktart (Bauart, Material, Netz, Norm, Produkte). Einsatzort-Seite = was am Ort gilt und welche Torart passt, Torarten nur verlinkt. /groessen/ = Maße nach Altersklasse.
+- Zuordnung Ort → Torart steht pro Einsatzort-Seite nur einmal (Baustein „Welche Torarten passen hier?“), dazu ein Kurzantwort-Satz für KI/Snippets.
+- Normen: ausführlich einmal (Normtabelle bzw. Norm-Abschnitt), sonst ein Satz mit Verweis. FAQ-Antworten bleiben eigenständig, aber nicht wortgleich mit dem Fließtext.
+- Bestehende Seiten (verein, bolzplatztor, minitore, garten) nur bei falschen/widersprüchlichen Aussagen geändert; Title, H1, Description, URL unverändert.
+
+### Geändert
+- /kommune/, /schule/: Tabelle „Fläche/Einsatzort → Torart“ gestrichen (doppelt zum Baustein), stattdessen Kurzantwort-Satz; Baustein direkt nach der Direktantwort. /kommune/: Sportplatz-Liste verlinkt die Torart-Seiten, Normen dort ein Satz mit Anker #normen, Lärm-Absatz gekürzt (ausführlich auf /spielplatz/), FAQ verweist für Altersklassen auf Größen-Übersicht statt Verein.
+- /schule/: TL;DR „Sichtprüfung“ → „Funktionsprüfung“ (wie FAQ/DGUV-Text), Link /kleinfeldtor/, Related /kommune/.
+- /spielplatz/: „laut Hersteller“ → „laut anstoss24“, Weiche und Related um /kommune/ ergänzt.
+- /grossfeldtor/, /jugendtor/: Norm-FAQ nicht mehr wortgleich mit dem Norm-Abschnitt; doppelte Verankerungs-Beispiele im Norm-Abschnitt gestrichen. /jugendtor/: Profilangabe einheitlich „120/100 mm“.
+- /verein/: Kleinfeldtor-Abschnitt zeigte die Karte des Bolzplatztors UNKAPUTTBAR, der Text beschreibt aber das mobile Kleinfeldtor → Karte = mobiles Kleinfeldtor (Art. 4248). TL;DR „Jugendtor (D-Jugend)“ → „E- und D-Jugend“. „Alle vorgestellten Tore … TÜV-geprüft und aus deutscher Fertigung“ gestrichen, „TÜV-Prüfung: Ein Muss“/„Kaufe ausschließlich …“ entschärft (Art. 1523 laut Shop am 30.10. ohne TÜV/748-Angabe). „FIFA und DFB festgelegt“ → Regel 1 (IFAB). FAQ „15–25 Jahre“ → „sehr langlebig“. Link-Satz um /kommune/ ergänzt, Related-Untertitel Bolzplatztor ohne „Kommunen“.
+- /minitore/, /garten/: „15–25 Jahre“ → „sehr langlebig“/„viele Jahre“ (Regel: keine Lebensdauer-Zahlen). /minitore/: Ort-Links inkl. /kommune/. /garten/: „Kleinfeld-Tor“ verlinkt /kleinfeldtor/.
+- /bolzplatztor/: Größentabelle verlinkt /kleinfeldtor/ und /jugendtor/; Verweis „im Detail bei den Vereinstoren“ für Bodenhülsen gestrichen (dort keine sichtbare Anleitung).
+- page-dates: minitore → 2026-10-30 (übrige schon 30.10.).
+
+### Bewusst gelassen
+- /verein/ behält die eigenen Abschnitte zu Großfeld-, Jugend-, Kleinfeldtoren (Ranking); Detailtiefe liegt auf den Torart-Seiten, Link-Satz nach dem Baustein.
+- Normtabellen auf /kommune/, /schule/, /spielplatz/: je mit ortsspezifischer Spalte bzw. Schwerpunkt (1176 vs. 15312).
+- „Planung/Betrieb“ auf /kommune/ und „Wer ist verantwortlich?“ auf /spielplatz/ ähnlich, aber unterschiedliche Betreiber.
+- /bolzplatztor/ spricht in Description/Hero weiter Kommunen und Schulen an (Ranking, Title/Description tabu).
+
+### Offen
+- [ ] `einsatzorte.ts`: Belege für schule/kommune auf die neuen Stellen (an pruef-geo gegeben).
+- [ ] „15–25 Jahre“ noch in /material-vergleich/, /kaufberatung/ (an pruef-ratgeber), llms-full.txt (an pruef-geo).
+- [ ] /verein/: „Jedes Jahr gibt es in Deutschland Unfälle …“ und Lebensdauer Netz „3–5 Saisons“ unbelegt – Entscheidung Matze.
+
 ## 30.10.2026 – Neue Torart-Seiten /grossfeldtor/, /jugendtor/, /kleinfeldtor/ (Branch `feature/feinschliff`, nicht live)
 
 ### Neu

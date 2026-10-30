@@ -49,7 +49,7 @@ const faqs = [
   {
     question: 'Welche Tore eignen sich für einen kommunalen Sportplatz?',
     answer:
-      'Dieselben wie für jeden Vereinsplatz: Großfeldtore 7,32 × 2,44 m, Jugendtore 5,00 × 2,00 m und Kleinfeldtore 3,00 × 2,00 m, jeweils mit Netz. Mobile Tore müssen gegen Umkippen gesichert werden, etwa mit Bodenankern oder Zusatzgewichten. Welche Größe welche Altersklasse braucht, steht im Vereins-Ratgeber.',
+      'Dieselben wie für jeden Vereinsplatz: Großfeldtore 7,32 × 2,44 m, Jugendtore 5,00 × 2,00 m und Kleinfeldtore 3,00 × 2,00 m, jeweils mit Netz. Mobile Tore müssen gegen Umkippen gesichert werden, etwa mit Bodenankern oder Zusatzgewichten. Welche Größe welche Altersklasse braucht, steht in der Größen-Übersicht.',
   },
   {
     question: 'Wer ist für die Sicherheit von Toren auf öffentlichen Plätzen verantwortlich?',
@@ -110,54 +110,16 @@ const schema = [
       Welche Fußballtore braucht eine Kommune?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die wichtigste Frage ist: <strong>Steht jemand daneben, wenn gespielt wird?</strong> Auf dem Sportplatz trainiert ein Verein, Tore werden auf- und abgebaut und vom Trainer im Blick behalten. Ein öffentlicher Bolzplatz ist dagegen rund um die Uhr frei zugänglich und wird ohne Aufsicht bespielt, beklettert und manchmal auch beschädigt. Daraus ergeben sich unterschiedliche Torarten und unterschiedliche Normen.
+      Die wichtigste Frage ist: <strong>Steht jemand daneben, wenn gespielt wird?</strong> Auf dem Sportplatz trainiert ein Verein, Tore werden auf- und abgebaut und vom Trainer im Blick behalten. Ein öffentlicher Bolzplatz ist dagegen rund um die Uhr frei zugänglich und wird ohne Aufsicht bespielt, beklettert und manchmal auch beschädigt. Daraus ergeben sich unterschiedliche Torarten und unterschiedliche Normen. Kurz gesagt: Auf den öffentlichen Bolzplatz gehört ein Bolzplatztor, auf den kommunalen Sportplatz gehören Großfeld-, Jugend- und Kleinfeldtore, auf kleine Freizeitflächen robuste Alu-Minitore.
     </p>
 
-    <div class="overflow-x-auto my-8">
-      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
-        <thead class="bg-neutral-50">
-          <tr>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Kommunale Fläche</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Geeignete Torarten</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Darauf kommt es an</th>
-          </tr>
-        </thead>
-        <tbody class="text-neutral-600">
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Öffentlicher Bolzplatz (ohne Aufsicht)</td>
-            <td class="px-4 py-3">Bolzplatztor 3,00 × 2,00 m</td>
-            <td class="px-4 py-3">Vollverschweißt, geschlossener Hinterbau, fest verankert; Norm für frei zugängliche Geräte</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Kommunaler Sportplatz (Vereinsbetrieb)</td>
-            <td class="px-4 py-3">Großfeldtor 7,32 × 2,44 m, Jugendtor 5,00 × 2,00 m, Kleinfeldtor 3,00 × 2,00 m</td>
-            <td class="px-4 py-3">Netz, Kippsicherung, Größen nach Altersklasse</td>
-          </tr>
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Freizeitanlage, Park, kleine Ballspielfläche</td>
-            <td class="px-4 py-3">Alu-Minitor mit geschlossenem Hinterbau, Bolzplatztor</td>
-            <td class="px-4 py-3">Robust ohne loses Netz, Größe nach Fläche und Alter</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Schulhof, Schulsport</td>
-            <td class="px-4 py-3">Bolzplatztor oder Minitor (Hof), Kleinfeld- oder Jugendtor (Sport)</td>
-            <td class="px-4 py-3">Siehe <a href="/schule/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für die Schule</a></td>
-          </tr>
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Öffentlicher Spielplatz</td>
-            <td class="px-4 py-3">Bolzplatztor, Minitor</td>
-            <td class="px-4 py-3">Siehe <a href="/spielplatz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für den Spielplatz</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <p class="text-neutral-600 leading-relaxed mb-4">
+    <!-- Welche Torarten passen hier? Ersetzt die frühere Tabelle „Kommunale Fläche → Torart“, damit die Zuordnung nur einmal steht (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="kommune" />
+
+    <p class="text-neutral-600 leading-relaxed mt-6 mb-4">
       Pop-up-Tore und klappbare Minitore aus dem Garten- und Trainingsbereich sind für dauerhaft frei zugängliche Flächen nicht gemacht. Alle Tormaße mit den offiziellen Vorgaben findest du in der <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
     </p>
-
-    <!-- Welche Torarten passen hier? Hinter der Tabelle „Welches Tor passt …“, damit sie nicht doppelt wirkt (src/data/einsatzorte.ts) -->
-    <TorartenFuerEinsatzort ort="kommune" />
 
     <!-- Bolzplatz -->
     <h2 id="bolzplatz" class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4 scroll-mt-24">
@@ -179,7 +141,7 @@ const schema = [
 
     <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Bolzplatz in Wohnnähe: geräuschgedämpfte Tore</h3>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Liegt der Bolzplatz nah an Wohnhäusern, kommt zu den Stimmen der Spieler ein zweites Geräusch: das Scheppern, wenn der Ball auf den Metallrahmen trifft. Beim <a href={addUtm(silence.url, 'kommune')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">SILENCE Bolzplatztor</a> ist die Alu-Konstruktion laut anstoss24 mit Sand gefüllt, „daher ist das Aufprallgeräusch von Schüssen oder anderen Einwirkungen extrem gedämpft“. Der Shop beschreibt es als zusätzlich extrem gut geeignet für öffentliche Sport- und Spielplätze. Mehr zu Lärm und Standortwahl steht im Ratgeber <a href="/spielplatz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für den Spielplatz</a>.
+      Liegt der Bolzplatz nah an Wohnhäusern, kommt zu den Stimmen der Spieler ein zweites Geräusch: das Scheppern, wenn der Ball auf den Metallrahmen trifft. Beim <a href={addUtm(silence.url, 'kommune')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">SILENCE Bolzplatztor</a> ist die Alu-Konstruktion laut anstoss24 mit Sand gefüllt, das Aufprallgeräusch wird dadurch stark gedämpft. Mehr zu Lärm und Standortwahl steht im Ratgeber <a href="/spielplatz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für den Spielplatz</a>.
     </p>
 
     <!-- Sportplatz -->
@@ -190,15 +152,15 @@ const schema = [
       Viele Sportplätze gehören der Gemeinde und werden von Vereinen genutzt. Hier braucht es keine Bolzplatztore, sondern <strong>Spielfeldtore mit Netz</strong> in den Größen, die der Spielbetrieb vorgibt:
     </p>
     <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
-      <li><strong>Großfeldtor 7,32 × 2,44 m</strong> für Herren, Frauen und die älteren Jugenden</li>
-      <li><strong>Jugendtor 5,00 × 2,00 m</strong> für die E- und D-Jugend</li>
-      <li><strong>Kleinfeldtor 3,00 × 2,00 m</strong> für die F-Jugend und als Trainingstor</li>
+      <li><a href="/grossfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Großfeldtor</a> <strong>7,32 × 2,44 m</strong> für Herren, Frauen und ab der C-Jugend</li>
+      <li><a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Jugendtor</a> <strong>5,00 × 2,00 m</strong> für die E- und D-Jugend</li>
+      <li><a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kleinfeldtor</a> <strong>3,00 × 2,00 m</strong> für die F-Jugend und als Trainingstor</li>
     </ul>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Für die beiden großen Maße gilt die <strong>DIN EN 748</strong>: laut DIN Media für Fußballtore 5,00 × 2,00 m und 7,32 × 2,44 m für Training und Wettkampf. Kleinere Spielfeldtore über 10 kg fallen unter die <strong>DIN EN 16579</strong>. Auf dem Sportplatz werden Tore oft verschoben und am Rand abgestellt. Mobile Tore müssen deshalb gegen Umkippen gesichert werden, etwa mit Bodenankern oder Zusatzgewichten. Wie das geht, steht in der <a href="/aufbau-anleitung/#kippsicherung" class="text-accent hover:text-accent-dark transition-colors font-medium">Anleitung zur Kippsicherung</a>.
+      Für Großfeld- und Jugendtore gilt die <strong>DIN EN 748</strong>, für Kleinfeldtore die <strong>DIN EN 16579</strong> (Übersicht in der <a href="#normen" class="text-accent hover:text-accent-dark transition-colors font-medium">Normen-Tabelle</a>). Auf dem Sportplatz werden Tore oft verschoben und am Rand abgestellt. Mobile Tore müssen deshalb gegen Umkippen gesichert werden, etwa mit Bodenankern oder Zusatzgewichten. Wie das geht, steht in der <a href="/aufbau-anleitung/#kippsicherung" class="text-accent hover:text-accent-dark transition-colors font-medium">Anleitung zur Kippsicherung</a>.
     </p>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Welche Altersklasse auf welches Tor spielt und ob fest eingebaute oder mobile Tore besser passen, erklären wir ausführlich im Ratgeber <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtore für Vereine</a>. Steht der Platz öfter offen, ohne dass ein Verein trainiert, lohnt sich ein Blick auf robustere Tore: Das <a href={addUtm(kleinfeldtor.url, 'kommune')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">mobile Kleinfeldtor mit Herkulesnetz</a> entspricht laut anstoss24 in Verbindung mit den passenden Sicherheits-Verankerungs-Systemen oder einem kompatiblen Zusatzgewicht der DIN EN 748 zur Kippsicherung und hat eine Netzaufhängung mit Stangensystem.
+      Bauarten, Netz und Kippsicherung stehen auf den Seiten der drei Torarten, wie ein Verein seinen Platz ausstattet, im Ratgeber <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtore für Vereine</a>. Steht der Platz öfter offen, ohne dass ein Verein trainiert, lohnt sich ein Blick auf robustere Tore: Das <a href={addUtm(kleinfeldtor.url, 'kommune')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">mobile Kleinfeldtor mit Herkulesnetz</a> entspricht laut anstoss24 in Verbindung mit den passenden Sicherheits-Verankerungs-Systemen oder einem kompatiblen Zusatzgewicht der DIN EN 748 zur Kippsicherung und hat eine Netzaufhängung mit Stangensystem.
     </p>
 
     <!-- Produkte -->
@@ -265,7 +227,7 @@ const schema = [
     </ul>
 
     <!-- Normen -->
-    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+    <h2 id="normen" class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4 scroll-mt-24">
       Welche Norm gilt für welches Tor auf kommunalen Flächen?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
@@ -316,7 +278,7 @@ const schema = [
     </h2>
     <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
       <li><strong>Planung:</strong> Erst die Fläche, dann das Tor. Die DIN 18034-1 behandelt Planung, Bau und Betrieb von Spielflächen und kennt eigene Flächen vorrangig für Ballspiele. Tor so ausrichten, dass Schüsse nicht in Richtung Wohnhäuser, Wege oder Sitzbänke gehen.</li>
-      <li><strong>Auswahl:</strong> Torart nach Fläche wählen (siehe Tabelle oben) und prüfen, ob die Norm in der Produktbeschreibung zum Einsatz passt.</li>
+      <li><strong>Auswahl:</strong> Torart nach Fläche wählen (siehe „Welche Torarten passen hier?“) und prüfen, ob die Norm in der Produktbeschreibung zum Einsatz passt.</li>
       <li><strong>Lieferung und Einbau:</strong> Vollverschweißte Tore liefert anstoss24 laut Shop per Spedition, die sich 1–3 Tage vorher telefonisch meldet. Für die Fundamentverankerung den Einbau mit Bauhof oder Garten- und Landschaftsbauer einplanen.</li>
       <li><strong>Betrieb:</strong> Wer die Fläche betreibt, trägt die Verkehrssicherungspflicht. Tore regelmäßig auf lose Teile, Risse und festen Stand kontrollieren und die Kontrollen schriftlich festhalten.</li>
     </ul>
@@ -337,7 +299,7 @@ const schema = [
     <RelatedContent
       items={[
         { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Bauart, Material und Größen im Detail' },
-        { href: '/verein/', title: 'Verein & Wettkampf', subtitle: 'Großfeld-, Jugend- und Kleinfeldtore' },
+        { href: '/verein/', title: 'Verein & Wettkampf', subtitle: 'Den ganzen Platz ausstatten' },
         { href: '/schule/', title: 'Schule & Kita', subtitle: 'Tore für Schulhof und Schulsport' },
         { href: '/spielplatz/', title: 'Spielplatz', subtitle: 'Tore für frei zugängliche Spielflächen' },
       ]}

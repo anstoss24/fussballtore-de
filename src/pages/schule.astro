@@ -95,7 +95,7 @@ const schema = [
         { label: 'Schulsport', text: 'Kleinfeld- oder Jugendtor mit Netz. Jedes Tor muss gegen Umstürzen gesichert sein, auch bei der Lagerung (DGUV 202-044).' },
         { label: 'Kita', text: 'Kleine Tore reichen, müssen aber standsicher verankert sein, auch wenn Kinder daran klettern (DGUV 202-022).' },
         { label: 'Normen', text: 'DIN EN 748 nur für 5 × 2 m und 7,32 × 2,44 m über 42 kg. Andere Tore über 10 kg: DIN EN 16579. Frei zugängliche Multisportanlagen: DIN EN 15312.' },
-        { label: 'Prüfung', text: 'Sichtprüfung durch die Sportlehrkraft vor jeder Benutzung, Prüfung durch eine befähigte Person mindestens einmal jährlich.' },
+        { label: 'Prüfung', text: 'Funktionsprüfung durch die Sportlehrkraft vor jeder Benutzung, Prüfung durch eine befähigte Person mindestens einmal jährlich.' },
       ]}
       speakableId="tldr-schule"
     />
@@ -110,49 +110,16 @@ const schema = [
       Welches Fußballtor passt zur Schule?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Entscheidend ist nicht die Schulform, sondern <strong>wo das Tor steht und ob jemand daneben steht</strong>. Ein Tor im Sportunterricht wird von einer Lehrkraft beaufsichtigt, aufgebaut und geprüft. Ein Tor auf dem Schulhof steht dagegen dauerhaft draußen und wird von vielen Kindern gleichzeitig genutzt – auch zum Klettern und Draufsitzen.
+      Entscheidend ist nicht die Schulform, sondern <strong>wo das Tor steht und ob jemand daneben steht</strong>. Ein Tor im Sportunterricht wird von einer Lehrkraft beaufsichtigt, aufgebaut und geprüft. Ein Tor auf dem Schulhof steht dagegen dauerhaft draußen und wird von vielen Kindern gleichzeitig genutzt – auch zum Klettern und Draufsitzen. Kurz gesagt: Auf den Schulhof gehört ein fest verankertes Bolzplatztor oder Alu-Minitor mit geschlossenem Hinterbau, auf den Schulsportplatz ein Kleinfeld- oder Jugendtor mit Netz und Kippsicherung, auf das Kita-Gelände ein kleines, standsicher verankertes Minitor.
     </p>
 
-    <div class="overflow-x-auto my-8">
-      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
-        <thead class="bg-neutral-50">
-          <tr>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatzort</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Passendes Tor</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Darauf kommt es an</th>
-          </tr>
-        </thead>
-        <tbody class="text-neutral-600">
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Schulhof (Pause, Nachmittag)</td>
-            <td class="px-4 py-3">Bolzplatztor 3,00 × 2,00 m oder Alu-Minitor</td>
-            <td class="px-4 py-3">Vollverschweißt, geschlossener Hinterbau, fest verankert</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Schulsportplatz</td>
-            <td class="px-4 py-3">Kleinfeldtor 3,00 × 2,00 m oder Jugendtor 5,00 × 2,00 m</td>
-            <td class="px-4 py-3">Kippsicherung im Spielbetrieb und bei der Lagerung</td>
-          </tr>
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Grundschulhof, Ganztag</td>
-            <td class="px-4 py-3">Alu-Minitor 1,20 × 0,80 m bis 1,80 × 1,20 m</td>
-            <td class="px-4 py-3">Robust, ohne loses Netz, für kleine Spielflächen</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Kita-Außengelände</td>
-            <td class="px-4 py-3">Minitor 1,20 × 0,80 m</td>
-            <td class="px-4 py-3">Standsicher verankert, auch wenn Kinder klettern</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <p class="text-neutral-600 leading-relaxed mb-4">
+    <!-- Welche Torarten passen hier? Ersetzt die frühere Tabelle „Einsatzort → Passendes Tor“, damit die Zuordnung nur einmal steht (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="schule" />
+
+    <p class="text-neutral-600 leading-relaxed mt-6 mb-4">
       Alle Tormaße mit den offiziellen Vorgaben findest du in der <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
     </p>
-
-    <!-- Welche Torarten passen hier? Hinter der Tabelle „Welches Tor passt …“, damit sie nicht doppelt wirkt (src/data/einsatzorte.ts) -->
-    <TorartenFuerEinsatzort ort="schule" />
 
     <!-- Schulhof -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
@@ -182,7 +149,7 @@ const schema = [
       Unsere Empfehlungen für Schulhof und Schulsport
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-8">
-      Für den frei bespielten Schulhof empfehlen wir ein vollverschweißtes Bolzplatztor mit geschlossenem Hinterbau. Für den Schulsportplatz passt ein mobiles Kleinfeldtor, das sich mit der passenden Kippsicherung sicher aufstellen lässt:
+      Für den frei bespielten Schulhof empfehlen wir ein vollverschweißtes Bolzplatztor mit geschlossenem Hinterbau. Für den Schulsportplatz passt ein mobiles <a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kleinfeldtor</a>, das sich mit der passenden Kippsicherung sicher aufstellen lässt:
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -317,6 +284,7 @@ const schema = [
         { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher für öffentliche Plätze' },
         { href: '/spielplatz/', title: 'Spielplatz', subtitle: 'Tore für frei zugängliche Spielflächen' },
         { href: '/minitore/', title: 'Minitore', subtitle: 'Größen und Bauarten im Überblick' },
+        { href: '/kommune/', title: 'Kommune', subtitle: 'Bolzplatz, Sportplatz, Freizeitanlage' },
         { href: '/aufbau-anleitung/', title: 'Aufbau & Kippsicherung', subtitle: 'Tore sicher aufstellen' },
       ]}
     />

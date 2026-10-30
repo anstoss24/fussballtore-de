@@ -13,7 +13,9 @@ import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import { AUTHOR, PUBLISHER, SOURCES, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
+import productsData from '../data/products.json';
 const dateModified = pageDates['verein'];
+const kleinfeldMobil = productsData.products.find((p) => p.id === 'kleinfeldtor-mobil')!;
 
 const title = 'Fußballtor für Vereine – DIN-konform';
 const description = 'Fußballtore für den Vereinsbetrieb: Großfeldtore 7,32 x 2,44 m, Jugendtore 5 x 2 m, DIN EN 748, TÜV-geprüft, fest oder mobil. Das passende Wettkampftor finden.';
@@ -41,7 +43,7 @@ const faqs = [
   },
   {
     question: 'Welches Material ist für Vereinstore am besten geeignet?',
-    answer: 'Aluminium ist der Standard für professionelle Vereinstore. Es ist leicht, rostfrei und extrem langlebig (15–25 Jahre). Für Minitore und Gartentore kommen auch Kunststoff und Fiberglas zum Einsatz. Einen detaillierten Vergleich findest du in unserem Material-Vergleich.',
+    answer: 'Aluminium ist der Standard für professionelle Vereinstore. Es ist leicht, rostfrei und sehr langlebig. Für Minitore und Gartentore kommen auch Kunststoff und Fiberglas zum Einsatz. Einen detaillierten Vergleich findest du in unserem Material-Vergleich.',
   },
 ];
 
@@ -127,7 +129,7 @@ const schema = [
     <TldrBlock
       title="Vereinstor — die Pflicht-Kriterien"
       items={[
-        { label: 'Regelmaße', text: 'Großfeld 7,32 × 2,44 m (ab C-Jugend, Herren, Frauen), Jugendtor 5 × 2 m (D-Jugend), Kleinfeld 3 × 2 m (F-Jugend).' },
+        { label: 'Regelmaße', text: 'Großfeld 7,32 × 2,44 m (ab C-Jugend, Herren, Frauen), Jugendtor 5 × 2 m (E- und D-Jugend), Kleinfeld 3 × 2 m (F-Jugend).' },
         { label: 'Norm', text: 'Großfeld- und Jugendtore: DIN EN 748, andere Spielfeldtore über 10 kg wie Kleinfeldtore: DIN EN 16579 (Verkehrssicherungspflicht). Ein TÜV-Prüfzeichen weist das nach und sichert die Haftung ab.' },
         { label: 'Material', text: 'Aluminium-Ovalprofil 120/100 mm ist der Standard. Vollverschweißt für maximale Stabilität.' },
         { label: 'Bauart', text: 'Bodenhülsen am Wettkampfplatz, transportable Tore mit Gegengewichten fürs Training.' },
@@ -143,7 +145,7 @@ const schema = [
         Ein <strong>Fußballtor für den Verein</strong> muss mehr leisten als ein Gartentor: Es braucht die exakten Regelmaße, muss nach DIN EN 748 geprüft sein und jahrelang Wind, Wetter und harte Schüsse aushalten. Ob Großfeldtor für die Herrenmannschaft oder Jugendtor für den Nachwuchs – hier erfährst du, worauf es bei der Anschaffung ankommt.
       </p>
       <p>
-        Wir haben die wichtigsten Informationen zusammengetragen, die du als Vereinsverantwortlicher, Platzwart oder Trainer für die Beschaffung brauchst: von Regelmaßen und Normen über Materialwahl bis hin zu konkreten Kostenbeispielen. Alle vorgestellten Tore stammen von <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Fachhändlern für Vereinsbedarf</a> – TÜV-geprüft und aus deutscher Fertigung.
+        Wir haben die wichtigsten Informationen zusammengetragen, die du als Vereinsverantwortlicher, Platzwart oder Trainer für die Beschaffung brauchst: von Regelmaßen und Normen über Materialwahl bis hin zu konkreten Kostenbeispielen. Alle vorgestellten Tore stammen von <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">Fachhändlern für Vereinsbedarf</a>.
       </p>
     </div>
 
@@ -160,7 +162,7 @@ const schema = [
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
         <p>
-          Das <strong>Wettkampf-Fußballtor</strong> mit den Maßen <strong>7,32 x 2,44 m</strong> ist der Standard für alle Herren-, Frauen- und Jugendspiele ab der C-Jugend (U14). Diese Abmessungen sind von der FIFA und dem DFB festgelegt und gelten weltweit – vom Kreisliga-Platz bis zur Bundesliga-Arena.
+          Das <strong>Wettkampf-Fußballtor</strong> mit den Maßen <strong>7,32 x 2,44 m</strong> ist der Standard für alle Herren-, Frauen- und Jugendspiele ab der C-Jugend (U14). Diese Abmessungen sind in Regel 1 der Fußballregeln (IFAB) festgelegt und gelten weltweit – vom Kreisliga-Platz bis zur Bundesliga-Arena.
         </p>
         <p>
           Beim Kauf eines Großfeldtors solltest du auf folgende Punkte achten:
@@ -169,7 +171,7 @@ const schema = [
           <li><strong>Profil und Material:</strong> Hochwertige Großfeldtore bestehen aus <a href="/material-vergleich/" class="text-accent hover:text-accent-dark transition-colors">Aluminium-Profilen</a> – leicht, rostfrei und formstabil. Ein Ovalprofil mit 120 x 100 mm Querschnitt ist der gängige Standard.</li>
           <li><strong>Netzaufhängung:</strong> Tore mit freier Netzaufhängung haben eine schönere Optik, entsprechen den Bundesligastandards und werden überwiegend im Wettkampfbetrieb eingesetzt.</li>
           <li><strong>Bodenverankerung:</strong> Für den festen Einsatz auf dem Vereinsplatz empfehlen sich Bodenhülsen. Sie sorgen für maximale Standsicherheit und lassen sich bei Bedarf bündig in den Boden einsetzen.</li>
-          <li><strong>TÜV-Prüfung:</strong> Ein Muss für den Vereinsbetrieb. Achte auf das Prüfzeichen nach DIN EN 748.</li>
+          <li><strong>TÜV-Prüfung:</strong> Ein Prüfzeichen nach DIN EN 748 weist nach, dass das Tor die Norm erfüllt. Ob ein Modell geprüft ist, steht in der Produktbeschreibung.</li>
         </ul>
         <p>
           Das folgende Bundesliga-Modell ist eine solide Wahl für Vereine, die Wert auf Profi-Qualität legen – mit konfigurierbarer Ausstattung und freier Netzaufhängung.
@@ -180,7 +182,7 @@ const schema = [
         <ProductCard
           name="Bundesliga-Tor 7,32 x 2,44 m – freie Netzaufhängung"
           url="https://www.anstoss24.de/fussballtor-bundesliga_107_144161/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/107/secondPreview/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/107/full/Fussballtor-Bundesliga-7-32-x-2-44-m-freie-Netzaufhaengung-107-352181-Wettkampftor-Spannstange-02.jpg"
           features={["Bundesliga-Modell", "Freie Netzaufhängung", "Alu-Ovalprofil 120/100 mm", "TÜV-geprüft"]}
           category="Großfeldtore"
           campaign="verein"
@@ -197,7 +199,7 @@ const schema = [
         <ProductCard
           name="Großfeldtor 7,32 x 2,44 m – transportabel, vollverschweißt, inkl. Netz"
           url="https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst_1523_237176/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/1523/secondPreview/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-un.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/1523/full/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst--inkl--Tornetz-1523-620453-Grossfeld-transportabel-003.jpg"
           features={["Vollverschweißt", "Transportrollen", "Inkl. Tornetz"]}
           category="Trainingstor"
           campaign="verein"
@@ -233,7 +235,7 @@ const schema = [
         <ProductCard
           name="Jugendtor 5 x 2 m – vollverschweißt, Transportrollen, inkl. Netz"
           url="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419739/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
           features={["Vollverschweißt", "Transportrollen", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"]}
           category="Jugendtore"
           campaign="verein"
@@ -241,7 +243,7 @@ const schema = [
         <ProductCard
           name="Jugendtor 5 x 2 m – vollverschweißt, Transportrollen + Tragegriffe, inkl. Netz"
           url="https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-transportrollen-inkl-tornetz_14628_419740/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/14628/full/Transportables-Jugendtor-5-00-x-2-00-m-vollverschweisst-und-mit-Transportrollen--inkl--Tornetz-14628.png"
           features={["Vollverschweißt", "Transportrollen + Tragegriffe", "Inkl. Tornetz", "Ovalprofil 120/100 mm", "DIN EN 748"]}
           category="Jugendtore"
           campaign="verein"
@@ -265,17 +267,17 @@ const schema = [
 
       <div class="my-8 max-w-md">
         <ProductCard
-          name="Bolzplatztor UNKAPUTTBAR 3 x 2 m – vandalismussicher"
-          url="https://www.anstoss24.de/fussballtore/kleinfeld-bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-unkaputtbar_255_1130/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/255/secondPreview/Fussballtor-Bolzplatztor-3-00-x-2-00-m-UNKAPUTTBAR-255.jpg"
-          features={["Vollverschweißt", "Vandalismusresistent", "Geschlossener Hinterbau", "TÜV-geprüft", "5 Jahre Garantie"]}
-          category="Bolzplatztore"
+          name={kleinfeldMobil.name}
+          url={kleinfeldMobil.url}
+          imageUrl={kleinfeldMobil.imageUrl}
+          features={kleinfeldMobil.features}
+          category="Kleinfeldtore"
           campaign="verein"
         />
       </div>
 
       <p class="text-neutral-600 leading-relaxed mt-6">
-        Für Bolzplätze, Schulhöfe und kommunale Spielflächen haben wir eigene Empfehlungen — siehe unser <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>. Speziell für Schulhof und Schulsport gibt es den Ratgeber <a href="/schule/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für die Schule</a>, für öffentliche Spielplätze den Ratgeber <a href="/spielplatz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für den Spielplatz</a>.
+        Für Bolzplätze, Schulhöfe und kommunale Spielflächen haben wir eigene Empfehlungen — siehe unser <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>. Speziell für Schulhof und Schulsport gibt es den Ratgeber <a href="/schule/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für die Schule</a>, für öffentliche Spielplätze den Ratgeber <a href="/spielplatz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für den Spielplatz</a> und für kommunale Flächen den Ratgeber <a href="/kommune/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtore für Kommunen</a>.
       </p>
     </section>
 
@@ -304,7 +306,7 @@ const schema = [
           <li><strong>Regelmäßige Prüfung:</strong> Eine jährliche Sicherheitsüberprüfung durch eine sachkundige Person wird empfohlen. Zusätzlich sollte vor jeder Nutzung eine Sichtprüfung erfolgen.</li>
         </ul>
         <p>
-          <strong>Praxis-Tipp:</strong> Kaufe ausschließlich Tore mit TÜV-Prüfzeichen. Im Schadensfall haftet der Verein, wenn die eingesetzten Tore nicht normkonform sind. Die Mehrkosten für geprüfte Qualität sind im Vergleich zum Haftungsrisiko vernachlässigbar.
+          <strong>Praxis-Tipp:</strong> Achte beim Kauf auf einen Nachweis, dass das Tor die passende Norm erfüllt, etwa ein TÜV-Prüfzeichen. Im Schadensfall haftet der Verein, wenn die eingesetzten Tore nicht normkonform sind. Die Mehrkosten für geprüfte Qualität sind im Vergleich zum Haftungsrisiko vernachlässigbar.
         </p>
       </div>
     </section>
@@ -388,7 +390,7 @@ const schema = [
         <ProductCard
           name="Tornetz für Großfeldtore – Stärke 4 mm"
           url="https://www.anstoss24.de/fussballtore/tornetze/tornetz-fuer-grossfeldtore-staerke-4-mm_617025_1055254/"
-          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/617025/full/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-617025-Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25-1.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/617025/full/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-617025-06-tornetz-blau-gelb.jpg"
           features={["Polypropylen", "4 mm, knotenlos", "Maschenweite 12 cm", "Farbwahl"]}
           category="Tornetze"
           campaign="verein"
@@ -451,7 +453,7 @@ const schema = [
         { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Wettkampf-Maße' },
         { href: '/material-vergleich/', title: 'Material', subtitle: 'Alu vs. Kunststoff' },
         { href: '/tornetz/', title: 'Tornetz', subtitle: 'Material und Stärke richtig wählen' },
-        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher für Kommunen' },
+        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: 'Vandalismussicher für offene Plätze' },
       ]}
     />
 
