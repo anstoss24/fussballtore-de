@@ -3,6 +3,19 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Startseite nach Vorschlag 1, Menü-Struktur, Aufräumen (Branch `feature/feinschliff`, nicht live)
+
+**Entscheidung (Matze 30.10.):** Startseite = Vorschlag 1 von drei Entwürfen. Stockfotos für Einsatzorte verworfen, stattdessen eigene Illustrationen.
+
+### Geändert
+- Startseite: Hero mit H1, Unterzeile, grünem Button „Zum Torberater“ und Textlink „Zur Kaufberatung“, niedriger als bisher; die Torberater-Kacheln im Hero sind raus. „Fußballtore nach Torart“ als Fotokarten mit Maß, Kurzbeschreibung und Torberater-Kennzahl „x Tore · ab y €“ (Kleinfeld hat im Torberater keine eigene Antwort, daher ohne). „Fußballtore nach Einsatzort“ als gleich große Karten mit gezeichneter Ortsillustration und „Geeignet: …“. H1, Title, Description, Schema und FAQ unverändert.
+- Sportverein-Illustration: satteres Rasengrün, Feldlinien kräftiger (war zu blass).
+- Menü: Desktop Kaufberatung · Größen · Material direkt (Top-Links bleiben wegen SEO), Dropdown „Tore“ = nur die 5 Torarten, „Einsatzorte“ = die 5 Orte, neues Dropdown „Mehr Ratgeber“ = Tornetz, Aufbau & Kippsicherung, Kindertore nach Alter, Funino-Tore; Torberater als Button. Mobilmenü und Footer mit denselben Gruppen Ratgeber / Torarten / Einsatzorte. Grund: Kinder und Funino sind Ratgeber, keine Torarten – jede Gruppe enthält jetzt nur eine Sorte Seite.
+- Gelöscht: Entwurfsrouten /vorschlag-1/ bis /vorschlag-3/ (waren noindex) samt Sitemap-Filter, `src/components/vorschlag/`, Stockfotos `public/images/einsatzorte/` (Pexels/Pixabay und das ungenutzte Shop-Vereinsfoto), `docs/bildnachweise.md` (keine Fremdbilder mehr im Einsatz), Screenshot-Ordner `docs/entwuerfe/`, ungenutzte `CategoryCard` und `TorberaterEinstieg`.
+
+### Offen
+- [ ] Echte Kundenfotos der Einsatzorte (Verein, Schule, Bolzplatz, Garten) sammeln; dann Illustrationen ggf. ersetzen.
+
 ## 30.10.2026 – Normen-Aussagen korrigiert, Förderung entfernt (Branch `feature/feinschliff`, nicht live)
 
 **Entscheidung (Matze 30.10.):** Förderung komplett raus (anstoss24 fördert nichts, aktuelle Lage nicht belegbar). DIN-Aussagen auf belegten Stand: DIN EN 748:2018-04 nur für 7,32 × 2,44 m und 5 × 2 m (Training/Wettkampf), DIN EN 16579:2020-01 für andere Spielfeldtore über 10 kg, DIN EN 15312:2026-06 für frei zugängliche, fest installierte Tore ohne Aufsicht. Normen sind keine Gesetze; Pflicht = Verkehrssicherungspflicht des Betreibers, Norm = Maßstab.
