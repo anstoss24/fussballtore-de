@@ -6,7 +6,7 @@ import FAQSection from '../components/FAQSection.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { features } from '../data/features';
 import { tbLastUpdated } from '../utils/torberater';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, WEBSITE } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['torberater'];
 
@@ -57,7 +57,7 @@ const schema = [
     about: { '@type': 'Thing', name: 'Fußballtor' },
     author: AUTHOR,
     publisher: { '@type': 'Organization', name: 'fussballtore.de', url: 'https://fussballtore.de' },
-    isPartOf: { '@type': 'WebSite', name: 'fussballtore.de', url: 'https://fussballtore.de' },
+    isPartOf: { '@id': WEBSITE['@id'] },
     mainEntity: { '@id': 'https://fussballtore.de/torberater/#app' },
   },
   {

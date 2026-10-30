@@ -11,7 +11,7 @@ import FAQSection from '../components/FAQSection.astro';
 import { features } from '../data/features';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
-import { PUBLISHER } from '../data/entities';
+import { PUBLISHER, WEBSITE } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['index'];
 
@@ -69,11 +69,8 @@ const faqs = [
 const schema = [
   {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'fussballtore.de',
-    url: 'https://fussballtore.de',
+    ...WEBSITE,
     description,
-    inLanguage: 'de-DE',
   },
   { '@context': 'https://schema.org', ...PUBLISHER },
 ];
