@@ -3,6 +3,30 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Konsistenz-Review Ratgeberseiten (Branch `feature/feinschliff`, nicht live)
+
+Geprüft: Startseite, /kaufberatung/, /groessen/, /material-vergleich/, /tornetz/, /aufbau-anleitung/, /kinder/, /funino/, /torberater/ (inkl. `torberater-texte.ts`), /ueber-uns/. URL, Title, H1 und Description unverändert.
+
+### Geändert
+- Unbelegte Zahlen raus: /aufbau-anleitung/ „30–50 kg Gewicht“ (→ Herstellerangabe + Kipptest), „halbe Stunde“, „3–4 Heringe“ (Shop: 3 Erdhaken), „jährliche“ Prüfung (→ regelmäßige), „häufigste Unfallursache“; Alu „15–25 Jahre“ (/kaufberatung/, /material-vergleich/ → sehr langlebig); Großfeld „40–100 kg“ (/kaufberatung/, /groessen/, /material-vergleich/ → Shop: Bundesliga ca. 50–60 kg, transportabel ca. 70–80 kg); /kinder/ Lebensdauer „2–3 Saisons / 5–8 Jahre“ und Aufbau „5–10 Minuten“; /funino/ „unter 2 Minuten“ (→ Shop: 90 Sekunden); /kaufberatung/ „ausschließlich Bodenhülsen in der Bundesliga“, „Prüfung kostet nur wenig mehr“, „garantiert sicher“; Telefonzeiten auf /kaufberatung/ und /ueber-uns/ (Shop nennt 7:30–20:00, products.json 7:30–17:30).
+- Widersprüche: /kinder/ C-Jugend „ab 14“ → „ab 13“ (wie /groessen/); Pop-up „kann nicht umkippen / kein Kipprisiko“ → kaum Kipprisiko, trotzdem Heringe (wie /aufbau-anleitung/); /kaufberatung/ „offizielle Mini-Tormaße“ → übliche Maße, DFB max. 2,00 × 1,20 m (wie /groessen/, /funino/); /funino/ Maße-Abschnitt nennt die DFB-Obergrenze; /material-vergleich/ „dritte Kategorie“ bei zwei Materialgruppen; /groessen/ FAQ „offizielle Tortiefe“ → keine vorgeschrieben (wie Abschnitt); Preisklasse Jugend/Großfeld „hohe drei-/mehrere hundert“ → vierstellig (Startseite, /kaufberatung/ TL;DR).
+- Normen: DIN-EN-748-Aussagen auf Großfeld/Jugend begrenzt (/aufbau-anleitung/ Standsicherheitsprüfung + FAQ, Torberater-Hilfe Kippsicherung); /kaufberatung/ „Prüfintervalle“ aus der 748-Liste entfernt (Betriebsthema, nicht Produktnorm), TÜV „faktisch Pflicht“/„verbindlich“ → Norm als Maßstab, Prüfzeichen als Nachweis; /groessen/ „müssen TÜV-geprüft sein“ ebenso.
+- Produktfakten: Art. 1523 ohne „TÜV-geprüft“ (/kaufberatung/, /material-vergleich/), Text auf Shop-Wortlaut (Ovalprofil, Tragegriffe, Transporträder optional); Startseite „TÜV-geprüft, Made in Germany“ als Pauschalaussage raus, Herkunft der Empfehlungen (anstoss24, Über uns) offengelegt.
+- Doppelungen: /tornetz/ Garnstärke- und Netztiefe-Tabelle doppelten die Zuordnungstabelle → je ein Satz mit Verweis; TL;DR Netztiefe nennt alle Shop-Varianten; FAQ Maschenweite und /funino/ FAQ Feldgröße nicht mehr wortgleich mit dem Fließtext; /groessen/ Tortiefe im Großfeld-Abschnitt nur noch als Verweis; /kinder/ D-Jugend nur noch im Abschnitt „Ab 12 Jahren“; /ueber-uns/ „14 Jahre“ 5× → „seit 2010“ (wie Footer).
+- Begriffe/Links: „Vereinstor“ als Torart raus (/aufbau-anleitung/ H2, /kinder/); /groessen/ `/verein/#jugendtore` → /jugendtor/; Torart-Links auf /grossfeldtor/, /jugendtor/, /kleinfeldtor/, /bolzplatztor/, /minitore/ in Kaufberatung (Kurz-Empfehlung, Fazit), Größen, Material, Tornetz-Tabelle, Aufbau, Kinder, Funino, Startseite; /ueber-uns/ Quellen um DIN EN 16579/15312 und „Produktangaben aus dem Shop“ ergänzt.
+- page-dates: funino, tornetz, ueber-uns → 2026-10-30 (übrige geprüfte Seiten standen schon darauf).
+
+### Bewusst gelassen
+- Tornetz-Erfahrungswerte (Lebensdauer, Pflege, Winter abnehmen, Ersatznetz pro 4–6 Tore) – Entscheidung Matze.
+- Praxisangaben ohne Norm-/Shopquelle, aber als Empfehlung formuliert: 2 m Auslauf, zweite Person ab 1,80 m, Kinder-Torgrößen nach Alter, Tortiefen Jugend/Kleinfeld auf /groessen/ (Zero-Click-Seite, nur Formulierung „üblich“).
+- Altersangaben/Maße bewusst mehrfach (TL;DR, Tabelle, FAQ) auf /groessen/ und /kinder/ – Antwortformat für Suche/KI, keine wortgleichen Sätze.
+- Torberater-Hilfe „Fest oder mobil“ verlinkt weiter /verein/#fest-oder-mobil (Vergleichstabelle gibt es nur dort).
+
+### Offen
+- [ ] /ueber-uns/ Description nennt „14 Jahren Erfahrung“ (Description nicht angefasst) – an „seit 2010“ angleichen, Freigabe Matze.
+- [ ] products.json `phoneHours` „Mo-Fr 7:30-17:30“ vs. Shop-Kopfzeile „Mo – Fr 7:30 – 20:00“ klären.
+- [ ] Befunde in Torart-/Ort-Seiten (an team-lead): verein FAQ „15–25 Jahre“ und „mittleres vierstelliges Budget“ (selbst gerechnet), verein „Kaufe ausschließlich Tore mit TÜV-Prüfzeichen“; minitore „15–25 Jahre“, Pop-up „1–3 kg“/„2–4 Saisons“, QuickPlay „klappbar“ (Shop: FLEXI POST, sonst überall Stecktor), „6–8 kg“ (Shop: Paketgewicht 8 kg), „meistgewählte Typ“.
+
 ## 30.10.2026 – Konsistenz-Review Torart-/Einsatzort-Seiten (Branch `feature/feinschliff`, nicht live)
 
 Matze: „prüfe wirklich nochmal alles auf Durchgängigkeit und vermeide doppelte Erwähnungen.“ Geprüft: /grossfeldtor/, /jugendtor/, /kleinfeldtor/, /bolzplatztor/, /minitore/, /verein/, /kommune/, /schule/, /spielplatz/, /garten/.

@@ -54,7 +54,7 @@ const faqs = [
   {
     question: 'Was ist die richtige Maschenweite?',
     answer:
-      'Für Großfeld- und Jugendtore sind 12 cm Standard, für Kleinfeld- und Bolzplatztore 10 cm. Netze für Minitore gibt es mit 4,5 oder 10 cm Maschenweite. Für Großfeldtore gibt es neben quadratischen auch wabenförmige Maschen. Wichtiger als die Maschenform ist die Verarbeitung: Knotenlose Netze verschleißen deutlich weniger als geknotete, weil die Maschenverbindungen nicht aneinander scheuern.',
+      'Großfeld- und Jugendtore: 12 cm. Kleinfeld- und Bolzplatztore: 10 cm. Minitore: 4,5 oder 10 cm. Beim Großfeldnetz hast du zusätzlich die Wahl zwischen quadratischen und wabenförmigen Maschen. Wichtiger als die Maschenform ist die Verarbeitung: Knotenlose Netze verschleißen deutlich weniger als geknotete, weil die Maschenverbindungen nicht aneinander scheuern.',
   },
   {
     question: 'Wie viele Löcher hat ein Tornetz?',
@@ -104,7 +104,7 @@ const schema = [
         { label: 'Material', text: 'Hochfestes Polypropylen (PP): langlebig, witterungsbeständig, UV-stabil.' },
         { label: 'Garnstärke', text: '4 mm für Großfeld-, Jugend- und Kleinfeldtore, 3,5 mm beim Großfeldnetz mit Wabenmaschen, 2,3 oder 3,0 mm für Minitore.' },
         { label: 'Maschenweite', text: '12 cm bei Großfeld- und Jugendtoren, 10 cm bei Kleinfeldtoren, 4,5 oder 10 cm bei Minitoren. Knotenlose Netze verschleißen weniger als geknotete.' },
-        { label: 'Netztiefe Großfeld', text: 'Oben 80 cm, unten 200 cm — damit der Ball sauber ins Netz fällt.' },
+        { label: 'Netztiefe Großfeld', text: '80 / 150, 80 / 200 oder 200 / 200 cm (oben / unten), passend zur Tortiefe des Tors.' },
         { label: 'Lebensdauer', text: 'Hochwertige Netze halten bei guter Pflege mehrere Saisons. Sichtprüfung vor jeder Nutzung.' },
       ]}
       speakableId="tldr-tornetz"
@@ -135,25 +135,25 @@ const schema = [
         </thead>
         <tbody class="text-neutral-600">
           <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Großfeldtor (7,32 × 2,44 m)</td>
+            <td class="px-4 py-3 font-medium"><a href="/grossfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Großfeldtor</a> (7,32 × 2,44 m)</td>
             <td class="px-4 py-3">80 / 150, 80 / 200 oder 200 / 200 cm</td>
             <td class="px-4 py-3">4 mm (Wabenmasche: 3,5 mm)</td>
             <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Jugendtor (5,00 × 2,00 m)</td>
+            <td class="px-4 py-3 font-medium"><a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Jugendtor</a> (5,00 × 2,00 m)</td>
             <td class="px-4 py-3">100 / 100, 80 / 150 oder 90 / 200 cm</td>
             <td class="px-4 py-3">4 mm</td>
             <td class="px-4 py-3">12 cm</td>
           </tr>
           <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Kleinfeld-/Bolzplatztor (3,00 × 2,00 m)</td>
+            <td class="px-4 py-3 font-medium"><a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kleinfeld-</a>/<a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a> (3,00 × 2,00 m)</td>
             <td class="px-4 py-3">80 / 100 oder 80 / 150 cm</td>
             <td class="px-4 py-3">4 mm</td>
             <td class="px-4 py-3">10 cm</td>
           </tr>
           <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Minitor (1,20 × 0,80 / 1,80 × 1,20 / 2,40 × 1,60 m)</td>
+            <td class="px-4 py-3 font-medium"><a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitor</a> (1,20 × 0,80 / 1,80 × 1,20 / 2,40 × 1,60 m)</td>
             <td class="px-4 py-3">passend zur Torgröße</td>
             <td class="px-4 py-3">2,3 oder 3,0 mm</td>
             <td class="px-4 py-3">4,5 oder 10 cm</td>
@@ -179,47 +179,8 @@ const schema = [
       Garnstärke: welches Netz wie dick?
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Garnstärke richtet sich nach der Torgröße. Die Vereinsnetze im Fachhandel im Überblick:
+      Die Garnstärke richtet sich nach der Torgröße: <strong>4 mm</strong> bei den Netzen für Großfeld-, Jugend- und Kleinfeldtore, <strong>3,5 mm</strong> beim Großfeldnetz mit wabenförmigen Maschen und <strong>2,3 oder 3,0 mm</strong> bei Minitornetzen. Die Zuordnung je Torgröße steht in der Tabelle oben.
     </p>
-
-    <div class="overflow-x-auto my-8">
-      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
-        <thead class="bg-neutral-50">
-          <tr>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Netz</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Stärke</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Maschenweite</th>
-          </tr>
-        </thead>
-        <tbody class="text-neutral-600">
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Großfeldtor 7,32 × 2,44 m</td>
-            <td class="px-4 py-3">4 mm</td>
-            <td class="px-4 py-3">12 cm</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Großfeldtor, wabenförmige Maschen</td>
-            <td class="px-4 py-3">3,5 mm</td>
-            <td class="px-4 py-3">12 cm</td>
-          </tr>
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Jugendtor 5,00 × 2,00 m</td>
-            <td class="px-4 py-3">4 mm</td>
-            <td class="px-4 py-3">12 cm</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Kleinfeld-, Futsal- und Bolzplatztor 3,00 × 2,00 m</td>
-            <td class="px-4 py-3">4 mm</td>
-            <td class="px-4 py-3">10 cm</td>
-          </tr>
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Minitore</td>
-            <td class="px-4 py-3">2,3 oder 3,0 mm</td>
-            <td class="px-4 py-3">4,5 oder 10 cm</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
     <!-- Maschenweite -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
@@ -247,37 +208,8 @@ const schema = [
       Netztiefe: Damit der Ball nicht zurückrollt
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Die Tortiefe entscheidet, wie schön der Torjubel ausfällt. Zu flache Netze lassen den Ball nach dem Tor sofort wieder herauskullern. Zu tiefe Netze sind teurer und schwerer zu spannen. Bewährte Maße:
+      Die Tortiefe entscheidet, wie schön der Torjubel ausfällt. Zu flache Netze lassen den Ball nach dem Tor sofort wieder herauskullern. Zu tiefe Netze sind teurer und schwerer zu spannen. Welche Netztiefen (oben / unten) es je Torgröße gibt, zeigt die Tabelle oben. Entscheidend ist, dass die Netztiefe zur Tortiefe deines Tors passt – miss oben und unten nach, bevor du bestellst.
     </p>
-
-    <div class="overflow-x-auto my-8">
-      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
-        <thead class="bg-neutral-50">
-          <tr>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Tortyp</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Tortiefe oben</th>
-            <th class="px-4 py-3 font-heading font-bold text-primary">Tortiefe unten</th>
-          </tr>
-        </thead>
-        <tbody class="text-neutral-600">
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Großfeld (7,32 × 2,44 m)</td>
-            <td class="px-4 py-3">80 cm</td>
-            <td class="px-4 py-3">200 cm</td>
-          </tr>
-          <tr class="border-t border-neutral-200 bg-neutral-50/50">
-            <td class="px-4 py-3 font-medium">Jugend (5 × 2 m)</td>
-            <td class="px-4 py-3">80 cm</td>
-            <td class="px-4 py-3">150 cm</td>
-          </tr>
-          <tr class="border-t border-neutral-200">
-            <td class="px-4 py-3 font-medium">Kleinfeld (3 × 2 m)</td>
-            <td class="px-4 py-3">80 cm</td>
-            <td class="px-4 py-3">100 cm</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
       Mehr zu den Tor-Größen findest du in unserer <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größen-Übersicht</a>.
@@ -296,7 +228,7 @@ const schema = [
         <ProductCard
           name="Tornetz für Großfeldtore – Stärke 4 mm"
           url="https://www.anstoss24.de/fussballtore/tornetze/tornetz-fuer-grossfeldtore-staerke-4-mm_617025_1055254/"
-          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/617025/full/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-617025-Tornetz-fuer-Grossfeldtore-Staerke-4-mm-25-1.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/617025/full/Tornetz-fuer-Grossfeldtore-Staerke-4-mm-617025-06-tornetz-blau-gelb.jpg"
           features={['Polypropylen', '4 mm, knotenlos', 'Maschenweite 12 cm', 'Farbwahl']}
           category="Tornetz Großfeld"
           campaign="tornetz"
@@ -346,7 +278,7 @@ const schema = [
       Ein gutes Tornetz ist nicht teuer — ein schlechtes wird teuer. Wir empfehlen für den Vereinsbetrieb <strong>knotenlose PP-Netze in 4 mm Stärke</strong>, mit 12 cm Maschenweite für Großfeld- und Jugendtore und 10 cm für Kleinfeldtore.
     </p>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Für Bolzplätze und vandalismusgefährdete Standorte gibt es vollverschweißte Kleinfeldtore mit Herkulesnetz und Netzaufhängung mit Stangensystem. Mehr dazu findest du im <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>.
+      Für Bolzplätze und vandalismusgefährdete Standorte gibt es vollverschweißte <a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kleinfeldtore</a> mit Herkulesnetz und Netzaufhängung mit Stangensystem. Mehr dazu findest du im <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor-Ratgeber</a>.
     </p>
 
     <RelatedContent

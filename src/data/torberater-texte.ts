@@ -44,7 +44,7 @@ export const HELP: Record<string, { text: string; href?: string; linkText?: stri
     linkText: 'Welches Tornetz für welches Tor?',
   },
   Kippsicherung: {
-    text: 'Jedes freistehende Tor muss nach DIN EN 748 gegen Umkippen gesichert sein. „Mit“ heißt: Stahlgewichte sind fest ins Tor integriert. „Ohne“ heißt: Du sicherst das Tor zusätzlich, z. B. mit Gegengewichten oder Erdankern.',
+    text: 'Für Großfeld- und Jugendtore fordert die DIN EN 748 eine Sicherung gegen Umkippen. „Mit“ heißt: Stahlgewichte sind fest ins Tor integriert. „Ohne“ heißt: Du sicherst das Tor zusätzlich, z. B. mit Gegengewichten oder Erdankern.',
     href: '/aufbau-anleitung/#kippsicherung',
     linkText: 'So sicherst du ein Tor richtig',
   },
@@ -57,7 +57,7 @@ export const HELP: Record<string, { text: string; href?: string; linkText?: stri
     text: 'Bei der Geräuschdämmung ist die Alu-Konstruktion mit Sand gefüllt. Das dämpft das Aufprallgeräusch von Schüssen deutlich – sinnvoll, wenn Anwohner in der Nähe sind.',
   },
   Pfostenprofil: {
-    text: 'Ovalprofile sind bei gleichem Materialgewicht biege- und verwindungssteifer und Standard bei Vereinstoren. Rechteckprofile sind kantig und häufig bei kompakten Minitoren zu finden.',
+    text: 'Ovalprofile (meist 120/100 mm) sind der Standard bei Vereinstoren. Rechteckprofile sind kantig und häufig bei kompakten Minitoren zu finden.',
     href: '/material-vergleich/',
     linkText: 'Mehr zu Profilen und Material',
   },
