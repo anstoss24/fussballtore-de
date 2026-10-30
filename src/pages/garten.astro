@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
@@ -32,7 +33,7 @@ const faqs = [
   },
   {
     question: 'Welches Fußballtor für den Garten ist am stabilsten?',
-    answer: 'Vollverschweißte Aluminium-Minitore: Sie haben keine Steckverbindungen, die ausleiern, sind rostfrei und halten 15 bis 25 Jahre. Klappbare Stecktore wie das QuickPlay sind der stabile Mittelweg, Pop-up-Tore sind bewusst leicht gebaut. Egal welches Modell: Erst mit Erdankern oder Gewichten steht ein Gartentor wirklich sicher.',
+    answer: 'Vollverschweißte Aluminium-Minitore: Sie haben keine Steckverbindungen, die ausleiern, sind rostfrei und sehr langlebig. Klappbare Stecktore wie das QuickPlay sind der stabile Mittelweg, Pop-up-Tore sind bewusst leicht gebaut. Egal welches Modell: Erst mit Erdankern oder Gewichten steht ein Gartentor wirklich sicher.',
   },
   {
     question: 'Kann ein Fußballtor das ganze Jahr im Garten stehen?',
@@ -118,7 +119,7 @@ const schema = [
   />
   <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Gartentore' }]} />
 
-  <article class="container mx-auto py-12 md:py-16 max-w-4xl">
+  <article class="container mx-auto pt-6 pb-12 md:py-16 max-w-4xl">
 
     <TldrBlock
       title="Das richtige Gartentor — schnell entschieden"
@@ -202,13 +203,16 @@ const schema = [
       </p>
     </section>
 
+    <!-- Welche Torarten passen hier? Hinter der Tabelle „Welches Tor passt …“, damit sie nicht doppelt wirkt (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="garten" />
+
     <!-- Stabiles Gartentor -->
     <section class="mt-12 md:mt-16">
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
         Stabiles Fußballtor für den Garten: was wirklich hält
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Wirklich <strong>stabil für den Dauereinsatz im Garten</strong> sind vollverschweißte Aluminium-Minitore: keine Steckverbindungen, die ausleiern, rostfrei und 15–25 Jahre haltbar — das Lightweight-Modell wiegt dabei unter 10 kg. Klappbare Kunststoff-Tore wie das QuickPlay sind der stabile Mittelweg (windgetestet bis über 120 km/h, mit Erdankern gesichert). Pop-up-Tore sind bewusst leicht gebaut und halten bei regelmäßiger Nutzung erfahrungsgemäß 2–4 Saisons.
+        Wirklich <strong>stabil für den Dauereinsatz im Garten</strong> sind vollverschweißte Aluminium-Minitore: keine Steckverbindungen, die ausleiern, rostfrei und sehr langlebig — das Lightweight-Modell wiegt dabei unter 10 kg. Klappbare Kunststoff-Tore wie das QuickPlay sind der stabile Mittelweg (windgetestet bis über 120 km/h, mit Erdankern gesichert). Pop-up-Tore sind bewusst leicht gebaut und halten bei regelmäßiger Nutzung erfahrungsgemäß 2–4 Saisons.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
         Ob ein Gartentor stabil steht, entscheiden drei Dinge:
@@ -310,22 +314,22 @@ const schema = [
       <!-- Produkte: QuickPlay 1,50 m + Alu Minitor Lightweight -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
         <div>
-          <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Preis-Leistung</p>
+          <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Preis-Leistung</p>
           <ProductCard
             name="QuickPlay Kickster Elite 1,50 x 1,00 m"
             url="https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/"
-            imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
+            imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/10078/full/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_3.jpg"
             features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', '4 Erdanker']}
             category="Stecktore"
             campaign="garten"
           />
         </div>
         <div>
-          <p class="text-xs font-medium text-accent uppercase tracking-wider mb-3 text-center">Premium-Alternative</p>
+          <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Premium-Alternative</p>
           <ProductCard
             name="Alu Minitor Lightweight 1,20 x 0,80 m – unter 10 kg"
             url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-lightweight-1-20-x-0-80-m-vollverschweisst_18602_672042/"
-            imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Bildschirmfoto-2026-01-15-um-10-19-48.png"
+            imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-604309-Minitor-Lightweight-002.jpg"
             features={['Unter 10 kg', 'Vollverschweißt', 'Komplett Alu', 'Inkl. Netz']}
             category="Alu Minitore"
             campaign="garten"
@@ -373,7 +377,7 @@ const schema = [
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-bold text-sm flex-shrink-0">18+</span>
             <div>
               <p class="font-medium text-primary">Erwachsene / Sehr großer Garten</p>
-              <p class="text-neutral-500 text-sm">Torgröße: 3,00 x 2,00 m – Fest installiertes Kleinfeld-Tor</p>
+              <p class="text-neutral-500 text-sm">Torgröße: 3,00 x 2,00 m – Fest installiertes <a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors">Kleinfeld-Tor</a></p>
             </div>
           </div>
         </div>
@@ -427,7 +431,7 @@ const schema = [
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
         Ein Fußballtor für den Garten soll Spaß machen – aber Sicherheit geht vor, besonders wenn Kinder
-        mitspielen. Jedes Jahr gibt es Unfälle mit umkippenden oder schlecht gesicherten Toren. Mit ein
+        mitspielen. Die größte Gefahr sind umkippende oder schlecht gesicherte Tore. Mit ein
         paar einfachen Maßnahmen lässt sich das vermeiden.
       </p>
 

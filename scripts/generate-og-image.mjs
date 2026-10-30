@@ -203,6 +203,42 @@ const pages = [
     subtitle: 'In wenigen Klicks zum passenden Fußballtor',
     accentLabel: 'Torberater',
   },
+  {
+    file: 'og-schule.jpg',
+    title: 'Fußballtor für die Schule',
+    subtitle: 'Schulhof, Schulsport, Kita – sicher und robust',
+    accentLabel: 'Schule',
+  },
+  {
+    file: 'og-spielplatz.jpg',
+    title: 'Fußballtor für den Spielplatz',
+    subtitle: 'Frei zugänglich, robust, leise – worauf es ankommt',
+    accentLabel: 'Spielplatz',
+  },
+  {
+    file: 'og-kommune.jpg',
+    title: 'Fußballtore für Kommunen',
+    subtitle: 'Bolzplatz, Sportplatz, Freizeitanlage – welche Torart wohin',
+    accentLabel: 'Kommune',
+  },
+  {
+    file: 'og-grossfeldtor.jpg',
+    title: 'Großfeldtor 7,32 × 2,44 m',
+    subtitle: 'Bodenhülsen, transportabel, selbstsichernd – Bauarten im Überblick',
+    accentLabel: 'Großfeldtor',
+  },
+  {
+    file: 'og-jugendtor.jpg',
+    title: 'Jugendtor 5 × 2 m',
+    subtitle: 'Das Tor für E- und D-Jugend – Bauarten und Kippsicherung',
+    accentLabel: 'Jugendtor',
+  },
+  {
+    file: 'og-kleinfeldtor.jpg',
+    title: 'Kleinfeldtor 3 × 2 m',
+    subtitle: 'Mobil für F-Jugend, Training und Schulsport',
+    accentLabel: 'Kleinfeldtor',
+  },
 ];
 
 for (const page of pages) {

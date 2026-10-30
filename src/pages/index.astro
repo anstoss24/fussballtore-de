@@ -1,15 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
-import CategoryCard from '../components/CategoryCard.astro';
+import TorartKarte from '../components/TorartKarte.astro';
+import EinsatzortKarte from '../components/EinsatzortKarte.astro';
+import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE, geeignetLabel, type TorartId } from '../data/einsatzorte';
+import { tbTree, tbMeta } from '../utils/torberater';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
-import TorberaterEinstieg from '../components/TorberaterEinstieg.astro';
 import { features } from '../data/features';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
-import { PUBLISHER } from '../data/entities';
+import { PUBLISHER, WEBSITE } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['index'];
 
@@ -17,14 +19,20 @@ const title = 'Fußballtore – Der professionelle Ratgeber';
 const description =
   'Fußballtore für Verein, Garten und Schule: Professionelle Kaufberatung, Größen-Übersicht und Produktempfehlungen. Finde das passende Fußballtor.';
 
-const categories = [
-  { name: 'Großfeldtore', subtitle: '7,32 x 2,44 m – Wettkampfstandard', href: '/verein/' },
-  { name: 'Jugendtore', subtitle: '5,00 x 2,00 m – Nachwuchsförderung', href: '/verein/#jugendtore' },
-  { name: 'Bolzplatztore', subtitle: '3,00 x 2,00 m – Unkaputtbar', href: '/bolzplatztor/' },
-  { name: 'Minitore', subtitle: 'Für Training, Funino & Garten', href: '/minitore/' },
-  { name: 'Gartentore', subtitle: 'Pop-up, Steck- und Minitore', href: '/garten/' },
-  { name: 'Kindertore', subtitle: 'Sicher & altersgerecht', href: '/kinder/' },
-];
+// Zwei Logiken: Torarten (Sortiment) und Einsatzorte (wo das Tor steht) – Daten in src/data/einsatzorte.ts
+const torarten = TORART_REIHENFOLGE.map((id) => TORARTEN[id]);
+
+// Kennzahl „x Tore · ab y €“ aus dem Torberater (Frage „Torgröße“); Kleinfeld hat dort keine eigene Antwort
+const TORBERATER_ANTWORT: Partial<Record<TorartId, string>> = {
+  grossfeld: 'Großfeldtor',
+  jugend: 'Jugendtor',
+  bolzplatz: 'Bolzplatztor',
+  minitor: 'Minitor',
+};
+const torberaterInfo = (id: TorartId) => {
+  const antwort = tbTree.options.find((o) => o.label === TORBERATER_ANTWORT[id]);
+  return antwort ? tbMeta(antwort) : undefined;
+};
 
 // Pick 3 highlight products from different categories
 const findProduct = (id) => productsData.products.find(p => p.id === id);
@@ -39,78 +47,118 @@ const faqs = [
   {
     question: 'Welche Fußballtor-Größe brauche ich?',
     answer:
-      'Die Größe hängt vom Einsatzzweck ab: Wettkampf-Großfeldtore sind 7,32 x 2,44 m, Jugendtore 5,00 x 2,00 m. Für den Garten reichen Minitore ab 1,20 x 0,80 m. In unserer Größen-Übersicht findest du alle Maße im Detail.',
+      'Die Größe hängt vom Einsatzzweck ab: Wettkampf-Großfeldtore sind 7,32 x 2,44 m, Jugendtore 5,00 x 2,00 m, Kleinfeld- und Bolzplatztore 3,00 x 2,00 m. Für den Garten reichen Minitore ab 1,20 x 0,80 m. In unserer Größen-Übersicht findest du alle Maße im Detail.',
   },
   {
-    question: 'Was kostet ein gutes Fußballtor?',
+    question: 'Welche Torarten gibt es?',
     answer:
-      'Die Preisspanne ist groß: Pop-up-Tore für den Garten gibt es für kleines Geld, klappbare Garten-Minitore im zweistelligen und vollverschweißte Alu-Minitore im dreistelligen Bereich. Jugend- und Großfeldtore aus Aluminium liegen im hohen drei- bis vierstelligen Bereich, robuste Bolzplatztore sind die teuerste Kategorie. Tagesaktuelle Preise findest du in unserer Kaufberatung und im Torberater.',
+      'Fünf: das Großfeldtor mit 7,32 x 2,44 m (ab C-Jugend, Herren, Frauen), das Jugendtor mit 5,00 x 2,00 m (E- und D-Jugend), das Kleinfeldtor mit 3,00 x 2,00 m (F-Jugend und Training), das Bolzplatztor mit 3,00 x 2,00 m und geschlossenem Hinterbau für frei zugängliche Plätze sowie Minitore ab 1,20 x 0,80 m einschließlich Pop-up-Toren. Zu jeder Torart gibt es einen eigenen Ratgeber.',
   },
   {
-    question: 'Alu oder Kunststoff – welches Material ist besser?',
+    question: 'Welches Tor passt zu welchem Einsatzort?',
     answer:
-      'Aluminium ist leicht, rostfrei und langlebig – der Standard für Vereine und dauerhafte Installation. Kunststoff und Fiberglas sind günstiger und ultraleicht, eignen sich aber nur für Minitore im Garten. Mehr dazu in unserem Material-Vergleich.',
+      'Im Sportverein stehen Großfeld-, Jugend- und Kleinfeldtore. Auf kommunalen Flächen und an Schulen kommen je nach Fläche alle Torarten in Frage, auf frei zugänglichen Plätzen das Bolzplatztor und robuste Alu-Minitore. Auf Spielplätzen passen Bolzplatztore und Alu-Minitore, im Garten Minitore, Pop-up-Tore und bei viel Platz ein Kleinfeldtor. Die Ratgeber zu Verein, Kommune, Schule, Spielplatz und Garten zeigen die Zuordnung im Detail.',
   },
   {
     question: 'Müssen Fußballtore TÜV-geprüft sein?',
     answer:
-      'Für Verein, Schule und Kommune ja: Der Betreiber hat die Verkehrssicherungspflicht, Maßstab dafür ist die DIN EN 748 mit ihren Anforderungen an Standsicherheit und Kippsicherung. Ein Prüfzeichen einer unabhängigen Stelle wie dem TÜV weist diese Konformität nach. Im privaten Garten gibt es keine Pflicht, geprüfte Tore bieten aber mehr Sicherheit – gerade wenn Kinder damit spielen.',
+      'Gesetzlich nicht, für Verein, Schule und Kommune praktisch ja: Der Betreiber hat die Verkehrssicherungspflicht. Maßstab dafür ist je nach Tor die DIN EN 748 (Großfeld- und Jugendtore 7,32 × 2,44 m und 5 × 2 m), die DIN EN 16579 (andere Spielfeldtore über 10 kg) oder die DIN EN 15312 (frei zugängliche, fest installierte Tore ohne Aufsicht). Ein Prüfzeichen einer unabhängigen Stelle wie dem TÜV weist diese Konformität nach. Im privaten Garten gibt es keine Pflicht, geprüfte Tore bieten aber mehr Sicherheit – gerade wenn Kinder damit spielen.',
   },
 ];
 
 const schema = [
   {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'fussballtore.de',
-    url: 'https://fussballtore.de',
+    ...WEBSITE,
     description,
-    inLanguage: 'de-DE',
   },
   { '@context': 'https://schema.org', ...PUBLISHER },
 ];
 ---
 
 <BaseLayout title={title} description={description} schema={schema}>
-  <!-- Hero -->
-  {features.torberater ? (
-    <HeroSection
-      title="Fußballtore – Der professionelle Ratgeber"
-      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-    >
-      <TorberaterEinstieg />
-    </HeroSection>
-  ) : (
-    <HeroSection
-      title="Fußballtore – Der professionelle Ratgeber"
-      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-      ctaText="Zur Kaufberatung"
-      ctaHref="/kaufberatung/"
-    />
-  )}
+  <!-- Hero: ein klarer Einstieg (Torberater), Kaufberatung als Textlink -->
+  <HeroSection
+    mittel
+    title="Fußballtore – Der professionelle Ratgeber"
+    subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
+    ctaText={features.torberater ? undefined : 'Zur Kaufberatung'}
+    ctaHref={features.torberater ? undefined : '/kaufberatung/'}
+  >
+    {features.torberater && (
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
+        <a
+          href="/torberater/"
+          class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-heading font-bold text-base px-7 py-3.5 rounded-lg transition-[background-color,transform] duration-150 active:scale-[0.97] no-underline"
+        >
+          Zum Torberater
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a href="/kaufberatung/" class="text-white font-semibold underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors">Zur Kaufberatung</a>
+      </div>
+    )}
+  </HeroSection>
 
-  <!-- Category Grid -->
-  <section class="py-16 md:py-20">
+  <!-- Torarten (Sortiment) -->
+  <section class="py-16 md:py-20" aria-labelledby="nach-torart">
     <div class="container mx-auto">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
-        Fußballtore nach Kategorie
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {categories.map((cat) => (
-          <CategoryCard name={cat.name} subtitle={cat.subtitle} href={cat.href} />
+      <div class="mb-8 max-w-2xl">
+        <h2 id="nach-torart" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">
+          Fußballtore nach Torart
+        </h2>
+        <p class="text-neutral-600 m-0">Die Torart ergibt sich aus Maß und Bauart – unabhängig davon, wo das Tor später steht.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+        {torarten.map((t, i) => (
+          <TorartKarte
+            name={t.plural.replaceAll('-', '\u2011') /* geschützte Bindestriche: kein Umbruch in „Pop-up“ */}
+            href={t.href}
+            mass={t.mass}
+            subtitle={t.subtitle}
+            bild={t.foto}
+            info={torberaterInfo(t.id)}
+            wide={torarten.length % 2 === 1 && i === torarten.length - 1}
+            eager={i === 0}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Einsatzorte: welche Torarten passen wohin -->
+  <section class="py-16 md:py-20 bg-neutral-50" aria-labelledby="nach-einsatzort">
+    <div class="container mx-auto">
+      <div class="mb-8 max-w-2xl">
+        <h2 id="nach-einsatzort" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">
+          Fußballtore nach Einsatzort
+        </h2>
+        <p class="text-neutral-600 m-0">An jedem Ort können mehrere Torarten stehen. Jede Karte zeigt die Tore, die dort passen.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+        {EINSATZORTE.map((e, i) => (
+          <EinsatzortKarte
+            ort={e.id}
+            name={e.name}
+            href={e.href}
+            subtitle={e.subtitle}
+            geeignet={e.tore.map(geeignetLabel)}
+            wide={EINSATZORTE.length % 2 === 1 && i === EINSATZORTE.length - 1}
+          />
         ))}
       </div>
     </div>
   </section>
 
   <!-- Product Highlights -->
-  <section class="py-16 md:py-20 bg-neutral-50">
+  <section class="py-16 md:py-20">
     <div class="container mx-auto">
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-3">
         Beliebte Fußballtore
       </h2>
-      <p class="text-neutral-500 mb-8 max-w-2xl">
-        Ausgewählte Tore von Fachhändlern für Vereinsbedarf. TÜV-geprüft, Made in Germany.
+      <p class="text-neutral-600 mb-8 max-w-2xl">
+        Ausgewählte Tore aus dem Fachhandel für Vereinsbedarf – je eins für Großfeld, Training und Bolzplatz.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {highlightProducts.map((product) => (
@@ -129,7 +177,7 @@ const schema = [
           href={addUtm('https://www.anstoss24.de/fussballtore/', 'startseite')}
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center gap-2 text-accent font-medium hover:text-accent-dark transition-colors"
+          class="inline-flex items-center gap-2 text-accent-dark font-semibold hover:text-accent transition-colors"
         >
           Alle Fußballtore im Shop
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -149,7 +197,7 @@ const schema = [
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
         Dein Ratgeber für Fußballtore
       </h2>
-      <div class="prose text-neutral-500">
+      <div class="prose text-neutral-600">
         <p>
           Ob für den Vereinssport, das Training mit der Jugendmannschaft oder den Spaß im eigenen Garten –
           das richtige Fußballtor zu finden, ist nicht immer einfach. Unterschiedliche Größen, Materialien
@@ -157,14 +205,14 @@ const schema = [
         </p>
         <p>
           Als professioneller Ratgeber vergleichen wir Fußballtore aller Kategorien: Von professionellen
-          Großfeldtoren (7,32 x 2,44 m) über robuste Bolzplatztore bis hin zu praktischen Pop-up-Toren
+          <a href="/grossfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Großfeldtoren</a> (7,32 x 2,44 m) über robuste <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztore</a> bis hin zu praktischen Pop-up-Toren und <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors font-medium">Minitoren</a>
           für den Garten. Wir erklären, welche Größe für welchen Zweck passt, vergleichen Aluminium mit Kunststoff
           und geben konkrete Kaufempfehlungen.
         </p>
         <p>
-          Unsere Produktempfehlungen stammen von Fachhändlern für Vereinsbedarf – TÜV-geprüfte Tore,
-          die in Deutschland hergestellt werden.
-          So bekommst du Qualität, auf die du dich verlassen kannst.
+          Unsere Produktempfehlungen stammen von anstoss24.de, dem Fachhandel für Vereinsbedarf, der diesen
+          Ratgeber betreibt (<a href="/ueber-uns/" class="text-accent hover:text-accent-dark transition-colors font-medium">Über uns</a>). Produktangaben wie Maße, Material und
+          Prüfzeichen übernehmen wir aus der Produktbeschreibung im Shop.
         </p>
       </div>
     </div>

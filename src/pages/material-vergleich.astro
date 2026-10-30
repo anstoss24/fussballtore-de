@@ -6,10 +6,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['material-vergleich'];
 
@@ -40,7 +41,7 @@ const faqs = [
   },
   {
     question: 'Wie schwer ist ein Alu-Fußballtor?',
-    answer: 'Ein Alu-Großfeldtor (7,32 x 2,44 m) wiegt je nach Bauweise zwischen leichteren Stecktoren und schwereren vollverschweißten Ausführungen mit Bodenrahmen. Das vergleichsweise geringe Gewicht von Alu ist beim Transport und Aufbau ein echter Vorteil – besonders wenn das Tor regelmäßig bewegt werden muss.',
+    answer: 'Laut Shop wiegt das Bundesliga-Tor (7,32 x 2,44 m) je nach Variante ca. 50–60 kg, das transportable, vollverschweißte Großfeldtor ca. 70–80 kg, ein mobiles Kleinfeldtor (3 x 2 m) ca. 40 kg und das Alu Minitor Lightweight (1,20 x 0,80 m) unter 10 kg. Das vergleichsweise geringe Gewicht von Alu ist beim Transport und Aufbau ein echter Vorteil – besonders wenn das Tor regelmäßig bewegt werden muss.',
   },
 ];
 
@@ -72,16 +73,16 @@ const schema = [
   />
   <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Material-Vergleich' }]} />
 
-  <article class="container mx-auto py-12 md:py-16 max-w-4xl">
+  <article class="container mx-auto pt-6 pb-12 md:py-16 max-w-4xl">
 
     <TldrBlock
       title="Alu vs. Kunststoff im Direktvergleich"
       items={[
-        { label: 'Aluminium', text: 'Standard im Profisport. Rostfrei, leicht, 15–25 Jahre Lebensdauer. Höherer Anschaffungspreis, dafür pflegefrei.' },
+        { label: 'Aluminium', text: 'Standard im Profisport. Rostfrei, leicht, sehr langlebig. Höherer Anschaffungspreis, dafür pflegefrei.' },
         { label: 'Kunststoff / Fiberglas', text: 'Nur für Garten-Minitore und Pop-up-Tore. Sehr leicht und günstig, nicht wettkampftauglich, erfüllt keine DIN-Normen.' },
         { label: 'Verein & Schule', text: 'Klare Empfehlung: Aluminium mit Ovalprofil (120/100 mm), vollverschweißt, TÜV-geprüft.' },
         { label: 'Garten & Freizeit', text: 'Kunststoff/Fiberglas reicht. Wer Langlebigkeit will, nimmt ein kleines Alu-Minitor.' },
-        { label: 'Gewicht Großfeldtor', text: 'Alu: 40–100 kg je nach Bauweise. Stahl deutlich schwerer und muss beschichtet sein.' },
+        { label: 'Gewicht Großfeldtor', text: 'Alu laut Shop: Bundesliga-Tor ca. 50–60 kg, transportables Großfeldtor ca. 70–80 kg. Stahl ist schwerer und muss beschichtet sein.' },
       ]}
       speakableId="tldr-material"
     />
@@ -91,7 +92,7 @@ const schema = [
       Die Materialfrage ist eine der wichtigsten Entscheidungen beim Kauf eines Fußballtors. Aluminium oder Kunststoff? Jedes Material hat seine Stärken – und seine klaren Grenzen. In diesem Vergleich erfährst du, welches Material für deinen Einsatzzweck am besten geeignet ist, worauf du bei der Auswahl achten musst und warum sich die Investition in das richtige Material langfristig auszahlt.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-6">
-      Ob du ein Tor für den <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereinssport</a> suchst, eines für den <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Garten</a> oder ein vandalismusresistentes Bolzplatztor für eine Kommune – das Material bestimmt Haltbarkeit, Gewicht, Pflegeaufwand und letztlich auch den Preis.
+      Ob du ein Tor für den <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereinssport</a> suchst, eines für den <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Garten</a> oder ein vandalismusresistentes <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a> für eine <a href="/kommune/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kommune</a> – das Material bestimmt Haltbarkeit, Gewicht, Pflegeaufwand und letztlich auch den Preis.
     </p>
 
     <!-- Die zwei gängigen Materialien im Überblick -->
@@ -120,7 +121,7 @@ const schema = [
       Aluminium ist das Material der Wahl, wenn es um professionelle Fußballtore geht. Der Grund: Alu vereint geringes Gewicht mit hoher Stabilität und ist von Natur aus korrosionsbeständig. Ein Alu-Tor übersteht Witterung über viele Jahre ohne Rostansatz – selbst ohne regelmäßige Pflege.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-6">
-      Hochwertige Alu-Tore verwenden Ovalprofile statt einfacher Rundprofile. Das hat einen guten Grund: Ovalprofile bieten bei gleichem Materialgewicht eine deutlich höhere Biege- und Torsionssteifigkeit. Gerade bei <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">größeren Toren ab 5 x 2 m</a> macht das einen spürbaren Unterschied in der Stabilität.
+      Hochwertige Alu-Tore verwenden Ovalprofile statt einfacher Rundprofile. Das Ovalprofil 120/100 mm ist der Standard bei Wettkampftoren. Gerade bei <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">größeren Toren ab 5 x 2 m</a> macht das einen spürbaren Unterschied in der Stabilität.
     </p>
 
     <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-6 mb-8">
@@ -183,7 +184,7 @@ const schema = [
       </li>
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
-        <span><strong class="text-primary">Norm:</strong> Für Verein und öffentliche Flächen DIN EN 748 mit TÜV-Prüfung — im Schadensfall haftet sonst der Betreiber.</span>
+        <span><strong class="text-primary">Norm:</strong> Für Verein und öffentliche Flächen die passende Norm (DIN EN 748, DIN EN 16579 oder DIN EN 15312) mit TÜV-Prüfung — im Schadensfall haftet sonst der Betreiber.</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
@@ -210,15 +211,15 @@ const schema = [
       <ProductCard
         name="Fußball Großfeldtor 7,32 x 2,44 m – transportabel und vollverschweißt"
         url="https://www.anstoss24.de/fussballtore/grossfeldtore/fussball-grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst_1523_237176/"
-        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/1523/secondPreview/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-un.jpg"
-        features={["Vollverschweißt", "Transportabel", "Inkl. Tornetz", "TÜV-geprüft"]}
+        imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/1523/full/Fussball-Grossfeldtor-7-32-x-2-44-m-transportabel-und-vollverschweisst--inkl--Tornetz-1523-620453-Grossfeld-transportabel-003.jpg"
+        features={["Vollverschweißt", "Transportabel", "Inkl. Tornetz", "Alu-Ovalprofil 120/100 mm"]}
         category="Großfeldtore"
         campaign="material-vergleich"
       />
       <ProductCard
         name={"Alu Minitor 1,20 x 0,80 m – geschlossener Hinterbau, \u201Eunzerstörbar\u201C"}
         url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar_18838_688608/"
-        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838_2.png"
+        imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838-355938-Minitor-geschl-1-2-Rechteck-003.jpg"
         features={["Geschlossener Hinterbau", "TÜV-geprüft", "Vollverschweißt", "80x80 mm Profil", "Made in Germany"]}
         category="Minitore"
         campaign="material-vergleich"
@@ -230,7 +231,7 @@ const schema = [
       Kunststoff und Fiberglas – Für den Garten
     </h2>
     <p class="text-neutral-500 leading-relaxed mb-4">
-      Neben den beiden Hauptmaterialien gibt es noch eine dritte Kategorie: Tore aus Kunststoff, Fiberglas oder einem Materialmix. Diese Tore spielen in einer ganz anderen Liga – und das ist nicht negativ gemeint. Sie sind für einen anderen Zweck gemacht.
+      Die zweite Materialgruppe sind Tore aus Kunststoff, Fiberglas oder einem Materialmix. Diese Tore spielen in einer ganz anderen Liga – und das ist nicht negativ gemeint. Sie sind für einen anderen Zweck gemacht.
     </p>
     <p class="text-neutral-500 leading-relaxed mb-4">
       Pop-up-Tore aus Fiberglas und Polyester lassen sich in Sekunden aufbauen, wiegen nur wenige Kilogramm und sind schon für kleines Geld zu haben. Für den <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors font-medium">Garten</a>, den Park oder das spontane Spiel mit <a href="/kinder/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kindern</a> sind sie perfekt. Für den Vereinssport oder öffentliche Sportanlagen sind sie aber nicht geeignet: Sie erfüllen keine DIN-Normen, sind nicht kippsicher geprüft und halten intensiver Nutzung nicht stand.
@@ -266,7 +267,7 @@ const schema = [
           <span class="inline-block text-xs font-medium bg-accent/10 text-accent px-2.5 py-1 rounded-md">Empfehlung: Aluminium (vollverschweißt)</span>
         </div>
         <p class="text-neutral-500 text-sm leading-relaxed">
-          Auf öffentlichen Bolzplätzen und Schulhöfen muss ein Tor besonders viel aushalten. Vollverschweißte Alu-Tore mit Ovalprofil sind hier die beste Wahl: vandalismusresistent, rostfrei und extrem langlebig. Das höhere Investment rechnet sich durch die lange Lebensdauer.
+          Auf öffentlichen Bolzplätzen und Schulhöfen muss ein Tor besonders viel aushalten. Vollverschweißte Alu-Tore mit Ovalprofil wie das <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a> mit geschlossenem Hinterbau sind hier die beste Wahl: vandalismusresistent, rostfrei und extrem langlebig. Das höhere Investment rechnet sich durch die lange Lebensdauer.
         </p>
       </div>
 
@@ -288,7 +289,7 @@ const schema = [
           <span class="inline-block text-xs font-medium bg-accent/10 text-accent px-2.5 py-1 rounded-md">Empfehlung: Aluminium (mobil)</span>
         </div>
         <p class="text-neutral-500 text-sm leading-relaxed">
-          Im Training werden Tore ständig bewegt und umgestellt. Leichte, transportable Alu-Tore sind hier klar im Vorteil. Achte auf Modelle mit Transportrollen oder Tragegriffen – das spart Zeit und Rücken. Die passende <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größe für jede Altersklasse</a> findest du in unserer Übersicht.
+          Im Training werden Tore ständig bewegt und umgestellt. Leichte, transportable Alu-Tore wie das mobile <a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Jugendtor</a> oder <a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kleinfeldtor</a> sind hier klar im Vorteil. Achte auf Modelle mit Transportrollen oder Tragegriffen – das spart Zeit und Rücken. Die passende <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors font-medium">Größe für jede Altersklasse</a> findest du in unserer Übersicht.
         </p>
       </div>
     </div>
@@ -306,6 +307,8 @@ const schema = [
     <p class="text-neutral-500 leading-relaxed mb-8">
       Noch unsicher? In unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a> findest du eine Schritt-für-Schritt-Anleitung, die dir bei der Entscheidung hilft – inklusive Tipps zu Sicherheit, Normen und dem richtigen Zubehör. Für das passende <a href="/tornetz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Tornetz</a> haben wir ebenfalls einen eigenen Ratgeber.
     </p>
+
+    <Sources items={[Q.din748, Q.din16579, Q.din15312]} />
 
     <RelatedContent
       items={[

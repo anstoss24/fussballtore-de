@@ -8,10 +8,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['minitore'];
 
@@ -67,7 +68,7 @@ const faqs = [
   {
     question: 'Braucht ein Minitor eine Kippsicherung?',
     answer:
-      'Sehr leichte Minitore unter 10 kg – etwa das Alu Minitor Lightweight – gelten in der Praxis als kippunkritisch, weil von ihnen keine relevante Kippgefahr ausgeht. Leichte Kunststoff-Tore sollten mit den mitgelieferten Erdankern gesichert werden, damit sie bei Wind nicht verrutschen. Schwerere Minitore ab ca. 20 kg stehen durch ihr Eigengewicht und den Bodenrahmen stabil.',
+      'Die Norm für bewegliche Spielfeldtore, DIN EN 16579, gilt erst für Tore über 10 kg – sehr leichte Minitore wie das Alu Minitor Lightweight fallen nicht darunter. Sichern solltest du trotzdem jedes Tor: leichte Kunststoff-Tore mit den mitgelieferten Erdankern, damit sie bei Wind nicht verrutschen, schwerere Alu-Minitore so, wie es die Produktbeschreibung vorsieht.',
   },
 ];
 
@@ -99,7 +100,7 @@ const schema = [
   />
   <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Minitore' }]} />
 
-  <article class="py-12 md:py-16">
+  <article class="pt-6 pb-12 md:py-16">
     <div class="container mx-auto max-w-4xl">
 
       <TldrBlock
@@ -109,7 +110,7 @@ const schema = [
           { label: 'Bauarten', text: 'Pop-up (Sekundenaufbau), klappbares Kunststoff-Tor (Garten/Training) oder vollverschweißtes Alu-Minitor (Verein/Dauereinsatz).' },
           { label: 'Einsatz', text: 'Funino (G-/F-Jugend nach DFB-Reform), Techniktraining, Garten, Schulhof.' },
           { label: 'Preis', text: `${fmtEur(minAll)} € (Pop-up-Set) bis ${fmtEur(priceOf('minitor-hinterbau') ?? 0)} € (Alu mit geschlossenem Hinterbau) — Live-Preise von anstoss24.de.` },
-          { label: 'Sicherheit', text: 'Sehr leichte Tore unter 10 kg gelten als kippunkritisch; leichte Tore mit Erdankern gegen Wind sichern.' },
+          { label: 'Sicherheit', text: 'Die DIN EN 16579 gilt erst für Tore über 10 kg; trotzdem jedes Tor sichern, leichte Tore mit Erdankern gegen Wind.' },
         ]}
         speakableId="tldr-minitore"
       />
@@ -189,7 +190,7 @@ const schema = [
 
       <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Pop-up-Tore – für spontanes Spielen</h3>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Pop-up-Tore bestehen aus Fiberglas-Stangen mit Polyester-Netz, wiegen nur 1–3 kg und entfalten sich selbst. Perfekt für Garten, Park und Urlaub – aber mit begrenzter Lebensdauer: Bei regelmäßiger Nutzung halten sie erfahrungsgemäß 2–4 Saisons. Für Kinder bis zum Grundschulalter völlig ausreichend.
+        Pop-up-Tore bestehen aus Fiberglas-Stangen mit Polyester-Netz, sind sehr leicht und entfalten sich selbst. Perfekt für Garten, Park und Urlaub – aber mit begrenzter Lebensdauer, wenn sie regelmäßig draußen genutzt werden. Für Kinder bis zum Grundschulalter völlig ausreichend.
       </p>
 
       <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Stecktore und klappbare Kunststoff-Minitore – der Garten-Allrounder</h3>
@@ -197,12 +198,12 @@ const schema = [
         Ein <strong>Stecktor</strong> besteht aus einzelnen Pfosten- und Lattenteilen, die zusammengesteckt werden – anders als ein Pop-up-Tor, das sich selbst entfaltet, und ein vollverschweißtes Alu-Tor, das aus einem Stück besteht. Zerlegt passt ein Stecktor in eine Tragetasche: Das QuickPlay Kickster ist laut Shop in 90 Sekunden ohne Anleitung aufgebaut, die 1,50-m-Variante hat ein Packmaß von 84 × 21 × 16 cm. Das macht es zur ersten Wahl, wenn das Tor regelmäßig mit muss – zum Training auf wechselnden Plätzen oder in den Garten. Die Grenze: Steckverbindungen sind bewegliche Teile. Wer täglich auf- und abbaut, hat auf Dauer Verschleiß; für den festen Platz im Verein ist ein vollverschweißtes Alu-Minitor die langlebigere Lösung. Wie der Aufbau Schritt für Schritt geht, zeigt die <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark underline underline-offset-2">Aufbau-Anleitung</a>.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Klappbare bzw. faltbare Minitore wie das QuickPlay Kickster sind der Mittelweg: in rund 90 Sekunden aufgebaut, mit Tragetasche transportierbar und dank Erdankern windstabil (das Kickster ist bis über 120 km/h windgetestet). Mit 6–8 kg lassen sie sich von einer Person tragen und nach dem Spielen platzsparend verstauen – der meistgewählte Typ für den <a href="/garten/" class="text-accent hover:text-accent-dark underline underline-offset-2">Garten</a>.
+        Klappbare bzw. faltbare Minitore wie das QuickPlay Kickster sind der Mittelweg: in rund 90 Sekunden aufgebaut, mit Tragetasche transportierbar und dank Erdankern windstabil (das Kickster ist bis über 120 km/h windgetestet). Sie lassen sich von einer Person tragen und nach dem Spielen platzsparend verstauen – ein guter Allrounder für den <a href="/garten/" class="text-accent hover:text-accent-dark underline underline-offset-2">Garten</a>.
       </p>
 
       <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Alu-Minitore – für Verein, Schule und Dauereinsatz</h3>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Vollverschweißte Aluminium-Minitore sind Einteiler ohne lösbare Verbindungen – nichts leiert aus, nichts geht verloren. Aluminium rostet nicht und hält 15–25 Jahre. Für den Vereins- und Schulbetrieb gibt es TÜV-geprüfte Modelle mit geschlossenem Hinterbau (Stababstand 86 mm, konform zur Sicherheitsnorm DIN EN 16579). Wer Funino im Spielbetrieb anbietet, kommt an Alu kaum vorbei.
+        Vollverschweißte Aluminium-Minitore sind Einteiler ohne lösbare Verbindungen – nichts leiert aus, nichts geht verloren. Aluminium rostet nicht und ist sehr langlebig. Für den Vereins- und Schulbetrieb gibt es TÜV-geprüfte Modelle mit geschlossenem Hinterbau (Stababstand 86 mm, konform zur Sicherheitsnorm DIN EN 16579). Wer Funino im Spielbetrieb anbietet, kommt an Alu kaum vorbei.
       </p>
 
       <!-- Produktkarten -->
@@ -210,7 +211,7 @@ const schema = [
         <ProductCard
           name="Alu Minitor Lightweight 1,20 x 0,80 m – unter 10 kg"
           url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-lightweight-1-20-x-0-80-m-vollverschweisst_18602_672042/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-Bildschirmfoto-2026-01-15-um-10-19-48.png"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/18602/full/Aluminium-Minitor-Lightweight-1-20-x-0-80-m-vollverschweisst--18602-604309-Minitor-Lightweight-002.jpg"
           features={["Unter 10 kg", "Vollverschweißt", "Inkl. Netz", "Komplett Aluminium"]}
           category="Minitore"
           campaign="minitore"
@@ -218,7 +219,7 @@ const schema = [
         <ProductCard
           name="QuickPlay Kickster Elite 1,80 x 1,20 m"
           url="https://www.anstoss24.de/tore/quick-play-kickster-1-82m-x-1-21m-fussballtor_47_1030/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/47/secondPreview/QuickPlay-Kickster-Elite-Junior-Minitor-1-80-x-1-20m-47_5.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/47/full/QuickPlay-Kickster-Elite-Junior-Minitor-1-80-x-1-20m-47_1.jpg"
           features={["Klappbar", "90-Sek-Aufbau", "Windstabil", "Inkl. Tasche"]}
           category="Minitore"
           campaign="minitore"
@@ -226,7 +227,7 @@ const schema = [
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Das Lightweight-Modell ist mit unter 10 kg das leichteste vollverschweißte Alu-Minitor im Sortiment – so leicht, dass es in der Praxis als kippunkritisch gilt, und trotzdem ein Einteiler in Vereinsqualität. Das QuickPlay Kickster gibt es auch kompakter als <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">1,50 × 1,00 m-Variante</a>, für spontane Garten-Spiele genügt oft schon ein <a href={addUtm('https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Pop-up-Set</a>.
+        Das Lightweight-Modell ist mit unter 10 kg das leichteste vollverschweißte Alu-Minitor im Sortiment – es bleibt unter der 10-kg-Grenze der DIN EN 16579 und ist trotzdem ein Einteiler in Vereinsqualität. Das QuickPlay Kickster gibt es auch kompakter als <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">1,50 × 1,00 m-Variante</a>, für spontane Garten-Spiele genügt oft schon ein <a href={addUtm('https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Pop-up-Set</a>.
       </p>
 
       <!-- Verein/Kommune -->
@@ -234,14 +235,14 @@ const schema = [
         Minitore für Verein, Schule und Kommune
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Im Dauereinsatz gelten andere Maßstäbe als im Garten: Tore bleiben draußen stehen, werden von wechselnden Gruppen genutzt und müssen im Zweifel Vandalismus aushalten. Hier hat sich das Alu-Minitor mit <strong>geschlossenem Hinterbau</strong> bewährt – ohne Netzbügel, an denen sich jemand verletzen oder die verbiegen können.
+        Im Dauereinsatz gelten andere Maßstäbe als im Garten: Tore bleiben draußen stehen, werden von wechselnden Gruppen genutzt und müssen im Zweifel Vandalismus aushalten. Hier hat sich das Alu-Minitor mit <strong>geschlossenem Hinterbau</strong> bewährt – ohne Netzbügel, an denen sich jemand verletzen oder die verbiegen können. Worauf es am jeweiligen Ort ankommt, steht in den Ratgebern <a href="/schule/" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtor für die Schule</a>, <a href="/spielplatz/" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtor für den Spielplatz</a> und <a href="/kommune/" class="text-accent hover:text-accent-dark underline underline-offset-2">Fußballtore für Kommunen</a>.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
         <ProductCard
           name="Alu Minitor 1,20 x 0,80 m – geschlossener Hinterbau, „unzerstörbar“"
           url="https://www.anstoss24.de/fussballtore/minitore/aluminium-minitor-vollverschweisst-mit-geschlossenem-hinterbau-unzerstoerbar_18838_688608/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838_2.png"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/18838/full/Aluminium-Minitor-vollverschweisst-mit-geschlossenem-Hinterbau-unzerstoerbar-18838-355938-Minitor-geschl-1-2-Rechteck-003.jpg"
           features={["Geschlossener Hinterbau", "TÜV-geprüft", "Vollverschweißt", "Made in Germany"]}
           category="Minitore"
           campaign="minitore"
@@ -270,10 +271,10 @@ const schema = [
         Sicherheit: Was bei Minitoren wirklich zählt
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Die gute Nachricht: Von leichten Minitoren geht deutlich weniger Gefahr aus als von großen Toren. Sehr leichte Modelle unter 10 kg gelten in der Praxis als <strong>kippunkritisch</strong>. Trotzdem gilt:
+        Die gute Nachricht: Von leichten Minitoren geht deutlich weniger Gefahr aus als von großen Toren. Für sehr leichte Modelle unter 10 kg gilt die <strong>DIN EN 16579</strong> nicht. Trotzdem gilt:
       </p>
       <ul class="list-disc list-inside space-y-2 text-neutral-600 leading-relaxed mb-4 ml-2">
-        <li><strong>Leichte Kunststoff-Tore</strong> mit den mitgelieferten Erdankern sichern – nicht wegen Kippgefahr, sondern damit sie bei Wind nicht durch den Garten fliegen.</li>
+        <li><strong>Leichte Kunststoff-Tore</strong> mit den mitgelieferten Erdankern sichern, damit sie bei Wind nicht durch den Garten fliegen.</li>
         <li><strong>Klettern verboten:</strong> Auch am Minitor gilt die Grundregel für alle <a href="/kinder/" class="text-accent hover:text-accent-dark underline underline-offset-2">Kindertore</a> – Tore sind kein Klettergerüst.</li>
         <li><strong>Öffentlicher Raum:</strong> Für Schulen und Kommunen empfehlen sich TÜV-geprüfte Modelle nach DIN EN 16579 – im Schadensfall haftet der Betreiber.</li>
         <li><strong>Aufbau:</strong> Schritt-für-Schritt-Anleitungen für alle Bauarten findest du in der <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark underline underline-offset-2">Aufbau-Anleitung</a>.</li>
@@ -284,11 +285,13 @@ const schema = [
         Fazit: Welches Minitor passt zu dir?
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Für <strong>spontanes Spielen im Garten</strong> reicht ein Pop-up-Set, für <strong>regelmäßiges Spielen und Training</strong> ist ein klappbares Kunststoff-Tor wie das QuickPlay die beste Balance aus Preis und Stabilität. Sobald das Tor <strong>dauerhaft draußen steht</strong> oder im Verein genutzt wird, lohnt sich der Schritt zum vollverschweißten Alu-Minitor – es kostet mehr, hält dafür aber 15–25 Jahre statt weniger Saisons.
+        Für <strong>spontanes Spielen im Garten</strong> reicht ein Pop-up-Set, für <strong>regelmäßiges Spielen und Training</strong> ist ein klappbares Kunststoff-Tor wie das QuickPlay die beste Balance aus Preis und Stabilität. Sobald das Tor <strong>dauerhaft draußen steht</strong> oder im Verein genutzt wird, lohnt sich der Schritt zum vollverschweißten Alu-Minitor – es kostet mehr, hält dafür aber viele Jahre statt weniger Saisons.
       </p>
       <p class="text-neutral-600 leading-relaxed mb-4">
         Alle Minitore mit aktuellen Preisen findest du in der <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Minitore-Übersicht bei anstoss24.de</a>. Und falls du noch unsicher bei der Größe bist: Die <a href="/groessen/" class="text-accent hover:text-accent-dark underline underline-offset-2">Größen-Übersicht</a> ordnet alle Tormaße nach Altersklasse ein.
       </p>
+
+      <Sources items={[Q.din16579]} />
 
       <RelatedContent
         items={[

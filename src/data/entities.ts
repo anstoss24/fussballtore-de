@@ -33,6 +33,15 @@ export const PUBLISHER = {
   sameAs: ['https://www.anstoss24.de/ueber-uns/'],
 };
 
+export const WEBSITE = {
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  name: 'fussballtore.de',
+  url: SITE,
+  inLanguage: 'de-DE',
+  publisher: { '@id': PUBLISHER['@id'] },
+};
+
 export const AUTHOR = {
   '@type': 'Person',
   '@id': `${SITE}/ueber-uns/#matthias-frank`,
@@ -71,3 +80,44 @@ export const SOURCES = [
     note: 'Hinweise zur Sicherheit und Prüfung',
   },
 ];
+
+/** Zusätzliche Quellen für Schule, Kita und Spielplatz (Normen-Anwendungsbereiche, DGUV, Ganztag) */
+export const SOURCES_OEFFENTLICH = {
+  din748: SOURCES[3],
+  dguv202044: SOURCES[4],
+  din16579: {
+    name: 'DIN EN 16579:2020-01 – Spielfeldgeräte, ortsveränderliche und standortgebundene Tore',
+    href: 'https://www.dinmedia.de/de/norm/din-en-16579/312597479',
+    note: 'Anwendungsbereich: Tore über 10 kg, auch in Bildungseinrichtungen und öffentlichen Freizeitbereichen',
+  },
+  din15312: {
+    name: 'DIN EN 15312:2026-06 – Frei zugängliche Multisportgeräte',
+    href: 'https://www.dinmedia.de/de/norm/din-en-15312/400002966',
+    note: 'Anforderungen einschließlich Sicherheit und Prüfverfahren',
+  },
+  en15312Scope: {
+    name: 'EN 15312:2026 – Anwendungsbereich (englisch, Estonian Centre for Standardisation)',
+    href: 'https://www.evs.ee/en/evs-en-15312-2026',
+    note: 'Frei zugänglich, ohne Aufsicht, fest installiert; Abgrenzung zu EN 1176, EN 748, EN 16579',
+  },
+  din18034: {
+    name: 'DIN 18034-1:2020-10 – Spielplätze und Freiräume zum Spielen',
+    href: 'https://www.dinmedia.de/de/norm/din-18034-1/326134676',
+    note: 'Anforderungen für Planung, Bau und Betrieb, inkl. Flächen vorrangig für Ballspiele',
+  },
+  dguv202022: {
+    name: 'DGUV Information 202-022 – Außenspielflächen und Spielplatzgeräte',
+    href: 'https://publikationen.dguv.de/regelwerk/dguv-informationen/1383/aussenspielflaechen-und-spielplatzgeraete',
+    note: 'Außenspielflächen von Kitas, Horten und Schulen, Abschnitt Ballspielanlagen',
+  },
+  sgb8: {
+    name: '§ 24 SGB VIII – Anspruch auf Förderung in Tageseinrichtungen',
+    href: 'https://www.gesetze-im-internet.de/sgb_8/__24.html',
+    note: 'Absatz 4: Ganztagsanspruch für Grundschulkinder',
+  },
+  bmbfsfjGanztag: {
+    name: 'BMBFSFJ: Rechtsanspruch auf Ganztag startet zum 1. August 2026',
+    href: 'https://www.bmbfsfj.bund.de/bmbfsfj/aktuelles/pressemitteilungen/rechtsanspruch-auf-ganztag-startet-zum-1-august-2026-292232',
+    note: 'Stufenplan bis zum Schuljahr 2029/30',
+  },
+};

@@ -6,8 +6,9 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['aufbau-anleitung'];
 
@@ -34,7 +35,7 @@ const faqs = [
   {
     question: 'Muss ich das Tor gegen Umkippen sichern?',
     answer:
-      'Ja — immer. Im Vereinsbetrieb ist Kippsicherung Pflicht nach DIN EN 748. Auch im Garten muss das Tor stehen, ohne dass Kinder es umkippen können. Erdanker auf Rasen, Sandsäcke oder Gegengewichte auf Pflaster oder Bodenhülsen für feste Installation.',
+      'Ja — immer. Im Verein, in Schule und Kommune trägt der Betreiber die Verkehrssicherungspflicht; Maßstab ist für Großfeld- und Jugendtore die DIN EN 748, für andere Spielfeldtore über 10 kg die DIN EN 16579. Auch im Garten muss das Tor stehen, ohne dass Kinder es umkippen können. Erdanker auf Rasen, Sandsäcke oder Gegengewichte auf Pflaster oder Bodenhülsen für feste Installation.',
   },
 ];
 
@@ -96,7 +97,7 @@ const schema = [
     '@type': 'HowTo',
     name: 'Vollverschweißtes Fußballtor aufbauen',
     description:
-      'Vollverschweißte Tore werden montiert geliefert. Aufstellen und Sichern nach DIN EN 748.',
+      'Vollverschweißte Tore werden montiert geliefert. Aufstellen und gegen Umkippen sichern.',
     tool: [
       { '@type': 'HowToTool', name: 'Wasserwaage' },
       { '@type': 'HowToTool', name: 'Hammer' },
@@ -106,7 +107,7 @@ const schema = [
       { '@type': 'HowToStep', name: 'Tor aufstellen', text: 'Mit zwei Personen das Tor an die gewünschte Position bringen. Mit Wasserwaage Lotrechtigkeit prüfen.' },
       { '@type': 'HowToStep', name: 'Tornetz aufziehen', text: 'Netz an Pfosten und Querlatte einhängen. Untere Netzkante mit Heringen am Boden fixieren.' },
       { '@type': 'HowToStep', name: 'Kippsicherung anbringen', text: 'Erdanker eindrücken oder Gegengewichte hinten am Rahmen anhängen.' },
-      { '@type': 'HowToStep', name: 'Standfestigkeit prüfen', text: 'An der Querlatte ziehen — das Tor darf nicht kippen oder sich heben lassen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung vor.' },
+      { '@type': 'HowToStep', name: 'Standfestigkeit prüfen', text: 'An der Querlatte ziehen — das Tor darf nicht kippen oder sich heben lassen. Für Großfeld- und Jugendtore schreibt die DIN EN 748 eine definierte Standsicherheits-Prüfung vor.' },
     ],
   },
 ];
@@ -120,15 +121,15 @@ const schema = [
   />
   <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Aufbau-Anleitung' }]} />
 
-  <article class="container mx-auto max-w-4xl py-12 md:py-16">
+  <article class="container mx-auto max-w-4xl pt-6 pb-12 md:py-16">
 
     <TldrBlock
       title="Aufbau auf einen Blick"
       items={[
         { label: 'Pop-up-Tor', text: 'In wenigen Sekunden, kein Werkzeug, eine Person. Heringe nicht vergessen.' },
         { label: 'Stecktor', text: 'In wenigen Minuten, Hammer für Erdanker, idealerweise zu zweit ab 1,80 m Breite.' },
-        { label: 'Vollverschweißtes Tor', text: 'Aufstellen + Sichern meist innerhalb einer halben Stunde. Zwei Personen Pflicht. Wasserwaage hilft.' },
-        { label: 'Kippsicherung', text: 'Immer! Im Verein Pflicht nach DIN EN 748. Erdanker oder Gegengewichte.' },
+        { label: 'Vollverschweißtes Tor', text: 'Kommt fertig montiert: aufstellen, Netz einhängen, sichern. Zwei Personen Pflicht. Wasserwaage hilft.' },
+        { label: 'Kippsicherung', text: 'Immer! Im Verein Pflicht (Verkehrssicherungspflicht des Betreibers). Erdanker oder Gegengewichte.' },
         { label: 'Bodenhülsen', text: 'Fest installierte Wettkampftore: einbetonieren und aushärten lassen.' },
       ]}
       speakableId="tldr-aufbau"
@@ -153,7 +154,7 @@ const schema = [
         <li><strong>Aus Tasche nehmen.</strong> Pop-up-Tor aus der Tragetasche holen und auf den Rasen legen.</li>
         <li><strong>Aufspringen lassen.</strong> Halteband lösen — das Tor entfaltet sich von selbst.</li>
         <li><strong>Position wählen.</strong> Mindestens 2 m Auslauf hinter dem Tor, 1 m Abstand zu Zaun oder Möbeln.</li>
-        <li><strong>Heringe eindrücken.</strong> 3–4 Heringe durch die Bodenösen in den Rasen drücken.</li>
+        <li><strong>Heringe eindrücken.</strong> Die mitgelieferten Heringe bzw. Erdhaken durch die Bodenösen in den Rasen drücken.</li>
       </ol>
     </div>
 
@@ -165,7 +166,7 @@ const schema = [
       <ProductCard
         name="ELF Sports Pop-up Goal – 2er Set inkl. Transporttasche"
         url="https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/"
-        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/19/secondPreview/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg"
+        imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/19/full/Pop-up-Goal-2er-Set-inkl--Transporttasche-verschiedene-Groessen-19_4.jpg"
         features={['2er Set', 'Pop-up in Sekunden', 'Inkl. Tasche', '3 Erdanker']}
         category="Pop-up-Tor"
         campaign="aufbau-anleitung"
@@ -177,7 +178,7 @@ const schema = [
       Stecktor aufbauen — in wenigen Minuten
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Stecktore haben einzelne Bauteile, die per Steck- oder Klickverbindung zusammengefügt werden. Häufige Modelle wie das QuickPlay Kickster sind in wenigen Minuten aufgebaut, größere Tore brauchen entsprechend länger. Wir empfehlen ab 1,80 m Breite eine zweite Person.
+      Stecktore haben einzelne Bauteile, die per Steck- oder Klickverbindung zusammengefügt werden. Das QuickPlay Kickster ist laut Shop in 90 Sekunden aufgebaut, größere Stecktore brauchen länger. Wir empfehlen ab 1,80 m Breite eine zweite Person.
     </p>
 
     <div class="bg-neutral-50 rounded-xl p-6 my-6">
@@ -200,7 +201,7 @@ const schema = [
       <ProductCard
         name="QuickPlay Kickster Elite 1,50 x 1,00 m"
         url="https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/"
-        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
+        imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/10078/full/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_3.jpg"
         features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', '4 Erdanker']}
         category="Stecktor"
         campaign="aufbau-anleitung"
@@ -209,10 +210,10 @@ const schema = [
 
     <!-- Vollverschweißt -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
-      Vollverschweißtes Vereinstor aufbauen
+      Vollverschweißtes Fußballtor aufbauen
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Vollverschweißte Tore (Großfeld, Jugend, Kleinfeld) kommen <strong>fertig montiert</strong>. Du musst sie nur an die richtige Stelle bringen, das Netz anbringen und die Kippsicherung herstellen. Das geht meist innerhalb einer halben Stunde — mit <strong>zwei Personen ist Pflicht</strong>, weil die Tore deutlich schwerer als Stecktore sind.
+      Vollverschweißte Tore (<a href="/grossfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Großfeldtor</a>, <a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Jugendtor</a>, <a href="/kleinfeldtor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kleinfeldtor</a>) kommen <strong>fertig montiert</strong>. Du musst sie nur an die richtige Stelle bringen, das Netz anbringen und die Kippsicherung herstellen. Dafür sind <strong>zwei Personen Pflicht</strong>, weil die Tore deutlich schwerer als Stecktore sind.
     </p>
 
     <div class="bg-neutral-50 rounded-xl p-6 my-6">
@@ -222,7 +223,7 @@ const schema = [
         <li><strong>Tor aufstellen.</strong> Mit zwei Personen positionieren. Mit Wasserwaage Lotrechtigkeit prüfen.</li>
         <li><strong>Netz aufziehen.</strong> Netz an Pfosten und Querlatte einhängen. Untere Netzkante mit Heringen am Boden fixieren.</li>
         <li><strong>Kippsicherung anbringen.</strong> Erdanker eindrücken oder Gegengewichte hinten am Rahmen anhängen.</li>
-        <li><strong>Standfestigkeit prüfen.</strong> An der Querlatte ziehen — das Tor darf nicht kippen oder sich heben lassen. Die DIN EN 748 schreibt eine definierte Standsicherheits-Prüfung vor.</li>
+        <li><strong>Standfestigkeit prüfen.</strong> An der Querlatte ziehen — das Tor darf nicht kippen oder sich heben lassen. Für Großfeld- und Jugendtore schreibt die DIN EN 748 eine definierte Standsicherheits-Prüfung vor.</li>
       </ol>
     </div>
 
@@ -235,7 +236,7 @@ const schema = [
       Kippsicherung: Pflicht bei jedem Tor
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im Vereins-, Schul- und Kommunalbetrieb ist das verbindlich: Der Betreiber trägt die Verkehrssicherungspflicht, Maßstab dafür sind die DIN EN 748 und die DGUV Information 202-044. Im Garten ist es eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
+      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im Vereins-, Schul- und Kommunalbetrieb ist das verbindlich: Der Betreiber trägt die Verkehrssicherungspflicht, Maßstab dafür sind je nach Tor die DIN EN 748, die DIN EN 16579 oder die DIN EN 15312 sowie die DGUV Information 202-044. Im Garten ist es eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
     </p>
 
     <div class="overflow-x-auto my-8">
@@ -256,7 +257,7 @@ const schema = [
           <tr class="border-t border-neutral-200 bg-neutral-50/50">
             <td class="px-4 py-3 font-medium">Pflaster / Beton</td>
             <td class="px-4 py-3">Gegengewichte / Sandsäcke</td>
-            <td class="px-4 py-3">Pro Tor mindestens 30–50 kg Gewicht</td>
+            <td class="px-4 py-3">Menge nach Herstellerangabe des Tors, danach Kipptest an der Querlatte</td>
           </tr>
           <tr class="border-t border-neutral-200">
             <td class="px-4 py-3 font-medium">Wettkampfplatz</td>
@@ -268,14 +269,14 @@ const schema = [
     </div>
 
     <p class="text-neutral-600 leading-relaxed mb-4">
-      <strong>Test:</strong> An der Querlatte ziehen. Wenn das Tor wackelt oder sich heben lässt, muss die Sicherung verstärkt werden. Im Vereinsbetrieb zusätzlich jährliche Sicherheitsprüfung durch eine sachkundige Person empfohlen.
+      <strong>Test:</strong> An der Querlatte ziehen. Wenn das Tor wackelt oder sich heben lässt, muss die Sicherung verstärkt werden. Im Vereinsbetrieb zusätzlich regelmäßige Prüfung durch eine sachkundige Person empfohlen.
     </p>
 
     <div class="my-10">
       <ProductCard
         name="Gummigewichte für Kippsicherung"
         url="https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/gummigewichte-fuer-sportplatzzubehoer_14247_386946/"
-        imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/14247/secondPreview/Beschwerungsteller-fuer-Sportplatzzubehoer-14247.JPG"
+        imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/14247/full/Beschwerungsteller-fuer-Sportplatzzubehoer-14247_1.JPG"
         features={['Kippsicherung', 'Universell einsetzbar', 'Gummischlaufe mit Haken']}
         category="Kippsicherung"
         campaign="aufbau-anleitung"
@@ -310,11 +311,13 @@ const schema = [
       Fazit
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Fußballtore aufzubauen ist je nach Modell in Minuten erledigt. Die wirklich wichtige Phase ist nicht der Aufbau, sondern die <strong>Kippsicherung</strong>. Hier wird im Verein, in Schulen und im Garten oft geschludert — und das ist die häufigste Unfallursache.
+      Fußballtore aufzubauen ist je nach Modell in Minuten erledigt. Die wirklich wichtige Phase ist nicht der Aufbau, sondern die <strong>Kippsicherung</strong>. Hier wird im Verein, in Schulen und im Garten oft geschludert — dabei ist ein umkippendes Tor das größte Risiko.
     </p>
     <p class="text-neutral-600 leading-relaxed mb-4">
       Wenn dir das Tor zu schwer ist oder du unsicher bist: zieh eine zweite Person hinzu. Wenn die Sicherung wackelt: nachjustieren, bevor das Tor benutzt wird. Mehr Details zur Kippsicherung findest du in der <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a> und im <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereins-Ratgeber</a>.
     </p>
+
+    <Sources items={[Q.din748, Q.din16579, Q.din15312, Q.dguv202044]} />
 
     <RelatedContent
       items={[

@@ -3,6 +3,185 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Konsistenz-Review Ratgeberseiten (Branch `feature/feinschliff`, nicht live)
+
+Geprüft: Startseite, /kaufberatung/, /groessen/, /material-vergleich/, /tornetz/, /aufbau-anleitung/, /kinder/, /funino/, /torberater/ (inkl. `torberater-texte.ts`), /ueber-uns/. URL, Title, H1 und Description unverändert.
+
+### Geändert
+- Unbelegte Zahlen raus: /aufbau-anleitung/ „30–50 kg Gewicht“ (→ Herstellerangabe + Kipptest), „halbe Stunde“, „3–4 Heringe“ (Shop: 3 Erdhaken), „jährliche“ Prüfung (→ regelmäßige), „häufigste Unfallursache“; Alu „15–25 Jahre“ (/kaufberatung/, /material-vergleich/ → sehr langlebig); Großfeld „40–100 kg“ (/kaufberatung/, /groessen/, /material-vergleich/ → Shop: Bundesliga ca. 50–60 kg, transportabel ca. 70–80 kg); /kinder/ Lebensdauer „2–3 Saisons / 5–8 Jahre“ und Aufbau „5–10 Minuten“; /funino/ „unter 2 Minuten“ (→ Shop: 90 Sekunden); /kaufberatung/ „ausschließlich Bodenhülsen in der Bundesliga“, „Prüfung kostet nur wenig mehr“, „garantiert sicher“; Telefonzeiten auf /kaufberatung/ und /ueber-uns/ (Shop nennt 7:30–20:00, products.json 7:30–17:30).
+- Widersprüche: /kinder/ C-Jugend „ab 14“ → „ab 13“ (wie /groessen/); Pop-up „kann nicht umkippen / kein Kipprisiko“ → kaum Kipprisiko, trotzdem Heringe (wie /aufbau-anleitung/); /kaufberatung/ „offizielle Mini-Tormaße“ → übliche Maße, DFB max. 2,00 × 1,20 m (wie /groessen/, /funino/); /funino/ Maße-Abschnitt nennt die DFB-Obergrenze; /material-vergleich/ „dritte Kategorie“ bei zwei Materialgruppen; /groessen/ FAQ „offizielle Tortiefe“ → keine vorgeschrieben (wie Abschnitt); Preisklasse Jugend/Großfeld „hohe drei-/mehrere hundert“ → vierstellig (Startseite, /kaufberatung/ TL;DR).
+- Normen: DIN-EN-748-Aussagen auf Großfeld/Jugend begrenzt (/aufbau-anleitung/ Standsicherheitsprüfung + FAQ, Torberater-Hilfe Kippsicherung); /kaufberatung/ „Prüfintervalle“ aus der 748-Liste entfernt (Betriebsthema, nicht Produktnorm), TÜV „faktisch Pflicht“/„verbindlich“ → Norm als Maßstab, Prüfzeichen als Nachweis; /groessen/ „müssen TÜV-geprüft sein“ ebenso.
+- Produktfakten: Art. 1523 ohne „TÜV-geprüft“ (/kaufberatung/, /material-vergleich/), Text auf Shop-Wortlaut (Ovalprofil, Tragegriffe, Transporträder optional); Startseite „TÜV-geprüft, Made in Germany“ als Pauschalaussage raus, Herkunft der Empfehlungen (anstoss24, Über uns) offengelegt.
+- Doppelungen: /tornetz/ Garnstärke- und Netztiefe-Tabelle doppelten die Zuordnungstabelle → je ein Satz mit Verweis; TL;DR Netztiefe nennt alle Shop-Varianten; FAQ Maschenweite und /funino/ FAQ Feldgröße nicht mehr wortgleich mit dem Fließtext; /groessen/ Tortiefe im Großfeld-Abschnitt nur noch als Verweis; /kinder/ D-Jugend nur noch im Abschnitt „Ab 12 Jahren“; /ueber-uns/ „14 Jahre“ 5× → „seit 2010“ (wie Footer).
+- Begriffe/Links: „Vereinstor“ als Torart raus (/aufbau-anleitung/ H2, /kinder/); /groessen/ `/verein/#jugendtore` → /jugendtor/; Torart-Links auf /grossfeldtor/, /jugendtor/, /kleinfeldtor/, /bolzplatztor/, /minitore/ in Kaufberatung (Kurz-Empfehlung, Fazit), Größen, Material, Tornetz-Tabelle, Aufbau, Kinder, Funino, Startseite; /ueber-uns/ Quellen um DIN EN 16579/15312 und „Produktangaben aus dem Shop“ ergänzt.
+- page-dates: funino, tornetz, ueber-uns → 2026-10-30 (übrige geprüfte Seiten standen schon darauf).
+
+### Bewusst gelassen
+- Tornetz-Erfahrungswerte (Lebensdauer, Pflege, Winter abnehmen, Ersatznetz pro 4–6 Tore) – Entscheidung Matze.
+- Praxisangaben ohne Norm-/Shopquelle, aber als Empfehlung formuliert: 2 m Auslauf, zweite Person ab 1,80 m, Kinder-Torgrößen nach Alter, Tortiefen Jugend/Kleinfeld auf /groessen/ (Zero-Click-Seite, nur Formulierung „üblich“).
+- Altersangaben/Maße bewusst mehrfach (TL;DR, Tabelle, FAQ) auf /groessen/ und /kinder/ – Antwortformat für Suche/KI, keine wortgleichen Sätze.
+- Torberater-Hilfe „Fest oder mobil“ verlinkt weiter /verein/#fest-oder-mobil (Vergleichstabelle gibt es nur dort).
+
+### Offen
+- [ ] /ueber-uns/ Description nennt „14 Jahren Erfahrung“ (Description nicht angefasst) – an „seit 2010“ angleichen, Freigabe Matze.
+- [ ] products.json `phoneHours` „Mo-Fr 7:30-17:30“ vs. Shop-Kopfzeile „Mo – Fr 7:30 – 20:00“ klären.
+- [ ] Befunde in Torart-/Ort-Seiten (an team-lead): verein FAQ „15–25 Jahre“ und „mittleres vierstelliges Budget“ (selbst gerechnet), verein „Kaufe ausschließlich Tore mit TÜV-Prüfzeichen“; minitore „15–25 Jahre“, Pop-up „1–3 kg“/„2–4 Saisons“, QuickPlay „klappbar“ (Shop: FLEXI POST, sonst überall Stecktor), „6–8 kg“ (Shop: Paketgewicht 8 kg), „meistgewählte Typ“.
+
+## 30.10.2026 – Konsistenz-Review Torart-/Einsatzort-Seiten (Branch `feature/feinschliff`, nicht live)
+
+Matze: „prüfe wirklich nochmal alles auf Durchgängigkeit und vermeide doppelte Erwähnungen.“ Geprüft: /grossfeldtor/, /jugendtor/, /kleinfeldtor/, /bolzplatztor/, /minitore/, /verein/, /kommune/, /schule/, /spielplatz/, /garten/.
+
+### Abgrenzungsregeln
+- Torart-Seite = Produktart (Bauart, Material, Netz, Norm, Produkte). Einsatzort-Seite = was am Ort gilt und welche Torart passt, Torarten nur verlinkt. /groessen/ = Maße nach Altersklasse.
+- Zuordnung Ort → Torart steht pro Einsatzort-Seite nur einmal (Baustein „Welche Torarten passen hier?“), dazu ein Kurzantwort-Satz für KI/Snippets.
+- Normen: ausführlich einmal (Normtabelle bzw. Norm-Abschnitt), sonst ein Satz mit Verweis. FAQ-Antworten bleiben eigenständig, aber nicht wortgleich mit dem Fließtext.
+- Bestehende Seiten (verein, bolzplatztor, minitore, garten) nur bei falschen/widersprüchlichen Aussagen geändert; Title, H1, Description, URL unverändert.
+
+### Geändert
+- /kommune/, /schule/: Tabelle „Fläche/Einsatzort → Torart“ gestrichen (doppelt zum Baustein), stattdessen Kurzantwort-Satz; Baustein direkt nach der Direktantwort. /kommune/: Sportplatz-Liste verlinkt die Torart-Seiten, Normen dort ein Satz mit Anker #normen, Lärm-Absatz gekürzt (ausführlich auf /spielplatz/), FAQ verweist für Altersklassen auf Größen-Übersicht statt Verein.
+- /schule/: TL;DR „Sichtprüfung“ → „Funktionsprüfung“ (wie FAQ/DGUV-Text), Link /kleinfeldtor/, Related /kommune/.
+- /spielplatz/: „laut Hersteller“ → „laut anstoss24“, Weiche und Related um /kommune/ ergänzt.
+- /grossfeldtor/, /jugendtor/: Norm-FAQ nicht mehr wortgleich mit dem Norm-Abschnitt; doppelte Verankerungs-Beispiele im Norm-Abschnitt gestrichen. /jugendtor/: Profilangabe einheitlich „120/100 mm“.
+- /verein/: Kleinfeldtor-Abschnitt zeigte die Karte des Bolzplatztors UNKAPUTTBAR, der Text beschreibt aber das mobile Kleinfeldtor → Karte = mobiles Kleinfeldtor (Art. 4248). TL;DR „Jugendtor (D-Jugend)“ → „E- und D-Jugend“. „Alle vorgestellten Tore … TÜV-geprüft und aus deutscher Fertigung“ gestrichen, „TÜV-Prüfung: Ein Muss“/„Kaufe ausschließlich …“ entschärft (Art. 1523 laut Shop am 30.10. ohne TÜV/748-Angabe). „FIFA und DFB festgelegt“ → Regel 1 (IFAB). FAQ „15–25 Jahre“ → „sehr langlebig“. Link-Satz um /kommune/ ergänzt, Related-Untertitel Bolzplatztor ohne „Kommunen“.
+- /minitore/, /garten/: „15–25 Jahre“ → „sehr langlebig“/„viele Jahre“ (Regel: keine Lebensdauer-Zahlen). /minitore/: Ort-Links inkl. /kommune/. /garten/: „Kleinfeld-Tor“ verlinkt /kleinfeldtor/.
+- /bolzplatztor/: Größentabelle verlinkt /kleinfeldtor/ und /jugendtor/; Verweis „im Detail bei den Vereinstoren“ für Bodenhülsen gestrichen (dort keine sichtbare Anleitung).
+- page-dates: minitore → 2026-10-30 (übrige schon 30.10.).
+
+### Bewusst gelassen
+- /verein/ behält die eigenen Abschnitte zu Großfeld-, Jugend-, Kleinfeldtoren (Ranking); Detailtiefe liegt auf den Torart-Seiten, Link-Satz nach dem Baustein.
+- Normtabellen auf /kommune/, /schule/, /spielplatz/: je mit ortsspezifischer Spalte bzw. Schwerpunkt (1176 vs. 15312).
+- „Planung/Betrieb“ auf /kommune/ und „Wer ist verantwortlich?“ auf /spielplatz/ ähnlich, aber unterschiedliche Betreiber.
+- /bolzplatztor/ spricht in Description/Hero weiter Kommunen und Schulen an (Ranking, Title/Description tabu).
+
+### Offen
+- [ ] `einsatzorte.ts`: Belege für schule/kommune auf die neuen Stellen (an pruef-geo gegeben).
+- [ ] „15–25 Jahre“ noch in /material-vergleich/, /kaufberatung/ (an pruef-ratgeber), llms-full.txt (an pruef-geo).
+- [ ] /verein/: „Jedes Jahr gibt es in Deutschland Unfälle …“ und Lebensdauer Netz „3–5 Saisons“ unbelegt – Entscheidung Matze.
+
+## 30.10.2026 – Neue Torart-Seiten /grossfeldtor/, /jugendtor/, /kleinfeldtor/ (Branch `feature/feinschliff`, nicht live)
+
+### Neu
+- `/grossfeldtor/` (großfeldtor, fußballtor 7,32 x 2,44, großfeldtor kaufen): Maß und Altersklassen kurz, Bauarten Bodenhülsen/transportabel/selbstsichernd, Material, Netzbügel vs. freie Netzaufhängung, DIN EN 748 + Kippsicherung. Karten: Bundesliga-Tor (freie Netzaufhängung), transportables Großfeldtor; Textlinks selbstsicherndes Tor (Art. 867), Gummigewichte, Kategorie.
+- `/jugendtor/` (jugendtor, jugendtor 5x2, fußballtor 5 x 2 m, D-/E-Jugend-Tor): E-/D-Jugend, Begriffsfalle „Kleinfeld-Fußballtor“ (Verband = 5 × 2 m), Bauarten transportabel mit/ohne Griffe, selbstsichernd (Art. 868), Material/Netz, DIN EN 748. Karten: Jugendtor ohne und mit Tragegriffen.
+- `/kleinfeldtor/` (kleinfeldtor, fußballtor 3x2, F-Jugend-Tor, kleinfeldtor mobil): F-Jugend/Training/Schulsport, Begriffsfalle, mobile Bauart, Netz, Normen (DIN EN 748 gilt nicht für 3 × 2 m, DIN EN 16579; Shop-Wortlaut zur Kippsicherung „entspricht … der DIN EN 748 zur Kippsicherung“ als Zitat), Weiche Bolzplatztor/Minitor. Karten: mobiles Kleinfeldtor, Kleinfeldtor mit Herkulesnetz.
+- Je Seite Rückrichtung „Wo wird das … eingesetzt?“ als Tabelle, erzeugt aus `EINSATZORTE` in `src/data/einsatzorte.ts` (gleiche Zuordnung wie „Welche Torarten passen hier?“).
+- Produktfakten am 30.10. live im Shop geprüft (Art. 107, 1523, 867, 14628, 868, 4248, 19355), Shop-Wortlaut. Torgewichte nur, wo der Shop eine Angabe macht (Bundesliga ca. 50–60 kg, transportabel ca. 70–80 kg, Kleinfeldtor ca. 40 kg).
+- /verein/ (nach TorartenFuerEinsatzort) und /groessen/ (nach der Übersichtstabelle): je ein Satz mit Links auf die drei Seiten. Sonst unverändert.
+- OG-Bilder `og-grossfeldtor.jpg`, `og-jugendtor.jpg`, `og-kleinfeldtor.jpg`; page-dates, llms.txt, llms-full.txt, Seitenstruktur in CLAUDE.md.
+
+### Entscheidungen
+- /jugendtor/ doch jetzt gebaut (Matze 30.10.). Grund: konsistente Struktur Torart ↔ Einsatzort, jede Torart und jeder Einsatzort hat eine eigene Seite. Die geplante GSC-Erfolgskontrolle ab 07.12. bleibt, jetzt als Vergleich vorher/nachher.
+- Abgrenzung: Torart-Seite = das Tor als Produktart (Bauart, Material, Netz, Kippsicherung, Norm, Empfehlung). /verein/ = Ausstattung eines Vereins (Einsatzort). /groessen/ = Maßtabelle und Zero-Click-Größenfragen; die Torart-Seiten nennen Maße nur kurz und verlinken für Details auf /groessen/.
+- Weggelassen: Gewichte der Stahlgewichte bei Art. 868 (Shop widersprüchlich: „100–200 kg“ vs. „4 Stück à 33 kg“), „TÜV-geprüft“ beim transportablen Großfeldtor 1523 (steht dort nicht in der Beschreibung, nur in products.json-Features), Prüfkräfte, Förderung, Preise im Text, klappbare Tore (nicht im Shop-Sortiment dieser Größen).
+
+### Offen
+- [ ] Menü, Footer, Torart-Karten und `einsatzorte.ts` (TORARTEN.href, BANNER_TORE) von /verein/#… auf die neuen URLs umstellen (Agent `startseite`).
+- [ ] Nach Merge: /grossfeldtor/, /jugendtor/, /kleinfeldtor/ in der Search Console per URL-Prüfung einreichen.
+- [ ] products.json: Feature „TÜV-geprüft“ bei `grossfeld-transportabel` gegen Shop prüfen (Beschreibung von Art. 1523 nennt es nicht).
+
+## 30.10.2026 – Startseite nach Vorschlag 1, Menü-Struktur, Aufräumen (Branch `feature/feinschliff`, nicht live)
+
+**Entscheidung (Matze 30.10.):** Startseite = Vorschlag 1 von drei Entwürfen. Stockfotos für Einsatzorte verworfen, stattdessen eigene Illustrationen.
+
+### Geändert
+- Startseite: Hero mit H1, Unterzeile, grünem Button „Zum Torberater“ und Textlink „Zur Kaufberatung“, niedriger als bisher; die Torberater-Kacheln im Hero sind raus. „Fußballtore nach Torart“ als Fotokarten mit Maß, Kurzbeschreibung und Torberater-Kennzahl „x Tore · ab y €“ (Kleinfeld hat im Torberater keine eigene Antwort, daher ohne). „Fußballtore nach Einsatzort“ als gleich große Karten mit gezeichneter Ortsillustration und „Geeignet: …“. H1, Title, Description, Schema und FAQ unverändert.
+- Sportverein-Illustration: satteres Rasengrün, Feldlinien kräftiger (war zu blass).
+- Menü: Desktop Kaufberatung · Größen · Material direkt (Top-Links bleiben wegen SEO), Dropdown „Tore“ = nur die 5 Torarten, „Einsatzorte“ = die 5 Orte, neues Dropdown „Mehr Ratgeber“ = Tornetz, Aufbau & Kippsicherung, Kindertore nach Alter, Funino-Tore; Torberater als Button. Mobilmenü und Footer mit denselben Gruppen Ratgeber / Torarten / Einsatzorte. Grund: Kinder und Funino sind Ratgeber, keine Torarten – jede Gruppe enthält jetzt nur eine Sorte Seite.
+- Gelöscht: Entwurfsrouten /vorschlag-1/ bis /vorschlag-3/ (waren noindex) samt Sitemap-Filter, `src/components/vorschlag/`, Stockfotos `public/images/einsatzorte/` (Pexels/Pixabay und das ungenutzte Shop-Vereinsfoto), `docs/bildnachweise.md` (keine Fremdbilder mehr im Einsatz), Screenshot-Ordner `docs/entwuerfe/`, ungenutzte `CategoryCard` und `TorberaterEinstieg`.
+
+### Offen
+- [ ] Echte Kundenfotos der Einsatzorte (Verein, Schule, Bolzplatz, Garten) sammeln; dann Illustrationen ggf. ersetzen.
+
+## 30.10.2026 – Normen-Aussagen korrigiert, Förderung entfernt (Branch `feature/feinschliff`, nicht live)
+
+**Entscheidung (Matze 30.10.):** Förderung komplett raus (anstoss24 fördert nichts, aktuelle Lage nicht belegbar). DIN-Aussagen auf belegten Stand: DIN EN 748:2018-04 nur für 7,32 × 2,44 m und 5 × 2 m (Training/Wettkampf), DIN EN 16579:2020-01 für andere Spielfeldtore über 10 kg, DIN EN 15312:2026-06 für frei zugängliche, fest installierte Tore ohne Aufsicht. Normen sind keine Gesetze; Pflicht = Verkehrssicherungspflicht des Betreibers, Norm = Maßstab.
+
+### Geändert
+- /bolzplatztor/: TL;DR „Norm“ und FAQ „TÜV-Prüfung?“ von „DIN EN 748 verpflichtend“ auf DIN EN 15312 / 16579 + Verkehrssicherungspflicht; Kippsicherheit-Punkt ohne 748; Abschnitt „Fördermöglichkeiten“ und Förder-Satz in FAQ „Was kostet …“ gelöscht; Description „… Einbau und Förderung.“ → „… Normen, Größen und Einbau.“ (Title/H1 unverändert); Quellenblock ergänzt.
+- /verein/: FAQ „TÜV-geprüft?“, TL;DR „Norm“ und Normen-Abschnitt auf 748 = Großfeld/Jugend, 16579 = übrige Spielfeldtore (kein „Schulbereich“ mehr); Förder-Satz im Spar-Tipp gestrichen (Mengenrabatt-Teil bleibt); Quelle DIN EN 16579 ergänzt.
+- /kinder/: „TÜV-geprüfte Tore nach DIN EN 748 vorgeschrieben“ → Normen als Maßstab, 748/16579 nach Torart; Quellenblock.
+- Startseite: FAQ „Müssen Fußballtore TÜV-geprüft sein?“ nennt 748/16579/15312 je nach Tor.
+- /kaufberatung/: FAQ, TL;DR, Normen-Abschnitt, TÜV-Kasten und Checkliste auf „passende Norm“ (748 nur Großfeld/Jugend); Quellenblock.
+- /aufbau-anleitung/, /material-vergleich/, /groessen/ (Kauf-Tipp „Normen“), /torberater/ (FAQ Kippsicherung): 748-Aussagen auf Großfeld/Jugend eingegrenzt bzw. 16579/15312 ergänzt; Quellen ergänzt.
+- llms.txt / llms-full.txt: Förderhinweise entfernt, Normen-Zuordnung korrigiert, „Beuth-Verlag“ → „DIN Media“.
+- Skill-Referenz `.claude/skills/fact-checking/references/din-en-748.md`: Ausgabe 2018-04, Geltungsbereich, Abgrenzung 16579/15312 mit Quellen.
+- page-dates.json: index, kaufberatung, groessen, material-vergleich, kinder, aufbau-anleitung, torberater, verein, bolzplatztor → 2026-10-30.
+
+### Bewusst gelassen
+- Aussagen, die sich nur auf Großfeld-/Jugendtore beziehen (/groessen/ Großfeldtor-Abschnitt, /verein/ Großfeldtor-Checkliste, Torberater-Frage „Kippsicherung gemäß DIN EN 748“ – erscheint nur bei Großfeld mobil und Jugendtor), Produkt-Features „DIN EN 748“ aus dem Shop, Meta-Descriptions von /verein/, /kaufberatung/, /groessen/, /aufbau-anleitung/.
+
+### Offen
+- Skill-Referenz enthält weiter unbelegte Detailwerte (Prüfkraft 1.100 N, Gegengewichte 40–50 kg, OLG Saarbrücken) – vor Verwendung prüfen.
+
+## 30.10.2026 – Struktur Torart / Einsatzort, Hero zurück, Banner (Branch `feature/feinschliff`, nicht live)
+
+### Geändert
+- Matzes Feedback: „Schultore“/„Spielplatztore“ sind keine Torarten. Torarten (Sortiment) und Einsatzorte jetzt getrennt, eine Datenquelle `src/data/einsatzorte.ts` für Startseite, Header, Footer, Banner und Mapping-Baustein.
+- Torarten: Großfeldtore → /verein/#grossfeldtore, Jugendtore → /verein/#jugendtore, Kleinfeldtore → /verein/#kleinfeldtore, Bolzplatztore → /bolzplatztor/, Minitore & Pop-up-Tore → /minitore/. Einsatzorte: Sportverein, Kommune & öffentliche Plätze, Schule & Kita, Spielplatz, Garten.
+- Startseite: „Fußballtore nach Kategorie“ ersetzt durch „Fußballtore nach Torart“ (Fotokarten) und „Fußballtore nach Einsatzort“ (Liste mit maßstabsgetreuen Tor-Linien und „Geeignet: …“). H1, Title, Description unverändert.
+- Header: Kaufberatung, Größen, Material direkt; Dropdowns „Tore“ (Torarten + Kinder/Funino) und „Einsatzorte“ als `<details>`, Links bleiben im HTML. Mobilmenü gruppiert (Ratgeber/Torarten/Einsatzorte). Footer: Ratgeber/Torarten/Einsatzorte/Über.
+- Startseiten-Hero zurück auf Navy-Verlauf mit Spielfeldlinien (Stand main), Torberater-Kacheln bleiben. Unterseiten-Banner: Spielfeldlinien + kleine maßstabsgetreue Tor-Linienzeichnung zum Seitenthema (ab 768 px).
+- Neuer Abschnitt „Welche Torarten passen hier?“ auf /verein/, /kommune/, /schule/, /spielplatz/, /garten/, früh auf der Seite (Vorgabe team-lead: Kunde sieht die Zuordnung sofort): auf /verein/ und /spielplatz/ direkt nach TL;DR und Einleitung; auf /schule/, /kommune/ und /garten/ direkt hinter der ersten Tabelle „Welches Tor passt …“ samt Folgeabsatz, weil der Baustein davor dieselbe Zuordnung doppelt gezeigt hätte. Zeichnung überall im gleichen Maßstab. Zuordnung nur aus dem, was die Seite selbst sagt; Belegstelle steht je Eintrag in `einsatzorte.ts`. /kommune/-Zuordnung vom kommune-Agenten, Minitor dort ausdrücklich nur robuste Alu-Minitore, keine Pop-up-/Klapptore. page-dates dieser Seiten (außer kommune) auf 30.10.
+- /bolzplatztor/: im Weiche-Absatz vom 29.10. ein Satz mit Link auf /kommune/, /kommune/ in „Weiterführende Ratgeber“. Description, H1, FAQ, übriger Fließtext unverändert; page-dates auf 30.10.
+- /verein/: Sprungmarken `id="grossfeldtore"` und `id="kleinfeldtore"` an bestehenden H2 (Text unverändert).
+
+### Entscheidungen
+- Keine URL, H1, Title, Description, kein Fließtext bestehender Seiten geändert. Linktexte „Vereinstore“, „Gartentore“, „Kindertore“ in RelatedContent/Breadcrumbs bleiben (Keyword-Ankertexte); „Schultore“/„Spielplatztore“ gab es nur auf Startseite und Footer.
+- Funino bleibt Ratgeber, keine eigene Torart (Funino-Empfehlungen sind Minitore).
+
+### Offen
+- [ ] Freigabe Matze für Merge nach main.
+
+## 30.10.2026 – Neue Seite /kommune/ (Branch `feature/feinschliff`, nicht live)
+
+### Neu
+- `/kommune/`: Fußballtore für Kommunen und öffentliche Plätze. Einsatzort-Seite (keine Torart-Seite): ordnet kommunale Flächen den Torarten zu – öffentlicher Bolzplatz ohne Aufsicht → Bolzplatztor (DIN EN 15312), kommunaler Sportplatz mit Vereinsbetrieb → Großfeld-/Jugend-/Kleinfeldtor (DIN EN 748 bzw. 16579), Freizeitanlage/kleine Flächen → Alu-Minitor mit Hinterbau (DIN EN 16579), Schulhof → /schule/, Spielplatz → /spielplatz/. Dazu Normen-Tabelle, Planung/Einbau/Betrieb, FAQ.
+- Empfehlungen: Bolzplatztor UNKAPUTTBAR (Bolzplatz), Jugendtor 5 × 2 m ohne Griffe (Sportplatz); Textlinks SILENCE, Kleinfeldtor mit Herkulesnetz, Alu-Minitor mit Hinterbau, Erdanker.
+- Produktfakten am 30.10. live im Shop geprüft (Shop-Wortlaut). Normen nur mit den bereits belegten Anwendungsbereichen aus `SOURCES_OEFFENTLICH`.
+- OG-Bild `og-kommune.jpg`, page-dates, llms.txt, llms-full.txt, Seitenstruktur in CLAUDE.md.
+- Platzhalter `<!-- EINSATZORT-MAPPING -->` nach der Einleitung für den Mapping-Baustein aus `src/data/einsatzorte.ts`.
+
+### Entscheidungen
+- Entscheidung vom 29.10. („keine eigene Kommunen-Seite“) aufgehoben: Matze trennt jetzt Torarten (Sortiment) von Einsatzorten. /bolzplatztor/ = Produkt, /kommune/ = Ort, Weiche in beide Richtungen.
+- Kein Produkt als „Kommunentor“ bezeichnet. Keine Förderung, kein Kauf auf Rechnung/Angebot/Datenblatt, keine Prüfintervalle, kein Lärmrecht. Torgewichte weggelassen (Shop widersprüchlich).
+
+### Offen
+- [ ] /bolzplatztor/ verlinkt noch nicht auf /kommune/ und spricht in Description/Hero/FAQ selbst Kommunen an (plus DIN-EN-748-Pflicht und Förderung, siehe 29.10.). Für saubere Abgrenzung Intro-Weiche auf /kommune/ ergänzen und Kommunen-Wording zurücknehmen – Freigabe Matze.
+- [ ] Nach Merge: /kommune/ in der Search Console per URL-Prüfung einreichen.
+
+## 29.10.2026 – Grafischer Feinschliff (Branch `feature/feinschliff`, nicht live)
+
+### Geändert
+- Kontrast: Grün und Grautöne eine Stufe dunkler (Buttons, Links, Fließtext WCAG AA), kleinste Schrift 13 px.
+- Startseiten-Hero mit echtem Shop-Foto statt Verlauf und Spielfeldlinien, Kategorien mit Fotos im 4er-Raster (8 Kategorien).
+- Shop-Bilder in voller Auflösung (`/full/`-Variante, bis ~1280 px), redaktionelle Fotos in `src/data/fotos.json`.
+- Komponenten ruhiger: Produktkarte, TL;DR, FAQ, Trust-Leiste ohne Vorlagen-Symbole; einheitliche Radien; sichtbarer Fokus.
+- Bugs: Cookie-Banner mobil kompakt, kein Seitwärts-Scrollen bei 768 px (Desktop-Menü ab 1024 px).
+- Texte, Überschriften, Schema und Seitenaufbau unverändert.
+
+### Offen
+- [ ] Shop: Produktbild von Artikel 14045 (ELF Sports Alu-Minitor light) ist laut Dateiname KI-generiert („Gemini-Generated-Image") und erscheint im Torberater. Im Shop durch ein echtes Foto ersetzen.
+- [ ] Freigabe Matze, dann Merge nach `main` (gebündelt, ein Deploy).
+
+## 29.10.2026
+
+### Neue Seiten (Branch `feature/oeffentlich-inhalt`, nicht live)
+- `/schule/`: Fußballtor für Schule, Schulhof, Schulsport und Kita-Außengelände. Normen-Abgrenzung DIN EN 748 / 16579 / 15312, DGUV 202-044 und 202-022, Ganztags-Rechtsanspruch ab 01.08.2026 (Quelle BMBFSFJ + § 24 Abs. 4 SGB VIII). Empfehlungen: Bolzplatztor UNKAPUTTBAR (Schulhof), mobiles Kleinfeldtor mit Herkulesnetz (Schulsport), Textlink Alu-Minitor mit Hinterbau (Kita).
+- `/spielplatz/`: Fußballtor für öffentliche Spielplätze und Wohnanlagen. DIN EN 15312 vs. DIN EN 1176, Lärm, Verankerung, Betreiberverantwortung. Empfehlungen: SILENCE Bolzplatztor (sandgefüllt, geräuschgedämpft), Alu-Minitor mit Hinterbau; Textlinks Bolzplatztor mit Basketballaufbau und Erdanker.
+- products.json: neu `bolzplatz-silence` und `kleinfeldtor-herkulesnetz` (Preis-Feed läuft mit). OG-Bilder `og-schule.jpg`, `og-spielplatz.jpg` neu generiert, alle anderen byte-gleich.
+- Interne Links auf die neuen Seiten: Startseiten-Kategorien, Footer, /bolzplatztor/ (Intro + Weiterführend), /minitore/, /verein/, llms.txt, llms-full.txt. Datum in page-dates.json nur für die neuen Seiten gesetzt.
+
+### Entscheidungen
+- Keine eigene Kommunen-Seite: /bolzplatztor/ bleibt die Seite für Kommunen und öffentliche Plätze (Intention: das Produkt Bolzplatztor). /schule/ = Einsatzort Schule/Kita, /spielplatz/ = Einsatzort Spielplatz/Wohnanlage.
+- Normen nur mit Anwendungsbereich laut DIN Media bzw. EN-Volltext; DGUV-Aussagen wörtlich aus den PDFs.
+- Keine Aussagen zu Förderung, Kauf auf Rechnung, Angeboten oder Datenblättern. Nur ein neutraler Satz „Fragen zur Bestellung beantwortet anstoss24 direkt“.
+
+### Offen
+- [ ] Fachliche Prüfung durch Matze: Normen-Aussagen auf /bolzplatztor/, /verein/, /kinder/, Startseite stellen DIN EN 748 teils als Pflicht für alle Schul-/Kommunaltore dar. Laut DIN Media gilt sie nur für 5 × 2 m und 7,32 × 2,44 m. Nicht geändert, Entscheidung offen.
+- [ ] /bolzplatztor/ und /verein/ enthalten noch Förderungs-Hinweise (Abschnitt, FAQ, Description, llms.txt). Nicht geändert, Entscheidung offen.
+- [ ] Shop-Texte: Bolzplatztore nennen DIN EN 15312:2010-12 (zurückgezogen, aktuell 2026-06), Gewichte widersprüchlich (UNKAPUTTBAR 80–90 kg vs. 96 kg; SILENCE 140–150 kg vs. 125 kg), Minitor-Hinterbau 2,40 × 1,20 m im Text vs. Variante 2,4 × 1,6 m.
+- [ ] Nach Merge: neue URLs /schule/ und /spielplatz/ in der Search Console per URL-Prüfung einreichen.
+
 ## 26.10.2026
 
 ### Search Console: Indexierung (kein Defekt)

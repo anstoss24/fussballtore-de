@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Torberater from '../components/Torberater.astro';
+import { features } from '../data/features';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
+import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import { EINSATZORTE } from '../data/einsatzorte';
+import { AUTHOR, PUBLISHER, SOURCES, SOURCES_OEFFENTLICH as Q } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['jugendtor'];
+
+const findProduct = (id: string) => productsData.products.find((p) => p.id === id)!;
+const ohneGriffe = findProduct('jugendtor-ohne-griffe');
+const mitGriffen = findProduct('jugendtor-mit-griffen');
+
+const SELBSTSICHERND_URL =
+  'https://www.anstoss24.de/fussballtore/jugendtore/transportables-jugendfussballtor-kippsicher-vollverschweisst-5-0-x-2-0-m_868_242741/';
+const KATEGORIE_URL = 'https://www.anstoss24.de/fussballtore/jugendtore/';
+
+// Rückrichtung zu den Einsatzort-Seiten, gleiche Datenquelle wie „Welche Torarten passen hier?“
+const orte = EINSATZORTE.flatMap((e) =>
+  e.tore.filter((t) => t.torart === 'jugend').map((t) => ({ name: e.name, href: e.href, hinweis: t.hinweis }))
+);
+
+const title = 'Jugendtor 5 x 2 m: das Tor für E- und D-Jugend';
+const description =
+  'Jugendtor 5 x 2 m für E- und D-Jugend: transportabel oder selbstsichernd, Material, Netz und Kippsicherung nach DIN EN 748. Mit Empfehlungen für den Verein.';
+
+const faqs = [
+  {
+    question: 'Ist ein D-Jugend-Tor dasselbe wie ein E-Jugend-Tor?',
+    answer:
+      'Ja. Die E-Jugend spielt im 7-gegen-7, die D-Jugend im 9-gegen-9, beide auf Tore mit 5,00 × 2,00 m. Ein Verein braucht für beide Altersklassen also nur eine Torgröße. Spielt die E-Jugend in einem Landesverband noch 5-gegen-5, sind dort auch kleinere Tore erlaubt.',
+  },
+  {
+    question: 'Warum heißt das Jugendtor manchmal Kleinfeldtor?',
+    answer:
+      'In den Jugendordnungen der Landesverbände heißen Tore mit 5,00 × 2,00 m „Kleinfeld-Fußballtore“, weil sie auf dem Kleinfeld stehen. Im Handel ist ein Kleinfeldtor dagegen meist das Tor mit 3,00 × 2,00 m. Achte deshalb immer auf die Meterangabe.',
+  },
+  {
+    question: 'Gilt die DIN EN 748 auch für Jugendtore?',
+    answer:
+      'Ja. Das Jugendtor 5,00 × 2,00 m ist neben dem Großfeldtor eine der beiden Torgrößen, für die die DIN EN 748 gilt. Ob ein bestimmtes Modell sie erfüllt, steht in der Produktbeschreibung; mobile Jugendtore müssen immer gegen Umkippen gesichert sein.',
+  },
+  {
+    question: 'Jugendtor mit oder ohne Tragegriffe?',
+    answer:
+      'Ohne Tragegriffe reicht, wenn das Tor meist an einer Stelle bleibt und nur auf den Transportrollen verschoben wird. Mit angeschweißten Tragegriffen lohnt es sich, wenn das Tor regelmäßig zwischen Plätzen oder über Kanten getragen wird.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-jugendtor.jpg',
+    datePublished: '2026-10-30',
+    dateModified,
+    inLanguage: 'de-DE',
+    author: AUTHOR,
+    publisher: PUBLISHER,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/jugendtor/',
+    },
+  },
+];
+
+const link = 'text-accent hover:text-accent-dark transition-colors font-medium';
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-jugendtor.jpg" ogType="article">
+  <HeroSection
+    title="Jugendtor 5,00 × 2,00 m"
+    subtitle="Das Tor für E- und D-Jugend: Bauarten, Ausstattung und Kippsicherung"
+    compact
+  />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Jugendtor' }]} />
+
+  <article class="container mx-auto max-w-4xl pt-6 pb-12 md:py-16">
+
+    <TldrBlock
+      title="Jugendtor – das Wichtigste"
+      items={[
+        { label: 'Maß', text: '5,00 × 2,00 m für E-Jugend (7-gegen-7) und D-Jugend (9-gegen-9). Ab C-Jugend Großfeldtor.' },
+        { label: 'Begriff', text: 'In Verbandsordnungen heißt das 5 × 2 m Tor „Kleinfeld-Fußballtor“, im Handel „Jugendtor“. Auf die Meterangabe achten.' },
+        { label: 'Bauarten', text: 'Meist transportabel mit Transportrollen, mit oder ohne Tragegriffe; selbstsichernd mit eingebauten Gewichten.' },
+        { label: 'Norm', text: 'DIN EN 748 gilt für 5,00 × 2,00 m. Mobile Tore immer gegen Umkippen sichern.' },
+        { label: 'Netz', text: 'Bei den empfohlenen Toren dabei: 4 mm, Maschenweite 120 mm, grün.' },
+      ]}
+      speakableId="tldr-jugendtor"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Das <strong>Jugendtor</strong> mit <strong>5,00 × 2,00 m</strong> ist das Tor für die E- und D-Jugend. Wer für die Jugendabteilung Tore kauft, braucht deshalb nur ein Maß für zwei Altersklassen. Hier steht, welche Bauarten es gibt, wie du ein Jugendtor sicherst und welches Modell zu deinem Platz passt.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Du suchst nur die Maße aller Torgrößen nach Altersklasse? Die stehen in der <a href="/groessen/" class={link}>Größen-Übersicht</a>. Für die Ausstattung eines ganzen Vereins, vom Großfeld- bis zum Kleinfeldtor, gibt es den Ratgeber <a href="/verein/" class={link}>Fußballtore für Vereine</a>.
+    </p>
+
+    <!-- Maß -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fußballtor 5 × 2 m: für welche Altersklassen?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die <strong>E-Jugend</strong> (U10/U11) spielt im 7-gegen-7, die <strong>D-Jugend</strong> (U12/U13) im 9-gegen-9, beide auf Tore mit 5,00 × 2,00 m. Das <strong>E-Jugend-Tor</strong> und das <strong>D-Jugend-Tor</strong> sind also dasselbe Tor. Spielt die E-Jugend in einem Landesverband noch 5-gegen-5, sind dort auch kleinere Tore erlaubt. Ab der C-Jugend (U14) geht es auf das <a href="/grossfeldtor/" class={link}>Großfeldtor 7,32 × 2,44 m</a>.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Jugendtor oder Kleinfeldtor?</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Hier entstehen die meisten Missverständnisse. In den Jugendordnungen der Landesverbände heißen Tore mit 5,00 × 2,00 m <strong>„Kleinfeld-Fußballtore“</strong>, weil sie auf dem Kleinfeld stehen. Im Handel ist ein Kleinfeldtor dagegen das Tor mit <strong>3,00 × 2,00 m</strong>, das vor allem die F-Jugend und das Training nutzen; es hat eine eigene Seite: <a href="/kleinfeldtor/" class={link}>Kleinfeldtor 3 × 2 m</a>. Wenn dein Verband ein Kleinfeldtor vorschreibt, zählt die Meterangabe.
+    </p>
+
+    <!-- Bauarten -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welche Bauarten von Jugendtoren gibt es?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Jugendtore werden selten fest einbetoniert. Auf vielen Plätzen spielen nacheinander mehrere Mannschaften, das Jugendtor wird quer aufs Großfeld gestellt und danach wieder an den Rand gefahren. Die Jugendtore, die wir hier vorstellen, sind deshalb alle <strong>transportabel</strong>:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Bauart</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Sicherung gegen Umkippen</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Passt für</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Transportabel mit Rollen</td>
+            <td class="px-4 py-3">Bodenverankerung, z. B. Spiralerdanker, oder Zusatzgewichte</td>
+            <td class="px-4 py-3">Tor bleibt meist auf einem Platz</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Transportabel mit Rollen und Tragegriffen</td>
+            <td class="px-4 py-3">Wie oben</td>
+            <td class="px-4 py-3">Tor wird oft getragen, z. B. zwischen Plätzen</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Selbstsichernd</td>
+            <td class="px-4 py-3">Stahlgewichte fest im Bodenrahmen verbaut</td>
+            <td class="px-4 py-3">Training ohne Bodenverankerung</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Transportables Jugendtor</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Das <a href={addUtm(ohneGriffe.url, 'jugendtor')} target="_blank" rel="noopener" class={link}>transportable Jugendtor von anstoss24</a> ist vollverschweißt und kommt laut Shop mit zwei breiten, ausgeschäumten Transportrollen und einer Bodenverankerung mit Spiralerdanker. Die untere Tortiefe beträgt 1,50 m. Laut Produktbeschreibung wird es nach FIFA-DFB-Vorschrift gefertigt und entspricht der DIN EN 748. Optional gibt es das Tor <a href={addUtm(mitGriffen.url, 'jugendtor')} target="_blank" rel="noopener" class={link}>mit angeschweißten Tragegriffen</a>.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Selbstsicherndes Jugendtor</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Beim <a href={addUtm(SELBSTSICHERND_URL, 'jugendtor')} target="_blank" rel="noopener" class={link}>transportablen, kippsicheren Jugendtor</a> sind Stahlgewichte im Bodenrahmen verbaut. Laut anstoss24 kann es „ohne weitere Bodenverankerungen verwendet werden“, ist kippsicher nach EN 748 und TÜV-geprüft. Es ist mit den Tortiefen 1,00 m, 1,50 m und 2,00 m erhältlich und hat Tragegriffe und zwei Lufträder.
+    </p>
+
+    <!-- Material & Netz -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Material, Profil und Netz
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Beim transportablen Jugendtor ist der Torrahmen aus <strong>Aluminium</strong>, laut Shop durch mehrfache Innenverstärkung besonders robust und hat ein <strong>Ovalprofil 120/100 mm</strong>, der Bodenrahmen misst 75 × 50 mm. Mehr zu den Werkstoffen steht im <a href="/material-vergleich/" class={link}>Material-Vergleich</a>.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Das Tornetz ist dabei: grün, 4 mm, Maschenweite 120 mm. Mit den mitgelieferten Kunststoff-Netzhaken lässt es sich laut Shop sehr einfach montieren, andere Netzfarben gibt es auf Anfrage. Worauf es beim Ersatznetz ankommt, erklärt der <a href="/tornetz/" class={link}>Tornetz-Ratgeber</a>.
+    </p>
+
+    <!-- Produkte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Jugendtor kaufen: unsere Empfehlungen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Beide Varianten sind vollverschweißt, kommen mit Netz, Transportrollen und Spiralerdankern. Der Unterschied sind die Tragegriffe. Alle Modelle findest du in der <a href={addUtm(KATEGORIE_URL, 'jugendtor')} target="_blank" rel="noopener" class={link}>Jugendtor-Kategorie bei anstoss24</a>.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Bleibt meist auf einem Platz</p>
+        <ProductCard
+          name={ohneGriffe.name}
+          url={ohneGriffe.url}
+          imageUrl={ohneGriffe.imageUrl}
+          features={['Vollverschweißt', 'Transportrollen', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'DIN EN 748']}
+          category="Jugendtor"
+          campaign="jugendtor"
+        />
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Wird oft getragen</p>
+        <ProductCard
+          name={mitGriffen.name}
+          url={mitGriffen.url}
+          imageUrl={mitGriffen.imageUrl}
+          features={['Vollverschweißt', 'Transportrollen + Tragegriffe', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'DIN EN 748']}
+          category="Jugendtor"
+          campaign="jugendtor"
+        />
+      </div>
+    </div>
+
+    {features.torberater && (
+      <div class="mt-14">
+        <Torberater campaign="jugendtor-torberater" start="jugendtor" title="Das passende Jugendtor finden" />
+      </div>
+    )}
+
+    <!-- Norm & Kippsicherung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      DIN EN 748 und Kippsicherung beim Jugendtor
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die <strong>DIN EN 748</strong> gilt laut DIN Media für Fußballtore 5,00 × 2,00 m und 7,32 × 2,44 m für Training und Wettkampf, also auch für das Jugendtor. Sie legt funktionelle und sicherheitstechnische Anforderungen samt Prüfverfahren fest, unter anderem eine definierte Standsicherheit. Ob und mit welcher Verankerung ein Tor die Norm erfüllt, steht in der Produktbeschreibung.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Gerade Jugendtore werden oft bewegt. Deshalb nach jedem Umstellen sichern, Kinder nicht an der Latte hängen oder klettern lassen und ungenutzte Tore gesichert abstellen. Hinweise zur Sicherheit und Prüfung von Sportgeräten gibt die DGUV Information 202-044. Wie Erdanker und Gewichte richtig sitzen, steht in der <a href="/aufbau-anleitung/#kippsicherung" class={link}>Anleitung zur Kippsicherung</a>.
+    </p>
+
+    <!-- Einsatzorte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Wo wird das Jugendtor eingesetzt?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Jugendtore stehen dort, wo E- und D-Jugend trainieren und spielen. Was am jeweiligen Ort dazukommt, steht im Ratgeber zum Einsatzort:
+    </p>
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatzort</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Wofür</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          {orte.map((o, i) => (
+            <tr class:list={['border-t border-neutral-200', i % 2 === 1 && 'bg-neutral-50/50']}>
+              <td class="px-4 py-3"><a href={o.href} class={link}>{o.name}</a></td>
+              <td class="px-4 py-3">{o.hinweis}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Ein Maß für zwei Altersklassen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      E- und D-Jugend spielen auf dasselbe Jugendtor mit 5,00 × 2,00 m. Ein transportables, vollverschweißtes Tor mit Rollen passt zu den meisten Vereinsplätzen; Tragegriffe lohnen sich, wenn es oft getragen wird. Wer ohne Bodenverankerung arbeiten will, greift zum selbstsichernden Tor. In jedem Fall gilt: Das Tor muss gegen Umkippen gesichert sein.
+    </p>
+
+    <Sources items={[SOURCES[0], Q.din748, Q.dguv202044]} />
+
+    <RelatedContent
+      items={[
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Torgrößen nach Altersklasse' },
+        { href: '/grossfeldtor/', title: 'Großfeldtor', subtitle: '7,32 × 2,44 m ab C-Jugend' },
+        { href: '/kleinfeldtor/', title: 'Kleinfeldtor', subtitle: '3,00 × 2,00 m für F-Jugend und Training' },
+        { href: '/verein/', title: 'Verein & Wettkampf', subtitle: 'Den ganzen Platz ausstatten' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Kippsicherung richtig gemacht' },
+        { href: '/tornetz/', title: 'Tornetz', subtitle: 'Material, Stärke, Maschenweite' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Jugendtor" />
+    </div>
+  </div>
+</BaseLayout>

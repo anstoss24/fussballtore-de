@@ -6,7 +6,7 @@ import FAQSection from '../components/FAQSection.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import { features } from '../data/features';
 import { tbLastUpdated } from '../utils/torberater';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, WEBSITE } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['torberater'];
 
@@ -25,7 +25,7 @@ const faqs = [
   {
     question: 'Muss ein Fußballtor gegen Umkippen gesichert werden?',
     answer:
-      'Für Tore im Vereins-, Schul- und Kommunalbetrieb schreibt die DIN EN 748 eine Sicherung gegen Umkippen vor – über Bodenhülsen, Erdanker, Gegengewichte oder fest integrierte Gewichte. Wählst du im Torberater ein Tor ohne integrierte Kippsicherung, musst du es zusätzlich sichern.',
+      'Für Großfeld- und Jugendtore im Vereins-, Schul- und Kommunalbetrieb schreibt die DIN EN 748 eine Sicherung gegen Umkippen vor – über Bodenhülsen, Erdanker, Gegengewichte oder fest integrierte Gewichte. Wählst du im Torberater ein Tor ohne integrierte Kippsicherung, musst du es zusätzlich sichern.',
   },
   {
     question: 'Fest in Bodenhülsen oder mobil – was ist besser?',
@@ -57,7 +57,7 @@ const schema = [
     about: { '@type': 'Thing', name: 'Fußballtor' },
     author: AUTHOR,
     publisher: { '@type': 'Organization', name: 'fussballtore.de', url: 'https://fussballtore.de' },
-    isPartOf: { '@type': 'WebSite', name: 'fussballtore.de', url: 'https://fussballtore.de' },
+    isPartOf: { '@id': WEBSITE['@id'] },
     mainEntity: { '@id': 'https://fussballtore.de/torberater/#app' },
   },
   {
@@ -106,17 +106,17 @@ const schema = [
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">So funktioniert der Torberater</h2>
       <ol class="grid gap-4 md:grid-cols-3 list-none p-0">
         <li class="rounded-xl border border-neutral-200 p-5">
-          <span class="font-mono text-sm text-accent">01</span>
+          <span class="text-sm text-accent">01</span>
           <p class="font-heading font-bold text-primary mt-1">Torgröße wählen</p>
           <p class="text-base text-neutral-500 mt-1">Großfeld, Jugend, Bolzplatz oder Minitor – je nachdem, wer wo spielt.</p>
         </li>
         <li class="rounded-xl border border-neutral-200 p-5">
-          <span class="font-mono text-sm text-accent">02</span>
+          <span class="text-sm text-accent">02</span>
           <p class="font-heading font-bold text-primary mt-1">Ausstattung festlegen</p>
           <p class="text-base text-neutral-500 mt-1">Ein bis zwei Fragen zu Aufstellung und Ausstattung. Unter „Was bedeutet das?“ steht jeweils die Erklärung.</p>
         </li>
         <li class="rounded-xl border border-neutral-200 p-5">
-          <span class="font-mono text-sm text-accent">03</span>
+          <span class="text-sm text-accent">03</span>
           <p class="font-heading font-bold text-primary mt-1">Passende Tore vergleichen</p>
           <p class="text-base text-neutral-500 mt-1">Du siehst alle Tore, die deine Kriterien erfüllen, mit aktuellem Preis – und kannst das Ergebnis teilen.</p>
         </li>

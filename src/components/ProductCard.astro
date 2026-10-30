@@ -1,7 +1,7 @@
 ---
 import { addUtm } from '../utils/utm';
 import pricesData from '../data/prices.json';
-import { shopImage } from '../utils/shop-image';
+import { shopImage, shopImageArt, type Bildart } from '../utils/shop-image';
 
 interface Props {
   name: string;
@@ -10,10 +10,18 @@ interface Props {
   features: string[];
   category?: string;
   campaign: string;
+  /** Freisteller: ganz sichtbar mit Innenabstand; Szene: füllt die Fläche. Standard: vom Fetch-Skript erkannt */
+  bildart?: Bildart;
+  /** Nur für Karten im ersten Bildschirm */
+  eager?: boolean;
 }
 
-const { name, url, imageUrl, features, category, campaign } = Astro.props;
-const imageSrc = shopImage(imageUrl, 800) ?? imageUrl;
+const { name, url, imageUrl, features, category, campaign, bildart, eager = false } = Astro.props;
+const small = shopImage(imageUrl, 'c480');
+const large = shopImage(imageUrl, 'c960');
+const imageSrc = large ?? small ?? imageUrl;
+const srcset = small && large ? `${small} 480w, ${large} 960w` : undefined;
+const art = bildart ?? shopImageArt(imageUrl) ?? 'freisteller';
 
 const priceInfo = (pricesData as Record<string, any>)[url];
 const price = priceInfo?.price;
@@ -58,57 +66,63 @@ if (price) {
 }
 ---
 
-<article class="group bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+<article class="group flex h-full flex-col md:[:not(.max-w-md)>&:only-child]:col-span-2 md:[:not(.max-w-md)>&:only-child]:flex-row overflow-hidden rounded-xl bg-white ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_16px_32px_-16px_rgba(15,23,42,0.3)]">
   <!-- Product Schema (only with offers to satisfy Google rich result requirements) -->
   {price && (
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   )}
 
-  <!-- Image -->
-  <div class="relative aspect-[4/3] overflow-hidden bg-neutral-50">
+  <!-- Image: feste 4:3-Fläche gegen Layout-Sprünge -->
+  <div class="relative aspect-[4/3] overflow-hidden bg-white md:[:not(.max-w-md)>.group:only-child_&]:w-1/2 md:[:not(.max-w-md)>.group:only-child_&]:flex-none">
     <img
       src={imageSrc}
+      srcset={srcset}
+      sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
       alt={name}
-      loading="lazy"
-      width="400"
-      height="300"
-      class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      width="960"
+      height="720"
+      class:list={[
+        'h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]',
+        art === 'szene' ? 'object-cover' : 'object-contain p-6 mix-blend-multiply sm:p-8',
+      ]}
     />
   </div>
 
   <!-- Content -->
-  <div class="p-5">
+  <div class="flex flex-1 flex-col p-5 md:[:not(.max-w-md)>.group:only-child_&]:p-7 md:[:not(.max-w-md)>.group:only-child_&]:justify-center">
     {category && (
-      <span class="inline-block text-xs font-medium text-accent uppercase tracking-wider mb-2">
+      <span class="mb-1.5 text-sm font-semibold text-accent-dark">
         {category}
       </span>
     )}
-    <h3 class="font-heading text-base font-bold text-primary leading-snug mb-3 line-clamp-2">
+    <h3 class="font-heading text-lg font-bold text-primary leading-snug mb-3 line-clamp-2">
       {name}
     </h3>
 
-    <!-- Feature Pills -->
-    <div class="flex flex-wrap gap-1.5 mb-3">
+    <!-- Merkmale -->
+    <ul class="flex flex-wrap gap-1.5 mb-4">
       {features.slice(0, 4).map((feature) => (
-        <span class="inline-block text-xs bg-neutral-50 text-neutral-500 border border-neutral-200 px-2 py-0.5 rounded-md">
+        <li class="text-[0.8125rem] leading-5 bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded-md">
           {feature}
-        </span>
+        </li>
       ))}
-    </div>
+    </ul>
 
     <!-- Price -->
     {price && (
-      <div class="mb-3">
-        <span class="text-lg font-bold text-primary">{formatPrice(price)} €</span>
+      <p class="mt-auto mb-4 flex flex-wrap items-baseline gap-x-2 gap-y-1 tabular-nums">
+        <span class="font-heading text-xl font-bold text-primary">{formatPrice(price)} €</span>
         {uvp && (
-          <span class="ml-2 text-sm text-neutral-400 line-through">{formatPrice(uvp)} €</span>
+          <span class="text-sm text-neutral-400 line-through">{formatPrice(uvp)} €</span>
         )}
         {discount && discount >= 5 && (
-          <span class="ml-1.5 text-xs font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded">
+          <span class="text-[0.8125rem] font-semibold text-accent-dark bg-accent/10 px-1.5 py-0.5 rounded">
             -{discount}%
           </span>
         )}
-      </div>
+      </p>
     )}
 
     <!-- CTA -->
@@ -116,7 +130,10 @@ if (price) {
       href={addUtm(url, campaign, 'product-card')}
       target="_blank"
       rel="noopener"
-      class="block w-full text-center bg-accent hover:bg-accent-dark text-white font-medium text-sm py-2.5 px-4 rounded-lg transition-colors no-underline"
+      class:list={[
+        'block w-full text-center bg-accent hover:bg-accent-dark text-white font-semibold text-[0.95rem] py-3 px-4 rounded-lg transition-[background-color,transform] duration-150 active:scale-[0.97] no-underline',
+        !price && 'mt-auto',
+      ]}
     >
       Preis jetzt prüfen &rarr;
     </a>

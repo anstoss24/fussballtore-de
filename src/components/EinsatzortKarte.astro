@@ -1,0 +1,48 @@
+---
+/**
+ * Startseite „Fußballtore nach Einsatzort“: Ortsillustration, Name, Kurzbeschreibung und „Geeignet: …“.
+ * Gleicher Kartenaufbau wie TorartKarte, Bildfläche 3:2.
+ */
+import OrtIllustration from './OrtIllustration.astro';
+
+interface Props {
+  ort: string;
+  name: string;
+  href: string;
+  subtitle: string;
+  geeignet: string[];
+  /** Letzte Karte einer ungeraden Reihe: füllt im 2er-Raster die ganze Zeile */
+  wide?: boolean;
+}
+
+const { ort, name, href, subtitle, geeignet, wide = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    wide && 'col-span-2 lg:col-span-1',
+    'group flex h-full flex-col overflow-hidden rounded-xl bg-white no-underline ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-12px_rgba(15,23,42,0.25)] hover:ring-accent/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
+  ]}
+>
+  <span class:list={['block overflow-hidden bg-neutral-100', wide ? 'aspect-[2/1] sm:aspect-[3/1] lg:aspect-[3/2]' : 'aspect-[3/2]']}>
+    <OrtIllustration ort={ort} dekorativ class="block h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+  </span>
+  <span class="flex flex-1 items-start justify-between gap-2 p-3 sm:p-4 md:p-5">
+    <span class="flex h-full min-w-0 flex-col">
+      <span class="block font-heading text-lg font-bold leading-snug text-primary group-hover:text-accent-dark transition-colors">{name}</span>
+      <span class="mt-0.5 block text-sm leading-snug text-neutral-500">{subtitle}</span>
+      <span class="mt-2 block text-sm leading-snug text-neutral-600">
+        <span class="font-semibold text-primary">Geeignet:</span>{' '}
+        {geeignet.map((g, i) => (
+          <>
+            <span class="sm:whitespace-nowrap">{g.replaceAll('-', '‑')}{i < geeignet.length - 1 && ' ·'}</span>{' '}
+          </>
+        ))}
+      </span>
+    </span>
+    <svg class="mt-1 h-5 w-5 flex-none text-neutral-400 transition-[transform,color] duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+    </svg>
+  </span>
+</a>

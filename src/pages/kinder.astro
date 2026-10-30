@@ -6,8 +6,9 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['kinder'];
 
@@ -24,7 +25,7 @@ const faqs = [
   {
     question: 'Welches Kindertor für 3-Jährige?',
     answer:
-      'Für 3-Jährige reicht ein kleines Pop-up-Tor aus weichem Stoff mit 80 x 60 cm bis 120 x 80 cm. Es hat keine harten Kanten, kann nicht umkippen und lässt sich auch drinnen aufstellen. Dazu am besten einen Softball verwenden.',
+      'Für 3-Jährige reicht ein kleines Pop-up-Tor aus weichem Stoff mit 80 x 60 cm bis 120 x 80 cm. Es hat keine harten Kanten, ist sehr leicht und lässt sich auch drinnen aufstellen. Draußen trotzdem mit den Heringen sichern. Dazu am besten einen Softball verwenden.',
   },
   {
     question: 'Welche Fußballtor-Größe passt für 6-Jährige?',
@@ -39,7 +40,7 @@ const faqs = [
   {
     question: 'Wie sichere ich ein Kinder-Fußballtor gegen Umkippen?',
     answer:
-      'Leichte Tore sollten immer mit Erdankern oder Heringen befestigt werden. Auf hartem Untergrund helfen Beschwerungsgewichte oder Sandsäcke. Achte darauf, dass dein Kind nie am Tornetz oder an der Querlatte hängt – das ist die häufigste Unfallursache.',
+      'Leichte Tore sollten immer mit Erdankern oder Heringen befestigt werden. Auf hartem Untergrund helfen Beschwerungsgewichte oder Sandsäcke. Achte darauf, dass dein Kind nie am Tornetz oder an der Querlatte hängt – so kann auch ein gesichertes Tor kippen.',
   },
   {
     question: 'Kann mein Kind ein Fußballtor auch drinnen benutzen?',
@@ -49,7 +50,7 @@ const faqs = [
   {
     question: 'Wie lange hält ein Kinder-Fußballtor?',
     answer:
-      'Pop-up-Tore halten bei normaler Nutzung 2–3 Saisons. Hochwertige Stecktore aus Metall oder Fiberglas können 5–8 Jahre und länger halten. Achte darauf, die Tore bei Nichtgebrauch trocken zu lagern – das verlängert die Lebensdauer deutlich.',
+      'Pop-up-Tore sind auf leichtes Spielen ausgelegt und verschleißen bei regelmäßiger Nutzung schneller. Hochwertige Stecktore aus Metall oder Fiberglas halten deutlich länger, vollverschweißte Alu-Minitore viele Jahre. Achte darauf, die Tore bei Nichtgebrauch trocken zu lagern – das verlängert die Lebensdauer deutlich.',
   },
 ];
 
@@ -81,7 +82,7 @@ const schema = [
   />
   <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Kindertore' }]} />
 
-  <article class="container mx-auto py-12 md:py-16 max-w-4xl">
+  <article class="container mx-auto pt-6 pb-12 md:py-16 max-w-4xl">
 
     <TldrBlock
       title="Welches Kindertor für welches Alter?"
@@ -90,7 +91,7 @@ const schema = [
         { label: '6–8 Jahre', text: '1,20 × 0,80 m bis 1,80 × 1,20 m — Stecktor, Pop-up oder Alu-Minitor.' },
         { label: '9–10 Jahre (E-Jugend)', text: 'Garten ab 1,80 × 1,20 m. Im Verein: Jugendtore 5 × 2 m (7-gegen-7).' },
         { label: '11–12 Jahre (D-Jugend)', text: 'Garten 3 × 2 m. Im Verein: 5,00 × 2,00 m Jugendtor.' },
-        { label: 'Ab 14 Jahre (C-Jugend)', text: 'Verein: 7,32 × 2,44 m Großfeldtor.' },
+        { label: 'Ab 13 Jahre (C-Jugend)', text: 'Verein: 7,32 × 2,44 m Großfeldtor.' },
         { label: 'Wichtigste Regel', text: 'Tore immer gegen Umkippen sichern. Kein Klettern oder Hängen am Netz.' },
       ]}
       speakableId="tldr-kinder"
@@ -131,7 +132,7 @@ const schema = [
             <strong>Pop-up-Tore</strong> aus leichtem Stoff sind ideal: Sie sind weich, haben keine harten Kanten
             und lassen sich in Sekunden aufbauen. Empfohlene Größe: <strong>80 x 60 cm bis 120 x 80 cm</strong>.
             Ein <a href="/garten/" class="text-accent hover:text-accent-dark transition-colors">kleines Fußballtor im Garten</a>
-            reicht völlig – es muss nicht groß sein. Wenn dein Kind im Verein spielt, ist mit hoher Wahrscheinlichkeit <a href="/funino/" class="text-accent hover:text-accent-dark transition-colors">Funino</a> die offizielle Spielform.
+            reicht völlig – es muss nicht groß sein. Spielt dein Kind später bei den Bambini, sind dort Minitore üblich, etwa im <a href="/funino/" class="text-accent hover:text-accent-dark transition-colors">Funino</a>-Format.
           </p>
         </div>
 
@@ -140,7 +141,7 @@ const schema = [
           <p class="text-neutral-600 leading-relaxed">
             Jetzt wird es ernster: Dein Kind spielt gezielt, schießt härter und möchte „richtige" Tore.
             Stecktore aus Fiberglas oder Kunststoff sind hier eine gute Wahl. Auch hochwertige
-            <strong>Mini-Fußballtore</strong> aus Metall mit Netz sind geeignet. Empfohlene Größe:
+            <a href="/minitore/" class="text-accent hover:text-accent-dark transition-colors"><strong>Mini-Fußballtore</strong></a> aus Metall mit Netz sind geeignet. Empfohlene Größe:
             <strong>1,20 x 0,80 m bis 1,80 x 1,20 m</strong>. In diesem Alter starten viele Kinder auch
             im Verein – ein eigenes Tor zum Üben zu Hause macht einen echten Unterschied.
           </p>
@@ -151,8 +152,8 @@ const schema = [
           <p class="text-neutral-600 leading-relaxed">
             Dein Kind trainiert gezielt, spielt im Verein und braucht ein Tor, das auch härtere Schüsse aushält.
             Stabile Stecktore oder sogar kleinere Alu-Tore sind jetzt sinnvoll. Für den Garten empfehlen wir
-            <strong>1,80 x 1,20 m bis 3,00 x 2,00 m</strong>. Im Vereinsbetrieb spielen E-Jugend (U10/U11)
-            und D-Jugend (U12/U13) auf <strong>5,00 x 2,00 m</strong> <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtoren</a> — die E-Jugend im 7-gegen-7, die D-Jugend im 9-gegen-9. Das ist ein Vereinstor, kein Gartentor. Schau dir dazu auch unsere
+            <strong>1,80 x 1,20 m bis 3,00 x 2,00 m</strong>. Im Vereinsbetrieb spielt die E-Jugend (U10/U11)
+            im 7-gegen-7 auf <strong>5,00 x 2,00 m</strong> <a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors">Jugendtoren</a>. Dieses Tor gehört auf den Vereinsplatz, nicht in den Garten. Schau dir dazu auch unsere
             <a href="/groessen/" class="text-accent hover:text-accent-dark transition-colors">Größen-Übersicht</a>
             an, um die optimalen Maße für dein Kind zu finden.
           </p>
@@ -161,8 +162,8 @@ const schema = [
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-100">
           <h3 class="font-heading text-lg font-bold text-primary mb-2">Ab 12 Jahren: Jugend- und Großfeldtore</h3>
           <p class="text-neutral-600 leading-relaxed">
-            D-Jugend (U12/U13) spielt im Verein auf <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtoren (5,00 x 2,00 m)</a>. Ab der C-Jugend (U14/U15)
-            wird bereits auf <strong>Großfeldtoren (7,32 x 2,44 m)</strong> gespielt – das sind die gleichen
+            D-Jugend (U12/U13) spielt im Verein auf <a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors">Jugendtoren (5,00 x 2,00 m)</a>. Ab der C-Jugend (U14/U15)
+            wird bereits auf <a href="/grossfeldtor/" class="text-accent hover:text-accent-dark transition-colors"><strong>Großfeldtoren (7,32 x 2,44 m)</strong></a> gespielt – das sind die gleichen
             Maße wie bei den Erwachsenen. Für den Garten sind Tore um <strong>3,00 x 2,00 m</strong> ein guter
             Kompromiss zwischen Wettkampfgefühl und Platz. Informiere dich in unserer
             <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors">Übersicht für Spiel- & Trainingsbetrieb</a>
@@ -205,16 +206,16 @@ const schema = [
             </tr>
             <tr class="border-b border-neutral-100">
               <td class="py-3 px-4 font-medium">9–10 Jahre (E-Jugend)</td>
-              <td class="py-3 px-4">Garten: 180 x 120 – 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtore</a> (500 x 200 cm, 7-gegen-7)</span></td>
+              <td class="py-3 px-4">Garten: 180 x 120 – 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: <a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors">Jugendtore</a> (500 x 200 cm, 7-gegen-7)</span></td>
               <td class="py-3 px-4">Stecktor, Alu-Minitor</td>
             </tr>
             <tr class="border-b border-neutral-100 bg-neutral-50">
               <td class="py-3 px-4 font-medium">11–12 Jahre (D-Jugend)</td>
-              <td class="py-3 px-4">Garten: 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: <a href="/verein/#jugendtore" class="text-accent hover:text-accent-dark transition-colors">Jugendtore</a> (500 x 200 cm, 9-gegen-9)</span></td>
+              <td class="py-3 px-4">Garten: 300 x 200 cm<br><span class="text-sm text-neutral-500">Verein: <a href="/jugendtor/" class="text-accent hover:text-accent-dark transition-colors">Jugendtore</a> (500 x 200 cm, 9-gegen-9)</span></td>
               <td class="py-3 px-4">Alu-Minitor, Jugendtor</td>
             </tr>
             <tr class="border-b border-neutral-100">
-              <td class="py-3 px-4 font-medium">Ab 14 Jahre (C-Jugend)</td>
+              <td class="py-3 px-4 font-medium">Ab 13 Jahre (C-Jugend)</td>
               <td class="py-3 px-4">732 x 244 cm</td>
               <td class="py-3 px-4">Großfeldtor</td>
             </tr>
@@ -236,7 +237,7 @@ const schema = [
         Sicherheit geht vor – darauf musst du achten
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-6">
-        Jedes Jahr passieren in Deutschland Unfälle mit Fußballtoren – vor allem, wenn Tore umkippen
+        Gefährlich wird ein Fußballtor vor allem, wenn es umkippt
         oder Kinder am Tornetz oder der Querlatte hängen. Damit dein Kind sicher spielen kann,
         solltest du folgende Punkte beachten:
       </p>
@@ -317,7 +318,7 @@ const schema = [
           <div>
             <h3 class="font-heading font-bold text-primary mb-1">TÜV-Prüfung und DIN-Normen</h3>
             <p class="text-neutral-600 leading-relaxed">
-              Für den Vereins- und Schulbetrieb sind TÜV-geprüfte Tore nach DIN EN 748 vorgeschrieben.
+              Im Vereins- und Schulbetrieb sind Normen der Maßstab: DIN EN 748 für Jugend- und Großfeldtore, DIN EN 16579 für andere Spielfeldtore über 10 kg.
               Für den privaten Garten gibt es keine Pflicht – aber ein TÜV-Siegel gibt dir die Gewissheit,
               dass das Tor auf Standsicherheit, Materialqualität und Verletzungsgefahr geprüft wurde.
               Gerade bei Kindertoren ist das eine sinnvolle Investition. Mehr zum Thema Material und
@@ -349,7 +350,7 @@ const schema = [
           <p class="text-neutral-600 leading-relaxed mb-3">
             Pop-up-Tore falten sich in Sekunden auf und lassen sich genauso schnell wieder zusammenpacken.
             Sie bestehen aus flexiblen Fiberglas-Stangen und Polyester, wiegen kaum etwas und sind absolut
-            kindersicher – keine harten Kanten, kein Kipprisiko. Perfekt für den Einstieg, den Park
+            kindersicher – keine harten Kanten, kaum Kipprisiko. Perfekt für den Einstieg, den Park
             oder das Kinderzimmer.
           </p>
           <p class="text-neutral-600 leading-relaxed">
@@ -372,7 +373,7 @@ const schema = [
             auch bei Wind sicher – vorausgesetzt, du verankerst sie im Boden.
           </p>
           <p class="text-neutral-600 leading-relaxed">
-            <strong>Nachteil:</strong> Der Aufbau dauert etwas länger als bei Pop-up-Toren (ca. 5–10 Minuten).
+            <strong>Nachteil:</strong> Der Aufbau dauert etwas länger als bei Pop-up-Toren.
             Manche günstigen Modelle haben dünne Stangen, die bei starker Belastung brechen können.
           </p>
         </div>
@@ -403,7 +404,7 @@ const schema = [
         <ProductCard
           name="QuickPlay Kickster Elite 1,50 x 1,00 m"
           url="https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/10078/secondPreview/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_1.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/10078/full/Quick-Play-Junior-Minitor-1-50-x-1-00m-10078_3.jpg"
           features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', 'Ideal für Funino']}
           category="Stecktore"
           campaign="kinder"
@@ -416,7 +417,7 @@ const schema = [
         <ProductCard
           name="QuickPlay Kickster Elite 1,80 x 1,20 m"
           url="https://www.anstoss24.de/tore/quick-play-kickster-1-82m-x-1-21m-fussballtor_47_1030/"
-          imageUrl="https://cdn02.plentymarkets.com/cmj9dsr9tp66/item/images/47/secondPreview/QuickPlay-Kickster-Elite-Junior-Minitor-1-80-x-1-20m-47_5.jpg"
+          imageUrl="https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/47/full/QuickPlay-Kickster-Elite-Junior-Minitor-1-80-x-1-20m-47_1.jpg"
           features={['90-Sek-Aufbau', 'Windstabil', 'Inkl. Tasche', 'Wetterfest']}
           category="Minitore"
           campaign="kinder"
@@ -490,6 +491,8 @@ const schema = [
         – dort gehen wir ausführlich auf Aufbau, Platzbedarf und die besten Modelle für den Garten ein.
       </p>
     </section>
+
+    <Sources items={[Q.din748, Q.din16579]} />
 
     <RelatedContent
       items={[
