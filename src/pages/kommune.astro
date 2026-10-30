@@ -8,6 +8,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
@@ -103,8 +104,6 @@ const schema = [
     <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
       Wer für eine <strong>Kommune Fußballtore</strong> beschafft, hat selten nur einen Platz im Blick: den Bolzplatz im Wohngebiet, den Sportplatz, auf dem der Verein trainiert, die Freizeitanlage am Park, dazu Schulhöfe und Spielplätze. Ein Tor für alles gibt es nicht. Hier steht, welche <strong>Torart</strong> auf welche kommunale Fläche passt, welche Norm jeweils gilt und worauf es beim Einbau ankommt.
     </p>
-
-    <!-- EINSATZORT-MAPPING -->
 
     <!-- Direktantwort -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
@@ -321,6 +320,9 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Wir sind keine Juristen. Wie oft und durch wen kontrolliert werden muss, klärst du im Zweifel mit einem Sachverständigen oder dem kommunalen Versicherer. Fragen zur Bestellung beantwortet <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'kommune')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24</a> direkt.
     </p>
+
+    <!-- Torarten für diesen Einsatzort (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="kommune" />
 
     <!-- Fazit -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">

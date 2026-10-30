@@ -3,6 +3,24 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Struktur Torart / Einsatzort, Hero zurück, Banner (Branch `feature/feinschliff`, nicht live)
+
+### Geändert
+- Matzes Feedback: „Schultore“/„Spielplatztore“ sind keine Torarten. Torarten (Sortiment) und Einsatzorte jetzt getrennt, eine Datenquelle `src/data/einsatzorte.ts` für Startseite, Header, Footer, Banner und Mapping-Baustein.
+- Torarten: Großfeldtore → /verein/#grossfeldtore, Jugendtore → /verein/#jugendtore, Kleinfeldtore → /verein/#kleinfeldtore, Bolzplatztore → /bolzplatztor/, Minitore & Pop-up-Tore → /minitore/. Einsatzorte: Sportverein, Kommune & öffentliche Plätze, Schule & Kita, Spielplatz, Garten.
+- Startseite: „Fußballtore nach Kategorie“ ersetzt durch „Fußballtore nach Torart“ (Fotokarten) und „Fußballtore nach Einsatzort“ (Liste mit maßstabsgetreuen Tor-Linien und „Geeignet: …“). H1, Title, Description unverändert.
+- Header: Kaufberatung, Größen, Material direkt; Dropdowns „Tore“ (Torarten + Kinder/Funino) und „Einsatzorte“ als `<details>`, Links bleiben im HTML. Mobilmenü gruppiert (Ratgeber/Torarten/Einsatzorte). Footer: Ratgeber/Torarten/Einsatzorte/Über.
+- Startseiten-Hero zurück auf Navy-Verlauf mit Spielfeldlinien (Stand main), Torberater-Kacheln bleiben. Unterseiten-Banner: Spielfeldlinien + kleine maßstabsgetreue Tor-Linienzeichnung zum Seitenthema (ab 768 px).
+- Neuer Abschnitt „Welche Torarten passen hier?“ auf /verein/, /kommune/, /schule/, /spielplatz/, /garten/ (vor dem Fazit). Zuordnung nur aus dem, was die Seite selbst sagt; Belegstelle steht je Eintrag in `einsatzorte.ts`. page-dates dieser Seiten (außer kommune) auf 30.10.
+- /verein/: Sprungmarken `id="grossfeldtore"` und `id="kleinfeldtore"` an bestehenden H2 (Text unverändert).
+
+### Entscheidungen
+- Keine URL, H1, Title, Description, kein Fließtext bestehender Seiten geändert. Linktexte „Vereinstore“, „Gartentore“, „Kindertore“ in RelatedContent/Breadcrumbs bleiben (Keyword-Ankertexte); „Schultore“/„Spielplatztore“ gab es nur auf Startseite und Footer.
+- Funino bleibt Ratgeber, keine eigene Torart (Funino-Empfehlungen sind Minitore).
+
+### Offen
+- [ ] Freigabe Matze für Merge nach main.
+
 ## 30.10.2026 – Neue Seite /kommune/ (Branch `feature/feinschliff`, nicht live)
 
 ### Neu

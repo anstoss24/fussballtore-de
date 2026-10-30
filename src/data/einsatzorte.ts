@@ -116,6 +116,19 @@ export const EINSATZORTE: Einsatzort[] = [
     ],
   },
   {
+    id: 'kommune',
+    name: 'Kommune & öffentliche Plätze',
+    subtitle: 'Sportplatz, Bolzplatz, Freizeitfläche',
+    href: '/kommune/',
+    tore: [
+      { torart: 'grossfeld', hinweis: 'Kommunaler Sportplatz', beleg: 'kommune.astro: Tabelle unter „Welche Fußballtore braucht eine Kommune?“, Zeile Kommunaler Sportplatz; H2 „Kommunaler Sportplatz: Großfeld-, Jugend- und Kleinfeldtore“' },
+      { torart: 'jugend', hinweis: 'Kommunaler Sportplatz', beleg: 'kommune.astro: wie Großfeldtor' },
+      { torart: 'kleinfeld', hinweis: 'Kommunaler Sportplatz', beleg: 'kommune.astro: wie Großfeldtor' },
+      { torart: 'bolzplatz', hinweis: 'Öffentlicher Bolzplatz, Freizeitanlage', beleg: 'kommune.astro: Tabelle, Zeilen Öffentlicher Bolzplatz und Freizeitanlage; H2 „Öffentlicher Bolzplatz: Tore für den Betrieb ohne Aufsicht“' },
+      { torart: 'minitor', hinweis: 'Freizeitanlage, Park, kleine Flächen', beleg: 'kommune.astro: Tabelle, Zeile Freizeitanlage/Park; H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“' },
+    ],
+  },
+  {
     id: 'schule',
     name: 'Schule & Kita',
     subtitle: 'Schulhof, Schulsport, Kita',
