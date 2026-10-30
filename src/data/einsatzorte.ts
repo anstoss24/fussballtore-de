@@ -91,6 +91,8 @@ export interface Zuordnung {
   torart: TorartId;
   /** Wofür an diesem Ort – sinngemäß aus dem Seitentext */
   hinweis: string;
+  /** Abweichendes Label unter „Geeignet“, wenn der Ort nur einen Teil der Torart empfiehlt (z. B. keine Pop-up-Tore) */
+  label?: string;
   /** Belegstelle auf der Einsatzort-Seite (nur Doku, wird nicht ausgegeben) */
   beleg: string;
 }
@@ -126,7 +128,7 @@ export const EINSATZORTE: Einsatzort[] = [
       { torart: 'jugend', hinweis: 'Kommunaler Sportplatz, E- und D-Jugend', beleg: 'kommune.astro: #sportplatz, DIN EN 748' },
       { torart: 'kleinfeld', hinweis: 'Sportplatz, F-Jugend und Training', beleg: 'kommune.astro: #sportplatz, DIN EN 16579' },
       { torart: 'bolzplatz', hinweis: 'Öffentlicher Bolzplatz ohne Aufsicht', beleg: 'kommune.astro: H2 „Öffentlicher Bolzplatz: Tore für den Betrieb ohne Aufsicht“ (#bolzplatz), DIN EN 15312' },
-      { torart: 'minitor', hinweis: 'Freizeitanlage, Park: nur robuste Alu-Minitore, keine Pop-up- oder Klapptore', beleg: 'kommune.astro: H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“ (#freizeitanlage), DIN EN 16579; Pop-up/klappbar ausgeschlossen im Absatz nach der ersten Tabelle' },
+      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Freizeitanlage, Park: nur robuste Alu-Minitore, keine Pop-up- oder Klapptore', beleg: 'kommune.astro: H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“ (#freizeitanlage), DIN EN 16579; Pop-up/klappbar ausgeschlossen im Absatz nach der ersten Tabelle' },
     ],
   },
   {
@@ -139,7 +141,7 @@ export const EINSATZORTE: Einsatzort[] = [
       { torart: 'jugend', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeile Schulsportplatz' },
       { torart: 'kleinfeld', hinweis: 'Schulsportplatz', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeile Schulsportplatz' },
       { torart: 'bolzplatz', hinweis: 'Schulhof, ohne Aufsicht', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeile Schulhof' },
-      { torart: 'minitor', hinweis: 'Grundschulhof, Ganztag und Kita', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeilen Schulhof, Grundschulhof/Ganztag, Kita' },
+      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Grundschulhof, Ganztag und Kita', beleg: 'schule.astro: Tabelle unter „Welches Fußballtor passt zur Schule?“, Zeilen Schulhof/Grundschulhof „Alu-Minitor“, Kita „Minitor“; Abschnitt Kita: Alu-Minitor mit geschlossenem Hinterbau; Pop-up-Tore nennt die Seite nicht' },
     ],
   },
   {
@@ -149,7 +151,7 @@ export const EINSATZORTE: Einsatzort[] = [
     href: '/spielplatz/',
     tore: [
       { torart: 'bolzplatz', hinweis: 'Eigene Ballspielfläche', beleg: 'spielplatz.astro: H2 „Welche Torgröße für welchen Spielplatz?“ + „Unsere Empfehlungen für Spielplätze“' },
-      { torart: 'minitor', hinweis: 'Jüngere Kinder, nur Alu mit Hinterbau', beleg: 'spielplatz.astro: H2 „Welche Torgröße für welchen Spielplatz?“, Empfehlung Alu-Minitor mit geschlossenem Hinterbau; Pop-up/Steck „nicht dafür gemacht“ (H2 „Welches Fußballtor gehört auf einen Spielplatz?“)' },
+      { torart: 'minitor', label: 'Alu-Minitore', hinweis: 'Jüngere Kinder, nur Alu mit Hinterbau', beleg: 'spielplatz.astro: H2 „Welche Torgröße für welchen Spielplatz?“, Empfehlung Alu-Minitor mit geschlossenem Hinterbau; Pop-up/Steck „nicht dafür gemacht“ (H2 „Welches Fußballtor gehört auf einen Spielplatz?“)' },
     ],
   },
   {
@@ -165,6 +167,9 @@ export const EINSATZORTE: Einsatzort[] = [
 ];
 
 export const einsatzort = (id: string) => EINSATZORTE.find((e) => e.id === id);
+
+/** Label unter „Geeignet“: Ortsangabe vor Sortimentsname */
+export const geeignetLabel = (z: Zuordnung) => z.label ?? TORARTEN[z.torart].plural;
 
 /**
  * Linienzeichnung im Unterseiten-Banner, je Pfad die passenden Torarten (maßstabsgetreu).

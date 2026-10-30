@@ -3,14 +3,16 @@
  * Karte für Torart oder Einsatzort – einheitlich in Größe und Aufbau.
  * stil „foto“: ein Foto bzw. Collage aus 2–4 Fotos der passenden Torarten.
  * stil „linie“: maßstabsgetreue Linienzeichnung (TorLinien) auf heller Fläche.
+ * stil „ort“: Illustration des Einsatzorts (OrtIllustration), gleiche Bildfläche wie „foto“.
  */
 import TorLinien from '../TorLinien.astro';
+import OrtIllustration from './OrtIllustration.astro';
 import { foto } from '../../utils/shop-image';
 import { torReihen, reiheBreiteM, type Karte } from './daten';
 
 interface Props {
   karte: Karte;
-  stil: 'foto' | 'linie';
+  stil: 'foto' | 'linie' | 'ort';
   /** Letzte Karte einer ungeraden Reihe: füllt im 2er-Raster die ganze Zeile */
   wide?: boolean;
   /** Erstes Bild im sichtbaren Bereich: nicht lazy laden */
@@ -38,7 +40,11 @@ const sizesKachel = wide ? '(min-width: 1024px) 120px, 50vw' : '(min-width: 1024
     'group flex h-full flex-col overflow-hidden rounded-xl bg-white no-underline ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-12px_rgba(15,23,42,0.25)] hover:ring-accent/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
   ]}
 >
-  {stil === 'foto' ? (
+  {stil === 'ort' && karte.ort ? (
+    <span class:list={['block overflow-hidden bg-neutral-100', bildFlaeche]}>
+      <OrtIllustration ort={karte.ort} dekorativ class="block h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+    </span>
+  ) : stil !== 'linie' ? (
     <span
       class:list={[
         'block overflow-hidden bg-neutral-100',

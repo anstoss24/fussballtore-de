@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import TorLinien from '../components/TorLinien.astro';
-import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE } from '../data/einsatzorte';
+import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE, geeignetLabel } from '../data/einsatzorte';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
@@ -133,7 +133,7 @@ const schema = [
               </span>
               <span class="col-span-2 row-start-2 md:col-span-1 md:row-start-auto text-sm text-neutral-600 leading-snug">
                 <span class="font-semibold text-primary">Geeignet:</span>{' '}
-                {e.tore.map((z) => TORARTEN[z.torart].plural).join(' · ')}
+                {e.tore.map(geeignetLabel).join(' · ')}
               </span>
               <span class="col-span-2 row-start-3 md:col-span-1 md:row-start-auto text-accent-dark">
                 <TorLinien tore={e.tore.map((z) => z.torart)} breiteM={reiheM} class="block h-auto w-full" />

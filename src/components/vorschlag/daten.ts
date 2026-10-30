@@ -2,7 +2,7 @@
  * Startseiten-Vorschläge (/vorschlag-1/ bis /vorschlag-3/): Kartendaten für „Nach Torart“ und „Nach Einsatzort“.
  * Alles aus bestehenden Quellen: einsatzorte.ts (Zuordnung), fotos.json (Bilder), torberater.json (Anzahl, Ab-Preis).
  */
-import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE, type TorartId } from '../../data/einsatzorte';
+import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE, geeignetLabel, type TorartId } from '../../data/einsatzorte';
 import { tbTree, tbMeta } from '../../utils/torberater';
 import type { FotoKey } from '../../utils/shop-image';
 
@@ -23,6 +23,8 @@ export interface Karte {
   info?: string;
   /** „Geeignet: …“ bei Einsatzorten */
   geeignet?: string[];
+  /** Einsatzort-Schlüssel für die Ortsillustration */
+  ort?: string;
   fotos: FotoKey[];
   tore: TorartId[];
 }
@@ -50,7 +52,8 @@ export const einsatzortKarten: Karte[] = EINSATZORTE.map((e) => {
     name: e.name,
     href: e.href,
     subtitle: e.subtitle,
-    geeignet: tore.map((id) => TORARTEN[id].plural),
+    geeignet: e.tore.map(geeignetLabel),
+    ort: e.id,
     fotos: collage(tore).map((id) => TORARTEN[id].foto),
     tore,
   };
