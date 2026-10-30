@@ -33,6 +33,15 @@ export const PUBLISHER = {
   sameAs: ['https://www.anstoss24.de/ueber-uns/'],
 };
 
+export const WEBSITE = {
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  name: 'fussballtore.de',
+  url: SITE,
+  inLanguage: 'de-DE',
+  publisher: { '@id': PUBLISHER['@id'] },
+};
+
 export const AUTHOR = {
   '@type': 'Person',
   '@id': `${SITE}/ueber-uns/#matthias-frank`,

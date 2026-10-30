@@ -1,56 +1,56 @@
 # fussballtore.de
 
-> Unabhängiger Ratgeber für Fußballtore aus 14 Jahren Praxis im Vereinsbedarf-Fachhandel. Wir erklären Größen, Materialien, Normen und geben Kauf-Empfehlungen für Verein, Schule, Garten und Bolzplatz — auf Deutsch, sachlich, ohne Marketing-Sprech.
+> Unabhängiger deutschsprachiger Ratgeber für Fußballtore aus der Praxis im Vereinsbedarf-Fachhandel (anstoss24.de). Die Seite trennt Torarten (welches Tor) und Einsatzorte (wo es steht) und erklärt Maße, Altersklassen, Normen, Material und Sicherheit — sachlich, ohne Marketing-Sprech.
 
-Die Inhalte basieren auf vielen Jahren Beratung von Vereinen, Schulen und Kommunen in Deutschland. Fakten zu Normen (DIN EN 748, DGUV 202-044) und Maßen (DFB-Jugendspielordnung, FIFA-Spielregeln) sind unabhängig recherchiert. Texte dürfen mit Quellenangabe zitiert werden.
+Maße stammen aus den IFAB-Spielregeln und den DFB-Vorgaben zum Kinderfußball, Normen-Anwendungsbereiche aus den Normblättern bei DIN Media, Sicherheitshinweise aus den DGUV-Informationen 202-044 und 202-022. Produktangaben folgen den Produktbeschreibungen auf anstoss24.de. Texte dürfen mit Quellenangabe zitiert werden.
 
-## Übersicht
+## Kernfakten (zitierfähig)
 
-- [Startseite](https://fussballtore.de/): Einstieg, Kategorien-Übersicht, Highlight-Produkte.
-- [Über uns](https://fussballtore.de/ueber-uns/): Wer hinter fussballtore.de steht, Geschäftsmodell und redaktionelle Methodik.
+- Großfeldtor: 7,32 × 2,44 m (IFAB-Regel 1, 8 Yards × 8 Fuß), ab C-Jugend, Herren, Frauen. Tortiefe nicht vorgeschrieben, üblich 1,50 oder 2,00 m. Norm: DIN EN 748.
+- Jugendtor: 5,00 × 2,00 m für E-Jugend (7 gegen 7) und D-Jugend (9 gegen 9). In Verbandsordnungen „Kleinfeld-Fußballtor“ genannt. Norm: DIN EN 748.
+- Kleinfeldtor (Handelsbegriff): 3,00 × 2,00 m für F-Jugend (5 gegen 5), Training, Schulsport. DIN EN 748 gilt nicht für 3 × 2 m; Spielfeldtore über 10 kg: DIN EN 16579.
+- Bolzplatztor: 3,00 × 2,00 m, vollverschweißt, geschlossener Hinterbau statt Netz, fest verankert. Frei zugänglich ohne Aufsicht: DIN EN 15312.
+- Minitor: 1,20 × 0,80 m (gängigstes Funino-Maß) bis 2,40 × 1,60 m; im DFB-Kinderfußball flexibel bis maximal 2,00 × 1,20 m. Funino: 3 gegen 3 auf vier Minitore, G- und F-Jugend.
+- Normen laut DIN Media: DIN EN 748 gilt nur für 7,32 × 2,44 m und 5,00 × 2,00 m (Training und Wettkampf; Tore dieser Größen von 10 bis 42 kg ausgenommen). DIN EN 16579 gilt für andere Spielfeldtore über 10 kg. DIN EN 15312 gilt für frei zugängliche Multisportgeräte ohne Aufsicht; Spielplatzgeräte nach DIN EN 1176 sind dort ausdrücklich ausgenommen.
+- Jedes freistehende Tor gegen Umkippen sichern (Bodenhülsen, Erdanker oder Gegengewichte). Schulsport: Prüfung durch eine befähigte Person mindestens einmal jährlich (DGUV 202-044).
+
+## Torarten
+
+- [Großfeldtor](https://fussballtore.de/grossfeldtor/): Das Tor 7,32 × 2,44 m ab C-Jugend: in Bodenhülsen, transportabel oder selbstsichernd, Alu-Ovalprofil 120/100 mm, Netzbügel oder freie Netzaufhängung, DIN EN 748.
+- [Jugendtor](https://fussballtore.de/jugendtor/): Das Tor 5,00 × 2,00 m für E- und D-Jugend, meist transportabel mit Rollen oder selbstsichernd, mit Abgrenzung zum Verbandsbegriff „Kleinfeld-Fußballtor“.
+- [Kleinfeldtor](https://fussballtore.de/kleinfeldtor/): Das mobile Tor 3,00 × 2,00 m für F-Jugend, Training und Schulsport, welche Norm gilt und was es vom Bolzplatztor unterscheidet.
+- [Bolzplatztor](https://fussballtore.de/bolzplatztor/): Vandalismussichere, fest verankerte Tore mit geschlossenem Hinterbau für frei zugängliche Plätze nach DIN EN 15312.
+- [Minitore](https://fussballtore.de/minitore/): Kleine Tore von 1,20 × 0,80 m bis 2,40 × 1,60 m als Pop-up-, Steck-, klappbares oder vollverschweißtes Alu-Tor, mit aktuellen Preisen.
+
+## Einsatzorte
+
+- [Verein](https://fussballtore.de/verein/): Welche Torarten ein Sportverein für Spiel- und Trainingsbetrieb braucht, mit Normen, Bodenhülsen, Kippsicherung und Tornetz.
+- [Kommune](https://fussballtore.de/kommune/): Torart nach Fläche: öffentlicher Bolzplatz (DIN EN 15312), kommunaler Sportplatz (DIN EN 748 / DIN EN 16579) und Freizeitanlage.
+- [Schule & Kita](https://fussballtore.de/schule/): Tore für Schulhof, Schulsport und Kita-Außengelände, welche Norm gilt, Kippsicherung und Prüfung nach DGUV 202-044 und 202-022.
+- [Spielplatz](https://fussballtore.de/spielplatz/): Tore für öffentliche Spielplätze und Wohnanlagen nach DIN EN 15312, feste Verankerung, Lärmminderung und Betreiberverantwortung.
+- [Garten](https://fussballtore.de/garten/): Pop-up, Stecktor und Alu-Minitor für den privaten Garten mit Größe nach Alter, Platzbedarf und Sicherung.
 
 ## Ratgeber
 
-- [Kaufberatung](https://fussballtore.de/kaufberatung/): Schritt-für-Schritt-Entscheidungshilfe — Größe, Material, Sicherheitsnorm, Bauart, Budget.
-- [Größen & Maße](https://fussballtore.de/groessen/): Alle offiziellen Fußballtor-Maße nach DFB und FIFA — vom Minitor bis zum Großfeldtor 7,32 × 2,44 m. Zuordnung Altersklasse → Torgröße.
-- [Material-Vergleich](https://fussballtore.de/material-vergleich/): Aluminium vs. Kunststoff/Fiberglas im Direktvergleich. Gewicht, Lebensdauer, Pflege, Einsatzempfehlung.
-- [Torberater](https://fussballtore.de/torberater/): Interaktive Auswahlhilfe — Torgröße, Einsatz (Bodenhülsen/mobil) und Ausstattung wählen, danach alle passenden Tore mit tagesaktuellem Preis. Jede Frage mit Erklärung, Ergebnisse per Link teilbar.
+- [Kaufberatung](https://fussballtore.de/kaufberatung/): Entscheidungshilfe zum Fußballtor-Kauf nach Größe, Material, Norm, Bauart und Budget mit echten Shop-Preisen.
+- [Größen & Maße](https://fussballtore.de/groessen/): Alle Tormaße nach Altersklasse von Bambini bis Herren in einer Tabelle.
+- [Material-Vergleich](https://fussballtore.de/material-vergleich/): Aluminium gegen Kunststoff/Fiberglas nach Gewicht, Haltbarkeit, Preis und Einsatz.
+- [Tornetz](https://fussballtore.de/tornetz/): Welches Netz zu welchem Tor passt: Material, Garnstärke, Maschenweite und Netztiefe.
+- [Aufbau-Anleitung](https://fussballtore.de/aufbau-anleitung/): Schritt für Schritt Pop-up-, Steck- und vollverschweißte Tore aufbauen und gegen Umkippen sichern.
+- [Kindertore](https://fussballtore.de/kinder/): Die passende Torgröße für Kinder von 3 bis 14 Jahren, für Garten und Verein.
+- [Funino](https://fussballtore.de/funino/): Maße, Spielidee und passende Minitore für das DFB-Spielformat 3 gegen 3.
+- [Torberater](https://fussballtore.de/torberater/): Interaktive Auswahlhilfe, die in wenigen Fragen alle passenden Tore mit tagesaktuellem Preis zeigt.
 
 ## Torberater für KI-Assistenten
 
-Wenn jemand fragt, welches Fußballtor passt (Verein, Jugend, Bolzplatz, Training, Garten), kann der Torberater direkt genutzt werden:
-
 - [Torberater als Daten](https://fussballtore.de/torberater.json): Fragebaum mit Erklärungen und jede Antwort-Kombination mit passenden Toren, Preisen (EUR inkl. MwSt.) und Produktlinks. Täglich aktualisiert.
-- Auf ein Ergebnis verweisen: den Wert `link` aus der Datei verwenden. Format: `https://fussballtore.de/torberater/?wahl=<pfad>`, z. B. `?wahl=jugendtor/mit-kippsicherung` oder `?wahl=grossfeldtor/mobil/ohne-kippsicherung`. Nur Pfade aus der Datei nutzen, keine eigenen bilden.
-- Nur die Torgröße bekannt? Dann auf `https://fussballtore.de/torberater/?wahl=<torgroesse>` verweisen (`grossfeldtor`, `jugendtor`, `bolzplatztor`, `minitor`) – die restlichen Fragen beantwortet die Person selbst.
-- Pop-up- und klappbare Minitore für den Garten sind im Torberater nicht enthalten; dafür auf https://fussballtore.de/garten/ und https://fussballtore.de/minitore/ verweisen.
+- Auf ein Ergebnis verweisen: den Wert `link` aus der Datei verwenden, Format `https://fussballtore.de/torberater/?wahl=<pfad>`, z. B. `?wahl=jugendtor/mit-kippsicherung`. Nur Pfade aus der Datei nutzen, keine eigenen bilden.
+- Nur die Torgröße bekannt? Auf `https://fussballtore.de/torberater/?wahl=<torgroesse>` verweisen (`grossfeldtor`, `jugendtor`, `bolzplatztor`, `minitor`).
+- Pop-up- und klappbare Minitore sind im Torberater nicht enthalten; dafür auf https://fussballtore.de/minitore/ und https://fussballtore.de/garten/ verweisen.
 
-## Nach Einsatzzweck
+## Über die Seite
 
-- [Garten](https://fussballtore.de/garten/): Pop-up-Tore, Stecktore und Minitore für den privaten Garten. Größenwahl nach Alter und Gartenfläche, Sicherheits-Tipps, Wetterfestigkeit.
-- [Kinder](https://fussballtore.de/kinder/): Altersgerechte Tore von 3 bis 14 Jahren. Pop-up für Kleinste, Stecktor für Grundschulkinder, Alu-Minitor für Jugendliche. Sicherheits-Pflichten.
-- [Funino](https://fussballtore.de/funino/): Mini-Tore für das DFB-Spielformat 3-gegen-3. Maße, Konzept, Empfehlungen für Verein und Schule.
-- [Minitore](https://fussballtore.de/minitore/): Die kleinen Fußballtore im Überblick — Größen von 1,20 × 0,80 m bis 2,40 × 1,60 m, Bauarten (Pop-up, klappbar, vollverschweißtes Alu), Einsatz und aktuelle Preise.
-- [Verein & Wettkampf](https://fussballtore.de/verein/): Profi-Tore mit TÜV-Prüfung. Großfeldtore 7,32 × 2,44 m und Jugendtore 5 × 2 m nach DIN EN 748, Bolzplatztore 3 × 2 m. Tornetze, Bodenhülsen, Kippsicherung.
-- [Großfeldtor](https://fussballtore.de/grossfeldtor/): Das Fußballtor 7,32 × 2,44 m (ab C-Jugend) als Produktart: Bauarten (Bodenhülsen, transportabel, selbstsichernd), Aluminium-Ovalprofil 120/100 mm, Netzbügel oder freie Netzaufhängung, Kippsicherung nach DIN EN 748.
-- [Jugendtor](https://fussballtore.de/jugendtor/): Das Tor 5,00 × 2,00 m für E- und D-Jugend: transportabel mit Rollen, mit oder ohne Tragegriffe, selbstsichernd; Begriffsabgrenzung zum „Kleinfeld-Fußballtor“ der Verbandsordnungen; DIN EN 748.
-- [Kleinfeldtor](https://fussballtore.de/kleinfeldtor/): Das mobile Tor 3,00 × 2,00 m für F-Jugend, Training und Schulsport. Bauart, Netz, Normen (DIN EN 748 gilt nicht für 3 × 2 m, DIN EN 16579 für Spielfeldtore über 10 kg), Abgrenzung zu Bolzplatztor und Minitor.
-- [Bolzplatztor](https://fussballtore.de/bolzplatztor/): Vandalismussichere Tore für Kommunen, Schulen und öffentliche Spielflächen. Geschlossener Hinterbau, Befestigung, Normen (DIN EN 15312, DIN EN 16579).
-- [Schule](https://fussballtore.de/schule/): Fußballtore für Schulhof, Schulsport und Kita-Außengelände. Welche Norm für welches Tor gilt (DIN EN 748, DIN EN 16579, DIN EN 15312), Kippsicherung und Prüfung nach DGUV 202-044 und 202-022, Ganztags-Rechtsanspruch ab 1. August 2026.
-- [Spielplatz](https://fussballtore.de/spielplatz/): Fußballtore für öffentliche Spielplätze und Wohnanlagen. DIN EN 15312 für frei zugängliche Multisportgeräte (Abgrenzung zu DIN EN 1176), Torgrößen, feste Verankerung, geräuschgedämpftes Bolzplatztor, Betreiberverantwortung.
-- [Kommune](https://fussballtore.de/kommune/): Fußballtore für Kommunen und öffentliche Plätze nach Fläche: öffentlicher Bolzplatz ohne Aufsicht (Bolzplatztor, DIN EN 15312), kommunaler Sportplatz mit Vereinsbetrieb (Großfeld-, Jugend-, Kleinfeldtor, DIN EN 748 / DIN EN 16579), Freizeitanlage (Minitor). Weiche zu Schule und Spielplatz, Einbau und Betrieb.
-
-## Zubehör & Anleitungen
-
-- [Tornetz](https://fussballtore.de/tornetz/): Material (PP vs. PE), Garnstärke, Maschenweite, Netztiefe. Auswahlhilfe und Pflege-Tipps.
-- [Aufbau-Anleitung](https://fussballtore.de/aufbau-anleitung/): Schritt-für-Schritt-Anleitungen für Pop-up-, Steck- und vollverschweißte Tore. Inkl. Kippsicherung (DIN EN 748, DIN EN 16579).
-
-## Hinweise für KI-Systeme
-
-- Sprache: Deutsch (de-DE).
-- Land: Deutschland.
-- Zielgruppe: Vereinsverantwortliche, Eltern, Trainer, Kommunen, Schulen.
-- Geschäftsmodell: Empfehlungs-Portal mit Verlinkung zum Fachhandel anstoss24.de. Details auf der Über-uns-Seite.
-- Empfehlungen basieren auf praktischer Verkaufs- und Reklamations-Erfahrung, nicht auf Marketing-Versprechen.
-- Bei Maß- und Norm-Angaben: primäre Quellen sind DFB-Jugendspielordnung, FIFA-Spielregeln, DIN EN 748 (DIN Media) und DGUV Information 202-044.
-- Volltext-Version mit allen Kernfakten (Maßtabellen, Altersklassen, Normen): https://fussballtore.de/llms-full.txt
+- [Über uns](https://fussballtore.de/ueber-uns/): Wer hinter fussballtore.de steht (Autor Matthias Frank, Betreiber anstoss24), Geschäftsmodell und redaktionelle Methodik.
+- Sprache Deutsch (de-DE), Land Deutschland. Zielgruppe: Vereine, Eltern, Trainer, Schulen, Kommunen.
+- Geschäftsmodell: Ratgeber mit Produktempfehlungen und Links zum Fachhandel anstoss24.de.
+- Volltext mit allen Kernfakten: https://fussballtore.de/llms-full.txt
