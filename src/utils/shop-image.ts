@@ -11,13 +11,21 @@ import fotos from '../data/fotos.json';
 // Über das Projektverzeichnis auflösen – beim Build liegt dieser Code in einem temporären Bundle,
 // relativ zu import.meta.url wäre der Pfad dort falsch.
 const MANIFEST = resolve(process.cwd(), 'src/data/shop-bilder.json');
-const manifest: Record<string, Record<string, string>> = existsSync(MANIFEST)
+type Eintrag = Record<string, string | number> & { bildart?: Bildart; w?: number; h?: number };
+export type Bildart = 'freisteller' | 'szene';
+const manifest: Record<string, Eintrag> = existsSync(MANIFEST)
   ? JSON.parse(readFileSync(MANIFEST, 'utf8'))
   : {};
 
-export function shopImage(src: string | undefined, width: number): string | undefined {
+export function shopImage(src: string | undefined, width: number | `c${number}`): string | undefined {
   if (!src) return undefined;
-  return manifest[src]?.[String(width)];
+  const p = manifest[src]?.[String(width)];
+  return typeof p === 'string' ? p : undefined;
+}
+
+/** Freisteller (weißer Rand) oder Szenenfoto – erkennt das Fetch-Skript am Bildrand */
+export function shopImageArt(src: string | undefined): Bildart | undefined {
+  return src ? manifest[src]?.bildart : undefined;
 }
 
 /** Redaktionelle Fotos aus dem Shop (src/data/fotos.json), lokal als WebP in 640 und 1280 px */

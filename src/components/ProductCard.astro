@@ -1,7 +1,7 @@
 ---
 import { addUtm } from '../utils/utm';
 import pricesData from '../data/prices.json';
-import { shopImage } from '../utils/shop-image';
+import { shopImage, shopImageArt, type Bildart } from '../utils/shop-image';
 
 interface Props {
   name: string;
@@ -10,10 +10,18 @@ interface Props {
   features: string[];
   category?: string;
   campaign: string;
+  /** Freisteller: ganz sichtbar mit Innenabstand; Szene: füllt die Fläche. Standard: vom Fetch-Skript erkannt */
+  bildart?: Bildart;
+  /** Nur für Karten im ersten Bildschirm */
+  eager?: boolean;
 }
 
-const { name, url, imageUrl, features, category, campaign } = Astro.props;
-const imageSrc = shopImage(imageUrl, 800) ?? imageUrl;
+const { name, url, imageUrl, features, category, campaign, bildart, eager = false } = Astro.props;
+const small = shopImage(imageUrl, 'c480');
+const large = shopImage(imageUrl, 'c960');
+const imageSrc = large ?? small ?? imageUrl;
+const srcset = small && large ? `${small} 480w, ${large} 960w` : undefined;
+const art = bildart ?? shopImageArt(imageUrl) ?? 'freisteller';
 
 const priceInfo = (pricesData as Record<string, any>)[url];
 const price = priceInfo?.price;
@@ -68,12 +76,17 @@ if (price) {
   <div class="relative aspect-[4/3] overflow-hidden bg-white md:[:not(.max-w-md)>.group:only-child_&]:w-1/2 md:[:not(.max-w-md)>.group:only-child_&]:flex-none">
     <img
       src={imageSrc}
+      srcset={srcset}
+      sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
       alt={name}
-      loading="lazy"
+      loading={eager ? 'eager' : 'lazy'}
       decoding="async"
-      width="800"
-      height="600"
-      class="h-full w-full object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+      width="960"
+      height="720"
+      class:list={[
+        'h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]',
+        art === 'szene' ? 'object-cover' : 'object-contain p-6 mix-blend-multiply sm:p-8',
+      ]}
     />
   </div>
 
