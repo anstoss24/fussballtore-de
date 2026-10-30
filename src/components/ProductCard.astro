@@ -58,14 +58,14 @@ if (price) {
 }
 ---
 
-<article class="group flex h-full flex-col md:[.grid>&:only-child]:col-span-2 md:[.grid>&:only-child]:flex-row overflow-hidden rounded-xl bg-white ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_16px_32px_-16px_rgba(15,23,42,0.3)]">
+<article class="group flex h-full flex-col md:[:not(.max-w-md)>&:only-child]:col-span-2 md:[:not(.max-w-md)>&:only-child]:flex-row overflow-hidden rounded-xl bg-white ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_16px_32px_-16px_rgba(15,23,42,0.3)]">
   <!-- Product Schema (only with offers to satisfy Google rich result requirements) -->
   {price && (
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   )}
 
   <!-- Image: feste 4:3-Fläche gegen Layout-Sprünge -->
-  <div class="relative aspect-[4/3] overflow-hidden bg-neutral-100 md:[.grid>.group:only-child_&]:w-1/2 md:[.grid>.group:only-child_&]:flex-none">
+  <div class="relative aspect-[4/3] overflow-hidden bg-white md:[:not(.max-w-md)>.group:only-child_&]:w-1/2 md:[:not(.max-w-md)>.group:only-child_&]:flex-none">
     <img
       src={imageSrc}
       alt={name}
@@ -73,12 +73,12 @@ if (price) {
       decoding="async"
       width="800"
       height="600"
-      class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+      class="h-full w-full object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
     />
   </div>
 
   <!-- Content -->
-  <div class="flex flex-1 flex-col p-5 md:[.grid>.group:only-child_&]:p-7 md:[.grid>.group:only-child_&]:justify-center">
+  <div class="flex flex-1 flex-col p-5 md:[:not(.max-w-md)>.group:only-child_&]:p-7 md:[:not(.max-w-md)>.group:only-child_&]:justify-center">
     {category && (
       <span class="mb-1.5 text-sm font-semibold text-accent-dark">
         {category}
