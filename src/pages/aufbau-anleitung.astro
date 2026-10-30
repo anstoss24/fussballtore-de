@@ -6,8 +6,9 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['aufbau-anleitung'];
 
@@ -34,7 +35,7 @@ const faqs = [
   {
     question: 'Muss ich das Tor gegen Umkippen sichern?',
     answer:
-      'Ja — immer. Im Vereinsbetrieb ist Kippsicherung Pflicht nach DIN EN 748. Auch im Garten muss das Tor stehen, ohne dass Kinder es umkippen können. Erdanker auf Rasen, Sandsäcke oder Gegengewichte auf Pflaster oder Bodenhülsen für feste Installation.',
+      'Ja — immer. Für Großfeld- und Jugendtore im Vereinsbetrieb ist Kippsicherung Pflicht nach DIN EN 748. Auch im Garten muss das Tor stehen, ohne dass Kinder es umkippen können. Erdanker auf Rasen, Sandsäcke oder Gegengewichte auf Pflaster oder Bodenhülsen für feste Installation.',
   },
 ];
 
@@ -128,7 +129,7 @@ const schema = [
         { label: 'Pop-up-Tor', text: 'In wenigen Sekunden, kein Werkzeug, eine Person. Heringe nicht vergessen.' },
         { label: 'Stecktor', text: 'In wenigen Minuten, Hammer für Erdanker, idealerweise zu zweit ab 1,80 m Breite.' },
         { label: 'Vollverschweißtes Tor', text: 'Aufstellen + Sichern meist innerhalb einer halben Stunde. Zwei Personen Pflicht. Wasserwaage hilft.' },
-        { label: 'Kippsicherung', text: 'Immer! Im Verein Pflicht nach DIN EN 748. Erdanker oder Gegengewichte.' },
+        { label: 'Kippsicherung', text: 'Immer! Im Verein Pflicht, z. B. nach DIN EN 748. Erdanker oder Gegengewichte.' },
         { label: 'Bodenhülsen', text: 'Fest installierte Wettkampftore: einbetonieren und aushärten lassen.' },
       ]}
       speakableId="tldr-aufbau"
@@ -235,7 +236,7 @@ const schema = [
       Kippsicherung: Pflicht bei jedem Tor
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im Vereins-, Schul- und Kommunalbetrieb ist das verbindlich: Der Betreiber trägt die Verkehrssicherungspflicht, Maßstab dafür sind die DIN EN 748 und die DGUV Information 202-044. Im Garten ist es eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
+      Egal welcher Tor-Typ: <strong>Jedes freistehende Tor muss gegen Umkippen gesichert sein.</strong> Im Vereins-, Schul- und Kommunalbetrieb ist das verbindlich: Der Betreiber trägt die Verkehrssicherungspflicht, Maßstab dafür sind je nach Tor die DIN EN 748, die DIN EN 16579 oder die DIN EN 15312 sowie die DGUV Information 202-044. Im Garten ist es eine Frage der Vernunft — gerade wenn Kinder am Tor spielen.
     </p>
 
     <div class="overflow-x-auto my-8">
@@ -315,6 +316,8 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Wenn dir das Tor zu schwer ist oder du unsicher bist: zieh eine zweite Person hinzu. Wenn die Sicherung wackelt: nachjustieren, bevor das Tor benutzt wird. Mehr Details zur Kippsicherung findest du in der <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a> und im <a href="/verein/" class="text-accent hover:text-accent-dark transition-colors font-medium">Vereins-Ratgeber</a>.
     </p>
+
+    <Sources items={[Q.din748, Q.din16579, Q.din15312, Q.dguv202044]} />
 
     <RelatedContent
       items={[

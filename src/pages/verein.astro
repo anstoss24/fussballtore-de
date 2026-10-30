@@ -11,7 +11,7 @@ import RelatedContent from '../components/RelatedContent.astro';
 import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['verein'];
 
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: 'Müssen Vereinstore TÜV-geprüft sein?',
-    answer: 'Ja. Im organisierten Spielbetrieb und im Schulbereich müssen Fußballtore der DIN EN 748 entsprechen. Diese Norm regelt Standsicherheit, Kippsicherung und Verarbeitungsqualität – sie schreibt jedoch kein bestimmtes Material vor. TÜV-geprüfte Tore erfüllen diese Norm nachweislich und minimieren das Haftungsrisiko für den Verein.',
+    answer: 'Gesetzlich nicht, praktisch ja: Der Verein trägt als Betreiber die Verkehrssicherungspflicht. Maßstab für Großfeld- und Jugendtore (7,32 x 2,44 m und 5 x 2 m) ist die DIN EN 748, für andere Spielfeldtore über 10 kg wie Kleinfeldtore die DIN EN 16579. Die DIN EN 748 regelt Standsicherheit, Kippsicherung und Verarbeitungsqualität – sie schreibt jedoch kein bestimmtes Material vor. TÜV-geprüfte Tore erfüllen diese Norm nachweislich und minimieren das Haftungsrisiko für den Verein.',
   },
   {
     question: 'Wie viel kostet die Tor-Ausstattung für einen Fußballverein?',
@@ -128,7 +128,7 @@ const schema = [
       title="Vereinstor — die Pflicht-Kriterien"
       items={[
         { label: 'Regelmaße', text: 'Großfeld 7,32 × 2,44 m (ab C-Jugend, Herren, Frauen), Jugendtor 5 × 2 m (D-Jugend), Kleinfeld 3 × 2 m (F-Jugend).' },
-        { label: 'Norm', text: 'Im Vereins- und Schulbetrieb müssen Tore der DIN EN 748 entsprechen (Verkehrssicherungspflicht). Ein TÜV-Prüfzeichen weist das nach und sichert die Haftung ab.' },
+        { label: 'Norm', text: 'Großfeld- und Jugendtore: DIN EN 748, andere Spielfeldtore über 10 kg wie Kleinfeldtore: DIN EN 16579 (Verkehrssicherungspflicht). Ein TÜV-Prüfzeichen weist das nach und sichert die Haftung ab.' },
         { label: 'Material', text: 'Aluminium-Ovalprofil 120/100 mm ist der Standard. Vollverschweißt für maximale Stabilität.' },
         { label: 'Bauart', text: 'Bodenhülsen am Wettkampfplatz, transportable Tore mit Gegengewichten fürs Training.' },
         { label: 'Kippsicherung', text: 'Definierte Standsicherheits-Prüfung nach DIN EN 748. Jährliche Sichtprüfung durch sachkundige Person empfohlen.' },
@@ -289,7 +289,7 @@ const schema = [
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
         <p>
-          Die <strong>DIN EN 748</strong> ist die zentrale Norm für Fußballtore im Vereins-, Schul- und Kommunalbetrieb. Sie regelt alle sicherheitsrelevanten Anforderungen – und als Vereinsverantwortlicher bist du in der Pflicht, nur normkonforme Tore einzusetzen.
+          Die <strong>DIN EN 748</strong> ist die zentrale Norm für Großfeld- und Jugendtore (7,32 x 2,44 m und 5 x 2 m) in Training und Wettkampf. Sie regelt alle sicherheitsrelevanten Anforderungen – und als Vereinsverantwortlicher bist du in der Pflicht, nur normkonforme Tore einzusetzen. Für andere Spielfeldtore über 10 kg, etwa Kleinfeldtore, gilt die <strong>DIN EN 16579</strong>.
         </p>
         <p>
           Die wichtigsten Anforderungen der Norm im Überblick:
@@ -418,7 +418,7 @@ const schema = [
           Insgesamt solltest du für eine solide Grundausstattung (zwei Großfeld- und zwei Jugendtore inklusive Netzen und Verankerung) ein <strong>mittleres vierstelliges Budget</strong> einplanen. Die aktuellen Preise findest du direkt <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'verein')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors">im Fachhandel</a>.
         </p>
         <p>
-          <strong>Spar-Tipp:</strong> Viele Hersteller gewähren bei der Abnahme mehrerer Tore Mengenrabatte. Frag direkt beim Händler nach – gerade bei der Erstausstattung lohnt sich das. Außerdem fördern Landessportverbände und Kommunen die Anschaffung von Sportgeräten häufig mit Zuschüssen. Erkundige dich bei deinem Kreis- oder Landessportbund. Mehr Tipps zur Kaufentscheidung findest du in unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung</a>.
+          <strong>Spar-Tipp:</strong> Viele Hersteller gewähren bei der Abnahme mehrerer Tore Mengenrabatte. Frag direkt beim Händler nach – gerade bei der Erstausstattung lohnt sich das. Mehr Tipps zur Kaufentscheidung findest du in unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors">Kaufberatung</a>.
         </p>
       </div>
     </section>
@@ -441,7 +441,7 @@ const schema = [
       </div>
     </section>
 
-    <Sources />
+    <Sources items={[...SOURCES, Q.din16579]} />
 
       <RelatedContent
       items={[

@@ -3,6 +3,27 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Normen-Aussagen korrigiert, Förderung entfernt (Branch `feature/feinschliff`, nicht live)
+
+**Entscheidung (Matze 30.10.):** Förderung komplett raus (anstoss24 fördert nichts, aktuelle Lage nicht belegbar). DIN-Aussagen auf belegten Stand: DIN EN 748:2018-04 nur für 7,32 × 2,44 m und 5 × 2 m (Training/Wettkampf), DIN EN 16579:2020-01 für andere Spielfeldtore über 10 kg, DIN EN 15312:2026-06 für frei zugängliche, fest installierte Tore ohne Aufsicht. Normen sind keine Gesetze; Pflicht = Verkehrssicherungspflicht des Betreibers, Norm = Maßstab.
+
+### Geändert
+- /bolzplatztor/: TL;DR „Norm“ und FAQ „TÜV-Prüfung?“ von „DIN EN 748 verpflichtend“ auf DIN EN 15312 / 16579 + Verkehrssicherungspflicht; Kippsicherheit-Punkt ohne 748; Abschnitt „Fördermöglichkeiten“ und Förder-Satz in FAQ „Was kostet …“ gelöscht; Description „… Einbau und Förderung.“ → „… Normen, Größen und Einbau.“ (Title/H1 unverändert); Quellenblock ergänzt.
+- /verein/: FAQ „TÜV-geprüft?“, TL;DR „Norm“ und Normen-Abschnitt auf 748 = Großfeld/Jugend, 16579 = übrige Spielfeldtore (kein „Schulbereich“ mehr); Förder-Satz im Spar-Tipp gestrichen (Mengenrabatt-Teil bleibt); Quelle DIN EN 16579 ergänzt.
+- /kinder/: „TÜV-geprüfte Tore nach DIN EN 748 vorgeschrieben“ → Normen als Maßstab, 748/16579 nach Torart; Quellenblock.
+- Startseite: FAQ „Müssen Fußballtore TÜV-geprüft sein?“ nennt 748/16579/15312 je nach Tor.
+- /kaufberatung/: FAQ, TL;DR, Normen-Abschnitt, TÜV-Kasten und Checkliste auf „passende Norm“ (748 nur Großfeld/Jugend); Quellenblock.
+- /aufbau-anleitung/, /material-vergleich/, /groessen/ (Kauf-Tipp „Normen“), /torberater/ (FAQ Kippsicherung): 748-Aussagen auf Großfeld/Jugend eingegrenzt bzw. 16579/15312 ergänzt; Quellen ergänzt.
+- llms.txt / llms-full.txt: Förderhinweise entfernt, Normen-Zuordnung korrigiert, „Beuth-Verlag“ → „DIN Media“.
+- Skill-Referenz `.claude/skills/fact-checking/references/din-en-748.md`: Ausgabe 2018-04, Geltungsbereich, Abgrenzung 16579/15312 mit Quellen.
+- page-dates.json: index, kaufberatung, groessen, material-vergleich, kinder, aufbau-anleitung, torberater, verein, bolzplatztor → 2026-10-30.
+
+### Bewusst gelassen
+- Aussagen, die sich nur auf Großfeld-/Jugendtore beziehen (/groessen/ Großfeldtor-Abschnitt, /verein/ Großfeldtor-Checkliste, Torberater-Frage „Kippsicherung gemäß DIN EN 748“ – erscheint nur bei Großfeld mobil und Jugendtor), Produkt-Features „DIN EN 748“ aus dem Shop, Meta-Descriptions von /verein/, /kaufberatung/, /groessen/, /aufbau-anleitung/.
+
+### Offen
+- Skill-Referenz enthält weiter unbelegte Detailwerte (Prüfkraft 1.100 N, Gegengewichte 40–50 kg, OLG Saarbrücken) – vor Verwendung prüfen.
+
 ## 30.10.2026 – Struktur Torart / Einsatzort, Hero zurück, Banner (Branch `feature/feinschliff`, nicht live)
 
 ### Geändert

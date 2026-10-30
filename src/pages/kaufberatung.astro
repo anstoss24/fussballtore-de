@@ -8,10 +8,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['kaufberatung'];
 
@@ -77,7 +78,7 @@ const faqs = [
   },
   {
     question: 'Brauche ich ein TÜV-geprüftes Fußballtor?',
-    answer: 'Für den Vereinssport und öffentliche Plätze müssen Tore der DIN EN 748 entsprechen – das folgt aus der Verkehrssicherungspflicht des Betreibers. Ein TÜV-Prüfzeichen weist diese Konformität nach. Auch für den privaten Gebrauch empfehlen wir geprüfte Modelle, da sie garantiert sicher konstruiert sind. Besonders wenn Kinder mit dem Tor spielen, solltest du keine Kompromisse bei der Sicherheit eingehen.',
+    answer: 'Für den Vereinssport und öffentliche Plätze müssen Tore der passenden Norm entsprechen: DIN EN 748 für Großfeld- und Jugendtore, DIN EN 16579 für andere Spielfeldtore über 10 kg, DIN EN 15312 für frei zugängliche, fest installierte Tore ohne Aufsicht – das folgt aus der Verkehrssicherungspflicht des Betreibers. Ein TÜV-Prüfzeichen weist diese Konformität nach. Auch für den privaten Gebrauch empfehlen wir geprüfte Modelle, da sie garantiert sicher konstruiert sind. Besonders wenn Kinder mit dem Tor spielen, solltest du keine Kompromisse bei der Sicherheit eingehen.',
   },
   {
     question: 'Was kostet ein gutes Fußballtor?',
@@ -129,7 +130,7 @@ const schema = [
       items={[
         { label: 'Größe', text: 'Großfeld 7,32 × 2,44 m (Herren, ab C-Jugend), Jugendtor 5 × 2 m (E- und D-Jugend), Kleinfeld 3 × 2 m (F-Jugend, Bolzplatz), Minitor ab 1,20 × 0,80 m (Garten, Funino).' },
         { label: 'Material', text: 'Aluminium ist Standard im Verein (rostfrei, 15–25 Jahre). Kunststoff/Fiberglas nur für Garten-Minitore.' },
-        { label: 'Sicherheit', text: 'Im Verein verbindlich: DIN EN 748, nachgewiesen durch ein Prüfzeichen (z. B. TÜV). Jedes freistehende Tor muss gegen Umkippen gesichert sein (Erdanker, Gegengewicht oder Bodenhülse).' },
+        { label: 'Sicherheit', text: 'Im Verein verbindlich: DIN EN 748 (Großfeld- und Jugendtore) bzw. DIN EN 16579 (andere Spielfeldtore über 10 kg), nachgewiesen durch ein Prüfzeichen (z. B. TÜV). Jedes freistehende Tor muss gegen Umkippen gesichert sein (Erdanker, Gegengewicht oder Bodenhülse).' },
         { label: 'Preis', text: 'Pop-up-Tor günstig, Jugend- und Großfeldtor mehrere hundert bis vierstellig. Tornetz und Kippsicherung extra einplanen.' },
         { label: 'Bauart', text: 'Fest installiert (Bodenhülsen) für Wettkampf, mobil mit Rollen für Training, faltbar für Garten/Urlaub.' },
       ]}
@@ -263,7 +264,7 @@ const schema = [
       Sicherheit und Normen: DIN EN 748 und TÜV
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-4">
-      Sicherheit ist beim Fußballtor kein optionales Feature – es geht um den Schutz der Spieler. In Deutschland regelt die Norm <strong>DIN EN 748</strong> die Anforderungen an Fußballtore. Sie definiert unter anderem:
+      Sicherheit ist beim Fußballtor kein optionales Feature – es geht um den Schutz der Spieler. In Deutschland regelt die Norm <strong>DIN EN 748</strong> die Anforderungen an Großfeld- und Jugendtore (7,32 x 2,44 m und 5 x 2 m); für andere Spielfeldtore über 10 kg gilt die DIN EN 16579. Die DIN EN 748 definiert unter anderem:
     </p>
     <ul class="text-neutral-600 leading-relaxed space-y-2 mb-6 list-disc list-inside">
       <li>Standfestigkeit und Kippsicherheit des Tors</li>
@@ -278,7 +279,7 @@ const schema = [
         Warum die TÜV-Prüfung so wichtig ist
       </h3>
       <p class="text-neutral-600 leading-relaxed mb-3">
-        Ein TÜV-Zertifikat bestätigt, dass das Tor von einem unabhängigen Prüfinstitut getestet wurde und alle Sicherheitsanforderungen der DIN EN 748 erfüllt. Für den <strong>Vereinseinsatz</strong> und <strong>öffentliche Plätze</strong> ist ein TÜV-geprüftes Tor faktisch Pflicht – im Schadensfall haftet der Betreiber, wenn ein ungeprüftes Tor eingesetzt wurde.
+        Ein TÜV-Zertifikat bestätigt, dass das Tor von einem unabhängigen Prüfinstitut getestet wurde und alle Sicherheitsanforderungen der passenden Norm (z. B. DIN EN 748) erfüllt. Für den <strong>Vereinseinsatz</strong> und <strong>öffentliche Plätze</strong> ist ein TÜV-geprüftes Tor faktisch Pflicht – im Schadensfall haftet der Betreiber, wenn ein ungeprüftes Tor eingesetzt wurde.
       </p>
       <p class="text-neutral-600 leading-relaxed">
         Auch für den privaten Garten empfehlen wir geprüfte Tore. Die Prüfung kostet im Einkauf nur wenig mehr, gibt aber enorme Sicherheit – besonders wenn Kinder am Tor spielen, klettern oder sich dranhängen.
@@ -414,7 +415,7 @@ const schema = [
       <ol class="text-neutral-600 leading-relaxed space-y-2 list-decimal list-inside">
         <li><strong>Größe bestimmen:</strong> Altersklasse und Einsatzort definieren das Maß. Im Zweifel hilft unsere <a href="/groessen/" class="text-accent hover:text-accent-dark underline">Größen-Übersicht</a>.</li>
         <li><strong>Material wählen:</strong> Alu für den Verein, Kunststoff/Fiberglas für den Garten. Details im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline">Material-Vergleich</a>.</li>
-        <li><strong>Sicherheit prüfen:</strong> TÜV-Prüfzeichen und DIN EN 748 sind im Vereinssport verbindlich – und auch privat sinnvoll.</li>
+        <li><strong>Sicherheit prüfen:</strong> TÜV-Prüfzeichen und die passende Norm (DIN EN 748 für Großfeld- und Jugendtore) sind im Vereinssport verbindlich – und auch privat sinnvoll.</li>
         <li><strong>Bauart festlegen:</strong> Fest (Bodenhülsen) für Wettkampfplätze, mobil für Trainingsplätze, faltbar für den Garten.</li>
         <li><strong>Budget planen:</strong> Tornetz und Kippsicherung einkalkulieren. Komplettangebote nutzen.</li>
       </ol>
@@ -426,6 +427,8 @@ const schema = [
 
     {features.torberater && <TorberaterTeaser />}
 
+
+    <Sources items={[Q.din748, Q.din16579, Q.din15312]} />
 
     <RelatedContent
       items={[

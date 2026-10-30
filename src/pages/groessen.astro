@@ -10,7 +10,7 @@ import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['groessen'];
 
@@ -403,7 +403,7 @@ const schema = [
         <li><strong>Platzverhältnisse:</strong> Miss den verfügbaren Platz vor dem Kauf. Ein Großfeldtor braucht mit Torraum und Sicherheitszone deutlich mehr Fläche als nur 7,32 x 2,44 m.</li>
         <li><strong>Mehrfachnutzung:</strong> Wenn verschiedene Altersklassen dasselbe Feld nutzen, sind mobile Tore mit Rollen die beste Lösung. So kannst du schnell zwischen Jugendtoren und Großfeldtoren wechseln.</li>
         <li><strong>Material:</strong> Für dauerhafte Installation empfiehlt sich Aluminium. Für den Garten genügen oft leichtere Materialien wie Kunststoff oder Fiberglas. Alle Details dazu findest du im <a href="/material-vergleich/" class="text-accent hover:text-accent-dark underline underline-offset-2">Material-Vergleich</a>.</li>
-        <li><strong>Normen:</strong> Für den offiziellen Spielbetrieb muss das Tor der DIN EN 748 entsprechen; ein Prüfzeichen (z. B. TÜV) weist das nach. Im privaten Bereich ist das keine Pflicht, aber ein Qualitätsmerkmal.</li>
+        <li><strong>Normen:</strong> Für den offiziellen Spielbetrieb muss ein Großfeld- oder Jugendtor der DIN EN 748 entsprechen, andere Spielfeldtore über 10 kg der DIN EN 16579; ein Prüfzeichen (z. B. TÜV) weist das nach. Im privaten Bereich ist das keine Pflicht, aber ein Qualitätsmerkmal.</li>
         <li><strong>Budget:</strong> Die Preisspanne ist groß – von günstigen Pop-up-Toren für den Garten bis hin zu robusten Bolzplatztoren in Profi-Qualität. Eine ausführliche Hilfe zur Entscheidung findest du in unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark underline underline-offset-2">Kaufberatung</a>.</li>
       </ul>
 
@@ -424,7 +424,7 @@ const schema = [
       {features.torberater && <TorberaterTeaser />}
 
 
-      <Sources />
+      <Sources items={[...SOURCES, Q.din16579]} />
 
       <RelatedContent
         items={[

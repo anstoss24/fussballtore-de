@@ -8,7 +8,7 @@
 - Geschäftsmodell: Empfehlungs-Portal mit Verlinkung zum Fachhandel anstoss24.de. Details auf https://fussballtore.de/ueber-uns/.
 - Autor der Inhalte: Matthias Frank, tätig im Vereinsbedarf-Fachhandel mit Schwerpunkt Fußballtore.
 - Empfehlungen basieren auf praktischer Verkaufs- und Reklamations-Erfahrung, nicht auf Marketing-Versprechen.
-- Primäre Quellen für Maße und Normen: DFB-Jugendspielordnung, FIFA-Spielregeln, DIN EN 748 (Beuth-Verlag), DGUV Information 202-044.
+- Primäre Quellen für Maße und Normen: DFB-Jugendspielordnung, FIFA-Spielregeln, DIN EN 748 (DIN Media), DGUV Information 202-044.
 - Texte dürfen mit Quellenangabe zitiert werden.
 
 ## Fußballtor-Größen und Maße
@@ -55,7 +55,7 @@ Quelle/Details: https://fussballtore.de/material-vergleich/
 
 ## Vereins- und Wettkampftore
 
-- Für den offiziellen Spielbetrieb muss das Tor der **DIN EN 748** entsprechen und TÜV-geprüft sein.
+- Für den offiziellen Spielbetrieb müssen Großfeld- und Jugendtore (7,32 × 2,44 m, 5,00 × 2,00 m) der **DIN EN 748** entsprechen, andere Spielfeldtore über 10 kg der DIN EN 16579; ein Prüfzeichen (z. B. TÜV) weist das nach.
 - **Kippsicherung ist Pflicht:** Jedes Tor muss so gesichert sein, dass es nicht umfallen kann — durch Bodenverankerung (Bodenhülsen) oder Gegengewichte. Rechtlicher Rahmen u. a. DGUV Information 202-044.
 - Bauarten: fest verankert (Bodenhülsen), vollverschweißt oder transportabel (mit Transportrollen). Vollverschweißte Konstruktionen sind besonders stabil und wartungsarm.
 - Eine größere Tortiefe sorgt für bessere Netzspannung und verhindert, dass der Ball nach dem Tor zurückrollt.
@@ -67,7 +67,7 @@ Quelle/Details: https://fussballtore.de/verein/
 - Größe wie Kleinfeldtor: 3,00 × 2,00 m.
 - Anforderungen: vandalismusresistent, wetterfest, extrem langlebig. Hochwertige Modelle aus massivem Alu-Ovalprofil, vollverschweißt, mit geschlossenem Hinterbau und DIN-konform.
 - Hochwertige Bolzplatztore sind auf jahrzehntelangen Dauereinsatz bei geringem Wartungsaufwand ausgelegt.
-- Einsatz: öffentliche Spielflächen, Parks, Schulhöfe, Kommunen. Fördermöglichkeiten prüfen.
+- Einsatz: öffentliche Spielflächen, Parks, Schulhöfe, Kommunen. Norm für frei zugängliche, fest installierte Tore ohne Aufsicht: DIN EN 15312.
 
 Quelle/Details: https://fussballtore.de/bolzplatztor/
 
@@ -137,7 +137,7 @@ Quelle/Details: https://fussballtore.de/tornetz/
 ## Aufbau und Sicherheit
 
 - Aufbauarten je nach Tortyp: Pop-up (Sekundenaufbau), Stecktore, vollverschweißte Tore (fest oder mit Transportrollen).
-- Kippsicherung ist bei Vereins-, Schul- und Kommunaltoren verbindlich (Verkehrssicherungspflicht des Betreibers; Maßstab DIN EN 748 und DGUV Information 202-044) — Bodenhülsen, Erdanker oder Gegengewichte.
+- Kippsicherung ist bei Vereins-, Schul- und Kommunaltoren verbindlich (Verkehrssicherungspflicht des Betreibers; Maßstab je nach Tor DIN EN 748, DIN EN 16579 oder DIN EN 15312 sowie DGUV Information 202-044) — Bodenhülsen, Erdanker oder Gegengewichte.
 
 Quelle/Details: https://fussballtore.de/aufbau-anleitung/
 

@@ -6,10 +6,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['material-vergleich'];
 
@@ -183,7 +184,7 @@ const schema = [
       </li>
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
-        <span><strong class="text-primary">Norm:</strong> Für Verein und öffentliche Flächen DIN EN 748 mit TÜV-Prüfung — im Schadensfall haftet sonst der Betreiber.</span>
+        <span><strong class="text-primary">Norm:</strong> Für Verein und öffentliche Flächen die passende Norm (DIN EN 748, DIN EN 16579 oder DIN EN 15312) mit TÜV-Prüfung — im Schadensfall haftet sonst der Betreiber.</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="inline-block w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></span>
@@ -306,6 +307,8 @@ const schema = [
     <p class="text-neutral-500 leading-relaxed mb-8">
       Noch unsicher? In unserer <a href="/kaufberatung/" class="text-accent hover:text-accent-dark transition-colors font-medium">Kaufberatung</a> findest du eine Schritt-für-Schritt-Anleitung, die dir bei der Entscheidung hilft – inklusive Tipps zu Sicherheit, Normen und dem richtigen Zubehör. Für das passende <a href="/tornetz/" class="text-accent hover:text-accent-dark transition-colors font-medium">Tornetz</a> haben wir ebenfalls einen eigenen Ratgeber.
     </p>
+
+    <Sources items={[Q.din748, Q.din16579, Q.din15312]} />
 
     <RelatedContent
       items={[

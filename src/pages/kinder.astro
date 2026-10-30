@@ -6,8 +6,9 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['kinder'];
 
@@ -317,7 +318,7 @@ const schema = [
           <div>
             <h3 class="font-heading font-bold text-primary mb-1">TÜV-Prüfung und DIN-Normen</h3>
             <p class="text-neutral-600 leading-relaxed">
-              Für den Vereins- und Schulbetrieb sind TÜV-geprüfte Tore nach DIN EN 748 vorgeschrieben.
+              Im Vereins- und Schulbetrieb sind Normen der Maßstab: DIN EN 748 für Jugend- und Großfeldtore, DIN EN 16579 für andere Spielfeldtore über 10 kg.
               Für den privaten Garten gibt es keine Pflicht – aber ein TÜV-Siegel gibt dir die Gewissheit,
               dass das Tor auf Standsicherheit, Materialqualität und Verletzungsgefahr geprüft wurde.
               Gerade bei Kindertoren ist das eine sinnvolle Investition. Mehr zum Thema Material und
@@ -490,6 +491,8 @@ const schema = [
         – dort gehen wir ausführlich auf Aufbau, Platzbedarf und die besten Modelle für den Garten ein.
       </p>
     </section>
+
+    <Sources items={[Q.din748, Q.din16579]} />
 
     <RelatedContent
       items={[
