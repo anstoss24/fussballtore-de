@@ -1,7 +1,7 @@
 ---
 /**
- * Stockfoto eines Einsatzorts (Sportplatz, Bolzplatz, Schulhof, Spielplatz, Garten) für die Einsatzort-Karten.
- * Fotos von Pexels (Pexels License), auf 3:2 zugeschnitten, je 480 und 960 px breit; Nachweise in docs/bildnachweise.md.
+ * Foto eines Einsatzorts (Sportplatz, Bolzplatz, Schulhof, Spielplatz, Garten) für die Einsatzort-Karten.
+ * Fotos von Pexels (Pexels License) bzw. aus dem anstoss24-Shop (Sportverein), auf 3:2 zugeschnitten, je 480 und 960 px breit; Nachweise in docs/bildnachweise.md.
  * Alternative zur gezeichneten Variante OrtIllustration.
  */
 interface Props {
@@ -14,8 +14,8 @@ interface Props {
 const { ort, sizes, eager = false, class: className } = Astro.props;
 
 const ALT: Record<string, string> = {
-  verein: 'Fußballtor auf einem Rasenplatz, im Hintergrund Bäume und ein zweites Tor',
-  kommune: 'Eingezäunter Ballspielplatz mit Kunstrasen und Gitterbanden',
+  verein: 'Großfeldtor auf einem Vereinsrasenplatz, im Hintergrund Vereinsheim, Unterstand und Bäume',
+  kommune: 'Bolzplatz mit Hartplatzbelag und Tor vor Hecken und Bäumen',
   schule: 'Schulhof vor einem zweistöckigen Schulgebäude',
   spielplatz: 'Spielplatz mit Holzhütten und Sandfläche, dahinter ein Ballfangzaun',
   garten: 'Privatgarten mit Rasen, zwei Liegestühlen und Sonnenschirm',
