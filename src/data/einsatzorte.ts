@@ -118,14 +118,15 @@ export const EINSATZORTE: Einsatzort[] = [
   {
     id: 'kommune',
     name: 'Kommune & öffentliche Plätze',
-    subtitle: 'Sportplatz, Bolzplatz, Freizeitfläche',
+    subtitle: 'Bolzplatz, Sportplatz, Freizeitanlage',
     href: '/kommune/',
+    // Hinweise und Belege vom kommune-Agenten (30.10.), Tabelle unter H2 „Welche Fußballtore braucht eine Kommune?“
     tore: [
-      { torart: 'grossfeld', hinweis: 'Kommunaler Sportplatz', beleg: 'kommune.astro: Tabelle unter „Welche Fußballtore braucht eine Kommune?“, Zeile Kommunaler Sportplatz; H2 „Kommunaler Sportplatz: Großfeld-, Jugend- und Kleinfeldtore“' },
-      { torart: 'jugend', hinweis: 'Kommunaler Sportplatz', beleg: 'kommune.astro: wie Großfeldtor' },
-      { torart: 'kleinfeld', hinweis: 'Kommunaler Sportplatz', beleg: 'kommune.astro: wie Großfeldtor' },
-      { torart: 'bolzplatz', hinweis: 'Öffentlicher Bolzplatz, Freizeitanlage', beleg: 'kommune.astro: Tabelle, Zeilen Öffentlicher Bolzplatz und Freizeitanlage; H2 „Öffentlicher Bolzplatz: Tore für den Betrieb ohne Aufsicht“' },
-      { torart: 'minitor', hinweis: 'Freizeitanlage, Park, kleine Flächen', beleg: 'kommune.astro: Tabelle, Zeile Freizeitanlage/Park; H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“' },
+      { torart: 'grossfeld', hinweis: 'Kommunaler Sportplatz mit Vereinsbetrieb', beleg: 'kommune.astro: H2 „Kommunaler Sportplatz: Großfeld-, Jugend- und Kleinfeldtore“ (#sportplatz), DIN EN 748' },
+      { torart: 'jugend', hinweis: 'Kommunaler Sportplatz, E- und D-Jugend', beleg: 'kommune.astro: #sportplatz, DIN EN 748' },
+      { torart: 'kleinfeld', hinweis: 'Sportplatz, F-Jugend und Training', beleg: 'kommune.astro: #sportplatz, DIN EN 16579' },
+      { torart: 'bolzplatz', hinweis: 'Öffentlicher Bolzplatz ohne Aufsicht', beleg: 'kommune.astro: H2 „Öffentlicher Bolzplatz: Tore für den Betrieb ohne Aufsicht“ (#bolzplatz), DIN EN 15312' },
+      { torart: 'minitor', hinweis: 'Freizeitanlage, Park: nur robuste Alu-Minitore, keine Pop-up- oder Klapptore', beleg: 'kommune.astro: H2 „Freizeitanlage und kleine Ballspielflächen: Minitore“ (#freizeitanlage), DIN EN 16579; Pop-up/klappbar ausgeschlossen im Absatz nach der ersten Tabelle' },
     ],
   },
   {

@@ -109,6 +109,9 @@ const schema = [
       Ein <strong>Fußballtor für den Spielplatz</strong> steht dort, wo niemand aufpasst: Rund um die Uhr erreichbar, von Kleinkindern bis Jugendlichen genutzt und oft nur wenige Meter von Wohnhäusern entfernt. Daraus ergeben sich drei Fragen, die ein Gartentor oder ein Vereinstor nie beantworten muss: Hält es Klettern und Vandalismus aus? Welche Norm gilt für frei zugängliche Tore? Und wie laut ist es für die Nachbarn?
     </p>
 
+    <!-- Welche Torarten passen hier? Direkt nach der Einleitung (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="spielplatz" />
+
     <!-- Direktantwort -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
       Welches Fußballtor gehört auf einen Spielplatz?
@@ -269,9 +272,6 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Die Übergänge sind fließend. Geht es dir um das Tor als Produkt, also Bauart, Material und Größen von Bolzplatztoren für öffentliche Plätze, findest du mehr im Ratgeber <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a>. Steht das Tor auf einem Schulhof, im Schulsport oder in einer Kita, lies den Ratgeber <a href="/schule/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für die Schule</a>. Fragen zur Bestellung beantwortet <a href={addUtm('https://www.anstoss24.de/fussballtore/bolzplatztore/', 'spielplatz')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24</a> direkt.
     </p>
-
-    <!-- Torarten für diesen Einsatzort (src/data/einsatzorte.ts) -->
-    <TorartenFuerEinsatzort ort="spielplatz" />
 
     <!-- Fazit -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
