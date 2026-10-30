@@ -28,6 +28,9 @@ const HELL = '#dcfce7';
 const MITTEL = '#bbf7d0';
 const LAUB = '#86efac';
 const AKZENT = '#15803d';
+// Sportplatz: satteres Rasengrün, damit die weißen Feldlinien klar stehen
+const RASEN = '#86d9a0';
+const RASEN_STREIFEN = '#72cd8e';
 
 const r = (n: number) => Math.round(n * 10) / 10;
 const schritte = (von: number, bis: number, s: number) => Array.from({ length: Math.floor((bis - von) / s) + 1 }, (_, i) => von + i * s);
@@ -80,12 +83,12 @@ const fenster = [50, 70].flatMap((y) => [...schritte(28, 82, 18), ...schritte(15
   stroke-linejoin="round"
 >
   <rect x="-400" y="-100" width="1040" height="196" fill="#f1f5f9" />
-  <rect x="-400" y="96" width="1040" height="64" fill={ort === 'schule' ? '#e2e8f0' : HELL} />
+  <rect x="-400" y="96" width="1040" height="64" fill={ort === 'schule' ? '#e2e8f0' : ort === 'verein' ? RASEN : HELL} />
 
   {ort === 'verein' && (
     <>
       <g fill={LAUB}>{hecke.map((h) => <circle cx={h.x} cy={96 - h.r / 2} r={h.r} />)}</g>
-      <path d={streifen(96)} fill={MITTEL} />
+      <path d={streifen(96)} fill={RASEN_STREIFEN} />
       {/* Flutlichtmast */}
       <path d="M30 96V26" stroke={NAVY} stroke-width="1.75" />
       <rect x="19" y="16" width="22" height="11" rx="1.5" fill={NAVY} />
@@ -95,7 +98,7 @@ const fenster = [50, 70].flatMap((y) => [...schritte(28, 82, 18), ...schritte(15
       <path d="M164 82H232M176 74H232M188 66H232" stroke="#f8fafc" stroke-width="1.5" />
       <path d="M182 56H238M186 57V66M234 57V66" stroke={NAVY} stroke-width="1.75" />
       {/* Linien: Torlinie und Torraum */}
-      <path d="M-400 108H640M60 108L38 128H202L180 108" fill="none" stroke="#fff" stroke-width="2.25" />
+      <path d="M-400 108H640M60 108L38 128H202L180 108" fill="none" stroke="#fff" stroke-width="3" />
     </>
   )}
 

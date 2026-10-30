@@ -8,12 +8,16 @@ const navItems = [
   { label: 'Material', href: '/material-vergleich/' },
 ];
 
-// Zwei Menüs, gleiche Datenquelle wie Startseite und Footer (src/data/einsatzorte.ts)
-const torLinks = TORART_REIHENFOLGE.map((id) => ({ label: TORARTEN[id].plural, meta: TORARTEN[id].mass, href: TORARTEN[id].href }));
-const alterLinks = [
+// Ratgeber-Themen ohne eigenen Top-Link; Kinder und Funino sind Ratgeber, keine Torarten
+const mehrRatgeber = [
+  { label: 'Tornetz', href: '/tornetz/' },
+  { label: 'Aufbau & Kippsicherung', href: '/aufbau-anleitung/' },
   { label: 'Kindertore nach Alter', href: '/kinder/' },
   { label: 'Funino-Tore', href: '/funino/' },
 ];
+
+// Tore = nur Torarten, Einsatzorte = nur Orte; gleiche Datenquelle wie Startseite und Footer (src/data/einsatzorte.ts)
+const torLinks = TORART_REIHENFOLGE.map((id) => ({ label: TORARTEN[id].plural, meta: TORARTEN[id].mass, href: TORARTEN[id].href }));
 const ortLinks = EINSATZORTE.map((e) => ({ label: e.name, meta: e.subtitle, href: e.href }));
 
 const currentPath = Astro.url.pathname;
@@ -21,8 +25,9 @@ const currentPath = Astro.url.pathname;
 const istAktiv = (links: { href: string }[]) => links.some((l) => l.href === currentPath);
 
 const menus = [
-  { id: 'tore', label: 'Tore', gruppen: [{ titel: 'Torarten', links: torLinks }, { titel: 'Nach Alter', links: alterLinks }] },
+  { id: 'tore', label: 'Tore', gruppen: [{ titel: 'Torarten', links: torLinks }] },
   { id: 'orte', label: 'Einsatzorte', gruppen: [{ titel: 'Wo steht das Tor?', links: ortLinks }] },
+  { id: 'ratgeber', label: 'Mehr Ratgeber', gruppen: [{ titel: 'Ratgeber', links: mehrRatgeber }] },
 ];
 
 const linkKlasse = (aktiv: boolean) =>
@@ -119,7 +124,7 @@ const linkKlasse = (aktiv: boolean) =>
   >
     <div class="container mx-auto py-3 grid gap-x-6 gap-y-4 sm:grid-cols-3">
       {[
-        { titel: 'Ratgeber', links: [{ label: 'Startseite', href: '/' }, ...navItems, ...alterLinks] },
+        { titel: 'Ratgeber', links: [...navItems, ...mehrRatgeber] },
         { titel: 'Torarten', links: torLinks },
         { titel: 'Einsatzorte', links: ortLinks },
       ].map((g) => (

@@ -6,11 +6,13 @@ interface Props {
   title: string;
   subtitle?: string;
   compact?: boolean;
+  /** Startseite: niedriger als der volle Hero, damit die Torart-Karten früher sichtbar sind */
+  mittel?: boolean;
   ctaText?: string;
   ctaHref?: string;
 }
 
-const { title, subtitle, compact = false, ctaText, ctaHref } = Astro.props;
+const { title, subtitle, compact = false, mittel = false, ctaText, ctaHref } = Astro.props;
 // Unterseiten-Banner: maßstabsgetreue Tor-Linien passend zum Seitenthema (src/data/einsatzorte.ts)
 const tore = compact ? BANNER_TORE[Astro.url.pathname] : undefined;
 ---
@@ -18,7 +20,7 @@ const tore = compact ? BANNER_TORE[Astro.url.pathname] : undefined;
 <section
   class:list={[
     'relative isolate overflow-hidden text-white',
-    compact ? 'py-12 md:py-16' : 'py-20 md:py-28',
+    compact ? 'py-12 md:py-16' : mittel ? 'py-16 md:py-20' : 'py-20 md:py-28',
   ]}
 >
   <!-- Navy-Verlauf mit dezenten Spielfeldlinien -->

@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
-import CategoryCard from '../components/CategoryCard.astro';
-import TorLinien from '../components/TorLinien.astro';
-import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE, geeignetLabel } from '../data/einsatzorte';
+import TorartKarte from '../components/TorartKarte.astro';
+import EinsatzortKarte from '../components/EinsatzortKarte.astro';
+import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE, geeignetLabel, type TorartId } from '../data/einsatzorte';
+import { tbTree, tbMeta } from '../utils/torberater';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
-import TorberaterEinstieg from '../components/TorberaterEinstieg.astro';
 import { features } from '../data/features';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
@@ -21,8 +21,18 @@ const description =
 
 // Zwei Logiken: Torarten (Sortiment) und Einsatzorte (wo das Tor steht) – Daten in src/data/einsatzorte.ts
 const torarten = TORART_REIHENFOLGE.map((id) => TORARTEN[id]);
-// Gemeinsamer Maßstab für alle Einsatzort-Zeilen: so breit wie die längste Torreihe
-const reiheM = Math.max(...EINSATZORTE.map((e) => e.tore.reduce((s, z) => s + TORARTEN[z.torart].breite + 0.9, 0.3)));
+
+// Kennzahl „x Tore · ab y €“ aus dem Torberater (Frage „Torgröße“); Kleinfeld hat dort keine eigene Antwort
+const TORBERATER_ANTWORT: Partial<Record<TorartId, string>> = {
+  grossfeld: 'Großfeldtor',
+  jugend: 'Jugendtor',
+  bolzplatz: 'Bolzplatztor',
+  minitor: 'Minitor',
+};
+const torberaterInfo = (id: TorartId) => {
+  const antwort = tbTree.options.find((o) => o.label === TORBERATER_ANTWORT[id]);
+  return antwort ? tbMeta(antwort) : undefined;
+};
 
 // Pick 3 highlight products from different categories
 const findProduct = (id) => productsData.products.find(p => p.id === id);
@@ -70,22 +80,29 @@ const schema = [
 ---
 
 <BaseLayout title={title} description={description} schema={schema}>
-  <!-- Hero -->
-  {features.torberater ? (
-    <HeroSection
-      title="Fußballtore – Der professionelle Ratgeber"
-      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-    >
-      <TorberaterEinstieg />
-    </HeroSection>
-  ) : (
-    <HeroSection
-      title="Fußballtore – Der professionelle Ratgeber"
-      subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-      ctaText="Zur Kaufberatung"
-      ctaHref="/kaufberatung/"
-    />
-  )}
+  <!-- Hero: ein klarer Einstieg (Torberater), Kaufberatung als Textlink -->
+  <HeroSection
+    mittel
+    title="Fußballtore – Der professionelle Ratgeber"
+    subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
+    ctaText={features.torberater ? undefined : 'Zur Kaufberatung'}
+    ctaHref={features.torberater ? undefined : '/kaufberatung/'}
+  >
+    {features.torberater && (
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
+        <a
+          href="/torberater/"
+          class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-heading font-bold text-base px-7 py-3.5 rounded-lg transition-[background-color,transform] duration-150 active:scale-[0.97] no-underline"
+        >
+          Zum Torberater
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a href="/kaufberatung/" class="text-white font-semibold underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors">Zur Kaufberatung</a>
+      </div>
+    )}
+  </HeroSection>
 
   <!-- Torarten (Sortiment) -->
   <section class="py-16 md:py-20" aria-labelledby="nach-torart">
@@ -98,13 +115,15 @@ const schema = [
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
         {torarten.map((t, i) => (
-          <CategoryCard
+          <TorartKarte
             name={t.plural.replaceAll('-', '\u2011') /* geschützte Bindestriche: kein Umbruch in „Pop-up“ */}
-            meta={t.mass}
-            subtitle={t.subtitle}
             href={t.href}
-            image={t.foto}
-            wide={i === torarten.length - 1}
+            mass={t.mass}
+            subtitle={t.subtitle}
+            bild={t.foto}
+            info={torberaterInfo(t.id)}
+            wide={torarten.length % 2 === 1 && i === torarten.length - 1}
+            eager={i === 0}
           />
         ))}
       </div>
@@ -118,33 +137,20 @@ const schema = [
         <h2 id="nach-einsatzort" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">
           Fußballtore nach Einsatzort
         </h2>
-        <p class="text-neutral-600 m-0">An jedem Ort können mehrere Torarten stehen. Die Zeichnungen zeigen die passenden Tore im gleichen Maßstab.</p>
+        <p class="text-neutral-600 m-0">An jedem Ort können mehrere Torarten stehen. Jede Karte zeigt die Tore, die dort passen.</p>
       </div>
-      <ul class="divide-y divide-neutral-200 border-y border-neutral-200 list-none p-0 m-0">
-        {EINSATZORTE.map((e) => (
-          <li class="m-0 p-0">
-            <a
-              href={e.href}
-              class="group grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[13rem_minmax(0,1fr)_17rem_auto] lg:grid-cols-[15rem_minmax(0,1fr)_22rem_auto] items-center gap-x-6 gap-y-3 py-5 md:py-6 no-underline"
-            >
-              <span class="min-w-0">
-                <span class="block font-heading text-lg md:text-xl font-bold text-primary group-hover:text-accent-dark transition-colors">{e.name}</span>
-                <span class="block text-sm text-neutral-500 leading-snug">{e.subtitle}</span>
-              </span>
-              <span class="col-span-2 row-start-2 md:col-span-1 md:row-start-auto text-sm text-neutral-600 leading-snug">
-                <span class="font-semibold text-primary">Geeignet:</span>{' '}
-                {e.tore.map(geeignetLabel).join(' · ')}
-              </span>
-              <span class="col-span-2 row-start-3 md:col-span-1 md:row-start-auto text-accent-dark">
-                <TorLinien tore={e.tore.map((z) => z.torart)} breiteM={reiheM} class="block h-auto w-full" />
-              </span>
-              <svg class="row-start-1 col-start-2 md:row-start-auto md:col-start-auto h-5 w-5 flex-none text-neutral-400 transition-[transform,color] duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-          </li>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+        {EINSATZORTE.map((e, i) => (
+          <EinsatzortKarte
+            ort={e.id}
+            name={e.name}
+            href={e.href}
+            subtitle={e.subtitle}
+            geeignet={e.tore.map(geeignetLabel)}
+            wide={EINSATZORTE.length % 2 === 1 && i === EINSATZORTE.length - 1}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   </section>
 
