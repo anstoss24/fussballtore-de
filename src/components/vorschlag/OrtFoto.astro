@@ -1,0 +1,37 @@
+---
+/**
+ * Stockfoto eines Einsatzorts (Sportplatz, Bolzplatz, Schulhof, Spielplatz, Garten) für die Einsatzort-Karten.
+ * Fotos von Pexels (Pexels License), auf 3:2 zugeschnitten, je 480 und 960 px breit; Nachweise in docs/bildnachweise.md.
+ * Alternative zur gezeichneten Variante OrtIllustration.
+ */
+interface Props {
+  ort: string;
+  sizes: string;
+  eager?: boolean;
+  class?: string;
+}
+
+const { ort, sizes, eager = false, class: className } = Astro.props;
+
+const ALT: Record<string, string> = {
+  verein: 'Fußballtor auf einem Rasenplatz, im Hintergrund Bäume und ein zweites Tor',
+  kommune: 'Eingezäunter Ballspielplatz mit Kunstrasen und Gitterbanden',
+  schule: 'Schulhof vor einem zweistöckigen Schulgebäude',
+  spielplatz: 'Spielplatz mit Holzhütten und Sandfläche, dahinter ein Ballfangzaun',
+  garten: 'Privatgarten mit Rasen, zwei Liegestühlen und Sonnenschirm',
+};
+
+const pfad = (b: number) => `/images/einsatzorte/${ort}-${b}.webp`;
+---
+
+<img
+  src={pfad(480)}
+  srcset={`${pfad(480)} 480w, ${pfad(960)} 960w`}
+  sizes={sizes}
+  alt={ALT[ort] ?? ''}
+  width="480"
+  height="320"
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  class:list={['object-cover', className]}
+/>
