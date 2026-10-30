@@ -3,6 +3,27 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 30.10.2026 – Neue Torart-Seiten /grossfeldtor/, /jugendtor/, /kleinfeldtor/ (Branch `feature/feinschliff`, nicht live)
+
+### Neu
+- `/grossfeldtor/` (großfeldtor, fußballtor 7,32 x 2,44, großfeldtor kaufen): Maß und Altersklassen kurz, Bauarten Bodenhülsen/transportabel/selbstsichernd, Material, Netzbügel vs. freie Netzaufhängung, DIN EN 748 + Kippsicherung. Karten: Bundesliga-Tor (freie Netzaufhängung), transportables Großfeldtor; Textlinks selbstsicherndes Tor (Art. 867), Gummigewichte, Kategorie.
+- `/jugendtor/` (jugendtor, jugendtor 5x2, fußballtor 5 x 2 m, D-/E-Jugend-Tor): E-/D-Jugend, Begriffsfalle „Kleinfeld-Fußballtor“ (Verband = 5 × 2 m), Bauarten transportabel mit/ohne Griffe, selbstsichernd (Art. 868), Material/Netz, DIN EN 748. Karten: Jugendtor ohne und mit Tragegriffen.
+- `/kleinfeldtor/` (kleinfeldtor, fußballtor 3x2, F-Jugend-Tor, kleinfeldtor mobil): F-Jugend/Training/Schulsport, Begriffsfalle, mobile Bauart, Netz, Normen (DIN EN 748 gilt nicht für 3 × 2 m, DIN EN 16579; Shop-Wortlaut zur Kippsicherung „entspricht … der DIN EN 748 zur Kippsicherung“ als Zitat), Weiche Bolzplatztor/Minitor. Karten: mobiles Kleinfeldtor, Kleinfeldtor mit Herkulesnetz.
+- Je Seite Rückrichtung „Wo wird das … eingesetzt?“ als Tabelle, erzeugt aus `EINSATZORTE` in `src/data/einsatzorte.ts` (gleiche Zuordnung wie „Welche Torarten passen hier?“).
+- Produktfakten am 30.10. live im Shop geprüft (Art. 107, 1523, 867, 14628, 868, 4248, 19355), Shop-Wortlaut. Torgewichte nur, wo der Shop eine Angabe macht (Bundesliga ca. 50–60 kg, transportabel ca. 70–80 kg, Kleinfeldtor ca. 40 kg).
+- /verein/ (nach TorartenFuerEinsatzort) und /groessen/ (nach der Übersichtstabelle): je ein Satz mit Links auf die drei Seiten. Sonst unverändert.
+- OG-Bilder `og-grossfeldtor.jpg`, `og-jugendtor.jpg`, `og-kleinfeldtor.jpg`; page-dates, llms.txt, llms-full.txt, Seitenstruktur in CLAUDE.md.
+
+### Entscheidungen
+- /jugendtor/ doch jetzt gebaut (Matze 30.10.). Grund: konsistente Struktur Torart ↔ Einsatzort, jede Torart und jeder Einsatzort hat eine eigene Seite. Die geplante GSC-Erfolgskontrolle ab 07.12. bleibt, jetzt als Vergleich vorher/nachher.
+- Abgrenzung: Torart-Seite = das Tor als Produktart (Bauart, Material, Netz, Kippsicherung, Norm, Empfehlung). /verein/ = Ausstattung eines Vereins (Einsatzort). /groessen/ = Maßtabelle und Zero-Click-Größenfragen; die Torart-Seiten nennen Maße nur kurz und verlinken für Details auf /groessen/.
+- Weggelassen: Gewichte der Stahlgewichte bei Art. 868 (Shop widersprüchlich: „100–200 kg“ vs. „4 Stück à 33 kg“), „TÜV-geprüft“ beim transportablen Großfeldtor 1523 (steht dort nicht in der Beschreibung, nur in products.json-Features), Prüfkräfte, Förderung, Preise im Text, klappbare Tore (nicht im Shop-Sortiment dieser Größen).
+
+### Offen
+- [ ] Menü, Footer, Torart-Karten und `einsatzorte.ts` (TORARTEN.href, BANNER_TORE) von /verein/#… auf die neuen URLs umstellen (Agent `startseite`).
+- [ ] Nach Merge: /grossfeldtor/, /jugendtor/, /kleinfeldtor/ in der Search Console per URL-Prüfung einreichen.
+- [ ] products.json: Feature „TÜV-geprüft“ bei `grossfeld-transportabel` gegen Shop prüfen (Beschreibung von Art. 1523 nennt es nicht).
+
 ## 30.10.2026 – Startseite nach Vorschlag 1, Menü-Struktur, Aufräumen (Branch `feature/feinschliff`, nicht live)
 
 **Entscheidung (Matze 30.10.):** Startseite = Vorschlag 1 von drei Entwürfen. Stockfotos für Einsatzorte verworfen, stattdessen eigene Illustrationen.

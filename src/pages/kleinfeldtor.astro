@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
+import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import { EINSATZORTE } from '../data/einsatzorte';
+import { AUTHOR, PUBLISHER, SOURCES, SOURCES_OEFFENTLICH as Q } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['kleinfeldtor'];
+
+const findProduct = (id: string) => productsData.products.find((p) => p.id === id)!;
+const mobil = findProduct('kleinfeldtor-mobil');
+const herkules = findProduct('kleinfeldtor-herkulesnetz');
+
+// Rückrichtung zu den Einsatzort-Seiten, gleiche Datenquelle wie „Welche Torarten passen hier?“
+const orte = EINSATZORTE.flatMap((e) =>
+  e.tore.filter((t) => t.torart === 'kleinfeld').map((t) => ({ name: e.name, href: e.href, hinweis: t.hinweis }))
+);
+
+const title = 'Kleinfeldtor 3 x 2 m: mobil für F-Jugend & Training';
+const description =
+  'Kleinfeldtor 3 x 2 m: das mobile Fußballtor für F-Jugend, Training und Schulsport. Bauart, Netz, Kippsicherung, Normen und der Unterschied zum Bolzplatztor.';
+
+const faqs = [
+  {
+    question: 'Wie groß ist ein Kleinfeldtor?',
+    answer:
+      'Im Handel ist ein Kleinfeldtor 3,00 × 2,00 m groß (Breite × Höhe). Vorsicht: In den Jugendordnungen der Landesverbände heißen auch Tore mit 5,00 × 2,00 m „Kleinfeld-Fußballtore“; die nennt der Handel Jugendtore. Achte deshalb immer auf die Meterangabe.',
+  },
+  {
+    question: 'Wer spielt auf ein Kleinfeldtor 3 × 2 m?',
+    answer:
+      'Die F-Jugend spielt im 5-gegen-5 auf Tore mit 3,00 × 2,00 m, im 3-gegen-3 auf Minitore. Spielt die E-Jugend in einem Landesverband noch 5-gegen-5, sind dort ebenfalls 3 × 2 m Tore erlaubt. Daneben ist das Kleinfeldtor ein Trainingstor für alle Altersklassen.',
+  },
+  {
+    question: 'Gilt die DIN EN 748 für Kleinfeldtore?',
+    answer:
+      'Laut DIN Media gilt die DIN EN 748 für Fußballtore 5,00 × 2,00 m und 7,32 × 2,44 m. Kleinfeldtore 3 × 2 m fallen nicht darunter. Für ortsveränderliche und standortgebundene Spielfeldtore über 10 kg gibt es die DIN EN 16579. Für die Kippsicherung seines mobilen Kleinfeldtors verweist anstoss24 auf die DIN EN 748: mit passender Verankerung oder kompatiblem Zusatzgewicht entspricht es ihr laut Shop.',
+  },
+  {
+    question: 'Was ist der Unterschied zwischen Kleinfeldtor und Bolzplatztor?',
+    answer:
+      'Beide messen 3,00 × 2,00 m. Das Kleinfeldtor hat ein Netz an Netzbügeln, ist mobil und für den Sportplatz gedacht, auf dem ein Trainer oder Lehrer dabei ist. Das Bolzplatztor hat einen geschlossenen Hinterbau aus Metallstreben statt losem Netz und wird fest verankert, weil es ohne Aufsicht frei zugänglich steht.',
+  },
+  {
+    question: 'Wie schwer ist ein mobiles Kleinfeldtor?',
+    answer:
+      'Das mobile Kleinfeldtor 3 × 2 m von anstoss24 wiegt laut Produktbeschreibung ca. 40 kg. Damit es nicht umkippt, braucht es trotzdem eine Verankerung oder ein Zusatzgewicht.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-kleinfeldtor.jpg',
+    datePublished: '2026-10-30',
+    dateModified,
+    inLanguage: 'de-DE',
+    author: AUTHOR,
+    publisher: PUBLISHER,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/kleinfeldtor/',
+    },
+  },
+];
+
+const link = 'text-accent hover:text-accent-dark transition-colors font-medium';
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-kleinfeldtor.jpg" ogType="article">
+  <HeroSection
+    title="Kleinfeldtor 3,00 × 2,00 m"
+    subtitle="Das mobile Tor für F-Jugend, Training und Schulsport"
+    compact
+  />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Kleinfeldtor' }]} />
+
+  <article class="container mx-auto max-w-4xl pt-6 pb-12 md:py-16">
+
+    <TldrBlock
+      title="Kleinfeldtor – das Wichtigste"
+      items={[
+        { label: 'Maß', text: '3,00 × 2,00 m im Handel. In Verbandsordnungen meint „Kleinfeld-Fußballtor“ das 5 × 2 m Jugendtor – auf die Meterangabe achten.' },
+        { label: 'Für wen', text: 'F-Jugend im 5-gegen-5, Training aller Altersklassen, Schulsport.' },
+        { label: 'Bauart', text: 'Mobil und vollverschweißt, Netz an Netzbügeln, Tortiefe 1,00 m.' },
+        { label: 'Norm', text: 'DIN EN 748 gilt nicht für 3 × 2 m. Spielfeldtore über 10 kg: DIN EN 16579. Kippsicherung trotzdem Pflicht.' },
+        { label: 'Abgrenzung', text: 'Gleiches Maß wie das Bolzplatztor, das aber mit geschlossenem Hinterbau und fest verankert für Plätze ohne Aufsicht.' },
+      ]}
+      speakableId="tldr-kleinfeldtor"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Das <strong>Kleinfeldtor</strong> mit <strong>3,00 × 2,00 m</strong> ist das Tor für die F-Jugend und das vielseitigste Trainingstor auf dem Sportplatz. Meist ist es <strong>mobil</strong>: Es wird dort aufgestellt, wo gerade gespielt wird, und danach an den Rand gestellt. Hier steht, wie ein Kleinfeldtor gebaut ist, welche Norm gilt und wie es sich vom Bolzplatztor unterscheidet.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Du suchst nur die Maße aller Torgrößen nach Altersklasse? Die stehen in der <a href="/groessen/" class={link}>Größen-Übersicht</a>. Für die Ausstattung eines ganzen Vereins gibt es den Ratgeber <a href="/verein/" class={link}>Fußballtore für Vereine</a>.
+    </p>
+
+    <!-- Maß -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fußballtor 3 × 2 m: wer darauf spielt
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die <strong>F-Jugend</strong> (U8/U9) spielt im 5-gegen-5 auf Tore mit 3,00 × 2,00 m, im 3-gegen-3 auf Minitore. Spielt die E-Jugend in einem Landesverband noch 5-gegen-5, sind dort ebenfalls 3 × 2 m Tore erlaubt; im 7-gegen-7 spielt sie auf das <a href="/jugendtor/" class={link}>Jugendtor 5,00 × 2,00 m</a>. Maßgeblich ist die Jugendordnung deines Landesverbands. Daneben ist das Kleinfeldtor ein Trainingstor für alle Altersklassen und kommt im Schulsport zum Einsatz.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Kleinfeldtor oder Jugendtor?</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Der Begriff ist doppelt belegt. In den Jugendordnungen der Landesverbände heißen Tore mit <strong>5,00 × 2,00 m</strong> „Kleinfeld-Fußballtore“, weil sie auf dem Kleinfeld stehen. Im Handel, auch bei anstoss24, ist das Kleinfeldtor das Tor mit <strong>3,00 × 2,00 m</strong>. Schreibt dein Verband ein Kleinfeldtor für die E- oder D-Jugend vor, brauchst du also ein Jugendtor. Die Meterangabe entscheidet.
+    </p>
+
+    <!-- Bauart -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Kleinfeldtor mobil: Bauart und Material
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die beiden Kleinfeldtore, die wir hier vorstellen, sind <strong>mobil und komplett in einem Stück verschweißt</strong>. Laut anstoss24 ist der Torrahmen aus dickwandigem Ovalprofil 120/100 mm mit eingepresster Nut gefertigt, „genau dieses Ovalprofil findet man auch bei den Toren in der Bundesliga“. Der Bodenholm besteht aus einem 80 × 60 mm Rechteckprofil, die Netzbügel aus Alu-Rohren, die Tortiefe beträgt 1,00 m. Das <a href={addUtm(mobil.url, 'kleinfeldtor')} target="_blank" rel="noopener" class={link}>mobile Kleinfeldtor</a> wiegt laut Shop ca. 40 kg.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Beide Tore sind aus Aluminium und damit rostfrei. Warum das für ein Tor, das draußen steht und oft bewegt wird, sinnvoll ist, zeigt der <a href="/material-vergleich/" class={link}>Material-Vergleich</a>.
+    </p>
+
+    <!-- Netz -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Netz und Netzaufhängung
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Beim mobilen Kleinfeldtor ist das Tornetz dabei: Stärke 4 mm, grün, Maschenweite 10 cm. Es wird laut Shop ausschließlich mit Sicherheits-System-Netzhaltern geliefert. Das <a href={addUtm(herkules.url, 'kleinfeldtor')} target="_blank" rel="noopener" class={link}>Kleinfeldtor mit Herkulesnetz</a> hat zusätzlich eine Netzaufhängung mit Stangensystem; anstoss24 bezeichnet es als vandalismussicher und führt es bei den Bolzplatztoren. Mehr zu Netzstärken und Maschenweiten steht im <a href="/tornetz/" class={link}>Tornetz-Ratgeber</a>.
+    </p>
+
+    <!-- Produkte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Kleinfeldtor kaufen: unsere Empfehlungen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Für den Vereinsplatz und das Training empfehlen wir das mobile Kleinfeldtor. Steht der Platz öfter offen, etwa auf einem Schulsportplatz, ist die Variante mit Herkulesnetz die robustere Wahl:
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Verein und Training</p>
+        <ProductCard
+          name={mobil.name}
+          url={mobil.url}
+          imageUrl={mobil.imageUrl}
+          features={['Vollverschweißt', 'Ovalprofil 120/100 mm', 'Inkl. Tornetz', 'Ca. 40 kg', '5 Jahre Garantie']}
+          category="Kleinfeldtor"
+          campaign="kleinfeldtor"
+        />
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Schulsport und offene Plätze</p>
+        <ProductCard
+          name={herkules.name}
+          url={herkules.url}
+          imageUrl={herkules.imageUrl}
+          features={['Herkulesnetz', 'Netzaufhängung mit Stangensystem', 'Vollverschweißt', 'Ovalprofil 120/100 mm', '5 Jahre Garantie']}
+          category="Kleinfeldtor"
+          campaign="kleinfeldtor"
+        />
+      </div>
+    </div>
+
+    <!-- Norm & Kippsicherung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welche Norm gilt für Kleinfeldtore?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die <strong>DIN EN 748</strong> gilt laut DIN Media für Fußballtore 5,00 × 2,00 m und 7,32 × 2,44 m. Ein Kleinfeldtor mit 3,00 × 2,00 m fällt nicht darunter. Für ortsveränderliche und standortgebundene <strong>Spielfeldtore über 10 kg</strong> gibt es die <strong>DIN EN 16579</strong>, die ausdrücklich auch Bildungseinrichtungen und öffentliche Freizeitbereiche nennt.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für die <strong>Kippsicherung</strong> verweist anstoss24 trotzdem auf die DIN EN 748: Das mobile Kleinfeldtor ist laut Shop „extrem standfest und in Verbindung mit den dazu passenden Sicherheits-Verankerungs-Systemen oder einem kompatiblen Zusatzgewicht entspricht dieses mobile Tor dann auch der DIN EN 748 zur Kippsicherung von Toren“. Es wird mit einem Aufkleber mit Warnhinweisen und Anforderungen zur Kippsicherung geliefert.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Für die Praxis heißt das: Auch ein Kleinfeldtor muss gegen Umkippen gesichert sein, bevor gespielt wird. Nicht an der Latte hängen oder klettern lassen. Hinweise zur Sicherheit und Prüfung von Sportgeräten gibt die DGUV Information 202-044. Wie Bodenanker und Gewichte richtig sitzen, steht in der <a href="/aufbau-anleitung/#kippsicherung" class={link}>Anleitung zur Kippsicherung</a>.
+    </p>
+
+    <!-- Abgrenzung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Kleinfeldtor, Bolzplatztor oder Minitor?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Drei Torarten liegen nah beieinander. Entscheidend ist, wo das Tor steht und ob jemand dabei ist:
+    </p>
+    <ul class="space-y-2 text-neutral-600 leading-relaxed mb-6 list-disc list-inside ml-2">
+      <li><strong>Kleinfeldtor 3 × 2 m:</strong> mobil, mit Netz, für Sportplatz und Training unter Aufsicht.</li>
+      <li><strong><a href="/bolzplatztor/" class={link}>Bolzplatztor</a> 3 × 2 m:</strong> gleiches Maß, aber vollverschweißt mit geschlossenem Hinterbau statt losem Netz und fest verankert, für frei zugängliche Plätze ohne Aufsicht.</li>
+      <li><strong><a href="/minitore/" class={link}>Minitore</a>:</strong> deutlich kleiner, für die Jüngsten, Funino und den Garten.</li>
+    </ul>
+
+    <!-- Einsatzorte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Wo wird das Kleinfeldtor eingesetzt?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Was am jeweiligen Ort dazukommt, steht im Ratgeber zum Einsatzort:
+    </p>
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatzort</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Wofür</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          {orte.map((o, i) => (
+            <tr class:list={['border-t border-neutral-200', i % 2 === 1 && 'bg-neutral-50/50']}>
+              <td class="px-4 py-3"><a href={o.href} class={link}>{o.name}</a></td>
+              <td class="px-4 py-3">{o.hinweis}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Das flexible Tor für den Sportplatz
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein mobiles Kleinfeldtor 3 × 2 m deckt F-Jugend, Training und Schulsport ab. Achte auf die Meterangabe, denn „Kleinfeldtor“ bedeutet im Verband etwas anderes als im Handel, und sichere das Tor immer gegen Umkippen. Steht es dauerhaft ohne Aufsicht auf einem offenen Platz, ist ein Bolzplatztor die bessere Wahl.
+    </p>
+
+    <Sources items={[SOURCES[0], Q.din748, Q.din16579, Q.dguv202044]} />
+
+    <RelatedContent
+      items={[
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Torgrößen nach Altersklasse' },
+        { href: '/jugendtor/', title: 'Jugendtor', subtitle: '5,00 × 2,00 m für E- und D-Jugend' },
+        { href: '/grossfeldtor/', title: 'Großfeldtor', subtitle: '7,32 × 2,44 m ab C-Jugend' },
+        { href: '/bolzplatztor/', title: 'Bolzplatztor', subtitle: '3 × 2 m mit geschlossenem Hinterbau' },
+        { href: '/minitore/', title: 'Minitore', subtitle: 'Für die Jüngsten und Funino' },
+        { href: '/verein/', title: 'Verein & Wettkampf', subtitle: 'Den ganzen Platz ausstatten' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Kleinfeldtor" />
+    </div>
+  </div>
+</BaseLayout>

@@ -62,6 +62,15 @@ Quelle/Details: https://fussballtore.de/material-vergleich/
 
 Quelle/Details: https://fussballtore.de/verein/
 
+## Torarten: Großfeld-, Jugend- und Kleinfeldtor
+
+- Großfeldtor 7,32 × 2,44 m (IFAB-Regel 1), ab C-Jugend, Herren, Frauen. Bauarten: fest in Bodenhülsen (Hauptplatz), transportabel (Training), selbstsichernd mit im Bodenrahmen verbauten Stahlgewichten. Netz an Netzbügeln oder mit freier Netzaufhängung.
+- Jugendtor 5,00 × 2,00 m für E-Jugend (7-gegen-7) und D-Jugend (9-gegen-9). In den Jugendordnungen der Landesverbände „Kleinfeld-Fußballtor“ genannt, im Handel „Jugendtor“. Meist transportabel mit Transportrollen, optional Tragegriffe, oder selbstsichernd.
+- Kleinfeldtor 3,00 × 2,00 m (Handelsbegriff) für F-Jugend im 5-gegen-5, Training und Schulsport; meist mobil, vollverschweißt, Netz an Netzbügeln. Gleiches Maß wie das Bolzplatztor, das aber einen geschlossenen Hinterbau hat und für Plätze ohne Aufsicht fest verankert wird.
+- Normen laut DIN Media: DIN EN 748 gilt für 7,32 × 2,44 m und 5,00 × 2,00 m (Training und Wettkampf), nicht für 3,00 × 2,00 m. Für Spielfeldtore über 10 kg gilt DIN EN 16579. Mobile Tore immer gegen Umkippen sichern.
+
+Quelle/Details: https://fussballtore.de/grossfeldtor/, https://fussballtore.de/jugendtor/, https://fussballtore.de/kleinfeldtor/
+
 ## Bolzplatztore
 
 - Größe wie Kleinfeldtor: 3,00 × 2,00 m.
@@ -168,6 +177,9 @@ Quelle/Details: https://fussballtore.de/torberater/
 - Kinder: https://fussballtore.de/kinder/
 - Funino: https://fussballtore.de/funino/
 - Verein & Wettkampf: https://fussballtore.de/verein/
+- Großfeldtor: https://fussballtore.de/grossfeldtor/
+- Jugendtor: https://fussballtore.de/jugendtor/
+- Kleinfeldtor: https://fussballtore.de/kleinfeldtor/
 - Bolzplatztor: https://fussballtore.de/bolzplatztor/
 - Schule: https://fussballtore.de/schule/
 - Spielplatz: https://fussballtore.de/spielplatz/

@@ -46,6 +46,9 @@ Primäre Vorbilder sind:
 | Schule & Kita | `/schule` | fußballtor schule, fußballtor schulhof |
 | Spielplatz | `/spielplatz` | fußballtor spielplatz, tor für spielplatz |
 | Kommune & öffentliche Plätze | `/kommune` | fußballtor kommune, fußballtore für öffentliche plätze |
+| Großfeldtor (Torart) | `/grossfeldtor` | großfeldtor, fußballtor 7,32 x 2,44, großfeldtor kaufen |
+| Jugendtor (Torart) | `/jugendtor` | jugendtor, jugendtor 5x2, fußballtor 5 x 2 m, d-/e-jugend-tor |
+| Kleinfeldtor (Torart) | `/kleinfeldtor` | kleinfeldtor, fußballtor 3x2, f-jugend-tor, kleinfeldtor mobil |
 | Impressum | `/impressum` | – |
 | Datenschutz | `/datenschutz` | – |
 

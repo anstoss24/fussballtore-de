@@ -221,6 +221,24 @@ const pages = [
     subtitle: 'Bolzplatz, Sportplatz, Freizeitanlage – welche Torart wohin',
     accentLabel: 'Kommune',
   },
+  {
+    file: 'og-grossfeldtor.jpg',
+    title: 'Großfeldtor 7,32 × 2,44 m',
+    subtitle: 'Bodenhülsen, transportabel, selbstsichernd – Bauarten im Überblick',
+    accentLabel: 'Großfeldtor',
+  },
+  {
+    file: 'og-jugendtor.jpg',
+    title: 'Jugendtor 5 × 2 m',
+    subtitle: 'Das Tor für E- und D-Jugend – Bauarten und Kippsicherung',
+    accentLabel: 'Jugendtor',
+  },
+  {
+    file: 'og-kleinfeldtor.jpg',
+    title: 'Kleinfeldtor 3 × 2 m',
+    subtitle: 'Mobil für F-Jugend, Training und Schulsport',
+    accentLabel: 'Kleinfeldtor',
+  },
 ];
 
 for (const page of pages) {

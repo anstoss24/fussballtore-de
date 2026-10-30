@@ -1,0 +1,305 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Torberater from '../components/Torberater.astro';
+import { features } from '../data/features';
+import HeroSection from '../components/HeroSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProductCard from '../components/ProductCard.astro';
+import FAQSection from '../components/FAQSection.astro';
+import TldrBlock from '../components/TldrBlock.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
+import { addUtm } from '../utils/utm';
+import productsData from '../data/products.json';
+import { EINSATZORTE } from '../data/einsatzorte';
+import { AUTHOR, PUBLISHER, SOURCES, SOURCES_OEFFENTLICH as Q } from '../data/entities';
+import pageDates from '../data/page-dates.json';
+const dateModified = pageDates['grossfeldtor'];
+
+const findProduct = (id: string) => productsData.products.find((p) => p.id === id)!;
+const bundesliga = findProduct('bundesliga-premium');
+const transportabel = findProduct('grossfeld-transportabel');
+
+const SELBSTSICHERND_URL =
+  'https://www.anstoss24.de/fussballtore/grossfeldtore/transportables-fussballtor-selbstsichernd-vollverschweisst-7-32-x-2-44-m_867_237182/';
+const KATEGORIE_URL = 'https://www.anstoss24.de/fussballtore/grossfeldtore/';
+
+// Rückrichtung zu den Einsatzort-Seiten, gleiche Datenquelle wie „Welche Torarten passen hier?“
+const orte = EINSATZORTE.flatMap((e) =>
+  e.tore.filter((t) => t.torart === 'grossfeld').map((t) => ({ name: e.name, href: e.href, hinweis: t.hinweis }))
+);
+
+const title = 'Großfeldtor 7,32 x 2,44 m: Bauarten & Kauf';
+const description =
+  'Großfeldtor kaufen: das Fußballtor 7,32 x 2,44 m mit Bodenhülsen oder transportabel, Netzbügel oder freie Netzaufhängung, Kippsicherung nach DIN EN 748.';
+
+const faqs = [
+  {
+    question: 'Wie groß ist ein Großfeldtor?',
+    answer:
+      'Ein Großfeldtor misst 7,32 × 2,44 m (Breite × Höhe, Innenmaß). Das Maß ist in Regel 1 der IFAB-Spielregeln festgelegt und gilt vom Kreisliga-Platz bis zur Bundesliga. Die Tortiefe ist nicht vorgeschrieben, im Shop werden Großfeldtore mit 1,50 m oder 2,00 m Tiefe angeboten. Alle Torgrößen im Vergleich stehen in der Größen-Übersicht.',
+  },
+  {
+    question: 'Ab welcher Altersklasse wird auf Großfeldtore gespielt?',
+    answer:
+      'Ab der C-Jugend (U14) wird im 11-gegen-11 auf Großfeldtore gespielt, ebenso bei B- und A-Jugend, Herren und Frauen. E- und D-Jugend spielen auf Jugendtore mit 5,00 × 2,00 m.',
+  },
+  {
+    question: 'Was ist besser: Großfeldtor mit Bodenhülsen oder transportabel?',
+    answer:
+      'Für den Hauptplatz mit festem Spielfeld ist ein Tor in Bodenhülsen die stabile Lösung: Es steckt im Boden und lässt sich bei Bedarf herausnehmen. Für Trainingsplätze, auf denen Tore verschoben werden, ist ein transportables Großfeldtor praktischer. Es muss dann gegen Umkippen gesichert werden, etwa mit Bodenankern oder Zusatzgewichten.',
+  },
+  {
+    question: 'Welche Norm gilt für Großfeldtore?',
+    answer:
+      'Die DIN EN 748 gilt laut DIN Media für Fußballtore 7,32 × 2,44 m und 5,00 × 2,00 m für Training und Wettkampf. Sie legt funktionelle und sicherheitstechnische Anforderungen samt Prüfverfahren fest, unter anderem zur Standsicherheit. Ob ein Tor die Norm erfüllt und unter welchen Bedingungen, steht in der Produktbeschreibung.',
+  },
+  {
+    question: 'Was ist der Unterschied zwischen Netzbügel und freier Netzaufhängung?',
+    answer:
+      'Bei Netzbügeln wird das Netz an Rohren gehalten, die hinten am Tor befestigt sind. Bei der freien Netzaufhängung spannen separate Pfosten hinter dem Tor das Netz, so wie man es aus der Bundesliga kennt. Beim Bundesliga-Tor von anstoss24 bestehen sie aus zwei verzinkten Stahlpfosten mit Bodenhülsen und Spannseilen.',
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: 'https://fussballtore.de/og-grossfeldtor.jpg',
+    datePublished: '2026-10-30',
+    dateModified,
+    inLanguage: 'de-DE',
+    author: AUTHOR,
+    publisher: PUBLISHER,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://fussballtore.de/grossfeldtor/',
+    },
+  },
+];
+
+const link = 'text-accent hover:text-accent-dark transition-colors font-medium';
+---
+
+<BaseLayout title={title} description={description} schema={schema} ogImage="/og-grossfeldtor.jpg" ogType="article">
+  <HeroSection
+    title="Großfeldtor 7,32 × 2,44 m"
+    subtitle="Das Fußballtor im Regelmaß: Bauarten, Material, Netz und Kippsicherung"
+    compact
+  />
+  <Breadcrumb modified={dateModified} items={[{ label: 'Start', href: '/' }, { label: 'Großfeldtor' }]} />
+
+  <article class="container mx-auto max-w-4xl pt-6 pb-12 md:py-16">
+
+    <TldrBlock
+      title="Großfeldtor – das Wichtigste"
+      items={[
+        { label: 'Maß', text: '7,32 × 2,44 m nach IFAB-Regel 1, für C-Jugend bis Herren und Frauen. Tortiefe frei, üblich 1,50 oder 2,00 m.' },
+        { label: 'Bauarten', text: 'Fest in Bodenhülsen für den Hauptplatz, transportabel für Training und Nebenplätze, selbstsichernd mit eingebauten Gewichten.' },
+        { label: 'Material', text: 'Aluminium, Latte und Pfosten im Ovalprofil 120/100 mm.' },
+        { label: 'Netz', text: 'An Netzbügeln oder mit freier Netzaufhängung. Bei transportablen Toren ist das Netz oft dabei, beim Bundesliga-Tor nicht.' },
+        { label: 'Norm', text: 'DIN EN 748 gilt für 7,32 × 2,44 m und 5,00 × 2,00 m. Mobile Tore immer gegen Umkippen sichern.' },
+      ]}
+      speakableId="tldr-grossfeldtor"
+    />
+
+    <!-- Einleitung -->
+    <p class="text-lg md:text-xl text-neutral-700 leading-relaxed mb-6">
+      Das <strong>Großfeldtor</strong> ist das Fußballtor im Regelmaß: <strong>7,32 × 2,44 m</strong>, gespielt ab der C-Jugend bis zu den Herren und Frauen. Beim Maß gibt es keine Wahl, bei allem anderen schon. Hier steht, welche Bauarten es gibt, worauf es bei Material, Netz und Kippsicherung ankommt und welches Großfeldtor zu welchem Platz passt.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Du willst nur die Maße aller Torgrößen vergleichen? Die stehen in der <a href="/groessen/" class={link}>Größen-Übersicht</a>. Du stattest einen ganzen Verein aus, vom Großfeld- bis zum Kleinfeldtor? Dann hilft der Ratgeber <a href="/verein/" class={link}>Fußballtore für Vereine</a>.
+    </p>
+
+    <!-- Maß -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fußballtor 7,32 × 2,44 m: Maß und Altersklassen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Breite und Höhe sind in Regel 1 der IFAB-Spielregeln festgelegt, nach denen auch der DFB spielt: <strong>7,32 m zwischen den Pfosten, 2,44 m bis zur Unterkante der Latte</strong>. Ein „Bundesliga-Tor“ ist deshalb nicht größer als ein Kreisliga-Tor, es unterscheidet sich nur in der Ausführung. Die Tortiefe ist nicht vorgeschrieben. Großfeldtore gibt es im Shop mit 1,50 m oder 2,00 m Tiefe, das Netz muss dazu passen.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Auf Großfeldtore spielen die <strong>C-, B- und A-Jugend sowie Herren und Frauen</strong>, jeweils 11 gegen 11. E- und D-Jugend spielen auf das <a href="/jugendtor/" class={link}>Jugendtor 5,00 × 2,00 m</a>, die F-Jugend unter anderem auf das <a href="/kleinfeldtor/" class={link}>Kleinfeldtor 3,00 × 2,00 m</a>. Welche Altersklasse genau auf welches Maß spielt, steht in der <a href="/groessen/" class={link}>Größen-Übersicht</a>.
+    </p>
+
+    <!-- Bauarten -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Welche Bauarten von Großfeldtoren gibt es?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die wichtigste Entscheidung ist, ob das Tor fest an einer Stelle steht oder bewegt wird. Daraus ergeben sich drei Bauarten:
+    </p>
+
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Bauart</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">So steht das Tor</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Passt für</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Mit Bodenhülsen</td>
+            <td class="px-4 py-3">Pfosten stecken in einbetonierten Hülsen im Boden</td>
+            <td class="px-4 py-3">Hauptplatz, Wettkampf</td>
+          </tr>
+          <tr class="border-t border-neutral-200 bg-neutral-50/50">
+            <td class="px-4 py-3 font-medium">Transportabel</td>
+            <td class="px-4 py-3">Vollverschweißt mit Bodenrahmen, wird mit Bodenankern oder Zusatzgewichten gesichert</td>
+            <td class="px-4 py-3">Training, Nebenplatz</td>
+          </tr>
+          <tr class="border-t border-neutral-200">
+            <td class="px-4 py-3 font-medium">Selbstsichernd</td>
+            <td class="px-4 py-3">Transportabel, Gegengewichte fest im Bodenrahmen verbaut</td>
+            <td class="px-4 py-3">Training ohne Bodenverankerung</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Großfeldtor mit Bodenhülsen</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Beim fest installierten Wettkampftor stecken die Pfosten in Bodenhülsen. Beim <a href={addUtm(bundesliga.url, 'grossfeldtor')} target="_blank" rel="noopener" class={link}>Bundesliga-Tor</a> von anstoss24 sind das laut Shop 500 mm tiefe Bodenhülsen mit Spezialkeilen; damit entspricht es der DIN EN 748 zur Kippsicherung. Wie du Bodenhülsen setzt, steht in der <a href="/aufbau-anleitung/" class={link}>Aufbau-Anleitung</a>.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Transportables Großfeldtor</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Transportable Großfeldtore sind vollverschweißt und stehen auf einem Bodenrahmen. Beim <a href={addUtm(transportabel.url, 'grossfeldtor')} target="_blank" rel="noopener" class={link}>transportablen Großfeldtor</a> nennt der Shop die Latte/Pfosten-Konstruktion als Schwachstelle transportabler Tore und verbaut dort einen zusätzlichen Eckverbinder. Seitlich am Bodenrahmen sind Tragegriffe angeschweißt, Transporträder lassen sich dazu bestellen. Ein mobiles Tor muss vor dem Spiel immer gegen Umkippen gesichert werden, zum Beispiel mit <a href={addUtm('https://www.anstoss24.de/fussballtore/zubehoer-kippsicherung/gummigewichte-fuer-sportplatzzubehoer_14247_386946/', 'grossfeldtor')} target="_blank" rel="noopener" class={link}>Gummigewichten</a> oder Bodenankern.
+    </p>
+
+    <h3 class="font-heading text-lg font-bold text-primary mt-8 mb-3">Selbstsicherndes Großfeldtor</h3>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Eine Mischform ist das <a href={addUtm(SELBSTSICHERND_URL, 'grossfeldtor')} target="_blank" rel="noopener" class={link}>transportable, selbstsichernde Großfeldtor</a>: Die Stahlgewichte sind im Bodenrahmen verbaut. Laut anstoss24 kann es „ohne weitere Bodenverankerungen verwendet werden“, ist kippsicher nach EN 748 und TÜV-geprüft. Der Vorteil laut Shop: Die Gewichte können im Gegensatz zu nachträglich verbauten Zusatzgewichten nicht abhanden kommen oder vergessen werden.
+    </p>
+
+    <!-- Material -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Material und Profil: Aluminium im Ovalprofil
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Großfeldtore für den Vereinsbetrieb sind heute in aller Regel aus <strong>Aluminium</strong>, denn Aluminium rostet nicht. Latte und Pfosten bestehen bei allen hier genannten Toren aus dem <strong>Ovalprofil 120/100 mm</strong>. Unterschiede gibt es bei Bodenrahmen und Verbindungen: Das Bundesliga-Tor hat laut Shop Alu-Gussformteil-Eckverbindungen, das transportable Tor einen Bodenholm im Rechteckprofil 80 × 60 mm.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Laut Shop wiegt das Bundesliga-Tor je nach Variante ca. 50–60 kg, das transportable Großfeldtor ca. 70–80 kg. Warum Aluminium, Stahl und Kunststoff sich für unterschiedliche Tore eignen, steht im <a href="/material-vergleich/" class={link}>Material-Vergleich</a>.
+    </p>
+
+    <!-- Produkte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Großfeldtor kaufen: unsere Empfehlungen
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-8">
+      Für den Hauptplatz empfehlen wir das Bundesliga-Tor in Bodenhülsen, für Training und Nebenplatz das transportable, vollverschweißte Großfeldtor. Alle Modelle findest du in der <a href={addUtm(KATEGORIE_URL, 'grossfeldtor')} target="_blank" rel="noopener" class={link}>Großfeldtor-Kategorie bei anstoss24</a>.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Hauptplatz, fest in Bodenhülsen</p>
+        <ProductCard
+          name={bundesliga.name}
+          url={bundesliga.url}
+          imageUrl={bundesliga.imageUrl}
+          features={['Freie Netzaufhängung', 'Bodenhülsen 500 mm', 'Ovalprofil 120/100 mm', 'TÜV-geprüft', 'Made in Germany']}
+          category="Großfeldtor"
+          campaign="grossfeldtor"
+        />
+      </div>
+      <div>
+        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Training, transportabel</p>
+        <ProductCard
+          name={transportabel.name}
+          url={transportabel.url}
+          imageUrl={transportabel.imageUrl}
+          features={['Vollverschweißt', 'Tragegriffe angeschweißt', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'Tortiefe 1,50 oder 2,00 m']}
+          category="Großfeldtor"
+          campaign="grossfeldtor"
+        />
+      </div>
+    </div>
+
+    {features.torberater && (
+      <div class="mt-14">
+        <Torberater campaign="grossfeldtor-torberater" start="grossfeldtor" title="Das passende Großfeldtor finden" />
+      </div>
+    )}
+
+    <!-- Netz -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Netzbügel oder freie Netzaufhängung?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Bei <strong>Netzbügeln</strong> wird das Netz an Rohren gehalten, die hinten am Tor sitzen. Beim transportablen Großfeldtor sind sie laut Shop aus besonders stabilen Alu-Rohren, das Netz ist dabei: Stärke 4 mm, grün, Maschenweite 12 cm. Bei der <strong>freien Netzaufhängung</strong> spannen separate Pfosten hinter dem Tor das Netz. Beim Bundesliga-Tor sind das zwei verzinkte Stahlpfosten mit Bodenhülsen und Spannseilen; das Netz wird hier separat bestellt, in den Tiefen 0,80 × 1,50 m, 0,80 × 2,00 m oder 2,00 × 2,00 m.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die Netztiefe muss zur Tortiefe passen. Material, Stärke und Maschenweite im Detail erklärt der <a href="/tornetz/" class={link}>Tornetz-Ratgeber</a>.
+    </p>
+
+    <!-- Norm & Kippsicherung -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      DIN EN 748 und Kippsicherung beim Großfeldtor
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Die <strong>DIN EN 748</strong> gilt laut DIN Media für Fußballtore 7,32 × 2,44 m und 5,00 × 2,00 m für Training und Wettkampf. Sie legt funktionelle und sicherheitstechnische Anforderungen samt Prüfverfahren fest, unter anderem eine definierte Standsicherheit. Ob ein Tor die Norm erfüllt und mit welcher Verankerung, steht in der Produktbeschreibung. Beim Bundesliga-Tor ist das die Bodenhülse mit Spezialkeilen, beim selbstsichernden Tor das eingebaute Gewicht.
+    </p>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Ein umkippendes Großfeldtor ist gefährlich. Mobile Tore deshalb vor jeder Nutzung sichern, nicht an der Latte hängen oder klettern und Tore, die nicht genutzt werden, gesichert abstellen. Hinweise zur Sicherheit und Prüfung von Sportgeräten gibt die DGUV Information 202-044. Wie Bodenanker und Gewichte richtig sitzen, steht in der <a href="/aufbau-anleitung/#kippsicherung" class={link}>Anleitung zur Kippsicherung</a>.
+    </p>
+
+    <!-- Einsatzorte -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Wo wird das Großfeldtor eingesetzt?
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Großfeldtore stehen überall dort, wo nach Regelmaß gespielt wird. Was am jeweiligen Ort dazukommt, steht im Ratgeber zum Einsatzort:
+    </p>
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm text-left border border-neutral-200 rounded-lg overflow-hidden">
+        <thead class="bg-neutral-50">
+          <tr>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Einsatzort</th>
+            <th class="px-4 py-3 font-heading font-bold text-primary">Wofür</th>
+          </tr>
+        </thead>
+        <tbody class="text-neutral-600">
+          {orte.map((o, i) => (
+            <tr class:list={['border-t border-neutral-200', i % 2 === 1 && 'bg-neutral-50/50']}>
+              <td class="px-4 py-3"><a href={o.href} class={link}>{o.name}</a></td>
+              <td class="px-4 py-3">{o.hinweis}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Fazit -->
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">
+      Fazit: Das Maß steht fest, die Bauart nicht
+    </h2>
+    <p class="text-neutral-600 leading-relaxed mb-4">
+      Jedes Großfeldtor misst 7,32 × 2,44 m. Entscheiden musst du, ob es fest in Bodenhülsen steht oder bewegt wird, ob das Netz an Bügeln oder frei aufgehängt wird und wie das Tor gegen Umkippen gesichert ist. Für den Hauptplatz ist das Tor in Bodenhülsen die stabile Wahl, für Training und Nebenplätze ein transportables Tor mit zuverlässiger Kippsicherung.
+    </p>
+
+    <Sources items={[SOURCES[2], Q.din748, Q.dguv202044]} />
+
+    <RelatedContent
+      items={[
+        { href: '/groessen/', title: 'Größen & Maße', subtitle: 'Alle Torgrößen im Vergleich' },
+        { href: '/jugendtor/', title: 'Jugendtor', subtitle: '5,00 × 2,00 m für E- und D-Jugend' },
+        { href: '/kleinfeldtor/', title: 'Kleinfeldtor', subtitle: '3,00 × 2,00 m für F-Jugend und Training' },
+        { href: '/verein/', title: 'Verein & Wettkampf', subtitle: 'Den ganzen Platz ausstatten' },
+        { href: '/tornetz/', title: 'Tornetz', subtitle: 'Netz passend zur Tortiefe' },
+        { href: '/aufbau-anleitung/', title: 'Aufbau-Anleitung', subtitle: 'Bodenhülsen und Kippsicherung' },
+      ]}
+    />
+  </article>
+
+  <!-- FAQ -->
+  <div class="bg-neutral-50">
+    <div class="container mx-auto max-w-4xl">
+      <FAQSection faqs={faqs} title="Häufige Fragen zum Großfeldtor" />
+    </div>
+  </div>
+</BaseLayout>
