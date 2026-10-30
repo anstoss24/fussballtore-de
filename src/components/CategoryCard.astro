@@ -4,25 +4,32 @@ import { foto, type FotoKey } from '../utils/shop-image';
 interface Props {
   name: string;
   subtitle: string;
+  /** Kurze Kennzahl über der Unterzeile, z. B. das Tormaß */
+  meta?: string;
   href: string;
   /** Foto aus src/data/fotos.json */
   image?: FotoKey;
+  /** Letzte Karte einer ungeraden Reihe: füllt im 2er-Raster die ganze Zeile */
+  wide?: boolean;
 }
 
-const { name, subtitle, href, image } = Astro.props;
+const { name, subtitle, meta, href, image, wide = false } = Astro.props;
 const bild = image ? foto(image) : null;
 ---
 
 <a
   href={href}
-  class="group flex h-full flex-col overflow-hidden rounded-xl bg-neutral-50 no-underline ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-12px_rgba(15,23,42,0.25)] hover:ring-accent/40"
+  class:list={[
+    wide && 'col-span-2 lg:col-span-1',
+    'group flex h-full flex-col overflow-hidden rounded-xl bg-neutral-50 no-underline ring-1 ring-neutral-200 transition-[box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-12px_rgba(15,23,42,0.25)] hover:ring-accent/40',
+  ]}
 >
   {bild && (
-    <span class="block aspect-[3/2] overflow-hidden bg-neutral-100">
+    <span class:list={['block overflow-hidden bg-neutral-100', wide ? 'aspect-[2/1] sm:aspect-[3/1] lg:aspect-[3/2]' : 'aspect-[3/2]']}>
       <img
         src={bild.src}
         srcset={bild.srcset}
-        sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 100vw"
+        sizes={wide ? '(min-width: 1024px) 240px, 100vw' : '(min-width: 1024px) 240px, 50vw'}
         alt={bild.alt}
         width="640"
         height="427"
@@ -32,9 +39,10 @@ const bild = image ? foto(image) : null;
       />
     </span>
   )}
-  <span class="flex flex-1 items-start justify-between gap-3 p-4 md:p-5">
+  <span class="flex flex-1 items-start justify-between gap-2 p-3 sm:p-4 md:p-5">
     <span>
       <span class="block font-heading text-lg font-bold text-primary group-hover:text-accent-dark transition-colors">{name}</span>
+      {meta && <span class="mt-0.5 block text-sm font-semibold text-accent-dark" style="font-variant-numeric: tabular-nums">{meta}</span>}
       <span class="mt-0.5 block text-sm leading-snug text-neutral-500">{subtitle}</span>
     </span>
     <svg class="mt-1 h-5 w-5 flex-none text-neutral-400 transition-[transform,color] duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">

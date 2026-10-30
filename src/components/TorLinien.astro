@@ -1,0 +1,101 @@
+---
+/**
+ * Maßstabsgetreue Linienzeichnung von Toren auf einer gemeinsamen Grundlinie.
+ * Alle Tore im selben Maßstab (Meter = SVG-Einheit), damit Größenunterschiede ehrlich sichtbar sind.
+ */
+import { TORARTEN, type TorartId } from '../data/einsatzorte';
+
+interface Props {
+  tore: TorartId[];
+  /** Maße unter den Toren beschriften */
+  masse?: boolean;
+  /** Breite der Zeichnung in Metern; leer = so breit wie die Tore */
+  breiteM?: number;
+  /** Maße auch unterhalb von lg zeigen (sonst nur ab 1024 px) */
+  masseImmer?: boolean;
+  /** Ungefähre Darstellungsbreite in px, damit die Maß-Schrift lesbar groß wird */
+  pxBreite?: number;
+  class?: string;
+}
+
+const { tore, masse = false, breiteM, masseImmer = false, pxBreite = 320, class: className } = Astro.props;
+
+const ABSTAND = 0.9;
+const RAND = 0.15;
+const fmt = (n: number) => n.toFixed(2).replace('.', ',');
+
+// Schrift in Metern so wählen, dass sie bei der erwarteten Darstellungsbreite ca. 12 px groß ist
+const roh = tore.reduce((s, id) => s + TORARTEN[id].breite, 0) + ABSTAND * (tore.length - 1) + 2 * RAND;
+const schrift = masse ? (Math.max(roh, breiteM ?? 0) * 12) / pxBreite : 0;
+const labelM = schrift * 3.4; // „7,32 m“ ≈ 6 Zeichen
+const LABEL = masse ? schrift * 1.7 : 0.25;
+
+// Abstände so, dass sich die Beschriftungen kleiner Tore nicht berühren
+const breiten = tore.map((id) => TORARTEN[id].breite);
+const luecke = (i: number) => Math.max(ABSTAND, labelM + 0.3 - (breiten[i] + breiten[i + 1]) / 2);
+const rechts = Math.max(RAND, labelM / 2 - breiten[breiten.length - 1] / 2);
+const links = Math.max(RAND, labelM / 2 - breiten[0] / 2);
+const inhaltM = links + breiten.reduce((s, b, i) => s + b + (i < breiten.length - 1 ? luecke(i) : 0), 0) + rechts;
+const breite = Math.max(inhaltM, breiteM ?? 0);
+
+// Inhalt rechtsbündig, falls die Zeichnung breiter ist als die Tore
+let x = breite - inhaltM + links;
+const teile = tore.map((id, i) => {
+  const t = TORARTEN[id];
+  const teil = { t, x };
+  x += t.breite + (i < tore.length - 1 ? luecke(i) : 0);
+  return teil;
+});
+const hoehe = Math.max(...teile.map(({ t }) => t.hoehe));
+const boden = hoehe + 0.1;
+const vbH = boden + LABEL;
+
+// Netz bzw. Hinterbau als feines Raster: senkrechte Linien alle 0,5 m, waagerechte nur beim Netz
+const linien = (n: number, schritt: number) =>
+  Array.from({ length: Math.max(0, Math.floor((n - 0.01) / schritt)) }, (_, i) => (i + 1) * schritt);
+---
+
+<svg
+  viewBox={`0 0 ${breite.toFixed(2)} ${vbH.toFixed(2)}`}
+  class={className}
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="square"
+  aria-hidden="true"
+  focusable="false"
+>
+  <line x1="0" y1={boden} x2={breite} y2={boden} stroke-width="1" vector-effect="non-scaling-stroke" opacity="0.35" />
+  {teile.map(({ t, x }) => (
+    <g>
+      <g stroke-width="0.75" vector-effect="non-scaling-stroke" opacity="0.4">
+        {linien(t.breite, t.hinterbau ? 0.25 : 0.5).map((d) => (
+          <line x1={x + d} y1={boden - t.hoehe} x2={x + d} y2={boden} vector-effect="non-scaling-stroke" />
+        ))}
+        {!t.hinterbau &&
+          linien(t.hoehe, 0.5).map((d) => (
+            <line x1={x} y1={boden - t.hoehe + d} x2={x + t.breite} y2={boden - t.hoehe + d} vector-effect="non-scaling-stroke" />
+          ))}
+      </g>
+      <path
+        d={`M${x} ${boden} V${boden - t.hoehe} H${x + t.breite} V${boden}`}
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+      />
+      {masse && (
+        <text
+          x={x + t.breite / 2}
+          y={boden + schrift * 1.35}
+          text-anchor="middle"
+          fill="currentColor"
+          stroke="none"
+          font-size={schrift.toFixed(2)}
+          opacity="0.95"
+          class={masseImmer ? undefined : 'hidden lg:block'}
+          style="font-variant-numeric: tabular-nums"
+        >
+          {fmt(t.breite)} m
+        </text>
+      )}
+    </g>
+  ))}
+</svg>

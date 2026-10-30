@@ -8,6 +8,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import { AUTHOR, PUBLISHER } from '../data/entities';
@@ -148,7 +149,7 @@ const schema = [
 
     <!-- Großfeldtore -->
     <section class="mt-14">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      <h2 id="grossfeldtore" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6 scroll-mt-24">
         Großfeldtore – 7,32 x 2,44 m Regelmaß
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
@@ -244,7 +245,7 @@ const schema = [
 
     <!-- Kleinfeldtore -->
     <section class="mt-14">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      <h2 id="kleinfeldtore" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6 scroll-mt-24">
         Kleinfeldtore – 3,00 x 2,00 m für Training und F-Jugend
       </h2>
       <div class="prose text-neutral-600 leading-relaxed">
@@ -418,6 +419,9 @@ const schema = [
         </p>
       </div>
     </section>
+
+    <!-- Torarten für diesen Einsatzort (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="verein" />
 
     <!-- Fazit -->
     <section class="mt-14">

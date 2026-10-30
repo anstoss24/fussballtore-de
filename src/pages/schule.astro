@@ -8,6 +8,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
@@ -297,6 +298,9 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Ergänzend gelten die Hinweise der gesetzlichen Unfallversicherung: die <strong>DGUV Information 202-044</strong> für Sportstätten und Sportgeräte und die <strong>DGUV Information 202-022</strong> für Außenspielflächen. Welche Norm ein bestimmtes Tor erfüllt, steht in der Produktbeschreibung. Achte beim Vergleich darauf, dass die Angabe zum Einsatzort passt. Fragen zur Bestellung beantwortet <a href={addUtm('https://www.anstoss24.de/fussballtore/', 'schule')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24</a> direkt.
     </p>
+
+    <!-- Torarten für diesen Einsatzort (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="schule" />
 
     <!-- Fazit -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">

@@ -1,13 +1,14 @@
 ---
 import { features } from '../data/features';
 import { consentEnabled } from '../data/consent';
+import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE } from '../data/einsatzorte';
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-primary text-white mt-20">
   <div class="container mx-auto py-12 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
       <!-- Ratgeber -->
       <div>
         <h3 class="font-heading text-lg font-bold mb-4 text-white">Ratgeber</h3>
@@ -18,26 +19,33 @@ const currentYear = new Date().getFullYear();
           <li><a href="/material-vergleich/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Material-Vergleich</a></li>
           <li><a href="/tornetz/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Tornetz</a></li>
           <li><a href="/aufbau-anleitung/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Aufbau & Kippsicherung</a></li>
+          <li><a href="/kinder/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Kindertore nach Alter</a></li>
+          <li><a href="/funino/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Funino-Tore</a></li>
         </ul>
       </div>
 
-      <!-- Tor nach Einsatz -->
+      <!-- Torarten (Sortiment) -->
       <div>
-        <h3 class="font-heading text-lg font-bold mb-4 text-white">Tor nach Einsatz</h3>
+        <h3 class="font-heading text-lg font-bold mb-4 text-white">Torarten</h3>
         <ul class="space-y-2.5">
-          <li><a href="/garten/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Gartentore</a></li>
-          <li><a href="/kinder/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Kindertore</a></li>
-          <li><a href="/minitore/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Minitore</a></li>
-          <li><a href="/verein/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Vereinstore</a></li>
-          <li><a href="/bolzplatztor/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Bolzplatztore</a></li>
-          <li><a href="/funino/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Funino-Tore</a></li>
-          <li><a href="/schule/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Schule & Kita</a></li>
-          <li><a href="/spielplatz/" class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">Spielplatztore</a></li>
+          {TORART_REIHENFOLGE.map((id) => (
+            <li><a href={TORARTEN[id].href} class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">{TORARTEN[id].plural}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Einsatzorte -->
+      <div>
+        <h3 class="font-heading text-lg font-bold mb-4 text-white">Einsatzorte</h3>
+        <ul class="space-y-2.5">
+          {EINSATZORTE.map((e) => (
+            <li><a href={e.href} class="text-white/75 hover:text-white hover:underline transition-colors no-underline text-base">{e.name}</a></li>
+          ))}
         </ul>
       </div>
 
       <!-- About + Legal -->
-      <div>
+      <div class="col-span-2 lg:col-span-1">
         <h3 class="font-heading text-lg font-bold mb-4 text-white">Über fussballtore.de</h3>
         <p class="text-white/75 text-base leading-relaxed mb-4">
           Professioneller Ratgeber rund um Fußballtore — auf Basis von 14 Jahren Praxis im Vereinsbedarf-Fachhandel.

@@ -8,6 +8,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
@@ -268,6 +269,9 @@ const schema = [
     <p class="text-neutral-600 leading-relaxed mb-4">
       Die Übergänge sind fließend. Geht es dir um das Tor als Produkt, also Bauart, Material und Größen von Bolzplatztoren für öffentliche Plätze, findest du mehr im Ratgeber <a href="/bolzplatztor/" class="text-accent hover:text-accent-dark transition-colors font-medium">Bolzplatztor</a>. Steht das Tor auf einem Schulhof, im Schulsport oder in einer Kita, lies den Ratgeber <a href="/schule/" class="text-accent hover:text-accent-dark transition-colors font-medium">Fußballtor für die Schule</a>. Fragen zur Bestellung beantwortet <a href={addUtm('https://www.anstoss24.de/fussballtore/bolzplatztore/', 'spielplatz')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark transition-colors font-medium">anstoss24</a> direkt.
     </p>
+
+    <!-- Torarten für diesen Einsatzort (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="spielplatz" />
 
     <!-- Fazit -->
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mt-12 mb-4">

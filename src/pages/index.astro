@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import CategoryCard from '../components/CategoryCard.astro';
+import TorLinien from '../components/TorLinien.astro';
+import { TORARTEN, TORART_REIHENFOLGE, EINSATZORTE } from '../data/einsatzorte';
 import ProductCard from '../components/ProductCard.astro';
 import TrustBadges from '../components/TrustBadges.astro';
 import FAQSection from '../components/FAQSection.astro';
@@ -17,16 +19,10 @@ const title = 'Fußballtore – Der professionelle Ratgeber';
 const description =
   'Fußballtore für Verein, Garten und Schule: Professionelle Kaufberatung, Größen-Übersicht und Produktempfehlungen. Finde das passende Fußballtor.';
 
-const categories = [
-  { name: 'Großfeldtore', image: 'kat-grossfeld' as const, subtitle: '7,32 x 2,44 m – Wettkampfstandard', href: '/verein/' },
-  { name: 'Jugendtore', image: 'kat-jugend' as const, subtitle: '5,00 x 2,00 m – Nachwuchsförderung', href: '/verein/#jugendtore' },
-  { name: 'Bolzplatztore', image: 'kat-bolzplatz' as const, subtitle: '3,00 x 2,00 m – Unkaputtbar', href: '/bolzplatztor/' },
-  { name: 'Minitore', image: 'kat-minitore' as const, subtitle: 'Für Training, Funino & Garten', href: '/minitore/' },
-  { name: 'Gartentore', image: 'kat-garten' as const, subtitle: 'Pop-up, Steck- und Minitore', href: '/garten/' },
-  { name: 'Kindertore', image: 'kat-kinder' as const, subtitle: 'Sicher & altersgerecht', href: '/kinder/' },
-  { name: 'Schultore', image: 'kat-schule' as const, subtitle: 'Schulhof, Schulsport & Kita', href: '/schule/' },
-  { name: 'Spielplatztore', image: 'kat-spielplatz' as const, subtitle: 'Frei zugänglich & leise', href: '/spielplatz/' },
-];
+// Zwei Logiken: Torarten (Sortiment) und Einsatzorte (wo das Tor steht) – Daten in src/data/einsatzorte.ts
+const torarten = TORART_REIHENFOLGE.map((id) => TORARTEN[id]);
+// Gemeinsamer Maßstab für alle Einsatzort-Zeilen: so breit wie die längste Torreihe
+const reiheM = Math.max(...EINSATZORTE.map((e) => e.tore.reduce((s, z) => s + TORARTEN[z.torart].breite + 0.9, 0.3)));
 
 // Pick 3 highlight products from different categories
 const findProduct = (id) => productsData.products.find(p => p.id === id);
@@ -79,7 +75,6 @@ const schema = [
     <HeroSection
       title="Fußballtore – Der professionelle Ratgeber"
       subtitle="Kaufberatung, Größen-Übersicht und Produktempfehlungen für Verein, Schule und Garten. Professionell, ehrlich, fundiert."
-      image="hero-grossfeld"
     >
       <TorberaterEinstieg />
     </HeroSection>
@@ -92,22 +87,69 @@ const schema = [
     />
   )}
 
-  <!-- Category Grid -->
-  <section class="py-16 md:py-20">
+  <!-- Torarten (Sortiment) -->
+  <section class="py-16 md:py-20" aria-labelledby="nach-torart">
     <div class="container mx-auto">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
-        Fußballtore nach Kategorie
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-        {categories.map((cat) => (
-          <CategoryCard name={cat.name} subtitle={cat.subtitle} href={cat.href} image={cat.image} />
+      <div class="mb-8 max-w-2xl">
+        <h2 id="nach-torart" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">
+          Fußballtore nach Torart
+        </h2>
+        <p class="text-neutral-600 m-0">Die Torart ergibt sich aus Maß und Bauart – unabhängig davon, wo das Tor später steht.</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+        {torarten.map((t, i) => (
+          <CategoryCard
+            name={t.plural.replaceAll('-', '\u2011') /* geschützte Bindestriche: kein Umbruch in „Pop-up“ */}
+            meta={t.mass}
+            subtitle={t.subtitle}
+            href={t.href}
+            image={t.foto}
+            wide={i === torarten.length - 1}
+          />
         ))}
       </div>
     </div>
   </section>
 
+  <!-- Einsatzorte: welche Torarten passen wohin -->
+  <section class="py-16 md:py-20 bg-neutral-50" aria-labelledby="nach-einsatzort">
+    <div class="container mx-auto">
+      <div class="mb-8 max-w-2xl">
+        <h2 id="nach-einsatzort" class="font-heading text-2xl md:text-3xl font-bold text-primary mb-2">
+          Fußballtore nach Einsatzort
+        </h2>
+        <p class="text-neutral-600 m-0">An jedem Ort können mehrere Torarten stehen. Die Zeichnungen zeigen die passenden Tore im gleichen Maßstab.</p>
+      </div>
+      <ul class="divide-y divide-neutral-200 border-y border-neutral-200 list-none p-0 m-0">
+        {EINSATZORTE.map((e) => (
+          <li class="m-0 p-0">
+            <a
+              href={e.href}
+              class="group grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[13rem_minmax(0,1fr)_17rem_auto] lg:grid-cols-[15rem_minmax(0,1fr)_22rem_auto] items-center gap-x-6 gap-y-3 py-5 md:py-6 no-underline"
+            >
+              <span class="min-w-0">
+                <span class="block font-heading text-lg md:text-xl font-bold text-primary group-hover:text-accent-dark transition-colors">{e.name}</span>
+                <span class="block text-sm text-neutral-500 leading-snug">{e.subtitle}</span>
+              </span>
+              <span class="col-span-2 row-start-2 md:col-span-1 md:row-start-auto text-sm text-neutral-600 leading-snug">
+                <span class="font-semibold text-primary">Geeignet:</span>{' '}
+                {e.tore.map((z) => TORARTEN[z.torart].plural).join(' · ')}
+              </span>
+              <span class="col-span-2 row-start-3 md:col-span-1 md:row-start-auto text-accent-dark">
+                <TorLinien tore={e.tore.map((z) => z.torart)} breiteM={reiheM} class="block h-auto w-full" />
+              </span>
+              <svg class="row-start-1 col-start-2 md:row-start-auto md:col-start-auto h-5 w-5 flex-none text-neutral-400 transition-[transform,color] duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <!-- Product Highlights -->
-  <section class="py-16 md:py-20 bg-neutral-50">
+  <section class="py-16 md:py-20">
     <div class="container mx-auto">
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-3">
         Beliebte Fußballtore

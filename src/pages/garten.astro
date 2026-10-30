@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import TorartenFuerEinsatzort from '../components/TorartenFuerEinsatzort.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
@@ -481,6 +482,9 @@ const schema = [
         unserem <a href="/kinder/" class="text-accent hover:text-accent-dark font-medium transition-colors">Ratgeber für Kindertore</a>.
       </p>
     </section>
+
+    <!-- Torarten für diesen Einsatzort (src/data/einsatzorte.ts) -->
+    <TorartenFuerEinsatzort ort="garten" />
 
     <!-- Fazit -->
     <section class="mt-12 md:mt-16">

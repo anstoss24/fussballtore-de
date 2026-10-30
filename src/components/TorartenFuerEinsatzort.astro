@@ -1,0 +1,50 @@
+---
+/**
+ * Abschnitt „Welche Torarten passen hier?“ für Einsatzort-Seiten.
+ * Zeigt alle zugeordneten Torarten aus src/data/einsatzorte.ts im gleichen Maßstab.
+ */
+import TorLinien from './TorLinien.astro';
+import { TORARTEN, einsatzort } from '../data/einsatzorte';
+
+interface Props {
+  ort: string;
+}
+
+const ort = einsatzort(Astro.props.ort);
+if (!ort) throw new Error(`Einsatzort „${Astro.props.ort}“ fehlt in src/data/einsatzorte.ts`);
+---
+
+<section class="mt-12 md:mt-16" aria-labelledby={`torarten-${ort.id}`}>
+  <h2 id={`torarten-${ort.id}`} class="font-heading text-2xl md:text-3xl font-bold text-primary mb-3">
+    Welche Torarten passen hier?
+  </h2>
+  <p class="text-neutral-600 leading-relaxed mb-6">
+    Je nach Fläche und Nutzung kommen hier verschiedene Torarten in Frage. Die Zeichnung zeigt sie im gleichen Maßstab.
+  </p>
+
+  <div class="rounded-xl bg-primary px-5 py-6 md:px-8 md:py-7 text-accent-light/80">
+    <!-- Zwei Fassungen, damit die Maße mobil wie am Desktop lesbar groß sind -->
+    <TorLinien tore={ort.tore.map((z) => z.torart)} masse masseImmer pxBreite={300} class="block sm:hidden h-auto w-full" />
+    <TorLinien tore={ort.tore.map((z) => z.torart)} masse masseImmer pxBreite={600} class="hidden sm:block h-auto w-full max-h-44" />
+  </div>
+
+  <ul class="mt-4 divide-y divide-neutral-200 border-b border-neutral-200 list-none p-0 m-0">
+    {ort.tore.map((z) => {
+      const t = TORARTEN[z.torart];
+      return (
+        <li class="m-0 p-0">
+          <a href={t.href} class="group grid grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[12rem_minmax(0,1fr)_auto] items-center gap-x-5 gap-y-0.5 py-4 no-underline">
+            <span>
+              <span class="block font-heading font-bold text-primary group-hover:text-accent-dark transition-colors">{t.name}</span>
+              <span class="block text-sm text-neutral-500" style="font-variant-numeric: tabular-nums">{t.mass}</span>
+            </span>
+            <span class="row-start-2 sm:row-start-auto text-neutral-600 text-base leading-snug">{z.hinweis}</span>
+            <svg class="row-span-2 sm:row-span-1 h-5 w-5 flex-none text-neutral-400 transition-[transform,color] duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</section>
