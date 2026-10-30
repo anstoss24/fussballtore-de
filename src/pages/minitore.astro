@@ -8,10 +8,11 @@ import ProductCard from '../components/ProductCard.astro';
 import FAQSection from '../components/FAQSection.astro';
 import TldrBlock from '../components/TldrBlock.astro';
 import RelatedContent from '../components/RelatedContent.astro';
+import Sources from '../components/Sources.astro';
 import { addUtm } from '../utils/utm';
 import productsData from '../data/products.json';
 import pricesData from '../data/prices.json';
-import { AUTHOR, PUBLISHER } from '../data/entities';
+import { AUTHOR, PUBLISHER, SOURCES_OEFFENTLICH as Q } from '../data/entities';
 import pageDates from '../data/page-dates.json';
 const dateModified = pageDates['minitore'];
 
@@ -67,7 +68,7 @@ const faqs = [
   {
     question: 'Braucht ein Minitor eine Kippsicherung?',
     answer:
-      'Sehr leichte Minitore unter 10 kg – etwa das Alu Minitor Lightweight – gelten in der Praxis als kippunkritisch, weil von ihnen keine relevante Kippgefahr ausgeht. Leichte Kunststoff-Tore sollten mit den mitgelieferten Erdankern gesichert werden, damit sie bei Wind nicht verrutschen. Schwerere Minitore ab ca. 20 kg stehen durch ihr Eigengewicht und den Bodenrahmen stabil.',
+      'Die Norm für bewegliche Spielfeldtore, DIN EN 16579, gilt erst für Tore über 10 kg – sehr leichte Minitore wie das Alu Minitor Lightweight fallen nicht darunter. Sichern solltest du trotzdem jedes Tor: leichte Kunststoff-Tore mit den mitgelieferten Erdankern, damit sie bei Wind nicht verrutschen, schwerere Alu-Minitore so, wie es die Produktbeschreibung vorsieht.',
   },
 ];
 
@@ -109,7 +110,7 @@ const schema = [
           { label: 'Bauarten', text: 'Pop-up (Sekundenaufbau), klappbares Kunststoff-Tor (Garten/Training) oder vollverschweißtes Alu-Minitor (Verein/Dauereinsatz).' },
           { label: 'Einsatz', text: 'Funino (G-/F-Jugend nach DFB-Reform), Techniktraining, Garten, Schulhof.' },
           { label: 'Preis', text: `${fmtEur(minAll)} € (Pop-up-Set) bis ${fmtEur(priceOf('minitor-hinterbau') ?? 0)} € (Alu mit geschlossenem Hinterbau) — Live-Preise von anstoss24.de.` },
-          { label: 'Sicherheit', text: 'Sehr leichte Tore unter 10 kg gelten als kippunkritisch; leichte Tore mit Erdankern gegen Wind sichern.' },
+          { label: 'Sicherheit', text: 'Die DIN EN 16579 gilt erst für Tore über 10 kg; trotzdem jedes Tor sichern, leichte Tore mit Erdankern gegen Wind.' },
         ]}
         speakableId="tldr-minitore"
       />
@@ -226,7 +227,7 @@ const schema = [
       </div>
 
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Das Lightweight-Modell ist mit unter 10 kg das leichteste vollverschweißte Alu-Minitor im Sortiment – so leicht, dass es in der Praxis als kippunkritisch gilt, und trotzdem ein Einteiler in Vereinsqualität. Das QuickPlay Kickster gibt es auch kompakter als <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">1,50 × 1,00 m-Variante</a>, für spontane Garten-Spiele genügt oft schon ein <a href={addUtm('https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Pop-up-Set</a>.
+        Das Lightweight-Modell ist mit unter 10 kg das leichteste vollverschweißte Alu-Minitor im Sortiment – es bleibt unter der 10-kg-Grenze der DIN EN 16579 und ist trotzdem ein Einteiler in Vereinsqualität. Das QuickPlay Kickster gibt es auch kompakter als <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/quick-play-junior-minitor-1-50-x-1-00m_10078_113668/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">1,50 × 1,00 m-Variante</a>, für spontane Garten-Spiele genügt oft schon ein <a href={addUtm('https://www.anstoss24.de/trainingshilfen/pop-up-goal_19_5098/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Pop-up-Set</a>.
       </p>
 
       <!-- Verein/Kommune -->
@@ -270,10 +271,10 @@ const schema = [
         Sicherheit: Was bei Minitoren wirklich zählt
       </h2>
       <p class="text-neutral-600 leading-relaxed mb-4">
-        Die gute Nachricht: Von leichten Minitoren geht deutlich weniger Gefahr aus als von großen Toren. Sehr leichte Modelle unter 10 kg gelten in der Praxis als <strong>kippunkritisch</strong>. Trotzdem gilt:
+        Die gute Nachricht: Von leichten Minitoren geht deutlich weniger Gefahr aus als von großen Toren. Für sehr leichte Modelle unter 10 kg gilt die <strong>DIN EN 16579</strong> nicht. Trotzdem gilt:
       </p>
       <ul class="list-disc list-inside space-y-2 text-neutral-600 leading-relaxed mb-4 ml-2">
-        <li><strong>Leichte Kunststoff-Tore</strong> mit den mitgelieferten Erdankern sichern – nicht wegen Kippgefahr, sondern damit sie bei Wind nicht durch den Garten fliegen.</li>
+        <li><strong>Leichte Kunststoff-Tore</strong> mit den mitgelieferten Erdankern sichern, damit sie bei Wind nicht durch den Garten fliegen.</li>
         <li><strong>Klettern verboten:</strong> Auch am Minitor gilt die Grundregel für alle <a href="/kinder/" class="text-accent hover:text-accent-dark underline underline-offset-2">Kindertore</a> – Tore sind kein Klettergerüst.</li>
         <li><strong>Öffentlicher Raum:</strong> Für Schulen und Kommunen empfehlen sich TÜV-geprüfte Modelle nach DIN EN 16579 – im Schadensfall haftet der Betreiber.</li>
         <li><strong>Aufbau:</strong> Schritt-für-Schritt-Anleitungen für alle Bauarten findest du in der <a href="/aufbau-anleitung/" class="text-accent hover:text-accent-dark underline underline-offset-2">Aufbau-Anleitung</a>.</li>
@@ -289,6 +290,8 @@ const schema = [
       <p class="text-neutral-600 leading-relaxed mb-4">
         Alle Minitore mit aktuellen Preisen findest du in der <a href={addUtm('https://www.anstoss24.de/fussballtore/minitore/', 'minitore')} target="_blank" rel="noopener" class="text-accent hover:text-accent-dark underline underline-offset-2">Minitore-Übersicht bei anstoss24.de</a>. Und falls du noch unsicher bei der Größe bist: Die <a href="/groessen/" class="text-accent hover:text-accent-dark underline underline-offset-2">Größen-Übersicht</a> ordnet alle Tormaße nach Altersklasse ein.
       </p>
+
+      <Sources items={[Q.din16579]} />
 
       <RelatedContent
         items={[
