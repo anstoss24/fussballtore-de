@@ -3,6 +3,10 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 02.11.2026 – Design-Skills ins Repo
+
+- `.claude/skills/emil-design-eng`, `impeccable`, `taste-skill` committet (unverändert aus den Original-Repos, mit LICENSE/NOTICE und QUELLE.md). Betrifft nur die Arbeitsumgebung, nicht die Website.
+
 ## 30.10.2026 – Live: Torart/Einsatzort-Struktur (Merge `feature/feinschliff`)
 
 - Live gegangen nach Freigabe Matze. Alle Einträge unten mit „nicht live“ vom 29./30.10. sind damit live.
