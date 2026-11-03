@@ -2,6 +2,7 @@
 import { addUtm } from '../utils/utm';
 import pricesData from '../data/prices.json';
 import { shopImage, shopImageArt, type Bildart } from '../utils/shop-image';
+import galerien from '../data/produkt-galerien.json';
 
 interface Props {
   name: string;
@@ -17,11 +18,19 @@ interface Props {
 }
 
 const { name, url, imageUrl, features, category, campaign, bildart, eager = false } = Astro.props;
-const small = shopImage(imageUrl, 'c480');
-const large = shopImage(imageUrl, 'c960');
-const imageSrc = large ?? small ?? imageUrl;
-const srcset = small && large ? `${small} 480w, ${large} 960w` : undefined;
-const art = bildart ?? shopImageArt(imageUrl) ?? 'freisteller';
+// Bildergalerie aus src/data/produkt-galerien.json (erstes Bild = Frontansicht), sonst nur imageUrl
+const galerie = ((galerien as Record<string, unknown>)[url] as string[] | undefined) ?? [imageUrl];
+const slides = galerie.map((src, i) => {
+  const small = shopImage(src, 'c480');
+  const large = shopImage(src, 'c960');
+  return {
+    src: large ?? small ?? src,
+    srcset: small && large ? `${small} 480w, ${large} 960w` : undefined,
+    art: (i === 0 && bildart) || shopImageArt(src) || 'freisteller',
+    alt: i === 0 ? name : `${name} – Bild ${i + 1} von ${galerie.length}`,
+  };
+});
+const mehrereBilder = slides.length > 1;
 
 const priceInfo = (pricesData as Record<string, any>)[url];
 const price = priceInfo?.price;
@@ -37,7 +46,7 @@ const productSchema: Record<string, any> = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name,
-  image: imageUrl,
+  image: galerie.length > 1 ? galerie : galerie[0],
   url,
 };
 
@@ -72,22 +81,63 @@ if (price) {
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   )}
 
-  <!-- Image: feste 4:3-Fläche gegen Layout-Sprünge -->
-  <div class="relative aspect-[4/3] overflow-hidden bg-white md:[:not(.max-w-md)>.group:only-child_&]:w-1/2 md:[:not(.max-w-md)>.group:only-child_&]:flex-none">
-    <img
-      src={imageSrc}
-      srcset={srcset}
-      sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
-      alt={name}
-      loading={eager ? 'eager' : 'lazy'}
-      decoding="async"
-      width="960"
-      height="720"
-      class:list={[
-        'h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]',
-        art === 'szene' ? 'object-cover' : 'object-contain p-6 mix-blend-multiply sm:p-8',
-      ]}
-    />
+  <!-- Bilder: feste 4:3-Fläche gegen Layout-Sprünge, bei mehreren Bildern wischen oder per Pfeil blättern -->
+  <div
+    class="relative aspect-[4/3] overflow-hidden bg-white md:[:not(.max-w-md)>.group:only-child_&]:w-1/2 md:[:not(.max-w-md)>.group:only-child_&]:flex-none"
+    data-galerie={mehrereBilder ? '' : undefined}
+  >
+    <ul
+      class="flex h-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      aria-label={mehrereBilder ? `Produktbilder: ${name}` : undefined}
+      data-track
+    >
+      {slides.map((slide, i) => (
+        <li class="h-full w-full flex-none snap-center overflow-hidden">
+          <img
+            src={slide.src}
+            srcset={slide.srcset}
+            sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+            alt={slide.alt}
+            loading={eager && i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            width="960"
+            height="720"
+            draggable="false"
+            class:list={[
+              'h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]',
+              slide.art === 'szene' ? 'object-cover' : 'object-contain p-6 mix-blend-multiply sm:p-8',
+            ]}
+          />
+        </li>
+      ))}
+    </ul>
+    {mehrereBilder && (
+      <>
+        <button
+          type="button"
+          data-prev
+          aria-label="Vorheriges Bild"
+          class="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-primary shadow-[0_2px_8px_rgba(15,23,42,0.18)] ring-1 ring-neutral-200 transition-[background-color,transform] duration-150 hover:bg-white active:scale-[0.92] focus-visible:outline-2 focus-visible:outline-accent"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+        </button>
+        <button
+          type="button"
+          data-next
+          aria-label="Nächstes Bild"
+          class="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-primary shadow-[0_2px_8px_rgba(15,23,42,0.18)] ring-1 ring-neutral-200 transition-[background-color,transform] duration-150 hover:bg-white active:scale-[0.92] focus-visible:outline-2 focus-visible:outline-accent"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+        </button>
+        <span
+          class="pointer-events-none absolute bottom-2 right-2 rounded-full bg-primary/75 px-2 py-0.5 text-xs font-medium tabular-nums text-white"
+          aria-live="polite"
+          data-zaehler
+        >
+          1 / {slides.length}
+        </span>
+      </>
+    )}
   </div>
 
   <!-- Content -->
@@ -139,3 +189,25 @@ if (price) {
     </a>
   </div>
 </article>
+
+<script>
+  // Bildergalerie der Produktkarten: Pfeile blättern (am Ende wieder von vorn), Wischen geht nativ per Scroll-Snap
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll<HTMLElement>('[data-galerie]').forEach((galerie) => {
+    const track = galerie.querySelector<HTMLElement>('[data-track]')!;
+    const zaehler = galerie.querySelector<HTMLElement>('[data-zaehler]');
+    const anzahl = track.children.length;
+    const aktuell = () => Math.round(track.scrollLeft / track.clientWidth);
+    const gehe = (i: number) =>
+      track.scrollTo({ left: ((i + anzahl) % anzahl) * track.clientWidth, behavior: reduce.matches ? 'auto' : 'smooth' });
+    galerie.querySelector('[data-prev]')?.addEventListener('click', () => gehe(aktuell() - 1));
+    galerie.querySelector('[data-next]')?.addEventListener('click', () => gehe(aktuell() + 1));
+    track.addEventListener(
+      'scroll',
+      () => {
+        if (zaehler) zaehler.textContent = `${aktuell() + 1} / ${anzahl}`;
+      },
+      { passive: true },
+    );
+  });
+</script>
