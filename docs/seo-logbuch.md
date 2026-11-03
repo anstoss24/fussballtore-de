@@ -10,6 +10,8 @@ Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen 
 - Neu: `src/data/produkt-galerien.json` (Schlüssel = Shop-URL, Reihenfolge von Hand, TÜV-Logos und Profilzeichnungen weggelassen). `ProductCard` nimmt die Galerie automatisch, `imageUrl` bleibt nur Fallback. Schema.org `Product.image` = Galerie.
 - Slider: CSS-Scroll-Snap (Wischen auf dem Handy) + Pfeile + Zähler „1 / n“, Endlos-Schleife, ca. 20 Zeilen JS, Bilder ab Nr. 2 lazy. `fetch-shop-images.mjs` lädt die Galeriebilder mit.
 - `products.json` und hart eingetragene `imageUrl` in den Seiten auf die Frontansicht umgestellt.
+- Nachtrag nach Durchsicht Matze: Erstes Bild ist jetzt überall die Ansicht schräg von vorne. Das ist fast immer das Platzfoto, weil die Schräg-Freisteller im Shop alle von hinten aufgenommen sind. Die gerade Frontansicht kommt als Bild 2.
+- Jugendtor 14628: Beide Varianten (mit/ohne Tragegriffe) haben im Shop identische Bilder, daher sehen die Karten auf /jugendtor/ und /verein/ gleich aus.
 
 ### Offen
 - [ ] Shop-Team: Freisteller in Frontansicht für Bolzplatztore 255/9754 und Jugendtor 14628 wären schön (einheitlicher Kartenlook).
