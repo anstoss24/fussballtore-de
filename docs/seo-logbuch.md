@@ -11,10 +11,10 @@ Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen 
 - Slider: CSS-Scroll-Snap (Wischen auf dem Handy) + Pfeile + Zähler „1 / n“, Endlos-Schleife, ca. 20 Zeilen JS, Bilder ab Nr. 2 lazy. `fetch-shop-images.mjs` lädt die Galeriebilder mit.
 - `products.json` und hart eingetragene `imageUrl` in den Seiten auf die Frontansicht umgestellt.
 - Nachtrag nach Durchsicht Matze: Erstes Bild ist jetzt überall die Ansicht schräg von vorne. Das ist fast immer das Platzfoto, weil die Schräg-Freisteller im Shop alle von hinten aufgenommen sind. Die gerade Frontansicht kommt als Bild 2.
-- Jugendtor 14628: Beide Varianten (mit/ohne Tragegriffe) haben im Shop identische Bilder, daher sehen die Karten auf /jugendtor/ und /verein/ gleich aus.
+- Jugendtor 14628: Beide Varianten (mit/ohne Tragegriffe) haben im Shop identische Bilder, Entscheidung Matze 04.11.: Karte „mit Tragegriffen“ raus auf /jugendtor/ und /verein/, auf /groessen/ die Einzelkarte auf die Variante ohne Griffe umgestellt. Die Griff-Variante ist überall nur noch als Textlink verlinkt. Wieder als Karte, sobald der Shop ein Foto hat, auf dem die Griffe zu sehen sind.
 
 ### Offen
-- [ ] Shop-Team: Freisteller in Frontansicht für Bolzplatztore 255/9754 und Jugendtor 14628 wären schön (einheitlicher Kartenlook).
+- [ ] Shop-Team: Foto Jugendtor 14628 mit sichtbaren Tragegriffen (Variante 419740), dann Karte wieder rein.
 - [ ] Neue Produkte künftig auch in `produkt-galerien.json` eintragen, sonst gibt es nur ein Bild ohne Pfeile.
 
 ## 02.11.2026 – Design-Skills ins Repo
