@@ -3,6 +3,19 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 04.11.2026 – Einsatzort-Karten: Fotos statt Illustration (LIVE 04.11.2026)
+
+- Startseite „Fußballtore nach Einsatzort“: Die 5 Karten zeigen jetzt Bilder statt der gezeichneten OrtIllustration.
+- **Die Bilder sind KI-generiert (Gemini, Collage von Matze).** Das ist eine bewusste Abkehr von der früheren Regel „keine KI-Fotos“, Entscheidung Matze am 04.11. Sie werden nur als Stimmungsbild für den Ort genutzt (alt="", der Kartentitel nennt den Ort), nie als Produktfoto.
+- Produktabgleich: Jedes Bild zeigt nur Torarten, die die jeweilige Einsatzort-Seite empfiehlt (Verein: Großfeld; Schule: Bolzplatztor auf dem Schulhof; Kommune: Bolzplatztor; Spielplatz: Alu-Minitor mit Hinterbau; Garten: Pop-up + Minitor).
+- WebP 400/800/1200 px in `public/images/orte/` (Kommune enger zugeschnitten, damit das Tor auf der kleinen Karte erkennbar ist).
+- Nachtrag 04.11. abends: Alle 5 Bilder neu, wieder KI (Gemini), aber mit anstoss24-Produktfotos als Vorlage, damit unsere Tore zu sehen sind: Verein = Großfeldtor transportabel 1523, Schule = Bolzplatztor mit Basketballaufbau 13019/13020 auf dem Schulhof, Kommune = Bolzplatztor auf kommunalem Platz zwischen Wohnblocks, Spielplatz = Alu-Minitor mit Hinterbau 18838, Garten = Pop-up 19 + Alu-Minitor Lightweight 18602. Shop-Fotos-Zwischenstand (Kommune/Spielplatz) wieder raus, weil die Umgebung nicht passte. Alle 5 mit „Symbolbild“. Vorlagen und Prompts liegen bei Matze unter ~/Desktop/fussballtore-ortsbilder/.
+- Rückweg: Eintrag in `ORT_FOTOS` (EinsatzortKarte.astro) löschen, dann kommt die Illustration zurück.
+
+### Offen
+- [ ] Echte Fotos (Kunden, eigene) würden die KI-Bilder ersetzen, sobald vorhanden.
+- Kleiner Hinweis „Symbolbild“ unten rechts auf jedem Bild (Vorschlag, von Matze angesehen 04.11.).
+
 ## 03.11.2026 – Produktkarten: Frontansicht zuerst + Bildergalerie mit Pfeilen (LIVE 04.11.2026, Merge c499f5c)
 
 - Anlass: Mehrere Karten zeigten als erstes Bild eine Rück- oder Schrägansicht von hinten.
