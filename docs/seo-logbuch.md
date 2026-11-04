@@ -13,7 +13,7 @@ Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen 
 
 ### Offen
 - [ ] Echte Fotos (Kunden, eigene) würden die KI-Bilder ersetzen, sobald vorhanden.
-- [ ] Prüfen, ob ein kleiner Hinweis „Symbolbild“ gewünscht ist.
+- Kleiner Hinweis „Symbolbild“ unten rechts auf jedem Bild (Vorschlag, von Matze angesehen 04.11.).
 
 ## 03.11.2026 – Produktkarten: Frontansicht zuerst + Bildergalerie mit Pfeilen (LIVE 04.11.2026, Merge c499f5c)
 
