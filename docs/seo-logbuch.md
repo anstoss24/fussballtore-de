@@ -3,6 +3,18 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 04.11.2026 – Einsatzort-Karten: Fotos statt Illustration (Branch `feature/einsatzort-bilder`, nicht live)
+
+- Startseite „Fußballtore nach Einsatzort“: Die 5 Karten zeigen jetzt Bilder statt der gezeichneten OrtIllustration.
+- **Die Bilder sind KI-generiert (Gemini, Collage von Matze).** Das ist eine bewusste Abkehr von der früheren Regel „keine KI-Fotos“, Entscheidung Matze am 04.11. Sie werden nur als Stimmungsbild für den Ort genutzt (alt="", der Kartentitel nennt den Ort), nie als Produktfoto.
+- Produktabgleich: Jedes Bild zeigt nur Torarten, die die jeweilige Einsatzort-Seite empfiehlt (Verein: Großfeld; Schule: Bolzplatztor auf dem Schulhof; Kommune: Bolzplatztor; Spielplatz: Alu-Minitor mit Hinterbau; Garten: Pop-up + Minitor).
+- Aus der Collage geschnitten, eingebrannte Beschriftungen weggeschnitten (Retusche sah schlecht aus), leicht aufgehellt. WebP 400/800 px in `public/images/orte/`, 12–99 KB.
+- Rückweg: Eintrag in `ORT_FOTOS` (EinsatzortKarte.astro) löschen, dann kommt die Illustration zurück.
+
+### Offen
+- [ ] Echte Fotos (Kunden, eigene) würden die KI-Bilder ersetzen, sobald vorhanden.
+- [ ] Prüfen, ob ein kleiner Hinweis „Symbolbild“ gewünscht ist.
+
 ## 03.11.2026 – Produktkarten: Frontansicht zuerst + Bildergalerie mit Pfeilen (LIVE 04.11.2026, Merge c499f5c)
 
 - Anlass: Mehrere Karten zeigten als erstes Bild eine Rück- oder Schrägansicht von hinten.

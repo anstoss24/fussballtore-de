@@ -2,8 +2,21 @@
 /**
  * Startseite „Fußballtore nach Einsatzort“: Ortsillustration, Name, Kurzbeschreibung und „Geeignet: …“.
  * Gleicher Kartenaufbau wie TorartKarte, Bildfläche 3:2.
+ *
+ * Bilder: KI-generierte Stimmungsbilder (Gemini), Entscheidung Matze 04.11.2026 – zeigen den Ort,
+ * kein bestimmtes Produkt. Dateien: public/images/orte/{ort}-400|800.webp.
+ * Rückweg: Eintrag in ORT_FOTOS löschen, dann zeigt die Karte wieder die gezeichnete OrtIllustration.
  */
 import OrtIllustration from './OrtIllustration.astro';
+
+/** Bildausschnitt je Ort (object-position), damit das Tor in jedem Kartenformat sichtbar bleibt */
+const ORT_FOTOS: Record<string, { position: string }> = {
+  verein: { position: '30% 70%' },
+  schule: { position: '85% 70%' },
+  kommune: { position: '35% 70%' },
+  spielplatz: { position: '45% 75%' },
+  garten: { position: '25% 70%' },
+};
 
 interface Props {
   ort: string;
@@ -16,6 +29,7 @@ interface Props {
 }
 
 const { ort, name, href, subtitle, geeignet, wide = false } = Astro.props;
+const foto = ORT_FOTOS[ort];
 ---
 
 <a
@@ -26,7 +40,22 @@ const { ort, name, href, subtitle, geeignet, wide = false } = Astro.props;
   ]}
 >
   <span class:list={['block overflow-hidden bg-neutral-100', wide ? 'aspect-[2/1] sm:aspect-[3/1] lg:aspect-[3/2]' : 'aspect-[3/2]']}>
-    <OrtIllustration ort={ort} dekorativ class="block h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+    {foto ? (
+      <img
+        src={`/images/orte/${ort}-800.webp`}
+        srcset={`/images/orte/${ort}-400.webp 400w, /images/orte/${ort}-800.webp 800w`}
+        sizes={wide ? '(min-width: 1024px) 20vw, 100vw' : '(min-width: 1024px) 20vw, 50vw'}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="800"
+        height="533"
+        style={`object-position: ${foto.position}`}
+        class="block h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+      />
+    ) : (
+      <OrtIllustration ort={ort} dekorativ class="block h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+    )}
   </span>
   <span class="flex flex-1 items-start justify-between gap-2 p-3 sm:p-4 md:p-5">
     <span class="flex h-full min-w-0 flex-col">
