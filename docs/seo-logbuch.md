@@ -3,7 +3,7 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
-## 03.11.2026 – Produktkarten: Frontansicht zuerst + Bildergalerie mit Pfeilen (Branch `feature/produktbilder-galerie`, nicht live)
+## 03.11.2026 – Produktkarten: Frontansicht zuerst + Bildergalerie mit Pfeilen (LIVE 04.11.2026, Merge c499f5c)
 
 - Anlass: Mehrere Karten zeigten als erstes Bild eine Rück- oder Schrägansicht von hinten.
 - Alle 15 Produkte aus `products.json` geprüft (Galerien von den Shop-Produktseiten). Neues erstes Bild bei: Bundesliga-Tor (107), Großfeldtor transportabel (1523), Minitor geschlossener Hinterbau (18838), Kleinfeldtor mobil (4248), Bolzplatztor UNKAPUTTBAR (255), SILENCE (9754). Bei 255/9754 gibt es im Shop nur das Szenenfoto als Frontansicht (Freisteller ist von hinten), Jugendtor 14628 hat gar keinen Freisteller → dort Szenenfoto.
