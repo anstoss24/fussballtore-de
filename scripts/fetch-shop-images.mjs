@@ -33,6 +33,12 @@ for (const f of readdirSync('src/pages').filter((f) => f.endsWith('.astro'))) {
   const src = readFileSync(`src/pages/${f}`, 'utf8');
   for (const m of src.matchAll(/imageUrl="(https:\/\/[^"]+)"/g)) addCard(m[1]);
 }
+// Bildergalerien der Produktkarten (Pfeile zum Durchblättern), Schlüssel = Shop-URL
+if (existsSync('src/data/produkt-galerien.json')) {
+  for (const [key, urls] of Object.entries(readJson('src/data/produkt-galerien.json'))) {
+    if (Array.isArray(urls) && key.startsWith('http')) urls.forEach(addCard);
+  }
+}
 // Redaktionelle Fotos (Hero, Kategorien): src/data/fotos.json, groß für randlose Flächen
 if (existsSync('src/data/fotos.json')) {
   for (const f of Object.values(readJson('src/data/fotos.json'))) {

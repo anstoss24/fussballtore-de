@@ -184,32 +184,18 @@ const link = 'text-accent hover:text-accent-dark transition-colors font-medium';
       Jugendtor kaufen: unsere Empfehlungen
     </h2>
     <p class="text-neutral-600 leading-relaxed mb-8">
-      Beide Varianten sind vollverschweißt, kommen mit Netz, Transportrollen und Spiralerdankern. Der Unterschied sind die Tragegriffe. Alle Modelle findest du in der <a href={addUtm(KATEGORIE_URL, 'jugendtor')} target="_blank" rel="noopener" class={link}>Jugendtor-Kategorie bei anstoss24</a>.
+      Das transportable Jugendtor ist vollverschweißt und kommt mit Netz, Transportrollen und Spiralerdankern. Wer das Tor oft trägt, nimmt die Variante <a href={addUtm(mitGriffen.url, 'jugendtor')} target="_blank" rel="noopener" class={link}>mit angeschweißten Tragegriffen</a>. Alle Modelle findest du in der <a href={addUtm(KATEGORIE_URL, 'jugendtor')} target="_blank" rel="noopener" class={link}>Jugendtor-Kategorie bei anstoss24</a>.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-      <div>
-        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Bleibt meist auf einem Platz</p>
-        <ProductCard
-          name={ohneGriffe.name}
-          url={ohneGriffe.url}
-          imageUrl={ohneGriffe.imageUrl}
-          features={['Vollverschweißt', 'Transportrollen', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'DIN EN 748']}
-          category="Jugendtor"
-          campaign="jugendtor"
-        />
-      </div>
-      <div>
-        <p class="text-sm font-semibold text-accent-dark mb-3 text-center">Wird oft getragen</p>
-        <ProductCard
-          name={mitGriffen.name}
-          url={mitGriffen.url}
-          imageUrl={mitGriffen.imageUrl}
-          features={['Vollverschweißt', 'Transportrollen + Tragegriffe', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'DIN EN 748']}
-          category="Jugendtor"
-          campaign="jugendtor"
-        />
-      </div>
+      <ProductCard
+        name={ohneGriffe.name}
+        url={ohneGriffe.url}
+        imageUrl={ohneGriffe.imageUrl}
+        features={['Vollverschweißt', 'Transportrollen', 'Inkl. Tornetz', 'Ovalprofil 120/100 mm', 'DIN EN 748']}
+        category="Jugendtor"
+        campaign="jugendtor"
+      />
     </div>
 
     {features.torberater && (

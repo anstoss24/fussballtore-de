@@ -3,6 +3,20 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 03.11.2026 – Produktkarten: Frontansicht zuerst + Bildergalerie mit Pfeilen (Branch `feature/produktbilder-galerie`, nicht live)
+
+- Anlass: Mehrere Karten zeigten als erstes Bild eine Rück- oder Schrägansicht von hinten.
+- Alle 15 Produkte aus `products.json` geprüft (Galerien von den Shop-Produktseiten). Neues erstes Bild bei: Bundesliga-Tor (107), Großfeldtor transportabel (1523), Minitor geschlossener Hinterbau (18838), Kleinfeldtor mobil (4248), Bolzplatztor UNKAPUTTBAR (255), SILENCE (9754). Bei 255/9754 gibt es im Shop nur das Szenenfoto als Frontansicht (Freisteller ist von hinten), Jugendtor 14628 hat gar keinen Freisteller → dort Szenenfoto.
+- Neu: `src/data/produkt-galerien.json` (Schlüssel = Shop-URL, Reihenfolge von Hand, TÜV-Logos und Profilzeichnungen weggelassen). `ProductCard` nimmt die Galerie automatisch, `imageUrl` bleibt nur Fallback. Schema.org `Product.image` = Galerie.
+- Slider: CSS-Scroll-Snap (Wischen auf dem Handy) + Pfeile + Zähler „1 / n“, Endlos-Schleife, ca. 20 Zeilen JS, Bilder ab Nr. 2 lazy. `fetch-shop-images.mjs` lädt die Galeriebilder mit.
+- `products.json` und hart eingetragene `imageUrl` in den Seiten auf die Frontansicht umgestellt.
+- Nachtrag nach Durchsicht Matze: Erstes Bild ist jetzt überall die Ansicht schräg von vorne. Das ist fast immer das Platzfoto, weil die Schräg-Freisteller im Shop alle von hinten aufgenommen sind. Die gerade Frontansicht kommt als Bild 2.
+- Jugendtor 14628: Beide Varianten (mit/ohne Tragegriffe) haben im Shop identische Bilder, Entscheidung Matze 04.11.: Karte „mit Tragegriffen“ raus auf /jugendtor/ und /verein/, auf /groessen/ die Einzelkarte auf die Variante ohne Griffe umgestellt. Die Griff-Variante ist überall nur noch als Textlink verlinkt. Wieder als Karte, sobald der Shop ein Foto hat, auf dem die Griffe zu sehen sind.
+
+### Offen
+- [ ] Shop-Team: Foto Jugendtor 14628 mit sichtbaren Tragegriffen (Variante 419740), dann Karte wieder rein.
+- [ ] Neue Produkte künftig auch in `produkt-galerien.json` eintragen, sonst gibt es nur ein Bild ohne Pfeile.
+
 ## 02.11.2026 – Design-Skills ins Repo
 
 - `.claude/skills/emil-design-eng`, `impeccable`, `taste-skill` committet (unverändert aus den Original-Repos, mit LICENSE/NOTICE und QUELLE.md). Betrifft nur die Arbeitsumgebung, nicht die Website.
