@@ -3,21 +3,19 @@
  * Startseite „Fußballtore nach Einsatzort“: Ortsillustration, Name, Kurzbeschreibung und „Geeignet: …“.
  * Gleicher Kartenaufbau wie TorartKarte, Bildfläche 3:2.
  *
- * Bilder: KI-generierte Stimmungsbilder (Gemini), Entscheidung Matze 04.11.2026 – zeigen den Ort,
- * kein bestimmtes Produkt. Dateien: public/images/orte/{ort}-400|800.webp.
+ * Bilder: KI-generierte Stimmungsbilder (Gemini, mit anstoss24-Produktfotos als Vorlage), Entscheidung Matze 04.11.2026.
+ * Vorlagen und Prompts: ~/Desktop/fussballtore-ortsbilder/ (nicht im Repo). Dateien: public/images/orte/{ort}-400|800|1200.webp.
  * Rückweg: Eintrag in ORT_FOTOS löschen, dann zeigt die Karte wieder die gezeichnete OrtIllustration.
  */
 import OrtIllustration from './OrtIllustration.astro';
-import { foto as shopFoto, type FotoKey } from '../utils/shop-image';
 
 /** Bildausschnitt je Ort (object-position), damit das Tor in jedem Kartenformat sichtbar bleibt */
-// shop: echtes Foto aus dem anstoss24-Shop (src/data/fotos.json, kein „Symbolbild“-Hinweis), sonst KI-Bild aus public/images/orte/
-const ORT_FOTOS: Record<string, { position: string; shop?: FotoKey }> = {
-  verein: { position: '30% 70%' },
-  schule: { position: '85% 70%' },
-  kommune: { position: '50% 60%', shop: 'ort-kommune' },
-  spielplatz: { position: '50% 65%', shop: 'ort-spielplatz' },
-  garten: { position: '25% 70%' },
+const ORT_FOTOS: Record<string, { position: string }> = {
+  verein: { position: '50% 55%' },
+  schule: { position: '65% 45%' },
+  kommune: { position: '40% 60%' },
+  spielplatz: { position: '45% 70%' },
+  garten: { position: '50% 60%' },
 };
 
 interface Props {
@@ -32,12 +30,7 @@ interface Props {
 
 const { ort, name, href, subtitle, geeignet, wide = false } = Astro.props;
 const foto = ORT_FOTOS[ort];
-const shop = foto?.shop ? shopFoto(foto.shop) : undefined;
-const bild = foto && {
-  src: shop?.src ?? `/images/orte/${ort}-800.webp`,
-  srcset: shop ? shop.srcset : `/images/orte/${ort}-400.webp 400w, /images/orte/${ort}-800.webp 800w`,
-  symbolbild: !shop,
-};
+const srcset = [400, 800, 1200].map((w) => `/images/orte/${ort}-${w}.webp ${w}w`).join(', ');
 ---
 
 <a
@@ -48,10 +41,10 @@ const bild = foto && {
   ]}
 >
   <span class:list={['relative block overflow-hidden bg-neutral-100', wide ? 'aspect-[2/1] sm:aspect-[3/1] lg:aspect-[3/2]' : 'aspect-[3/2]']}>
-    {foto && bild ? (
+    {foto ? (
       <img
-        src={bild.src}
-        srcset={bild.srcset}
+        src={`/images/orte/${ort}-800.webp`}
+        srcset={srcset}
         sizes={wide ? '(min-width: 1024px) 20vw, 100vw' : '(min-width: 1024px) 20vw, 50vw'}
         alt=""
         loading="lazy"
@@ -64,7 +57,7 @@ const bild = foto && {
     ) : (
       <OrtIllustration ort={ort} dekorativ class="block h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
     )}
-    {bild?.symbolbild && (
+    {foto && (
       <span class="pointer-events-none absolute bottom-1.5 right-1.5 rounded bg-black/45 px-1.5 py-px text-[0.625rem] font-medium leading-4 tracking-wide text-white/90 backdrop-blur-sm">
         Symbolbild
       </span>

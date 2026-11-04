@@ -8,8 +8,8 @@ Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen 
 - Startseite „Fußballtore nach Einsatzort“: Die 5 Karten zeigen jetzt Bilder statt der gezeichneten OrtIllustration.
 - **Die Bilder sind KI-generiert (Gemini, Collage von Matze).** Das ist eine bewusste Abkehr von der früheren Regel „keine KI-Fotos“, Entscheidung Matze am 04.11. Sie werden nur als Stimmungsbild für den Ort genutzt (alt="", der Kartentitel nennt den Ort), nie als Produktfoto.
 - Produktabgleich: Jedes Bild zeigt nur Torarten, die die jeweilige Einsatzort-Seite empfiehlt (Verein: Großfeld; Schule: Bolzplatztor auf dem Schulhof; Kommune: Bolzplatztor; Spielplatz: Alu-Minitor mit Hinterbau; Garten: Pop-up + Minitor).
-- Aus der Collage geschnitten, eingebrannte Beschriftungen weggeschnitten (Retusche sah schlecht aus), leicht aufgehellt. WebP 400/800 px in `public/images/orte/`, 12–99 KB.
-- Nachtrag: Kommune und Spielplatz zeigen echte Shop-Fotos statt KI (Wunsch Matze): Bolzplatztor UNKAPUTTBAR Art. 255 (Platzfoto) und Alu-Minitor mit Hinterbau Art. 18838 (Platzfoto), über `fotos.json` (`ort-kommune`, `ort-spielplatz`). Dort kein „Symbolbild“-Hinweis. KI bleiben: Verein, Schule, Garten.
+- WebP 400/800/1200 px in `public/images/orte/` (Kommune enger zugeschnitten, damit das Tor auf der kleinen Karte erkennbar ist).
+- Nachtrag 04.11. abends: Alle 5 Bilder neu, wieder KI (Gemini), aber mit anstoss24-Produktfotos als Vorlage, damit unsere Tore zu sehen sind: Verein = Großfeldtor transportabel 1523, Schule = Bolzplatztor mit Basketballaufbau 13019/13020 auf dem Schulhof, Kommune = Bolzplatztor auf kommunalem Platz zwischen Wohnblocks, Spielplatz = Alu-Minitor mit Hinterbau 18838, Garten = Pop-up 19 + Alu-Minitor Lightweight 18602. Shop-Fotos-Zwischenstand (Kommune/Spielplatz) wieder raus, weil die Umgebung nicht passte. Alle 5 mit „Symbolbild“. Vorlagen und Prompts liegen bei Matze unter ~/Desktop/fussballtore-ortsbilder/.
 - Rückweg: Eintrag in `ORT_FOTOS` (EinsatzortKarte.astro) löschen, dann kommt die Illustration zurück.
 
 ### Offen
