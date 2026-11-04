@@ -1,0 +1,58 @@
+4 – SPIELPLATZ
+==============
+Produkt: Alu-Minitor 1,20 x 0,80 m mit geschlossenem Hinterbau, „unzerstörbar“ (Art. 18838)
+Hochladen: referenz-A (Front), referenz-B (Platzfoto, zeigt drei Größen nebeneinander)
+Speichern als: spielplatz.jpg
+
+---------------- HAUPTPROMPT (komplett kopieren) ----------------
+Erstelle ein einzelnes, fotorealistisches Foto im Querformat 3:2 in möglichst hoher Auflösung
+(mindestens 2400 px breit).
+
+DAS TOR (wichtigster Teil, exakt nach den Referenzbildern):
+EIN einzelnes kleines Alu-Minitor, ca. 1,20 m breit und 0,80 m hoch, aus silbernem, mattem
+Aluminium, vollverschweißt. Vorne ein offener Rahmen aus kräftigem Vierkantprofil, dahinter
+ein geschlossener Hinterbau aus senkrechten Aluminiumstreben (auch an den Seiten und oben),
+KEIN Netz. Form exakt wie Referenz A. Referenz B zeigt drei Größen – im neuen Bild bitte nur
+EIN Tor in der kleinsten Größe.
+WICHTIG Größe: Das Tor ist klein – etwa so hoch wie eine Parkbank-Sitzfläche bis Hüfthöhe
+eines Erwachsenen. Größenverhältnis zu Bank, Schaukel und Rutsche muss realistisch sein.
+
+DER ORT:
+Ein öffentlicher Kinderspielplatz in einem deutschen Wohngebiet oder Park. Im Hintergrund
+gut erkennbar: Holz-Schaukelgestell mit zwei Schaukeln, ein Klettergerüst mit Rutsche aus
+Edelstahl oder buntem Kunststoff, ein Sandkasten mit Holzrand, eine Holz-Parkbank.
+Bäume rundherum. Das Tor steht auf einer Rasenfläche am Rand des Spielplatzes, Boden
+Rasen mit ein paar ausgetretenen Stellen.
+
+KAMERA UND BILDAUFBAU:
+Blick schräg von vorne auf das Tor (etwa 30–40 Grad seitlich), Kamera leicht erhöht
+(ca. 1,20 m) und relativ nah, Brennweite wie 35 mm. Das Tor ist das Hauptmotiv in der
+Bildmitte (etwa 35–45 % der Bildbreite), komplett im Bild, die Spielgeräte dahinter leicht
+unscharf, aber eindeutig als Spielplatz erkennbar.
+
+LICHT UND STIMMUNG:
+Natürliches Tageslicht, sonnig mit ein paar Wolken, weiche Schatten, freundliche,
+natürliche Farben, kein HDR-Look.
+
+VERBOTEN:
+Keine Menschen, keine Kinder, keine Schrift, keine Logos, keine Schilder
+(auch kein Spielplatz-Schild), keine Wasserzeichen, keine Beschriftung, keine Collage.
+-----------------------------------------------------------------
+
+KORREKTUR-PROMPTS
+  1 Tor falsch:     „Das Tor weicht von Referenz A ab. Übernimm exakt die Form: offener
+                     Alu-Rahmen vorne, rundherum geschlossener Hinterbau aus senkrechten
+                     Streben, kein Netz. Rest des Bildes unverändert lassen.“
+  2 Zu groß:        „Das Tor ist viel zu groß. Es ist nur 1,20 x 0,80 m – etwa hüfthoch.
+                     Verkleinere es im Verhältnis zu Bank und Schaukel.“
+  3 Mehrere Tore:   „Bitte nur EIN Tor, die kleinste Größe.“
+  4 Von hinten:     „Kamera vor das Tor, schräg von vorne, man sieht in den offenen Rahmen.“
+  5 Kein Spielplatz erkennbar: „Schaukel, Rutsche und Sandkasten sollen hinter dem Tor
+                     deutlich erkennbar sein.“
+
+CHECKLISTE
+  [ ] EIN kleines Tor wie Referenz A: Streben-Hinterbau, KEIN Netz
+  [ ] realistische Größe (hüfthoch, kleiner als Bank-Lehne bis Hüfte)
+  [ ] schräg von vorne, ganzes Tor im Bild
+  [ ] Schaukel, Rutsche/Klettergerüst, Sandkasten erkennbar
+  [ ] keine Menschen, keine Schrift

@@ -1,0 +1,42 @@
+ORTSBILDER FÜR FUSSBALLTORE.DE – ANLEITUNG
+==========================================
+
+Wofür: Die 5 Karten „Fußballtore nach Einsatzort“ auf der Startseite.
+Ziel:  Pro Ort ein realistisches Bild, auf dem GENAU UNSER TOR aus dem anstoss24-Shop
+       in einer Umgebung steht, die man sofort erkennt.
+
+ORDNER
+  1-sportverein   → Großfeldtor transportabel (Art. 1523) auf dem Vereinssportplatz
+  2-schule-kita   → Bolzplatztor mit Basketballaufbau (Art. 13019/13020) auf dem Schulhof
+  3-kommune       → Bolzplatztor UNKAPUTTBAR (Art. 255) auf einem kommunalen Bolzplatz
+  4-spielplatz    → Alu-Minitor mit geschlossenem Hinterbau (Art. 18838) auf dem Spielplatz
+  5-garten        → Pop-up-Tor (Art. 19) und Alu-Minitor Lightweight (Art. 18602) im Garten
+
+In jedem Ordner: Referenzbilder aus dem Shop + PROMPT.txt
+
+SO GEHT'S (pro Ort)
+  1. Neuen Gemini-Chat öffnen (ein Chat pro Bild, nie mehrere Orte in einem Chat).
+  2. ALLE Referenzbilder aus dem Ordner hochladen.
+  3. Den HAUPTPROMPT aus PROMPT.txt komplett reinkopieren und abschicken.
+  4. Ergebnis mit der CHECKLISTE prüfen. Passt was nicht → passenden KORREKTUR-PROMPT
+     im selben Chat nachschieben.
+  5. Bestes Bild in Originalgröße herunterladen und in den Ordner legen als:
+       sportverein.jpg / schule.jpg / kommune.jpg / spielplatz.jpg / garten.jpg
+     Gerne auch 2–3 Varianten (schule-1.jpg, schule-2.jpg …), ich suche das beste aus.
+  6. Mir Bescheid geben → ich prüfe Tor gegen Produkt, schneide zu, baue ein, zeige es dir lokal.
+
+WAS FÜR ALLE BILDER GILT
+  - Querformat 3:2, so groß wie möglich (mind. 2400 px breit).
+  - Tor schräg von vorne (man schaut in die offene Torseite), komplett im Bild.
+  - Tor in der mittleren Bildzone: Die Karte schneidet je nach Bildschirm oben/unten
+    oder links/rechts etwas ab (bis Format 3:1). Nichts Wichtiges an den Rand.
+  - Keine Menschen, keine Schrift, keine Logos, keine Schilder, keine Beschriftung, keine Collage.
+  - Fotorealistisch, natürliches Tageslicht, wie mit einer normalen Kamera fotografiert.
+  - Typisch deutsche Umgebung.
+  - Die Bilder bekommen auf der Website weiterhin den Hinweis „Symbolbild“.
+
+HÄUFIGE PROBLEME
+  - Gemini erfindet ein anderes Tor (Netz statt Streben, andere Form) → Korrektur-Prompt 1.
+  - Tor von hinten → Korrektur-Prompt 2.
+  - Schrift/Schilder im Bild → Korrektur-Prompt 3.
+  - Wenn nach 3–4 Korrekturen das Tor immer noch nicht stimmt: neuen Chat, neu anfangen.

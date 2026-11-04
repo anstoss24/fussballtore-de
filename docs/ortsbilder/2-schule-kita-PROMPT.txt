@@ -1,0 +1,73 @@
+2 – SCHULE & KITA
+=================
+Produkt: Bolzplatztor 3,00 x 2,00 m mit Basketballaufbau (Art. 13019, SILENCE-Variante Art. 13020)
+Hochladen: referenz-A (Front mit Basketball), referenz-B (Platzfoto schräg vorne)
+           referenz-C (Minitor mit Hinterbau) NUR für die Kita-Variante unten
+Speichern als: schule.jpg (optional zusätzlich kita.jpg)
+
+---------------- HAUPTPROMPT SCHULE (komplett kopieren) ----------------
+Erstelle ein einzelnes, fotorealistisches Foto im Querformat 3:2 in möglichst hoher Auflösung
+(mindestens 2400 px breit).
+
+DAS TOR (wichtigster Teil, exakt nach den Referenzbildern A und B):
+Ein Bolzplatztor 3,00 x 2,00 m aus silbernem, mattem Aluminium. Vorne ein offener Torrahmen
+aus Pfosten und Latte, dahinter ein geschlossener Hinterbau aus vielen senkrechten
+Aluminiumstreben mit einer waagerechten Querstrebe auf halber Höhe, KEIN Netz.
+Oben auf dem Tor ist mittig ein Basketballaufbau montiert: eine Aluminium-Stütze, darauf ein
+weißes Basketballbrett mit schwarzem Rand und schwarzem Zielquadrat, orangefarbener Korb mit
+weißem Netz – genau wie in den Referenzbildern. Brett und Korb zeigen in dieselbe Richtung
+wie die offene Torseite. Form, Streben, Proportionen und Basketballaufbau exakt wie in der
+Referenz, nichts dazuerfinden.
+
+DER ORT:
+Schulhof einer typischen deutschen Grundschule. Im Hintergrund ein zwei- bis dreistöckiges
+Schulgebäude aus rotem Klinker mit großen weißen Sprossenfenstern und einem Satteldach,
+eventuell ein überdachter Eingang. Boden: Asphalt mit aufgemalten Spielfeldlinien und ein,
+zwei bunten aufgemalten Hüpfspielen (ohne Zahlen/Schrift). Am Rand Bäume, Hecken, ein
+Fahrradständer. Das Tor steht am Ende eines aufgemalten Kleinfelds.
+
+KAMERA UND BILDAUFBAU:
+Blick schräg von vorne auf das Tor (etwa 30–40 Grad seitlich), Kamera auf Augenhöhe,
+Brennweite wie 35 mm. Das komplette Tor INKLUSIVE Basketballbrett ist im Bild, oben mit Luft
+über dem Brett. Tor leicht rechts der Mitte, Schulgebäude links gut erkennbar.
+
+LICHT UND STIMMUNG:
+Natürliches Tageslicht, leicht bewölkt, vormittags, weiche Schatten, natürliche Farben,
+kein HDR-Look.
+
+VERBOTEN:
+Keine Menschen, keine Kinder, keine Schrift, keine Schulnamen, keine Logos, keine Schilder,
+keine Zahlen auf dem Boden, keine Wasserzeichen, keine Beschriftung, keine Collage.
+------------------------------------------------------------------------
+
+---------------- OPTIONAL: KITA-VARIANTE (neuer Chat, referenz-C hochladen) ----------------
+Erstelle ein einzelnes, fotorealistisches Foto im Querformat 3:2 (mindestens 2400 px breit).
+Das Tor exakt nach dem Referenzbild: ein kleines Alu-Minitor ca. 1,20 x 0,80 m aus silbernem
+Aluminium mit geschlossenem Hinterbau aus senkrechten Streben, ohne Netz – kniehoch bis
+hüfthoch, also deutlich kleiner als ein Kind.
+Ort: Außengelände einer deutschen Kita. Weicher Rasen, im Hintergrund ein flacher,
+freundlicher Kita-Bau mit farbiger Holzfassade und großen Fenstern, Sandkasten, kleine
+Holz-Spielgeräte, Bäume. Tor schräg von vorne, in der Bildmitte, komplett im Bild,
+Kamera etwas erhöht. Natürliches Tageslicht.
+Keine Menschen, keine Schrift, keine Logos, keine Schilder, keine Beschriftung, keine Collage.
+---------------------------------------------------------------------------------------------
+
+KORREKTUR-PROMPTS
+  1 Tor falsch:     „Das Tor weicht von den Referenzbildern ab. Übernimm exakt Referenz A und B:
+                     offener Alu-Rahmen vorne, Hinterbau aus senkrechten Streben mit einer
+                     Querstrebe, kein Netz, Basketballbrett mit Korb mittig oben auf dem Tor.
+                     Rest des Bildes unverändert lassen.“
+  1b Basketball fehlt/falsch: „Der Basketballaufbau muss direkt auf dem Tor montiert sein,
+                     mittig auf einer Alu-Stütze, wie in Referenz A. Kein separater Basketballmast.“
+  2 Von hinten:     „Wir schauen von hinten auf die Streben. Dreh die Perspektive: Kamera vor
+                     dem Tor, schräg von vorne, man sieht in den offenen Torrahmen.“
+  3 Schrift:        „Entferne alle Schriftzüge, Zahlen, Logos und Schilder aus dem Bild.“
+  4 Kein Schulhof:  „Das Schulgebäude soll eindeutig eine Schule sein: roter Klinker,
+                     viele gleiche Sprossenfenster in Reihen, Satteldach, Asphalt-Schulhof.“
+
+CHECKLISTE
+  [ ] Tor wie Referenz: offener Rahmen, Streben-Hinterbau mit Querstrebe, KEIN Netz
+  [ ] Basketballbrett + Korb oben AUF dem Tor (nicht separater Mast)
+  [ ] schräg von vorne, ganzes Tor + Brett im Bild
+  [ ] Schulgebäude und Schulhof eindeutig erkennbar
+  [ ] keine Menschen, keine Schrift

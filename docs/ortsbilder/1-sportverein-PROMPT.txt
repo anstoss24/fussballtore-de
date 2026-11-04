@@ -1,0 +1,59 @@
+1 – SPORTVEREIN
+===============
+Produkt: Großfeldtor 7,32 x 2,44 m – transportabel, vollverschweißt, inkl. Tornetz (Art. 1523)
+Hochladen: referenz-A (Front), referenz-B (Platzfoto schräg vorne), referenz-C (Detail Transportrad)
+Speichern als: sportverein.jpg
+
+---------------- HAUPTPROMPT (komplett kopieren) ----------------
+Erstelle ein einzelnes, fotorealistisches Foto im Querformat 3:2 in möglichst hoher Auflösung
+(mindestens 2400 px breit).
+
+DAS TOR (wichtigster Teil, exakt nach den Referenzbildern):
+Ein transportables Großfeld-Fußballtor 7,32 x 2,44 m aus silbernem, mattem Aluminium,
+komplett verschweißt. Pfosten und Latte aus ovalem Aluminiumprofil, dahinter ein
+Aluminium-Bodenrahmen mit Netzbügeln, am Bodenrahmen zwei kleine Transporträder mit roter
+Felge wie in Referenz C. Grünes Tornetz, sauber eingehängt, leicht gespannt.
+Das Tor muss genau so aussehen wie in den Referenzbildern: gleiche Form, gleiche Tortiefe,
+gleiches Netz, gleiche Farbe. Nichts dazuerfinden, nichts weglassen.
+
+DER ORT:
+Gepflegter Rasenplatz eines typischen deutschen Amateur-Fußballvereins. Frisch gemähter
+Naturrasen mit weißen Linien (Torraum gut erkennbar). Im Hintergrund unscharf: kleine
+überdachte Stehtribüne oder Vereinsheim mit Holzverkleidung, Flutlichtmasten,
+Ballfangzaun hinter dem Tor, Bäume am Rand. Wirkt wie ein ganz normaler Sonntag ohne Spiel.
+
+KAMERA UND BILDAUFBAU:
+Blick schräg von vorne aus dem Spielfeld auf das Tor (etwa 30–40 Grad seitlich), Kamera auf
+Augenhöhe (ca. 1,60 m), Brennweite wie 35 mm Kleinbild, alles scharf bis auf den fernen
+Hintergrund. Das komplette Tor inklusive beider Pfosten, Latte und Netz ist im Bild,
+Tor leicht links der Mitte, oben und unten etwas Luft. Das Tor füllt etwa 60 % der Bildbreite.
+
+LICHT UND STIMMUNG:
+Natürliches Tageslicht am späten Nachmittag, leicht bewölkter Himmel, weiche Schatten,
+natürliche Farben, kein HDR-Look, keine übersättigten Farben.
+
+VERBOTEN:
+Keine Menschen, keine Spieler, keine Bälle in der Luft, keine Schrift, keine Logos,
+keine lesbare Bandenwerbung (Banden, falls vorhanden, ohne Text), keine Schilder,
+keine Wasserzeichen, keine Beschriftung, keine Collage, kein Rahmen.
+-----------------------------------------------------------------
+
+KORREKTUR-PROMPTS (im selben Chat nachschieben, falls nötig)
+  1 Tor falsch:   „Das Tor weicht von den Referenzbildern ab. Übernimm exakt die Form aus
+                   Referenz A und B: ovale Alu-Pfosten, Bodenrahmen mit Netzbügeln, grünes Netz,
+                   zwei Transporträder mit roter Felge. Rest des Bildes bitte unverändert lassen.“
+  2 Von hinten:   „Wir schauen gerade von hinten auf das Tor. Dreh die Perspektive: Die Kamera
+                   steht im Spielfeld vor dem Tor, schräg von vorne, das Netz hängt hinten.“
+  3 Schrift:      „Entferne alle Schriftzüge, Werbung, Logos und Schilder aus dem Bild,
+                   Banden und Flächen bleiben einfarbig.“
+  4 Zu klein:     „Geh näher ran: Das Tor soll etwa 60 % der Bildbreite füllen, trotzdem
+                   komplett im Bild bleiben.“
+  5 Zu künstlich: „Mach das Bild natürlicher: weniger Kontrast, weniger Sättigung, wie ein
+                   normales Handyfoto bei bewölktem Himmel.“
+
+CHECKLISTE
+  [ ] Tor sieht aus wie Referenz A/B (ovale Pfosten, Bodenrahmen, grünes Netz, rote Räder)
+  [ ] schräg von vorne, Netz hinten
+  [ ] ganzes Tor im Bild, nicht am Rand
+  [ ] Vereinssportplatz erkennbar (Linien, Tribüne/Vereinsheim, Flutlicht)
+  [ ] keine Menschen, keine Schrift, keine Logos

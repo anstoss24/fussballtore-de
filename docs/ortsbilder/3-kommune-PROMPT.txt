@@ -1,0 +1,61 @@
+3 – KOMMUNE / KOMMUNALER BOLZPLATZ
+==================================
+Produkt: Bolzplatztor 3,00 x 2,00 m UNKAPUTTBAR (Art. 255)
+Hochladen: referenz-A (Platzfoto schräg vorne), referenz-B (RÜCKANSICHT – nur zur Form!)
+Speichern als: kommune.jpg
+
+---------------- HAUPTPROMPT (komplett kopieren) ----------------
+Erstelle ein einzelnes, fotorealistisches Foto im Querformat 3:2 in möglichst hoher Auflösung
+(mindestens 2400 px breit).
+
+DAS TOR (wichtigster Teil, exakt nach den Referenzbildern):
+Ein Bolzplatztor 3,00 x 2,00 m aus silbernem, mattem Aluminium. Vorne ein offener Torrahmen
+aus Pfosten und Latte, dahinter ein geschlossener Hinterbau aus vielen senkrechten
+Aluminiumstreben mit einer waagerechten Querstrebe auf halber Höhe, seitlich schräg
+zulaufende Strebenwände, KEIN Netz. Form und Proportionen exakt wie in den Referenzbildern.
+Achtung: Referenz B zeigt das Tor von HINTEN und dient nur zur Form. Im neuen Bild schauen
+wir von VORNE in die offene Torseite, die Streben sind hinten.
+
+DER ORT:
+Ein öffentlicher, frei zugänglicher Bolzplatz einer deutschen Gemeinde mitten in einem
+Wohngebiet. Kleiner Platz (etwa 30 x 15 m) mit Kunstrasen oder rotem Tennenbelag, rundherum
+ein hoher grüner Ballfangzaun aus Doppelstabmatten mit einem offenen Eingang. Direkt
+daneben ein gepflasterter Gehweg mit einer typischen grauen Straßenlaterne, ein
+öffentlicher grüner Mülleimer und eine Parkbank. Dahinter drei- bis viergeschossige
+Mehrfamilienhäuser / Wohnblocks mit Balkonen, etwas Grün, Bäume.
+Man soll sofort sehen: ein öffentlicher Platz der Gemeinde im Wohnviertel, KEIN
+Vereinssportplatz – also keine Tribüne, kein Vereinsheim, keine Werbebanden, keine
+Flutlichtmasten.
+
+KAMERA UND BILDAUFBAU:
+Blick schräg von vorne über den Platz auf das Tor (etwa 30–40 Grad seitlich), Kamera auf
+Augenhöhe, Brennweite wie 35 mm. Das komplette Tor im Bild, leicht links der Mitte,
+Wohnhäuser rechts im Hintergrund gut erkennbar, Zaun und Laterne sichtbar.
+
+LICHT UND STIMMUNG:
+Natürliches Tageslicht, leicht bewölkt, weiche Schatten, natürliche, eher ruhige Farben,
+kein HDR-Look.
+
+VERBOTEN:
+Keine Menschen, keine Schrift, keine Graffiti mit Text, keine Logos, keine Schilder,
+keine Straßennamen, keine Autokennzeichen, keine Wasserzeichen, keine Beschriftung,
+keine Collage.
+-----------------------------------------------------------------
+
+KORREKTUR-PROMPTS
+  1 Tor falsch:     „Das Tor weicht von den Referenzbildern ab. Übernimm exakt Referenz A:
+                     offener Alu-Rahmen vorne, Hinterbau aus senkrechten Streben mit einer
+                     Querstrebe, kein Netz. Rest des Bildes unverändert lassen.“
+  2 Von hinten:     „Wir schauen von hinten auf die Streben. Kamera vor das Tor, schräg von
+                     vorne, man sieht in den offenen Torrahmen.“
+  3 Sieht nach Verein aus: „Entferne Tribüne, Flutlicht und Banden. Es soll ein kleiner
+                     öffentlicher Bolzplatz zwischen Wohnblocks sein, mit Gehweg, Laterne,
+                     Parkbank und Mülleimer direkt am Zaun.“
+  4 Schrift:        „Entferne alle Schriftzüge, Graffiti, Logos, Schilder und Kennzeichen.“
+
+CHECKLISTE
+  [ ] Tor wie Referenz A: offener Rahmen, Streben-Hinterbau mit Querstrebe, KEIN Netz
+  [ ] schräg von vorne, ganzes Tor im Bild
+  [ ] eindeutig öffentlicher Platz: Wohnblocks, Zaun, Laterne, Bank, Mülleimer
+  [ ] KEINE Tribüne, KEIN Flutlicht, KEINE Banden
+  [ ] keine Menschen, keine Schrift

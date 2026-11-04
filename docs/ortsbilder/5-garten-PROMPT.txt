@@ -1,0 +1,58 @@
+5 – GARTEN
+==========
+Produkte: Pop-up-Tor (Art. 19, „Pop up Goal“ 2er-Set) und Alu-Minitor Lightweight
+          1,20 x 0,80 m, unter 10 kg (Art. 18602)
+Hochladen: referenz-A (Pop-up Front), referenz-B (Pop-up auf Rasen),
+           referenz-C (Alu-Minitor Lightweight Front), referenz-D (Minitor Platzfoto)
+Speichern als: garten.jpg
+Hinweis: Diese Karte ist auf Handy/Tablet sehr breit (bis 3:1) → Tore unbedingt in der
+         mittleren Bildhöhe, nichts Wichtiges oben oder unten.
+
+---------------- HAUPTPROMPT (komplett kopieren) ----------------
+Erstelle ein einzelnes, fotorealistisches Foto im Querformat 3:2 in möglichst hoher Auflösung
+(mindestens 2400 px breit).
+
+DIE TORE (wichtigster Teil, exakt nach den Referenzbildern):
+1. Ein Pop-up-Tor genau wie Referenz A und B: bogenförmiger, flexibler schwarzer Rahmen,
+   weißes, feinmaschiges Netz bzw. Netzstoff, unten am Boden mit Heringen befestigt.
+   Etwa 1,20 m breit. Steht vorne, gut sichtbar.
+2. Etwas weiter hinten ein Alu-Minitor genau wie Referenz C und D: silberner Aluminiumrahmen
+   1,20 x 0,80 m, grünes Tornetz, schlank und leicht.
+Beide Tore schräg von vorne, beide komplett im Bild, sie sollen sich nicht verdecken.
+Form, Farbe und Netz exakt wie in den Referenzen, nichts dazuerfinden.
+
+DER ORT:
+Gepflegter Garten hinter einem deutschen Einfamilienhaus. Sattgrüner Rasen, eine
+Holzterrasse mit Gartenmöbeln am rechten Rand, ein Stück helle Hausfassade mit großem
+Terrassenfenster, Hecke und Sträucher als Begrenzung, ein Fußball auf dem Rasen.
+Dezent etwas Kinderspielzeug am Rand (z. B. kleine Rutsche), nicht vordergründig.
+
+KAMERA UND BILDAUFBAU:
+Kamera auf Augenhöhe, Brennweite wie 35 mm, Blick schräg über den Rasen. Beide Tore in der
+MITTLEREN Bildhöhe (nicht am unteren Rand!), Pop-up-Tor links der Mitte, Minitor weiter
+hinten rechts der Mitte. Rasen oben und unten mit etwas Luft.
+
+LICHT UND STIMMUNG:
+Natürliches Tageslicht, freundlich, leicht sonnig, natürliche Farben, kein HDR-Look.
+
+VERBOTEN:
+Keine Menschen, keine Kinder, keine Schrift, keine Logos (auch nicht auf dem Pop-up-Rahmen
+oder dem Ball), keine Schilder, keine Wasserzeichen, keine Beschriftung, keine Collage.
+-----------------------------------------------------------------
+
+KORREKTUR-PROMPTS
+  1 Pop-up falsch:  „Das Pop-up-Tor weicht von Referenz A ab: bogenförmiger schwarzer Rahmen,
+                     weißes Netz, mit Heringen am Boden. Rest unverändert lassen.“
+  1b Minitor falsch:„Das Alu-Minitor weicht von Referenz C ab: schlanker silberner Rahmen,
+                     grünes Netz, 1,20 x 0,80 m.“
+  2 Zu weit unten:  „Verschiebe den Bildausschnitt so, dass beide Tore in der mittleren
+                     Bildhöhe stehen, unten mehr Rasen.“
+  3 Logos/Schrift:  „Entferne alle Logos und Schriftzüge, auch auf Tor und Ball.“
+  4 Zu künstlich:   „Natürlicher: weniger Sättigung, weniger Kontrast, wie ein normales Foto.“
+
+CHECKLISTE
+  [ ] Pop-up wie Referenz A/B (schwarzer Bogen, weißes Netz)
+  [ ] Alu-Minitor wie Referenz C (silberner Rahmen, grünes Netz)
+  [ ] beide schräg von vorne, beide vollständig, in der mittleren Bildhöhe
+  [ ] Garten am Einfamilienhaus erkennbar
+  [ ] keine Menschen, keine Schrift, keine Logos
