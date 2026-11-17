@@ -3,6 +3,32 @@
 Was wurde wann warum geändert, und was ist noch offen. Neueste Einträge oben.
 Der Ordner `docs/` wird nicht mit ausgeliefert (nur `src/` und `public/` landen auf der Website).
 
+## 10.11.2026 – Analyse: Sistrix-Knick und Vergleich mit fussballtor24.de (keine Änderung an der Seite)
+
+### Sistrix-Knick KW 45/46
+- Sichtbarkeitsindex von ca. 0,029 auf ca. 0,024 (Woche 09.11.). Sistrix-Export vom 09.11.: 145 Keywords, 128 davon in den Top 10, geschätzt 719 Klicks, 687 davon (96 %) über `/groessen/`.
+- Ursache: vier große Keywords auf `/groessen/` haben Plätze verloren: „wie groß ist ein fußballtor“ (1.200 Suchen, 3→4), „fußballtor maße“ (800, 5→8), „größe fußballtor“ (550, 3→4), „fußballtor größe“ (500, 3→6). Gleichzeitig 15 Keywords besser (z. B. „fussballtor breite“ +5, „minitore“ +15 auf Platz 9) und 15 neue.
+- Keine Kannibalisierung: Alle Verlierer ranken weiter mit `/groessen/`, die Torart-Seiten tauchen gar nicht auf. Kein bestätigtes Google-Update im November. Änderungen an `/groessen/` seit 26.10. nur klein (ca. 25 Zeilen Text, Bilder; Title, Description und Überschriften unverändert).
+- Entscheidung: nichts zurückdrehen, beobachten. Check ca. 23.11.: Wenn „fußballtor maße“ und „fußballtor größe“ dann nicht wieder auf Platz 3–5 stehen, Wettbewerber in diesen Suchergebnissen ansehen.
+
+### Vergleich mit fussballtor24.de (Sistrix-Wettbewerber Nr. 1)
+- fussballtor24: Sichtbarkeitsindex 0,34, 1.158 Rankings, 356 Seiten in der Sitemap (Shopware-Shop, seit 2012 im Webarchiv). fussballtore.de: ca. 0,024, 145 Rankings, 20 Seiten. anstoss24.de: 0,42.
+- Warum sie besser ranken:
+  1. Sie sind ein Shop. Für Kaufsuchen („fußballtor“ 4.600, „fußballtore“ 1.600, „fußball tor“ 1.550 Suchen, alle Platz 1) zeigt Google Shops, wir sind eine Ratgeber-Seite mit Links zu einem fremden Shop.
+  2. Eine Seite pro Suchbegriff: viele Produkt- und Kategorieseiten, jede rankt für eigene Begriffe (auch Tribüne, Trainerbank, Ballfangzaun).
+  3. Title und H1 enthalten „kaufen“ und Größen („Fußballtore kaufen | Alu-Tore 7,32x2,44, 5x2 & 3x2 m“, „Mini Fußballtor 120x80 ➔ 180x120 ➔ 240x160 kaufen“). Unsere Startseite: „Fußballtore – Der professionelle Ratgeber“.
+  4. `/fussballtore` ist nach Größen gegliedert, ca. 3.700 Wörter und 50 Tore auf einer Seite, mit Kaufberatung unten. Bei uns ist das auf 6 Seiten verteilt, die Torart-Seiten sind erst seit 30.10. online.
+  5. Starke interne Verlinkung (Shop-Navigation auf allen Seiten), Händler-Signale (seit 1986, Telefon, Rechnungskauf), vermutlich deutlich mehr Backlinks (nicht geprüft, Sistrix-Modul „Links“).
+- Wo sie schwach sind: keine Maßtabelle und keine Seite zu Torgrößen (hier sind wir vorne), kaum Schema-Markup, im Tornetz-Title steht „7,32x2,44“, obwohl die Netze 7,50 × 2,50 m groß sind.
+- Folgerung: Bei Kaufsuchen nicht den Shop nachmachen, das gehört auf die anstoss24-Kategorieseiten (nach ihrem Muster). fussballtore.de setzt auf Ratgeber-Suchen.
+
+### Offen (Vorschlag, noch nicht freigegeben)
+1. `/tornetz/` ausbauen: Tabelle „welches Netz für welches Tor“ mit Maßen, Tiefe und Maschenweite, Fakten nur aus Shop-Beschreibungen (tornetz, netz fußballtor, tornetze fußball, tor netz: ca. 1.100 Suchen).
+2. `/minitore/` auf „kleine Fußballtore“ und „Mini-Fußballtor“ erweitern, Größen in den Title (ca. 800 Suchen).
+3. „aluminiumtore fußball“ (400 Suchen) auf `/material-vergleich/`.
+4. Test: Startseiten-Title mit Größen und „im Überblick“.
+5. Backlinks beider Domains in Sistrix vergleichen.
+
 ## 04.11.2026 – Einsatzort-Karten: Fotos statt Illustration (LIVE 04.11.2026)
 
 - Startseite „Fußballtore nach Einsatzort“: Die 5 Karten zeigen jetzt Bilder statt der gezeichneten OrtIllustration.
