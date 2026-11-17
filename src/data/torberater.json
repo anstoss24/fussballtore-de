@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-13",
+  "lastUpdated": "2026-11-17",
   "source": "https://www.anstoss24.de/torberater/",
   "tree": {
     "title": "Torgröße",
@@ -58,7 +58,7 @@
                     "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/frontend/Torberater/Geraeuschdaemmung/ohnedaemmung_1.png",
                     "total": 2,
                     "priceMin": 2219,
-                    "priceMax": 3199,
+                    "priceMax": 3509,
                     "shopUrl": "https://www.anstoss24.de/torberater/?2=152&3=162&99=164",
                     "products": [
                       {
@@ -74,8 +74,8 @@
                         "name": "Fussballtor - Bolzplatztor - 3,00 x 2,00 m - mit Basketballaufbau - UNKAPUTTBAR",
                         "url": "https://www.anstoss24.de/fussballtore/bolzplatztore/fussballtor-bolzplatztor-3-00-x-2-00-m-mit-basketballaufbau/a-13019",
                         "image": "https://cdn02.plentyone.com/cmj9dsr9tp66/item/images/13019/middle/Fussballtor-Bolzplatztor-3-00-x-2-00-m-mit-Basketballaufbau-UNKAPUTTBAR-13019-Bolzplatztor-mit-BB-4.png",
-                        "price": 3199,
-                        "uvp": 3839
+                        "price": 3509,
+                        "uvp": 4219
                       }
                     ]
                   }
